@@ -5,7 +5,6 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-@import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url("https://fonts.googleapis.com/css2?family=Play&family=Russo+One&display=swap");
 :root {
   --bs-blue: #0d6efd;
@@ -11124,6 +11123,56 @@ textarea.form-control-lg {
 /* Define standard variables and values for website */
 /*Website colors */
 /*Fonts */
+h1, .h1 {
+  font-family: "Russo One", sans-serif;
+  font-size: 36px;
+  color: #935482;
+}
+
+h2, .h2 {
+  font-family: "Russo One", sans-serif;
+  font-size: 32px;
+  color: #f5f5f5;
+}
+
+h3, .h3 {
+  font-family: "Play", sans-serif;
+  font-size: 28px;
+  color: #3E2437;
+}
+
+.why {
+  font-family: "Russo One", sans-serif;
+  font-size: 32px;
+  color: #3E2437;
+}
+
+p {
+  font-family: "Play", sans-serif;
+  font-size: 18px;
+  color: #3E2437;
+}
+
+.footertext {
+  font-family: "Play", sans-serif;
+  font-size: 28px;
+  color: #f5f5f5;
+}
+
+/*Backgrounds */
+.bgsection1 {
+  background: #c06faa !important;
+}
+
+.bgsection2 {
+  background: #935482 !important;
+}
+
+.bgsection3 {
+  background: #6b3d5f !important;
+}
+
+/*Search Bar */
 .search {
   width: 75%;
   display: flex;
@@ -11152,6 +11201,55 @@ textarea.form-control-lg {
   border-radius: 0 5px 5px 0;
   cursor: pointer;
   font-size: 20px;
+}
+
+/* Flip Cards */
+/* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 200px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px;
+  /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: dodgerblue;
+  color: white;
+  transform: rotateY(180deg);
 }
 
 /*# sourceMappingURL=style.css.map */
