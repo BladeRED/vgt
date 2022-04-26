@@ -5,6 +5,8 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url("https://fonts.googleapis.com/css2?family=Play&family=Russo+One&display=swap");
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -11117,6 +11119,39 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+/* Custom code here */
+/* Define standard variables and values for website */
+/*Website colors */
+/*Fonts */
+.search {
+  width: 75%;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #935482;
+  border-right: none;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus {
+  color: #935482;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #935482;
+  background: #935482;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */
