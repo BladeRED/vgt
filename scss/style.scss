@@ -8,6 +8,7 @@
 $bgcolor1: #c06faa;
 $bgcolor2: #935482;
 $bgcolor3: #6b3d5f;
+$bgcolor4: #3E2437;
 $textcolor1: #f5f5f5;
 $textcolor2: #3E2437;
 
@@ -43,15 +44,15 @@ h3 {
   color: $textcolor2;
 }
 
-.why{
+.why {
 
-    font-family: "Russo One", sans-serif;
-    font-size: $fontsizeH2;
-    color: $textcolor2;
+  font-family: "Russo One", sans-serif;
+  font-size: $fontsizeH2;
+  color: $textcolor2;
 
 }
 
-p{
+p {
 
 
   font-family: "Play", sans-serif;
@@ -60,11 +61,38 @@ p{
 
 }
 
-.footertext{
+a:-webkit-any-link {
+
+  color: $textcolor1;
+  text-decoration: none;
+
+}
+
+a:-webkit-any-link:hover {
+
+  color: $textcolor2 !important;
+
+}
+
+.footertext {
 
   font-family: "Play", sans-serif;
   font-size: $fontsizeH3;
   color: $textcolor1;
+
+}
+
+.footertext2 {
+
+  font-family: "Play", sans-serif;
+  font-size: $fontsizeH3;
+  color: $textcolor1;
+
+}
+
+.footertext:hover {
+
+  color: $textcolor2 !important;
 
 }
 
@@ -129,7 +157,7 @@ p{
   background-color: transparent;
   width: 300px;
   height: 200px;
-  border: 1px solid #f1f1f1;
+  border-radius: 30px !important;
   perspective: 1000px; /* Remove this if you don't want the 3D effect */
 }
 
@@ -138,6 +166,7 @@ p{
   position: relative;
   width: 100%;
   height: 100%;
+  border-radius: 30px !important;
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
@@ -146,6 +175,7 @@ p{
 /* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
+  border-radius: 30px !important;
 }
 
 /* Position the front and back side */
@@ -153,6 +183,7 @@ p{
   position: absolute;
   width: 100%;
   height: 100%;
+  border-radius: 30px !important;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
 }
@@ -161,11 +192,246 @@ p{
 .flip-card-front {
   background-color: #bbb;
   color: black;
+  border-radius: 30px !important;
 }
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
+  background-color: $bgcolor4;
   color: white;
   transform: rotateY(180deg);
+}
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 1250px) {
+
+  $fontsizeText: 14px;
+  $fontsizeH1: 32px;
+  $fontsizeH2: 28px;
+  $fontsizeH3: 24px;
+
+  h1 {
+
+
+    font-size: $fontsizeH2;
+
+  }
+
+  h2 {
+
+
+    font-size: $fontsizeH2;
+
+  }
+
+  h3 {
+
+
+    font-size: $fontsizeH3;
+
+  }
+
+  p {
+
+    font-size: $fontsizeText;
+
+  }
+
+  .flip-card {
+    display: block;
+  }
+
+}
+
+@media screen and (max-width: 1100px) {
+
+  h1 {
+
+
+    font-size: 22px;
+
+  }
+
+}
+
+
+@media screen and (max-width: 991px) {
+
+
+  .navhead {
+
+
+    justify-content: center;
+
+
+  }
+
+  .logo {
+
+
+    order: 2;
+    position: absolute;
+
+
+  }
+
+  .searchbar {
+
+
+    order: 3;
+    margin-bottom: 2.5rem;
+
+  }
+
+  .logsubmit {
+
+
+    justify-content: space-between !important;
+
+
+  }
+
+  .footertext {
+
+    font-size: $fontsizeH3;
+  }
+
+  .footertext2 {
+
+    font-size: $fontsizeH3;
+
+  }
+
+}
+
+@media screen and (max-width: 650px) {
+
+  $fontsizeText: 14px;
+  $fontsizeH1: 20px;
+  $fontsizeH2: 24px;
+  $fontsizeH3: 18px;
+
+
+  h1 {
+
+    display: none;
+
+  }
+
+  h2 {
+
+
+    font-size: $fontsizeH2;
+
+  }
+
+  h3 {
+
+
+    font-size: $fontsizeH3;
+
+  }
+
+  .why {
+
+    font-size: $fontsizeH2;;
+  }
+
+  p {
+
+    font-size: $fontsizeText;
+
+  }
+
+  .footertext {
+
+    font-size: $fontsizeH3;
+  }
+
+  .footertext2 {
+
+    font-size: $fontsizeH3;
+
+  }
+
+  .footercontent{
+
+    display:block !important;
+    justify-content:center !important;
+
+
+  }
+
+  .footersubcontent{
+
+    justify-content: center !important;
+    margin-top: 2rem;
+
+  }
+
+  .socialicon{
+
+    order: 1;
+
+  }
+
+  .contacticon{
+
+    order: 2;
+
+  }
+
+  .orgfootercontent{
+
+    display: flex;
+    flex-direction: column;
+
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+
+  $fontsizeText: 14px;
+  $fontsizeH1: 20px;
+  $fontsizeH2: 24px;
+  $fontsizeH3: 18px;
+
+  .logo {
+
+    order: 1;
+    position: initial;
+    display: block;
+
+  }
+
+  .searchbar {
+
+    order: 3;
+
+  }
+
+  .logsubmit {
+
+    order: 4;
+    justify-content: space-between !important;
+    margin-bottom: 2.5rem;
+    display: block;
+    position: initial;
+
+
+  }
+
+  .footertext {
+
+    font-size: $fontsizeH3;
+  }
+
+  .footertext2 {
+
+    font-size: $fontsizeH3;
+
+  }
+
 }
