@@ -253,12 +253,32 @@ a:-webkit-any-link:hover {
 
   }
 
+
+
 }
 
 
 @media screen and (max-width: 991px) {
 
+  .game{
 
+    flex-wrap: wrap !important;
+
+
+  }
+
+  .gamecard{
+
+    width: 18rem !important;
+    height: 21rem !important;
+    margin-top: 2.5rem;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+
+
+  }
   .navhead {
 
 
@@ -294,7 +314,7 @@ a:-webkit-any-link:hover {
 
   .footertext {
 
-    font-size: $fontsizeH3;
+    font-size: 18px;
   }
 
   .footertext2 {
@@ -303,7 +323,37 @@ a:-webkit-any-link:hover {
 
   }
 
+  .footerimg{
+
+    max-width:48px !important;
+    max-height:48px !important;
+
+
+  }
+
 }
+
+@media screen and (max-width: 700px) {
+
+  .staticon{
+
+    justify-content: start !important;
+    margin-left: 3rem;
+
+
+  }
+
+  .sectiontitle{
+
+    text-align: center !important;
+    font-size: $fontsizeH2;
+    display:block !important;
+
+  }
+
+
+}
+
 
 @media screen and (max-width: 650px) {
 
@@ -333,10 +383,6 @@ a:-webkit-any-link:hover {
 
   }
 
-  .why {
-
-    font-size: $fontsizeH2;;
-  }
 
   p {
 
@@ -353,6 +399,11 @@ a:-webkit-any-link:hover {
 
     font-size: $fontsizeH3;
 
+  }
+
+  .sectiontitle{
+
+    font-size: $fontsizeH2;
   }
 
   .footercontent{
@@ -431,6 +482,38 @@ a:-webkit-any-link:hover {
   .footertext2 {
 
     font-size: $fontsizeH3;
+
+  }
+
+  .sectiontitle{
+
+    font-size: 20px;
+  }
+
+  h3{
+
+    font-size: 14px;
+
+  }
+
+  .staticon{
+
+    justify-content: start !important;
+    margin-left: 0 !important;
+
+
+  }
+
+  .gamecard{
+
+    width: 20rem !important;
+    height: 21rem !important;
+    margin-top: 2.5rem;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0;
+    padding-right: 0;
+
 
   }
 
