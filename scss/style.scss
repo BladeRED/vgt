@@ -67,6 +67,8 @@ h3 {
 
 }
 
+
+
 p {
 
 
@@ -108,7 +110,17 @@ a:-webkit-any-link:hover {
 .footertext:hover {
 
   color: #c06faa !important;
+  .fa-envelope,.fa-scale-balanced{
+    color: #c06faa !important;
+  }
+}
 
+.fa-envelope,.fa-scale-balanced:hover{
+  color: #c06faa !important;
+  .footertext{
+
+    color: #c06faa !important;
+  }
 }
 
 .animfooter:hover {
@@ -118,6 +130,11 @@ a:-webkit-any-link:hover {
   animation: myAnim 1s ease 0s 1 normal forwards;
 
   .fa-envelope,.fa-scale-balanced{
+    color: #c06faa !important;
+  }
+
+  .footertext{
+
     color: #c06faa !important;
   }
 

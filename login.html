@@ -22,8 +22,10 @@
             <div class="col-lg-4 logo">
                 <div class="d-flex flex-row navhead">
                     <!-- Logo -->
-                    <img src="assets/pictures/logo.svg" class="img-fluid py-3 mx-3" style="height: 160px ;width: 160px"
-                         alt="VGT_logo">
+                    <a href="homepage.html">
+                        <img src="assets/pictures/logo.svg" class="img-fluid py-3 mx-3" style="height: 160px ;width: 160px"
+                             alt="VGT_logo">
+                    </a>
                     <h1 class="py-5">VideoGameTime</h1>
                 </div>
             </div>
@@ -33,7 +35,7 @@
                 <!-- Searchbar -->
                 <div class="d-flex flex-row navhead">
                     <div class="search mt-5 mx-5 py-2 searchbar">
-                        <input type="text" class="searchTerm" placeholder="Cherchez vos jeux ici !">
+                        <input type="text" class="searchTerm" placeholder="Cherche tes jeux ici !">
                         <button type="submit" class="searchButton">
                             <i class="fa fa-search"></i>
                         </button>
@@ -83,11 +85,11 @@
                 </ol>
             </nav>
         </div>
-        <div class="container">
+        <div class="container shadow-lg rounded bgsection">
             <div class="row">
 
 
-                <div class="container col-6 shadow-lg rounded mt-3 mb-5 py-5 bgsection2">
+                <div class="col-lg-6 col-md-12 col-sm-12 mt-3 mb-5 py-5 ">
 
                     <div class="row">
 
@@ -102,7 +104,7 @@
                                         class="form-control log mx-auto"
                                         id="usernameInput"
                                         aria-describedby="usernameHelp"
-                                        placeholder="Entre ton pseudo, promis on le jugera pas !"
+                                        placeholder="Le plus swag des pseudos est-il de retour?"
                                 />
                             </div>
                             <div class="form-group mt-3 mb-4 mx-5 px-5">
@@ -111,31 +113,40 @@
                                         type="password"
                                         class="form-control log mx-auto "
                                         id="passwordInput"
-                                        placeholder="Pour le mot de passe, c'est par ici !"
+                                        placeholder="Tu t'en rappelles, j'espère ? !"
                                 />
                             </div>
                             <button
                                     type="button"
-                                    class="btn btn-lg bgsection1 mx-auto mt-5 mb-2 px-5 d-flex justify-content-center text-white"
+                                    class="btn btn-lg bgsection1 mx-auto mt-5 mb-2 px-5 d-flex justify-content-center text-white" style="margin-top:3.25rem !important"
                             >
                                 Let's go !
                             </button>
                         </form>
                     </div>
                 </div>
-                <div class="container shadow-lg col-6 rounded mt-3 mb-5 py-5 bgsection2">
+                <div class="col-lg-6 col-md-12 col-sm-12 mt-3 mb-5 py-5 ">
                     <div class="row">
-
-                        <h2 class="text-center">Bienvenue !</h2>
                         <form class = "mx-auto">
+                            <div class="form-group mx-5 px-5">
+                                <div class ="mb-4"><h3 class ="fw-bold">Pas encore inscrit ?</h3>
+                                    <p>Enregistre tes informations de connexions !</p></div>
+                                <label for="usernameInput" class="mb-3"> Ton Adresse Mail: </label>
+                                <input
+                                        type="email"
+                                        class="form-control log mx-auto"
+                                        id="emailInput"
+                                        aria-describedby="emailHelp"
+                                        placeholder="Ne t'en fais pas, on t'enverra pas de pubs ! !"
+                                />
+                            </div>
+
                             <div class="form-group my-3 mx-5 px-5">
-                                <div class ="mb-4"><h3 class ="fw-bold">Déjà enregistré?</h3>
-                                    <p>Saisis tes informations de connexions</p></div>
                                 <label for="usernameInput" class="mb-3"> Ton Pseudo: </label>
                                 <input
                                         type="text"
                                         class="form-control log mx-auto"
-                                        id="usernameInput"
+                                        id="usernameRegisterInput"
                                         aria-describedby="usernameHelp"
                                         placeholder="Entre ton pseudo, promis on le jugera pas !"
                                 />
@@ -145,13 +156,13 @@
                                 <input
                                         type="password"
                                         class="form-control log mx-auto "
-                                        id="passwordInput"
-                                        placeholder="Pour le mot de passe, c'est par ici !"
+                                        id="passwordRegisterInput"
+                                        placeholder="Essaie de ne pas l'oublier ! !"
                                 />
                             </div>
                             <button
                                     type="button"
-                                    class="btn btn-lg bgsection1 mx-auto mt-5 mb-2 px-5 d-flex justify-content-center text-white"
+                                    class="btn btn-lg bgsection1 mx-auto mb-2 px-5 d-flex justify-content-center text-white"
                             >
                                 Let's go !
                             </button>
@@ -159,7 +170,6 @@
                     </div>
                 </div>
                 </div>
-        </div>
         </div>
     </section>
 </main>
@@ -174,25 +184,23 @@
             <div class="orgfootercontent">
                 <div class="d-flex flex-row justify-content-between footercontent contacticon">
 
-                    <div class="d-flex flex-row justify-content-start footersubcontent ">
+                    <div class="d-flex flex-row justify-content-start footersubcontent animfooter">
                         <!-- Contact us and Data Policy -->
 
-                        <img src="assets/pictures/letters.png" class="img-fluid footerimg"
-                             style="max-height: 64px ; max-width: 64px" alt="VGT_contact">
+                        <i class="fa-solid fa-envelope fa-2x"></i>
                         <a href="#">
-                            <h3 class="py-3 ms-2 footertext">
+                            <h3 class="py-1 ms-2 footertext">
                                 Contactez-nous !
                             </h3>
                         </a>
                     </div>
 
-                    <div class="d-flex flex-row justify-content-end footersubcontent">
+                    <div class="d-flex flex-row justify-content-end footersubcontent animfooter">
                         <!-- Legal mentions -->
 
-                        <img src="assets/pictures/mentions.png" class="img-fluid footerimg"
-                             style="max-height: 64px ; max-width: 64px" alt="VGT_mention">
+                        <i class="fa-solid fa-scale-balanced fa-2x"></i>
                         <a href="#" class="social">
-                            <h3 class="py-3 ms-2 footertext">
+                            <h3 class="py-1 ms-2 footertext">
                                 Mentions Légales !
                             </h3>
                         </a>
