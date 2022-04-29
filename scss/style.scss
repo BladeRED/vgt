@@ -14,16 +14,16 @@ $textcolor2: #f5f5f5;
 
 /* BACKGROUND */
 
-body{
+body {
 
-  background-image: linear-gradient(216deg, rgba(77, 77, 77,0.05) 0%, rgba(77, 77, 77,0.05) 25%,rgba(42, 42, 42,0.05) 25%, rgba(42, 42, 42,0.05) 38%,rgba(223, 223, 223,0.05) 38%, rgba(223, 223, 223,0.05) 75%,rgba(36, 36, 36,0.05) 75%, rgba(36, 36, 36,0.05) 100%),linear-gradient(44deg, rgba(128, 128, 128,0.05) 0%, rgba(128, 128, 128,0.05) 34%,rgba(212, 212, 212,0.05) 34%, rgba(212, 212, 212,0.05) 57%,rgba(25, 25, 25,0.05) 57%, rgba(25, 25, 25,0.05) 89%,rgba(135, 135, 135,0.05) 89%, rgba(135, 135, 135,0.05) 100%),linear-gradient(241deg, rgba(55, 55, 55,0.05) 0%, rgba(55, 55, 55,0.05) 14%,rgba(209, 209, 209,0.05) 14%, rgba(209, 209, 209,0.05) 60%,rgba(245, 245, 245,0.05) 60%, rgba(245, 245, 245,0.05) 69%,rgba(164, 164, 164,0.05) 69%, rgba(164, 164, 164,0.05) 100%),linear-gradient(249deg, rgba(248, 248, 248,0.05) 0%, rgba(248, 248, 248,0.05) 32%,rgba(148, 148, 148,0.05) 32%, rgba(148, 148, 148,0.05) 35%,rgba(202, 202, 202,0.05) 35%, rgba(202, 202, 202,0.05) 51%,rgba(181, 181, 181,0.05) 51%, rgba(181, 181, 181,0.05) 100%),linear-gradient(92deg, hsl(214,0%,11%),hsl(214,0%,11%));
+  background-image: linear-gradient(216deg, rgba(77, 77, 77, 0.05) 0%, rgba(77, 77, 77, 0.05) 25%, rgba(42, 42, 42, 0.05) 25%, rgba(42, 42, 42, 0.05) 38%, rgba(223, 223, 223, 0.05) 38%, rgba(223, 223, 223, 0.05) 75%, rgba(36, 36, 36, 0.05) 75%, rgba(36, 36, 36, 0.05) 100%), linear-gradient(44deg, rgba(128, 128, 128, 0.05) 0%, rgba(128, 128, 128, 0.05) 34%, rgba(212, 212, 212, 0.05) 34%, rgba(212, 212, 212, 0.05) 57%, rgba(25, 25, 25, 0.05) 57%, rgba(25, 25, 25, 0.05) 89%, rgba(135, 135, 135, 0.05) 89%, rgba(135, 135, 135, 0.05) 100%), linear-gradient(241deg, rgba(55, 55, 55, 0.05) 0%, rgba(55, 55, 55, 0.05) 14%, rgba(209, 209, 209, 0.05) 14%, rgba(209, 209, 209, 0.05) 60%, rgba(245, 245, 245, 0.05) 60%, rgba(245, 245, 245, 0.05) 69%, rgba(164, 164, 164, 0.05) 69%, rgba(164, 164, 164, 0.05) 100%), linear-gradient(249deg, rgba(248, 248, 248, 0.05) 0%, rgba(248, 248, 248, 0.05) 32%, rgba(148, 148, 148, 0.05) 32%, rgba(148, 148, 148, 0.05) 35%, rgba(202, 202, 202, 0.05) 35%, rgba(202, 202, 202, 0.05) 51%, rgba(181, 181, 181, 0.05) 51%, rgba(181, 181, 181, 0.05) 100%), linear-gradient(92deg, hsl(214, 0%, 11%), hsl(214, 0%, 11%));
 
 }
 
 .bgsection {
 
-  background: rgb(147,84,130);
-  background: linear-gradient(47deg, rgba(147,84,130,1) 0%, rgba(107,61,95,1) 53%, rgba(62,36,55,1) 100%);
+  background: rgb(147, 84, 130);
+  background: linear-gradient(47deg, rgba(147, 84, 130, 1) 0%, rgba(107, 61, 95, 1) 53%, rgba(62, 36, 55, 1) 100%);
 }
 
 /*Fonts */
@@ -68,7 +68,6 @@ h3 {
 }
 
 
-
 p {
 
 
@@ -110,14 +109,16 @@ a:-webkit-any-link:hover {
 .footertext:hover {
 
   color: #c06faa !important;
-  .fa-envelope,.fa-scale-balanced{
+
+  .fa-envelope, .fa-scale-balanced {
     color: #c06faa !important;
   }
 }
 
-.fa-envelope,.fa-scale-balanced:hover{
+.fa-envelope, .fa-scale-balanced:hover {
   color: #c06faa !important;
-  .footertext{
+
+  .footertext {
 
     color: #c06faa !important;
   }
@@ -129,25 +130,27 @@ a:-webkit-any-link:hover {
   color: #c06faa !important;
   animation: myAnim 1s ease 0s 1 normal forwards;
 
-  .fa-envelope,.fa-scale-balanced{
+  .fa-envelope, .fa-scale-balanced {
     color: #c06faa !important;
   }
 
-  .footertext{
+  .footertext {
 
     color: #c06faa !important;
   }
 
 }
 
+/*Non-fonts hover */
 
-.btn{
+
+.btn {
 
   font-family: "Play", sans-serif;
 
 }
 
-button:hover{
+button:hover {
 
   font-family: "Play", sans-serif;
   color: #3e2437 !important;
@@ -155,25 +158,25 @@ button:hover{
 
 }
 
-.log::placeholder{
+.log::placeholder {
 
   font-family: "Play", sans-serif;
 
 }
 
-label{
+label {
 
   font-family: "Play", sans-serif !important;
 
 }
 
-.fab, .fa-brands, .fa-envelope,.fa-scale-balanced{
+.fab, .fa-brands, .fa-envelope, .fa-scale-balanced {
 
   color: #f5f5f5 !important;
 
 }
 
-.fab, .fa-brands:hover{
+.fab, .fa-brands:hover {
 
   color: #c06faa !important;
   animation: myAnim 1s ease 0s 1 normal forwards;
@@ -265,9 +268,21 @@ label{
   font-size: 20px;
 }
 
-.whatnew{
+.whatnew {
 
   flex-grow: 0.25 !important;
+
+}
+
+td {
+  vertical-align: middle;
+  text-align: center !important;
+  font-size: 18px;
+}
+
+.hide{
+
+  display:none;
 
 }
 
@@ -326,7 +341,6 @@ label{
 /* BUTTONS */
 
 
-
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 1250px) {
@@ -364,10 +378,32 @@ label{
   }
 
 
-
-
   .flip-card {
     display: block;
+  }
+
+}
+
+@media screen and (max-width: 1250px){
+
+  .gamecardTable {
+
+    width: 10rem !important;
+    height: 16rem !important;
+    justify-content: center !important;
+
+  }
+
+  td {
+    vertical-align: middle;
+    text-align: center !important;
+    font-size: 18px;
+  }
+
+  th h3{
+
+    font-size: 20px;
+
   }
 
 }
@@ -381,6 +417,13 @@ label{
 
   }
 
+  .gamecardTable {
+
+    width: 12rem !important;
+    height: 18rem !important;
+    justify-content: center !important;
+
+  }
 
 
 }
@@ -388,14 +431,21 @@ label{
 
 @media screen and (max-width: 991px) {
 
-  .game{
+  .game {
 
     flex-wrap: wrap !important;
 
 
   }
 
-  .gamecard{
+  .gamelistselect{
+
+
+    width: 50% !important;
+
+  }
+
+  .gamecard {
 
     width: 18rem !important;
     height: 21rem !important;
@@ -405,6 +455,14 @@ label{
     padding-left: 2.5rem;
     padding-right: 2.5rem;
 
+
+  }
+
+  .gamecardTable {
+
+    width: 12rem !important;
+    height: 18rem !important;
+    justify-content: center !important;
 
   }
   .navhead {
@@ -451,19 +509,51 @@ label{
 
   }
 
-  .footerimg{
+  .footerimg {
 
-    max-width:48px !important;
-    max-height:48px !important;
+    max-width: 48px !important;
+    max-height: 48px !important;
 
 
   }
 
 }
+@media screen and (max-width: 780px) {
+
+  table{
+
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+
+
+  }
+
+  th h3{
+
+    font-size: 18px;
+
+  }
+
+
+  .gamecardTable {
+
+    width: 10rem !important;
+    height: 16rem !important;
+    visibility: collapse !important;
+    display: none;
+
+  }
+
+  .colgame{
+
+    visibility: collapse !important;
+    display: none !important;
+  }
+
 
 @media screen and (max-width: 700px) {
 
-  .staticon{
+  .staticon {
 
     justify-content: start !important;
     margin-left: 3rem;
@@ -471,13 +561,15 @@ label{
 
   }
 
-  .sectiontitle{
+  .sectiontitle {
 
     text-align: center !important;
     font-size: $fontsizeH2;
-    display:block !important;
+    display: block !important;
 
   }
+
+
 
 
 }
@@ -529,42 +621,49 @@ label{
 
   }
 
-  .sectiontitle{
+  .sectiontitle {
 
     font-size: $fontsizeH2;
   }
 
-  .footercontent{
+  .footercontent {
 
-    display:block !important;
-    justify-content:center !important;
+    display: block !important;
+    justify-content: center !important;
 
 
   }
 
-  .footersubcontent{
+  .footersubcontent {
 
     justify-content: center !important;
     margin-top: 2rem;
 
   }
 
-  .socialicon{
+  .socialicon {
 
     order: 1;
 
   }
 
-  .contacticon{
+  .contacticon {
 
     order: 2;
 
   }
 
-  .orgfootercontent{
+  .orgfootercontent {
 
     display: flex;
     flex-direction: column;
+
+  }
+
+  .gamelistselect{
+
+
+    width: 75% !important;
 
   }
 
@@ -613,18 +712,18 @@ label{
 
   }
 
-  .sectiontitle{
+  .sectiontitle {
 
     font-size: 20px;
   }
 
-  h3{
+  h3 {
 
     font-size: 14px;
 
   }
 
-  .staticon{
+  .staticon {
 
     justify-content: start !important;
     margin-left: 0 !important;
@@ -632,7 +731,7 @@ label{
 
   }
 
-  .gamecard{
+  .gamecard {
 
     width: 20rem !important;
     height: 21rem !important;
@@ -644,5 +743,12 @@ label{
 
 
   }
+  .gamelistselect{
 
-}
+
+    width: 100% !important;
+
+  }
+
+
+}}
