@@ -2,7 +2,8 @@
 
 // VARIABLES //
 
-let btn = document.querySelector(".dataperso");
+let btn = document.querySelector(".togglebutton");
+
 
 //FUNCTIONS //
 
@@ -11,7 +12,6 @@ function privateDataToggle(){
     document.querySelector(".datahidden").classList.toggle("hide");
 
 }
-
 
 
 //CODE PRINCIPAL//
@@ -25,10 +25,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     btn.addEventListener("click", function() {
 
-        if (btn.textContent=="Masquer mes données personnelles")
+        if (btn.textContent==="Masquer mes données personnelles")
             btn.textContent = "Afficher mes données personnelles";
-        else
-            btn.textContent = "Masquer mes données personnelles";
+        else btn.textContent = "Masquer mes données personnelles";
+
+        if (btn.textContent==="Ajouter une review")
+            btn.textContent = "Finalement non";
+        else btn.textContent = "Ajouter une review";
+
     })
+
+
+
 
 });
