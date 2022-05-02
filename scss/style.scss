@@ -280,9 +280,9 @@ td {
   font-size: 18px;
 }
 
-.hide{
+.hide {
 
-  display:none;
+  display: none;
 
 }
 
@@ -343,9 +343,48 @@ td {
 
 /* MEDIA QUERIES */
 
-.gameimg{
+.gameimg {
 
   margin-left: 6rem !important;
+
+}
+
+@media screen and(max-width: 1650px) {
+
+  .gameimg {
+
+    margin-left: 4rem !important;
+
+  }
+
+}
+
+@media screen and(max-width: 1550px) {
+
+  .gameimg {
+
+    margin-left: 2.75rem !important;
+
+  }
+
+}
+
+@media screen and(max-width: 1400px) {
+
+  .submitgametext {
+
+
+    margin-left: 5rem !important;
+
+
+  }
+
+  .gameimg {
+
+    width: 18rem !important;
+    height: 24rem !important;
+
+  }
 
 }
 
@@ -390,7 +429,7 @@ td {
 
 }
 
-@media screen and (max-width: 1250px){
+@media screen and (max-width: 1250px) {
 
   .gamecardTable {
 
@@ -406,7 +445,7 @@ td {
     font-size: 18px;
   }
 
-  th h3{
+  th h3 {
 
     font-size: 20px;
 
@@ -414,17 +453,6 @@ td {
 
 }
 
-@media screen and(max-width:1400px){
-
-  .submitgametext{
-
-
-    margin-left: 5rem !important;
-
-
-  }
-
-}
 
 @media screen and (max-width: 1100px) {
 
@@ -443,6 +471,12 @@ td {
 
   }
 
+  h3 {
+
+
+    font-size: 20px;
+  }
+
 
 }
 
@@ -456,7 +490,7 @@ td {
 
   }
 
-  .gamelistselect{
+  .gamelistselect {
 
 
     width: 50% !important;
@@ -516,7 +550,7 @@ td {
 
   }
 
-  .submitsection{
+  .submitsection {
 
     margin-left: 0 !important;
     margin-top: 0 !important;
@@ -543,7 +577,7 @@ td {
 
   }
 
-  .submitgametext{
+  .submitgametext {
 
 
     margin-left: 3rem !important;
@@ -552,17 +586,54 @@ td {
 
   }
 
-  .submitnote{
+  .submitnote {
 
 
-  text-align: center !important;
+    text-align: center !important;
+
+  }
+
+  .reviewgame {
+
+    display: block !important;
+
+  }
+
+  .headsubreviewgame {
+
+    margin-top: 3rem !important;
+
+  }
+
+  .subreviewgame {
+
+    margin-top: 0 !important;
+
+  }
+
+  .gameimg {
+
+    width: 32rem !important;
+    height: 21rem !important;
+
+  }
+
+  @media screen and (max-width: 830px) {
+
+    h3 {
+
+      font-size: 18px;
+
+    }
+
 
   }
 
 }
+
 @media screen and (max-width: 780px) {
 
-  table{
+  table {
 
     padding-left: 0 !important;
     padding-right: 0 !important;
@@ -570,7 +641,7 @@ td {
 
   }
 
-  th h3{
+  th h3 {
 
     font-size: 18px;
 
@@ -586,13 +657,13 @@ td {
 
   }
 
-  .colgame{
+  .colgame {
 
     visibility: collapse !important;
     display: none !important;
   }
 
-  .submitgametext{
+  .submitgametext {
 
     text-align: center !important;
     margin-left: 3rem !important;
@@ -600,251 +671,290 @@ td {
 
   }
 
+  .gamesection {
 
-@media screen and (max-width: 700px) {
-
-  .staticon {
-
-    justify-content: start !important;
-    margin-left: 3rem;
-
-
-  }
-
-  .sectiontitle {
-
-    text-align: center !important;
-    font-size: $fontsizeH2;
     display: block !important;
 
   }
 
+  .gameimg {
+
+    width: 22rem !important;
+    height: 24rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+
+  }
+
+  .gametext {
+
+    display: block !important;
+    margin-left: 0 !important;
 
 
+  }
 
+  .subgametext {
+
+    margin-left: 0 !important;
+
+  }
+
+
+  @media screen and (max-width: 700px) {
+
+    .staticon {
+
+      justify-content: start !important;
+      margin-left: 3rem;
+
+
+    }
+
+    .sectiontitle {
+
+      text-align: center !important;
+      font-size: $fontsizeH2;
+      display: block !important;
+
+    }
+
+
+  }
+
+
+  @media screen and (max-width: 650px) {
+
+    $fontsizeText: 14px;
+    $fontsizeH1: 20px;
+    $fontsizeH2: 24px;
+    $fontsizeH3: 18px;
+
+
+    h1 {
+
+      display: none;
+
+    }
+
+    h2 {
+
+
+      font-size: $fontsizeH2;
+
+    }
+
+    h3 {
+
+
+      font-size: $fontsizeH3;
+
+    }
+
+
+    p {
+
+      font-size: $fontsizeText;
+
+    }
+
+    .footertext {
+
+      font-size: $fontsizeH3;
+    }
+
+    .footertext2 {
+
+      font-size: $fontsizeH3;
+
+    }
+
+    .sectiontitle {
+
+      font-size: $fontsizeH2;
+    }
+
+    .footercontent {
+
+      display: block !important;
+      justify-content: center !important;
+
+
+    }
+
+    .footersubcontent {
+
+      justify-content: center !important;
+      margin-top: 2rem;
+
+    }
+
+    .socialicon {
+
+      order: 1;
+
+    }
+
+    .contacticon {
+
+      order: 2;
+
+    }
+
+    .orgfootercontent {
+
+      display: flex;
+      flex-direction: column;
+
+    }
+
+    .gamelistselect {
+
+
+      width: 75% !important;
+
+    }
+
+    .submitgamesection {
+
+      display: block !important;
+      justify-content: center !important;
+      text-align: center !important;
+
+
+    }
+
+    .submitgametext {
+
+
+      text-align: center !important;
+
+    }
+
+    .submitnote {
+
+      margin-left: 0 !important;
+
+    }
+
+    .submitimg {
+
+      margin-left: 0 !important;
+      margin-bottom: 0 !important;
+
+    }
+
+    .submitgametext {
+
+
+      margin-left: 0 !important;
+
+
+    }
+
+    @media screen and (max-width: 450px) {
+
+
+      .gameimg {
+
+        width: 24rem !important;
+        height: 28rem !important;
+      }
+
+
+    }
+
+  }
+
+  @media screen and (max-width: 400px) {
+
+    $fontsizeText: 14px;
+    $fontsizeH1: 20px;
+    $fontsizeH2: 24px;
+    $fontsizeH3: 18px;
+
+    .logo {
+
+      order: 1;
+      position: initial;
+      display: block;
+
+    }
+
+    .searchbar {
+
+      order: 3;
+
+    }
+
+    .logsubmit {
+
+      order: 4;
+      justify-content: space-between !important;
+      margin-bottom: 2.5rem;
+      display: block;
+      position: initial;
+
+
+    }
+
+    .footertext {
+
+      font-size: $fontsizeH3;
+    }
+
+    .footertext2 {
+
+      font-size: $fontsizeH3;
+
+    }
+
+    .sectiontitle {
+
+      font-size: 20px;
+    }
+
+    h3 {
+
+      font-size: 14px;
+
+    }
+
+    .staticon {
+
+      justify-content: start !important;
+      margin-left: 0 !important;
+
+
+    }
+
+    .gamecard {
+
+      width: 20rem !important;
+      height: 21rem !important;
+      margin-top: 2.5rem;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding-left: 0;
+      padding-right: 0;
+
+
+    }
+    .gamelistselect {
+
+
+      width: 100% !important;
+
+    }
+
+    .submitimg {
+
+      width: 15rem !important;
+      height: 18rem !important;
+
+    }
+
+
+  }
 }
-
-
-@media screen and (max-width: 650px) {
-
-  $fontsizeText: 14px;
-  $fontsizeH1: 20px;
-  $fontsizeH2: 24px;
-  $fontsizeH3: 18px;
-
-
-  h1 {
-
-    display: none;
-
-  }
-
-  h2 {
-
-
-    font-size: $fontsizeH2;
-
-  }
-
-  h3 {
-
-
-    font-size: $fontsizeH3;
-
-  }
-
-
-  p {
-
-    font-size: $fontsizeText;
-
-  }
-
-  .footertext {
-
-    font-size: $fontsizeH3;
-  }
-
-  .footertext2 {
-
-    font-size: $fontsizeH3;
-
-  }
-
-  .sectiontitle {
-
-    font-size: $fontsizeH2;
-  }
-
-  .footercontent {
-
-    display: block !important;
-    justify-content: center !important;
-
-
-  }
-
-  .footersubcontent {
-
-    justify-content: center !important;
-    margin-top: 2rem;
-
-  }
-
-  .socialicon {
-
-    order: 1;
-
-  }
-
-  .contacticon {
-
-    order: 2;
-
-  }
-
-  .orgfootercontent {
-
-    display: flex;
-    flex-direction: column;
-
-  }
-
-  .gamelistselect{
-
-
-    width: 75% !important;
-
-  }
-
-  .submitgamesection{
-
-    display: block !important;
-    justify-content: center !important;
-    text-align: center !important;
-
-
-  }
-
-  .submitgametext{
-
-
-    text-align: center !important;
-
-  }
-
-  .submitnote{
-
-    margin-left: 0 !important;
-
-  }
-
-  .submitimg{
-
-    margin-left: 0 !important;
-    margin-bottom: 0 !important;
-
-  }
-
-  .submitgametext{
-
-
-    margin-left: 0 !important;
-
-
-  }
-
-
-
-}
-
-@media screen and (max-width: 400px) {
-
-  $fontsizeText: 14px;
-  $fontsizeH1: 20px;
-  $fontsizeH2: 24px;
-  $fontsizeH3: 18px;
-
-  .logo {
-
-    order: 1;
-    position: initial;
-    display: block;
-
-  }
-
-  .searchbar {
-
-    order: 3;
-
-  }
-
-  .logsubmit {
-
-    order: 4;
-    justify-content: space-between !important;
-    margin-bottom: 2.5rem;
-    display: block;
-    position: initial;
-
-
-  }
-
-  .footertext {
-
-    font-size: $fontsizeH3;
-  }
-
-  .footertext2 {
-
-    font-size: $fontsizeH3;
-
-  }
-
-  .sectiontitle {
-
-    font-size: 20px;
-  }
-
-  h3 {
-
-    font-size: 14px;
-
-  }
-
-  .staticon {
-
-    justify-content: start !important;
-    margin-left: 0 !important;
-
-
-  }
-
-  .gamecard {
-
-    width: 20rem !important;
-    height: 21rem !important;
-    margin-top: 2.5rem;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-    padding-left: 0;
-    padding-right: 0;
-
-
-  }
-  .gamelistselect{
-
-
-    width: 100% !important;
-
-  }
-
-  .submitimg{
-
-    width:15rem !important;
-    height: 18rem !important;
-
-  }
-
-
-}}
