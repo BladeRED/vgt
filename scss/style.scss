@@ -408,6 +408,18 @@ td {
 
 }
 
+@media screen and(max-width:1400px){
+
+  .submitgametext{
+
+
+    margin-left: 5rem !important;
+
+
+  }
+
+}
+
 @media screen and (max-width: 1100px) {
 
   h1 {
@@ -522,6 +534,22 @@ td {
     max-width: 48px !important;
     max-height: 48px !important;
 
+
+  }
+
+  .submitgametext{
+
+
+    margin-left: 3rem !important;
+    margin-top: 5rem !important;
+
+
+  }
+
+  .submitnote{
+
+
+  text-align: center !important;
 
   }
 
@@ -689,6 +717,19 @@ td {
     justify-content: center !important;
     text-align: center !important;
 
+
+  }
+
+  .submitgametext{
+
+
+    text-align: center !important;
+
+  }
+
+  .submitnote{
+
+    margin-left: 0 !important;
 
   }
 
