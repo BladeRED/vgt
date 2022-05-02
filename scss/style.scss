@@ -498,6 +498,14 @@ td {
 
   }
 
+  .submitsection{
+
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+
+  }
+
+
   .footertext {
 
     font-size: 18px;
@@ -548,6 +556,14 @@ td {
 
     visibility: collapse !important;
     display: none !important;
+  }
+
+  .submitgametext{
+
+    text-align: center !important;
+    margin-left: 3rem !important;
+
+
   }
 
 
@@ -667,6 +683,32 @@ td {
 
   }
 
+  .submitgamesection{
+
+    display: block !important;
+    justify-content: center !important;
+    text-align: center !important;
+
+
+  }
+
+  .submitimg{
+
+    margin-left: 0 !important;
+    margin-bottom: 0 !important;
+
+  }
+
+  .submitgametext{
+
+
+    margin-left: 0 !important;
+
+
+  }
+
+
+
 }
 
 @media screen and (max-width: 400px) {
@@ -747,6 +789,13 @@ td {
 
 
     width: 100% !important;
+
+  }
+
+  .submitimg{
+
+    width:15rem !important;
+    height: 18rem !important;
 
   }
 
