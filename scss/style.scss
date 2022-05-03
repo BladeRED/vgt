@@ -59,6 +59,12 @@ h3 {
   color: $textcolor2;
 }
 
+h5{
+
+  color: $textcolor2 !important;
+
+}
+
 .why {
 
   font-family: "Russo One", sans-serif;
@@ -460,6 +466,8 @@ td {
 
   }
 
+
+
   p {
 
     font-size: $fontsizeText;
@@ -665,6 +673,12 @@ td {
 
     width: 32rem !important;
     height: 21rem !important;
+
+  }
+
+  .chartTime{
+
+    margin-bottom: 3rem !important
 
   }
 
