@@ -86,7 +86,7 @@ a:-webkit-any-link {
 
 a:-webkit-any-link:hover {
 
-  color: $textcolor2 !important;
+  color: $textcolor2;
 
 }
 
@@ -180,6 +180,12 @@ label {
 
   color: #c06faa !important;
   animation: myAnim 1s ease 0s 1 normal forwards;
+
+}
+
+.welcome{
+
+  border-right: 2px solid $textcolor2;
 
 }
 
@@ -292,6 +298,12 @@ td {
 
 }
 
+.btn:focus{
+
+  box-shadow: none !important;
+
+}
+
 /* Flip Cards */
 
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
@@ -325,7 +337,7 @@ td {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 30px !important;
+  border-radius: 8px !important;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
 }
@@ -344,7 +356,33 @@ td {
   transform: rotateY(180deg);
 }
 
-/* BUTTONS */
+/* NAVBAR */
+
+.navbarAnimation{
+
+  color: $textcolor2 !important;
+  font-family: "Russo One",sans-serif;
+
+}
+
+.navbarAnimation:hover{
+
+  color: #c06faa !important;
+  animation: navbarAnim 1s ease 0s both;
+
+
+}
+
+@keyframes navbarAnim {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-15px);
+  }
+}
+
 
 
 /* MEDIA QUERIES */
@@ -481,6 +519,12 @@ td {
 
 
     font-size: 20px;
+  }
+
+  .nav-link{
+
+    margin-left: 0 !important;
+
   }
 
 
