@@ -1,39 +1,74 @@
 /////////////////////////////////////////////// CUSTOM JS HERE /////////////////////////////////////////////////////////
+"use strict";
+
 
 // VARIABLES //
 
-let btn = document.querySelector(".togglebutton");
+let btn = document.querySelector(".dataperso");
+let btn2= document.querySelector(".togglebutton");
+let btn3= document.querySelector(".sectionbutton");
 
 
 //FUNCTIONS //
 
 function privateDataToggle(){
 
-    document.querySelector(".datahidden").classList.toggle("hide");
+    document.querySelector(".datahidden").classList.toggle("datahide");
+
+        if (btn.textContent==="Masquer mes données personnelles")
+            btn.textContent = "Afficher mes données personnelles";
+        else btn.textContent = "Masquer mes données personnelles";
+
+
 
 }
 
+function hideToggle(){
+
+    document.querySelector(".hidden").classList.toggle("hide");
+    if (btn2.textContent==="Finalement non")
+        btn2.textContent = "Ajouter une review";
+    else btn2.textContent = "Finalement non";
+
+
+}
+
+
+function hideSection(){
+
+    document.querySelector(".hidden").classList.toggle("hide");
+    if (btn3.textContent==="Masquer les reviews")
+        btn3.textContent = "Voir les reviews";
+    else btn3.textContent = "Masquer les reviews";
+
+
+}
 
 //CODE PRINCIPAL//
 
 // To be sure that the js will be loaded in last position //
 document.addEventListener("DOMContentLoaded", function () {
 
+if(btn){
+
     document
         .querySelector(".dataperso")
         .addEventListener("click", privateDataToggle)
 
-    btn.addEventListener("click", function() {
+}else if(btn2){
 
-        if (btn.textContent==="Masquer mes données personnelles")
-            btn.textContent = "Afficher mes données personnelles";
-        else btn.textContent = "Masquer mes données personnelles";
+    document
+        .querySelector(".togglebutton")
+        .addEventListener("click", hideToggle)
 
-        if (btn.textContent==="Ajouter une review")
-            btn.textContent = "Finalement non";
-        else btn.textContent = "Ajouter une review";
+}else if(btn3){
 
-    })
+
+    document
+        .querySelector(".sectionbutton")
+        .addEventListener("click", hideSection)
+
+}
 
 
 
