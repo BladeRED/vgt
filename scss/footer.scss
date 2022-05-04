@@ -1,0 +1,94 @@
+
+.footertext {
+
+  font-family: "Play", sans-serif;
+  font-size: $fontsizeFooter;
+  color: $textcolor2;
+
+}
+
+.footertext2 {
+
+  font-family: "Play", sans-serif;
+  font-size: $fontsizeH3;
+  color: $textcolor2;
+
+}
+
+.footertext:hover {
+
+  color: #c06faa !important;
+
+  .fa-envelope, .fa-scale-balanced {
+    color: #c06faa !important;
+  }
+}
+
+.fa-envelope, .fa-scale-balanced:hover {
+  color: #c06faa !important;
+
+  .footertext {
+
+    color: #c06faa !important;
+  }
+}
+
+.animfooter:hover {
+
+
+  color: #c06faa !important;
+  animation: myAnim 1s ease 0s 1 normal forwards;
+
+  .fa-envelope, .fa-scale-balanced {
+    color: #c06faa !important;
+  }
+
+  .footertext {
+
+    color: #c06faa !important;
+  }
+
+}
+.fab, .fa-brands, .fa-envelope, .fa-scale-balanced {
+
+  color: #f5f5f5 !important;
+
+}
+
+.fab, .fa-brands:hover {
+
+  color: #c06faa !important;
+  animation: myAnim 1s ease 0s 1 normal forwards;
+
+}
+
+
+@keyframes myAnim {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}

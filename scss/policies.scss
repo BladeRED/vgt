@@ -1,0 +1,57 @@
+h1 {
+
+  font-family: "Russo One", sans-serif;
+  font-size: $fontsizeH1;
+  color: #935482;
+}
+
+h2 {
+
+  font-family: "Russo One", sans-serif;
+  font-size: $fontsizeH2;
+  color: $textcolor2;
+}
+
+h3 {
+
+  font-family: "Play", sans-serif;
+  font-size: $fontsizeH3;
+  color: $textcolor2;
+}
+
+h5{
+
+  color: $textcolor2 !important;
+
+}
+
+.why {
+
+  font-family: "Russo One", sans-serif;
+  font-size: $fontsizeH2;
+  color: $textcolor2;
+
+}
+
+
+p {
+
+
+  font-family: "Play", sans-serif;
+  font-size: $fontsizeText;
+  color: $textcolor2;
+
+}
+
+a:-webkit-any-link {
+
+  color: $textcolor1;
+  text-decoration: none;
+
+}
+
+a:-webkit-any-link:hover {
+
+  color: $textcolor2;
+
+}
