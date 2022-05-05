@@ -35,4 +35,4 @@ if ($_GET["controller"] == 'login') {
 
 }
 
-?>;
+?>

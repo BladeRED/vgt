@@ -10,7 +10,7 @@ class DefaultController
     public function displayHomepage()
     {
 
-        require '../default/homepage.php';
+        require 'templates/default/homepage.php';
     }
 
     public function displayGame()
