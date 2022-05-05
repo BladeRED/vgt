@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="fr">
-<?php require '../parts/head.php'; ?>
+<?php require 'templates/parts/head.php'; ?>
 
 <body>
 
 
-<?php require '../parts/header.php'; ?>
+<?php require 'templates/parts/header.php'; ?>
 
 
 <main>
@@ -114,9 +114,9 @@
 </main>
 
 
-<?php require '../parts/footer.php'; ?>
+<?php require 'templates/parts/footer.php'; ?>
 
-<?php require '../parts/JS_scripts.php';?>
+<?php require 'templates/parts/JS_scripts.php';?>
 
 </body>
 

@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="fr">
-<?php require '../parts/head.php'; ?>
+<?php require 'templates/parts/head.php'; ?>
 
 <body>
 
 
-<?php require '../parts/header.php'; ?>
+<?php require 'templates/parts/header.php'; ?>
 
 
 <main>
@@ -18,7 +18,7 @@
                 <div class="d-flex flex-row gamesection">
                     <!--RESUME OF THE GAME -->
                     <div class="col-lg-3">
-                        <a href="game.html"><img src="../../assets/pictures/Elden_Ring.jpg"
+                        <a href="index.php?controller=default&action=game"><img src="../../assets/pictures/Elden_Ring.jpg"
                                                  class="img-fluid mt-5 mb-3 ms-5 gameimg"
                                                  style="width:22rem;height:28rem;border-radius: 8px" alt="Elden Ring"></a>
                         <div class="ms-3 submitnote d-flex flex-column align-items-center">
@@ -202,11 +202,11 @@
     </section>
 </main>
 
-<?php require '../parts/footer.php'; ?>
+<?php require 'templates/parts/footer.php'; ?>
 
 <!-- JS script contained in node_modules -->
 
-<?php require '../parts/JS_scripts.php';?>
+<?php require 'templates/parts/JS_scripts.php';?>
 
 </body>
 

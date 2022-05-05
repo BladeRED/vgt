@@ -33,6 +33,29 @@ if ($_GET["controller"] == 'login') {
         $controller->displayLogin();
     }
 
+
+    if ($_GET["action"] == 'submit') {
+
+        $controller->displaySubmit();
+    }
+
+    if ($_GET["action"] == 'user') {
+
+        $controller->displayUser();
+    }
+
+}
+
+if ($_GET["controller"] == 'admin') {
+
+    $controller = new AdminController();
+
+    if ($_GET["action"] == 'dashboard') {
+
+        $controller->displayDashboard();
+    }
+
+
 }
 
 ?>

@@ -16,7 +16,7 @@ class DefaultController
     public function displayGame()
     {
 
-        require '../default/game.php';
+        require 'templates/default/game.php';
     }
 }
 

@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="fr">
-<?php require '../parts/head.php' ; ?>
+<?php require 'templates/parts/head.php' ; ?>
 
 <body>
 
 
-<?php require '../parts/headeradmin.php' ; ?>
+<?php require 'templates/parts/headeradmin.php' ; ?>
 
 
 <main>
@@ -137,11 +137,11 @@
 </main>
 
 
-<?php require '../parts/footer.php' ; ?>
+<?php require 'templates/parts/footer.php' ; ?>
 
 <!-- JS scripts -->
 
-<?php require '../parts/JS_scripts.php';?>
+<?php require 'templates/parts/JS_scripts.php';?>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>

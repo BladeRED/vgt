@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="fr">
-<?php require '../parts/head.php'; ?>
+<?php require 'templates/parts/head.php'; ?>
 
 <body>
 
 
-<?php require '../parts/header.php'; ?>
+<?php require 'templates/parts/header.php'; ?>
 
 
 <main>
@@ -44,7 +44,7 @@
                                         placeholder="Tu t'en rappelles, j'espère ? !"
                                 />
                             </div>
-                            <a href="user.php">
+                            <a href="index.php?controller=login&action=user">
                                 <button
 
                                         type="button"
@@ -102,7 +102,7 @@
                                         placeholder="Vérifie ton mot de passe quand même, on sait jamais."
                                 />
                             </div>
-                            <a href="user.php">
+                            <a href="index.php?controller=login&action=user">
                                 <button
                                         type="button"
                                         class="btn btn-lg bgsection1 mx-auto mb-2 px-5 d-flex justify-content-center text-white"
@@ -119,10 +119,10 @@
 </main>
 
 
-<?php require '../parts/footer.php'; ?>
+<?php require 'templates/parts/footer.php'; ?>
 
 <!-- JS scripts -->
 
-<?php require '../parts/JS_scripts.php';?>
+<?php require 'templates/parts/JS_scripts.php';?>
 
 </html>

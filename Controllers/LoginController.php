@@ -10,13 +10,20 @@ class LoginController
     public function displayLogin()
     {
 
-        require '../login/login.php';
+        require 'templates/login/login.php';
     }
+
+    public function displaySubmit()
+    {
+
+        require 'templates/login/submit.php';
+    }
+
 
     public function displayUser()
     {
 
-        require '../login/user.php';
+        require 'templates/login/user.php';
     }
 }
 
