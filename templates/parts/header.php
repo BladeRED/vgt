@@ -8,11 +8,11 @@
                 <div class="d-flex flex-row navhead">
                     <!-- Logo -->
                     <a href="index.php?controller=default&action=homepage">
-                        <img src="../../assets/pictures/logo.svg" class="img-fluid py-3 mx-3"
+                        <img src="../../assets/pictures/logo.svg" class="py-2 mx-3"
                              style="height: 160px ;width: 160px"
                              alt="VGT_logo">
                     </a>
-                    <h1 class="py-5">VideoGameTime</h1>
+                    <h1>VideoGameTime</h1>
 
                 </div>
             </div>
