@@ -58,4 +58,23 @@ if ($_GET["controller"] == 'admin') {
 
 }
 
+if ($_GET["controller"] == "security") {
+
+    $controller = new SecurityController();
+
+    if ($_GET["action"] == "login") {
+
+        $controller->login();
+
+    }
+
+    if ($_GET["action"] == "logout") {
+
+
+        $controller->logout();
+    }
+
+
+}
+
 ?>

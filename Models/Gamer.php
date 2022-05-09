@@ -1,28 +1,28 @@
 <?php
 
-class User
+class Gamer
 
 {
 
     private $id;
-    private $mail;
-    private $username;
+    private $pseudo;
     private $password;
+    private $mail;
     private $role;
 
     /**
      * @param $id
-     * @param $mail
-     * @param $username
+     * @param $pseudo
      * @param $password
+     * @param $mail
      * @param $role
      */
-    public function __construct($id, $mail, $username, $password, $role)
+    public function __construct($id, $pseudo, $password, $mail, $role)
     {
         $this->id = $id;
-        $this->mail = $mail;
-        $this->username = $username;
+        $this->pseudo = $pseudo;
         $this->password = $password;
+        $this->mail = $mail;
         $this->role = $role;
     }
 
@@ -45,33 +45,17 @@ class User
     /**
      * @return mixed
      */
-    public function getMail()
+    public function getPseudo()
     {
-        return $this->mail;
+        return $this->pseudo;
     }
 
     /**
-     * @param mixed $mail
+     * @param mixed $pseudo
      */
-    public function setMail($mail): void
+    public function setPseudo($pseudo): void
     {
-        $this->mail = $mail;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getUsername()
-    {
-        return $this->username;
-    }
-
-    /**
-     * @param mixed $username
-     */
-    public function setUsername($username): void
-    {
-        $this->username = $username;
+        $this->pseudo = $pseudo;
     }
 
     /**
@@ -88,6 +72,22 @@ class User
     public function setPassword($password): void
     {
         $this->password = $password;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMail()
+    {
+        return $this->mail;
+    }
+
+    /**
+     * @param mixed $mail
+     */
+    public function setMail($mail): void
+    {
+        $this->mail = $mail;
     }
 
     /**
@@ -110,5 +110,4 @@ class User
 }
 
 
-
-?>;
+?>

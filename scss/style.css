@@ -1,4 +1,5 @@
 @charset "UTF-8";
+/*SCSS files import */
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -11119,14 +11120,16 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-/* Custom code here */
+/* Variables for all site */
 /* Define standard variables and values for website */
 /*Website colors */
 /*Fonts */
+/* Policies */
 h1, .h1 {
   font-family: "Russo One", sans-serif;
   font-size: 36px;
   color: #935482;
+  padding-top: 3.5rem !important;
 }
 
 h2, .h2 {
@@ -11138,40 +11141,530 @@ h2, .h2 {
 h3, .h3 {
   font-family: "Play", sans-serif;
   font-size: 28px;
-  color: #3E2437;
+  color: #f5f5f5;
+}
+
+h5, .h5 {
+  color: #f5f5f5 !important;
 }
 
 .why {
   font-family: "Russo One", sans-serif;
   font-size: 32px;
-  color: #3E2437;
+  color: #f5f5f5;
 }
 
 p {
   font-family: "Play", sans-serif;
   font-size: 18px;
-  color: #3E2437;
+  color: #f5f5f5;
 }
 
+a:-webkit-any-link {
+  color: #3E2437;
+  text-decoration: none;
+}
+
+a:-webkit-any-link:hover {
+  color: #f5f5f5;
+}
+
+/* Footer */
 .footertext {
+  font-family: "Play", sans-serif;
+  font-size: 20px;
+  color: #f5f5f5;
+}
+
+.footertext2 {
   font-family: "Play", sans-serif;
   font-size: 28px;
   color: #f5f5f5;
 }
 
-/*Backgrounds */
+.footertext:hover {
+  color: #c06faa !important;
+}
+.footertext:hover .fa-envelope, .footertext:hover .fa-scale-balanced {
+  color: #c06faa !important;
+}
+
+.fa-envelope, .fa-scale-balanced:hover {
+  color: #c06faa !important;
+}
+.fa-envelope .footertext, .fa-scale-balanced:hover .footertext {
+  color: #c06faa !important;
+}
+
+.animfooter:hover {
+  color: #c06faa !important;
+  animation: myAnim 1s ease 0s 1 normal forwards;
+}
+.animfooter:hover .fa-envelope, .animfooter:hover .fa-scale-balanced {
+  color: #c06faa !important;
+}
+.animfooter:hover .footertext {
+  color: #c06faa !important;
+}
+
+.fab, .fa-brands, .fa-envelope, .fa-scale-balanced {
+  color: #f5f5f5 !important;
+}
+
+.fab, .fa-brands:hover {
+  color: #c06faa !important;
+  animation: myAnim 1s ease 0s 1 normal forwards;
+}
+
+@keyframes myAnim {
+  0% {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+/* Media queries */
+/* MEDIA QUERIES */
+.gameimg {
+  margin-left: 6rem !important;
+}
+
+@media screen and (max-width: 1650px) {
+  .gameimg {
+    margin-left: 4rem !important;
+  }
+}
+@media screen and (max-width: 1550px) {
+  .gameimg {
+    margin-left: 2.75rem !important;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .submitgametext {
+    margin-left: 5rem !important;
+  }
+
+  .gameimg {
+    width: 18rem !important;
+    height: 24rem !important;
+  }
+
+  h1, .h1 {
+    font-size: 28px !important;
+    padding-top: 3.5rem !important;
+  }
+}
+@media screen and (max-width: 1250px) {
+  h1, .h1 {
+    font-size: 22px !important;
+    padding-top: 4rem !important;
+  }
+
+  h2, .h2 {
+    font-size: 28px;
+  }
+
+  h3, .h3 {
+    font-size: 24px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .flip-card {
+    display: block;
+  }
+}
+@media screen and (max-width: 1250px) {
+  .gamecardTable {
+    width: 10rem !important;
+    height: 16rem !important;
+    justify-content: center !important;
+  }
+
+  td {
+    vertical-align: middle;
+    text-align: center !important;
+    font-size: 18px;
+  }
+
+  th h3, th .h3 {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .gamecardTable {
+    width: 12rem !important;
+    height: 18rem !important;
+    justify-content: center !important;
+  }
+
+  h3, .h3 {
+    font-size: 20px;
+  }
+
+  .nav-link {
+    margin-left: 0 !important;
+  }
+}
+@media screen and (max-width: 991px) {
+  .game {
+    flex-wrap: wrap !important;
+  }
+
+  .gamelistselect {
+    width: 50% !important;
+  }
+
+  .gamecard {
+    width: 18rem !important;
+    height: 21rem !important;
+    margin-top: 2.5rem;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
+  .gamecardTable {
+    width: 12rem !important;
+    height: 18rem !important;
+    justify-content: center !important;
+  }
+
+  .navhead {
+    justify-content: center;
+  }
+
+  .logo {
+    order: 2;
+    position: absolute;
+  }
+
+  .searchbar {
+    order: 3;
+    margin-bottom: 2.5rem;
+  }
+
+  .logsubmit {
+    justify-content: space-between !important;
+  }
+
+  .submitsection {
+    margin-left: 0 !important;
+    margin-top: 0 !important;
+  }
+
+  .footertext {
+    font-size: 18px;
+  }
+
+  .footertext2 {
+    font-size: 28px;
+  }
+
+  .footerimg {
+    max-width: 48px !important;
+    max-height: 48px !important;
+  }
+
+  .submitgametext {
+    margin-left: 3rem !important;
+    margin-top: 5rem !important;
+  }
+
+  .submitnote {
+    text-align: center !important;
+  }
+
+  .reviewgame {
+    display: block !important;
+  }
+
+  .headsubreviewgame {
+    margin-top: 3rem !important;
+  }
+
+  .subreviewgame {
+    margin-top: 0 !important;
+  }
+
+  .gameimg {
+    width: 32rem !important;
+    height: 21rem !important;
+  }
+
+  .chartTime {
+    margin-bottom: 3rem !important;
+  }
+}
+@media screen and (max-width: 991px) and (max-width: 830px) {
+  h3, .h3 {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 780px) {
+  table {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  th h3, th .h3 {
+    font-size: 18px;
+  }
+
+  .gamecardTable {
+    width: 10rem !important;
+    height: 16rem !important;
+    visibility: collapse !important;
+    display: none;
+  }
+
+  .colgame {
+    visibility: collapse !important;
+    display: none !important;
+  }
+
+  .submitgametext {
+    text-align: center !important;
+    margin-left: 3rem !important;
+  }
+
+  .gamesection {
+    display: block !important;
+  }
+
+  .gameimg {
+    width: 22rem !important;
+    height: 24rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
+  }
+
+  .gametext {
+    display: block !important;
+    margin-left: 0 !important;
+  }
+
+  .subgametext {
+    margin-left: 0 !important;
+  }
+}
+@media screen and (max-width: 780px) and (max-width: 700px) {
+  .staticon {
+    justify-content: start !important;
+    margin-left: 3rem;
+  }
+
+  .sectiontitle {
+    text-align: center !important;
+    font-size: 32px;
+    display: block !important;
+  }
+}
+@media screen and (max-width: 780px) and (max-width: 650px) {
+  h1, .h1 {
+    display: none;
+  }
+
+  h2, .h2 {
+    font-size: 24px;
+  }
+
+  h3, .h3 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  .footertext {
+    font-size: 18px;
+  }
+
+  .footertext2 {
+    font-size: 18px;
+  }
+
+  .sectiontitle {
+    font-size: 24px;
+  }
+
+  .footercontent {
+    display: block !important;
+    justify-content: center !important;
+  }
+
+  .footersubcontent {
+    justify-content: center !important;
+    margin-top: 2rem;
+  }
+
+  .socialicon {
+    order: 1;
+  }
+
+  .contacticon {
+    order: 2;
+  }
+
+  .orgfootercontent {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .gamelistselect {
+    width: 75% !important;
+  }
+
+  .submitgamesection {
+    display: block !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+  .submitgametext {
+    text-align: center !important;
+  }
+
+  .submitnote {
+    margin-left: 0 !important;
+  }
+
+  .submitimg {
+    margin-left: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .submitgametext {
+    margin-left: 0 !important;
+  }
+}
+@media screen and (max-width: 780px) and (max-width: 650px) and (max-width: 450px) {
+  .gameimg {
+    width: 24rem !important;
+    height: 28rem !important;
+  }
+}
+@media screen and (max-width: 780px) and (max-width: 400px) {
+  .logo {
+    order: 1;
+    position: initial;
+    display: block;
+  }
+
+  .searchbar {
+    order: 3;
+  }
+
+  .logsubmit {
+    order: 4;
+    justify-content: space-between !important;
+    margin-bottom: 2.5rem;
+    display: block;
+    position: initial;
+  }
+
+  .footertext {
+    font-size: 18px;
+  }
+
+  .footertext2 {
+    font-size: 18px;
+  }
+
+  .sectiontitle {
+    font-size: 20px;
+  }
+
+  h3, .h3 {
+    font-size: 14px;
+  }
+
+  .staticon {
+    justify-content: start !important;
+    margin-left: 0 !important;
+  }
+
+  .gamecard {
+    width: 20rem !important;
+    height: 21rem !important;
+    margin-top: 2.5rem;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .gamelistselect {
+    width: 100% !important;
+  }
+
+  .submitimg {
+    width: 15rem !important;
+    height: 18rem !important;
+  }
+}
+/* BACKGROUND */
+body {
+  background-image: linear-gradient(216deg, rgba(77, 77, 77, 0.05) 0%, rgba(77, 77, 77, 0.05) 25%, rgba(42, 42, 42, 0.05) 25%, rgba(42, 42, 42, 0.05) 38%, rgba(223, 223, 223, 0.05) 38%, rgba(223, 223, 223, 0.05) 75%, rgba(36, 36, 36, 0.05) 75%, rgba(36, 36, 36, 0.05) 100%), linear-gradient(44deg, rgba(128, 128, 128, 0.05) 0%, rgba(128, 128, 128, 0.05) 34%, rgba(212, 212, 212, 0.05) 34%, rgba(212, 212, 212, 0.05) 57%, rgba(25, 25, 25, 0.05) 57%, rgba(25, 25, 25, 0.05) 89%, rgba(135, 135, 135, 0.05) 89%, rgba(135, 135, 135, 0.05) 100%), linear-gradient(241deg, rgba(55, 55, 55, 0.05) 0%, rgba(55, 55, 55, 0.05) 14%, rgba(209, 209, 209, 0.05) 14%, rgba(209, 209, 209, 0.05) 60%, rgba(245, 245, 245, 0.05) 60%, rgba(245, 245, 245, 0.05) 69%, rgba(164, 164, 164, 0.05) 69%, rgba(164, 164, 164, 0.05) 100%), linear-gradient(249deg, rgba(248, 248, 248, 0.05) 0%, rgba(248, 248, 248, 0.05) 32%, rgba(148, 148, 148, 0.05) 32%, rgba(148, 148, 148, 0.05) 35%, rgba(202, 202, 202, 0.05) 35%, rgba(202, 202, 202, 0.05) 51%, rgba(181, 181, 181, 0.05) 51%, rgba(181, 181, 181, 0.05) 100%), linear-gradient(92deg, hsl(214deg, 0%, 11%), hsl(214deg, 0%, 11%));
+}
+
+.bgsection {
+  background: rgb(147, 84, 130);
+  background: linear-gradient(47deg, rgb(147, 84, 130) 0%, rgb(107, 61, 95) 53%, rgb(62, 36, 55) 100%);
+}
+
 .bgsection1 {
   background: #c06faa !important;
 }
 
 .bgsection2 {
-  background: #935482 !important;
+  background: #f5f5f5 !important;
 }
 
 .bgsection3 {
-  background: #6b3d5f !important;
+  background: #3E2437 !important;
 }
 
+/* NAVBAR */
+.navbarAnimation {
+  color: #f5f5f5 !important;
+  font-family: "Russo One", sans-serif;
+}
+
+.navbarAnimation:hover {
+  color: #c06faa !important;
+  animation: navbarAnim 1s ease 0s both;
+}
+
+@keyframes navbarAnim {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-15px);
+  }
+}
 /*Search Bar */
 .search {
   width: 75%;
@@ -11203,13 +11696,35 @@ p {
   font-size: 20px;
 }
 
+.whatnew {
+  flex-grow: 0.25 !important;
+}
+
+td {
+  vertical-align: middle;
+  text-align: center !important;
+  font-size: 18px;
+}
+
+.hide {
+  display: none;
+}
+
+.datahide {
+  display: none;
+}
+
+.btn:focus {
+  box-shadow: none !important;
+}
+
 /* Flip Cards */
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
   background-color: transparent;
   width: 300px;
   height: 200px;
-  border: 1px solid #f1f1f1;
+  border-radius: 30px !important;
   perspective: 1000px;
   /* Remove this if you don't want the 3D effect */
 }
@@ -11219,6 +11734,7 @@ p {
   position: relative;
   width: 100%;
   height: 100%;
+  border-radius: 30px !important;
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
@@ -11227,6 +11743,7 @@ p {
 /* Do an horizontal flip when you move the mouse over the flip box container */
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
+  border-radius: 30px !important;
 }
 
 /* Position the front and back side */
@@ -11234,6 +11751,7 @@ p {
   position: absolute;
   width: 100%;
   height: 100%;
+  border-radius: 8px !important;
   -webkit-backface-visibility: hidden;
   /* Safari */
   backface-visibility: hidden;
@@ -11243,13 +11761,41 @@ p {
 .flip-card-front {
   background-color: #bbb;
   color: black;
+  border-radius: 30px !important;
 }
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
+  background-color: #3E2437;
   color: white;
   transform: rotateY(180deg);
+}
+
+/*Other */
+.btn {
+  font-family: "Play", sans-serif;
+}
+
+button:hover {
+  font-family: "Play", sans-serif;
+  color: #3e2437 !important;
+  background: #f5f5f5 !important;
+}
+
+.log::placeholder {
+  font-family: "Play", sans-serif;
+}
+
+.logerror {
+  font-family: "Play", sans-serif !important;
+}
+
+label {
+  font-family: "Play", sans-serif !important;
+}
+
+.welcome {
+  border-right: 2px solid #f5f5f5;
 }
 
 /*# sourceMappingURL=style.css.map */

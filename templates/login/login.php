@@ -17,21 +17,34 @@
         <div class="container shadow-lg rounded bgsection mb-5">
             <div class="row">
                 <h2 class="text-center mt-5">Bienvenue !</h2>
+                <?php
+                $host = 'mariadb';
+                $user = 'user';
+                $password = 'zeus';
+                $db = 'database';
+                $conn = new mysqli($host,$user,$password,$db);
+                if(!$conn) {echo 'MySQL connection error<br />';}
+                else{
+                    echo 'MySQL connection is OK<br />';
+                    mysqli_close($conn);
+                }
+                ?>
+
 
                 <div class="col-lg-6 col-md-12 col-sm-12 mt-3 mb-5 py-5 welcome ">
 
                     <div class="row">
 
-                        <form class="mx-auto">
+                        <form class="mx-auto" method="post" action="index.php?controller=security&action=login">
                             <div class="form-group my-3 mx-5 px-5">
                                 <div class="mb-4"><h2 class="text-center mt-4">Déjà enregistré?</h2>
                                     <p class="text-center">Saisis tes informations de connexions</p></div>
-                                <label for="usernameInput" class="mt-4 mb-3 text-white"> Ton Pseudo: </label>
+                                <label for="pseudoInput" class="mt-4 mb-3 text-white"> Ton Pseudo: </label>
                                 <input
                                         type="text"
                                         class="form-control log mx-auto"
-                                        id="usernameInput"
-                                        aria-describedby="usernameHelp"
+                                        id="pseudoInput"
+                                        name="pseudoInput"
                                         placeholder="Le plus swag des pseudos est-il de retour?"
                                 />
                             </div>
@@ -41,20 +54,29 @@
                                         type="password"
                                         class="form-control log mx-auto "
                                         id="passwordInput"
+                                        name="passwordInput"
                                         placeholder="Tu t'en rappelles, j'espère ? !"
                                 />
                             </div>
-                            <a href="index.php?controller=login&action=user">
                                 <button
 
-                                        type="button"
+                                        type="submit"
                                         class="btn btn-lg bgsection1 mx-auto mt-5 mb-2 px-5 d-flex justify-content-center text-white"
                                         style="margin-top:3.25rem !important"
                                 >
                                     Let's go !
                                 </button>
-                            </a>
+
                         </form>
+                        <?php
+                        if (!is_null($errors)) {
+                            foreach ($errors as $error) {
+                                echo '<div class="alert alert-light logerror" role="alert">
+  ' . $error . '
+</div>';
+                            }
+                        }
+                        ?>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 mt-3 mb-5 py-5 ">
