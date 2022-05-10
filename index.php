@@ -1,6 +1,8 @@
 <?php
 
-require 'loader.php';
+require_once 'vendor/autoload.php';
+use app\Controllers\DefaultController;
+session_start();
 
 if (!isset($_GET["controller"]) && !isset($_GET["action"])) {
 

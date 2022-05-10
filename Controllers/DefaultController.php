@@ -1,16 +1,18 @@
 <?php
 
-class DefaultController
+namespace app\Controllers;
+
+class DefaultController extends TwigController
 {
     public function __construct()
     {
-
+        parent::__construct();
     }
 
     public function displayHomepage()
     {
 
-        require 'templates/default/homepage.php';
+        $this->render->display('default/homepage.html.twig');
     }
 
     public function displayGame()

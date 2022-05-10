@@ -1,5 +1,7 @@
 <?php
 
+namespace Controllers;
+
 class SecurityController extends AuthController
 {
 
@@ -45,7 +47,6 @@ class SecurityController extends AuthController
                 }
             }
         };
-
         require 'templates/default/login.php';
     }
 

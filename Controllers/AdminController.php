@@ -1,5 +1,7 @@
 <?php
 
+namespace Controllers;
+
 class AdminController extends AuthController
 {
     public function __construct()

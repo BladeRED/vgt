@@ -1,5 +1,7 @@
 <?php
 
+namespace Controllers;
+
 abstract class AuthController{
 
     public function __construct()
