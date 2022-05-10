@@ -22,10 +22,10 @@ class GamerManager extends DBManager
     public function create(Gamer $gamer)
     {
 
-        $query = $this->bdd->prepare("INSERT INTO gamer(pseudo, password, mail, role) VALUES (:pseudo, :password, :mail, :role)");
+        $query = $this->bdd->prepare("INSERT INTO Gamer(pseudo,password,mail,role) VALUES (:pseudo, :password, :mail, :role)");
         $query->execute([
-            "pseudoInput" => $gamer->getPseudo(),
-            "passwordInput" => password_hash($gamer->getPassword(), PASSWORD_DEFAULT),
+            "pseudo" => $gamer->getPseudo(),
+            "password" => password_hash($gamer->getPassword(), PASSWORD_DEFAULT),
             "mail" => $gamer->getMail(),
             "role" => "[GAMER]",
         ]);

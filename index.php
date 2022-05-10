@@ -21,30 +21,14 @@ if ($_GET["controller"] == 'default') {
         $controller->displayGame();
     }
 
-
-}
-
-if ($_GET["controller"] == 'login') {
-
-    $controller = new LoginController();
-
     if ($_GET["action"] == 'login') {
 
         $controller->displayLogin();
     }
 
 
-    if ($_GET["action"] == 'submit') {
-
-        $controller->displaySubmit();
-    }
-
-    if ($_GET["action"] == 'user') {
-
-        $controller->displayUser();
-    }
-
 }
+
 
 if ($_GET["controller"] == 'admin') {
 
@@ -68,10 +52,26 @@ if ($_GET["controller"] == "security") {
 
     }
 
+    if ($_GET["action"] == "register") {
+
+        $controller->register();
+
+    }
+
     if ($_GET["action"] == "logout") {
 
 
         $controller->logout();
+    }
+
+    if ($_GET["action"] == 'submit') {
+
+        $controller->displaySubmit();
+    }
+
+    if ($_GET["action"] == 'gamer') {
+
+        $controller->displayGamer();
     }
 
 

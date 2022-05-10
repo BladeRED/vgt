@@ -1,9 +1,11 @@
 <?php
 
-class AdminController
+class AdminController extends AuthController
 {
     public function __construct()
     {
+        parent::__construct();
+
 
     }
 
@@ -15,4 +17,3 @@ class AdminController
 
 }
 
-?>

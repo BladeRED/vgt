@@ -18,6 +18,11 @@ class DefaultController
 
         require 'templates/default/game.php';
     }
+
+    public function displayLogin()
+    {
+
+        require 'templates/default/login.php';
+    }
 }
 
-?>;

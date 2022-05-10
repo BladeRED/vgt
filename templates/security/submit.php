@@ -17,9 +17,9 @@
                 <div class="col-lg-6 mt-5 ">
                     <div class="d-flex flex-row submitgamesection">
                         <!--RESUME OF THE GAME -->
-                        <a href="index.php?controller=default&action=game"><img src="../../assets/pictures/Elden_Ring.jpg"
-                                                           class="img-fluid my-5 ms-5 submitimg"
-                                                           style="width:18rem;height:24rem;border-radius: 30px" alt="Elden Ring"></a>
+                        <a href="../../index.php?controller=default&action=game"><img src="../../assets/pictures/Elden_Ring.jpg"
+                                                                                      class="img-fluid my-5 ms-5 submitimg"
+                                                                                      style="width:18rem;height:24rem;border-radius: 30px" alt="Elden Ring"></a>
                         <div class="d-flex flex-column ms-4 mt-5 submitgametext">
                             <h3>Temps de jeu moyen:</h3>
                             <p> 999 999h 59min 59s</p>

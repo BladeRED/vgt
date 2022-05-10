@@ -35,14 +35,14 @@
                 <!-- Submit and Log buttons-->
                 <div class="d-flex flex-row logsubmit">
                     <div class="col-lg-6 d-flex justify-content-end">
-                        <a href="index.php?controller=login&action=submit">
+                        <a href="index.php?controller=security&action=submit">
                             <img src="../../assets/pictures/submit.png" class="img-fluid rounded mx-auto d-block mt-5"
                                  style="height: 64px ;width: 64px" alt="VGT_submit">
                             <p class="text-center"> Soumettre un temps </p>
                         </a>
                     </div>
                     <div class="col-lg-6">
-                        <a href="index.php?controller=login&action=login">
+                        <a href="index.php?controller=default&action=login">
                             <img src="../../assets/pictures/login.png" class="img-fluid rounded mx-auto d-block mt-5"
                                  style="height: 64px ;width: 64px" alt="VGT_login">
                             <p class="text-center"> Connexion/Inscription </p>
