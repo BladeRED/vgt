@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="fr">
-<?php require 'templates/parts/head.php' ; ?>
+<?php require 'templates/parts/head.twig' ; ?>
 
 <body>
 
 
-<?php require 'templates/parts/headeradmin.php' ; ?>
+<?php require 'templates/parts/headeradmin.twig' ; ?>
 
 
 <main>
@@ -137,11 +137,11 @@
 </main>
 
 
-<?php require 'templates/parts/footer.php' ; ?>
+<?php require 'templates/parts/footer.twig' ; ?>
 
 <!-- JS scripts -->
 
-<?php require 'templates/parts/JS_scripts.php';?>
+<?php require 'templates/parts/JS_scripts.twig';?>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>

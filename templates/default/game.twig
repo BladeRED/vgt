@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="fr">
-<?php require 'templates/parts/head.php'; ?>
+{% include 'parts/head.twig'%}
 
 <body>
 
 
-<?php require 'templates/parts/header.php'; ?>
+{% include 'parts/header.twig' %}
 
 
 <main>
@@ -202,11 +202,11 @@
     </section>
 </main>
 
-<?php require 'templates/parts/footer.php'; ?>
+{% include 'parts/footer.twig'%}
 
 <!-- JS script contained in node_modules -->
 
-<?php require 'templates/parts/JS_scripts.php';?>
+{% include 'parts/JS_scripts.twig'%}
 
 </body>
 

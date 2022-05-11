@@ -1,11 +1,11 @@
 <!doctype html>
 <html lang="fr">
-<?php require 'templates/parts/head.php'; ?>
+<?php require 'templates/parts/head.twig'; ?>
 
 <body>
 
 
-<?php require 'templates/parts/header.php'; ?>
+<?php require 'templates/parts/header.twig'; ?>
 
 
 <main>
@@ -143,10 +143,10 @@
 </main>
 
 
-<?php require 'templates/parts/footer.php'; ?>
+<?php require 'templates/parts/footer.twig'; ?>
 
 <!-- JS scripts -->
 
-<?php require 'templates/parts/JS_scripts.php';?>
+<?php require 'templates/parts/JS_scripts.twig';?>
 
 </html>

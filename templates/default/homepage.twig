@@ -1,11 +1,12 @@
+{% block body %}
 <!doctype html>
 <html lang="fr">
-{% include 'parts/head.php' %}
+{% include 'parts/head.twig' %}
 
 <body>
 
 
-{% include 'parts/header.php' %}
+{% include 'parts/header.twig' %}
 
 
 <main>
@@ -176,11 +177,12 @@
 </main>
 
 
-{% include 'parts/footer.php' %}
+{% include 'parts/footer.twig' %}
 
 <!-- JS scripts -->
- {% include 'parts/JS_scripts.php'%}
+ {% include 'parts/JS_scripts.twig'%}
 
 </body>
 
 </html>
+{% endblock %}
