@@ -1,0 +1,19 @@
+{
+
+  "autoload": {
+    "psr-4": {
+      "app\\Controllers\\": "Controllers/",
+      "app\\Services\\": "Services/",
+      "app\\Models\\": "Models/",
+      "app\\Managers\\": "Managers/"
+    }
+  },
+    "require": {
+        "twig/twig": "^3.0",
+      "ext-pdo": "*",
+      "ext-mysqli": "*",
+    "filp/whoops": "^2.14"
+    }
+
+
+}
