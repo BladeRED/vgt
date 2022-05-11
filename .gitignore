@@ -1,2 +1,4 @@
-vgt/
+app/
+.idea/
 node_modules
+vendor
