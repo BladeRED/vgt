@@ -6,7 +6,14 @@ use app\Controllers\AuthController;
 use app\Controllers\DefaultController;
 use app\Controllers\AdminController;
 use app\Controllers\SecurityController;
+use Whoops\Handler\PrettyPageHandler;
+use Whoops\Run;
+
 session_start();
+
+$whoops = new Run;
+$whoops->pushHandler(new PrettyPageHandler);
+$whoops->register();
 
 if (!isset($_GET["controller"]) && !isset($_GET["action"])) {
 
