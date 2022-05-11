@@ -2,6 +2,8 @@
 
 require_once 'vendor/autoload.php';
 use app\Controllers\DefaultController;
+use app\Controllers\AdminController;
+use app\Controllers\SecurityController;
 session_start();
 
 if (!isset($_GET["controller"]) && !isset($_GET["action"])) {
@@ -78,5 +80,3 @@ if ($_GET["controller"] == "security") {
 
 
 }
-
-?>

@@ -1,11 +1,12 @@
+{% block body %}
 <!doctype html>
 <html lang="fr">
-<?php require 'templates/parts/head.twig' ; ?>
+{% include 'parts/head.twig' %}
 
 <body>
 
 
-<?php require 'templates/parts/headeradmin.twig' ; ?>
+{% include 'parts/header.twig' %}
 
 
 <main>
@@ -137,11 +138,11 @@
 </main>
 
 
-<?php require 'templates/parts/footer.twig' ; ?>
+{% include 'parts/footer.twig' %}
 
 <!-- JS scripts -->
 
-<?php require 'templates/parts/JS_scripts.twig';?>
+{% include 'parts/JS_scripts.twig' %}
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
@@ -214,3 +215,4 @@
 </script>
 </body>
 </html>
+{% endblock %}

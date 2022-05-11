@@ -1,6 +1,6 @@
 <?php
 
-namespace Controllers;
+namespace app\Controllers;
 
 class AdminController extends AuthController
 {
@@ -8,13 +8,12 @@ class AdminController extends AuthController
     {
         parent::__construct();
 
-
     }
 
     public function displayDashboard()
     {
 
-        require 'templates/admin/admindashboard.php';
+        $this->render->display('admin/admindashboard.twig');
     }
 
 }

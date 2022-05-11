@@ -1,11 +1,12 @@
 <?php
 
-namespace Controllers;
+namespace app\Controllers;
 
-abstract class AuthController{
+abstract class AuthController extends TwigController {
 
     public function __construct()
     {
+        parent::__construct();
         $this->checkAuth();
 
     }

@@ -1,6 +1,9 @@
 <?php
 
-namespace Controllers;
+namespace app\Controllers;
+
+use Gamer;
+use GamerManager;
 
 class SecurityController extends AuthController
 {
@@ -47,7 +50,7 @@ class SecurityController extends AuthController
                 }
             }
         };
-        require 'templates/default/login.php';
+        $this->render->display('default/login.twig');
     }
 
     public function register()
@@ -70,7 +73,7 @@ class SecurityController extends AuthController
 
         }
 
-        require 'templates/default/login.php';
+        $this->render->display('default/login.twig');
     }
 
 
@@ -138,14 +141,14 @@ class SecurityController extends AuthController
     public function displaySubmit()
     {
 
-        require 'templates/security/submit.php';
+        $this->render->display('security/submit.twig');
     }
 
 
     public function displayGamer()
     {
 
-        require 'templates/security/gamer.php';
+        $this->render->display('security/gamer.twig');
     }
 
 

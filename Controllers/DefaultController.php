@@ -18,13 +18,13 @@ class DefaultController extends TwigController
     public function displayGame()
     {
 
-        require 'templates/default/game.twig';
+        $this->render->display('default/game.twig');
     }
 
     public function displayLogin()
     {
 
-        require 'templates/default/login.php';
+        $this->render->display('default/login.twig');
     }
 }
 

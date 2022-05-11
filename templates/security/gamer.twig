@@ -1,11 +1,12 @@
+{% block body %}
 <!doctype html>
 <html lang="fr">
-<?php require 'templates/parts/head.twig'; ?>
+{% include 'parts/head.twig' %}
 
 <body>
 
 
-<?php require 'templates/parts/header.twig'; ?>
+{% include 'parts/header.twig' %}
 
 
 <main>
@@ -213,12 +214,14 @@
 </main>
 
 
-<?php require 'templates/parts/footer.twig'; ?>
+{% include 'parts/footer.twig' %}
 
 <!-- JS scripts -->
 
-<?php require 'templates/parts/JS_scripts.twig';?>
+{% include 'parts/JS_scripts.twig' %}
 
 </body>
 
 </html>
+
+{% endblock %}
