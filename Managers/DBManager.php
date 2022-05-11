@@ -1,5 +1,8 @@
 <?php
 
+namespace app\Managers;
+use PDO;
+
 abstract class DBManager
 {
     protected $bdd;
@@ -12,4 +15,3 @@ abstract class DBManager
 
 }
 
-?>

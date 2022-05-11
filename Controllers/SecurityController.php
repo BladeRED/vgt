@@ -2,10 +2,10 @@
 
 namespace app\Controllers;
 
-use Gamer;
-use GamerManager;
+use app\Models\Gamer;
+use app\Managers\GamerManager;
 
-class SecurityController extends AuthController
+class SecurityController extends TwigController
 {
 
     private GamerManager $gamermanager;
@@ -17,7 +17,6 @@ class SecurityController extends AuthController
     public function __construct()
     {
         parent::__construct();
-        $this->checkAuth();
         $this->gamermanager = new GamerManager();
 
 
@@ -40,11 +39,13 @@ class SecurityController extends AuthController
 
                 if (!is_null($gamer) && password_verify($_POST["passwordInput"], $gamer->getPassword()) && $gamer->getRole() == "[ADMIN]") {
                     $_SESSION["gamer"] = serialize($gamer);
-                    header("Location: index.php?controller=admin&action=dashboard");
+
+                    $this->render->display('admin/admindashboard.twig');
 
                 } elseif (!is_null($gamer) && password_verify($_POST["passwordInput"], $gamer->getPassword()) && $gamer->getRole() == "[GAMER]") {
                     $_SESSION["gamer"] = serialize($gamer);
-                    header("Location: index.php?controller=security&action=gamer");
+                    $this->render->display('auth/gamer.twig');
+
                 } else {
                     $errors[] = "IDENTIFIANTS INCORRECT";
                 }
@@ -67,7 +68,8 @@ class SecurityController extends AuthController
 
                 $this->gamermanager->create($gamer);
                 $_SESSION["gamer"] = serialize($gamer);
-                header("Location: index.php?controller=security&action=gamer");
+                $this->render->display('auth/gamer.twig');
+
             }
 
 
@@ -138,18 +140,7 @@ class SecurityController extends AuthController
 
     }
 
-    public function displaySubmit()
-    {
 
-        $this->render->display('security/submit.twig');
-    }
-
-
-    public function displayGamer()
-    {
-
-        $this->render->display('security/gamer.twig');
-    }
 
 
 }

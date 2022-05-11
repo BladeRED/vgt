@@ -2,7 +2,7 @@
 
 namespace app\Controllers;
 
-abstract class AuthController extends TwigController {
+class AuthController extends TwigController {
 
     public function __construct()
     {
@@ -16,5 +16,18 @@ abstract class AuthController extends TwigController {
         if (!isset($_SESSION["gamer"])) {
             header("Location: index.php?controller=default&action=homepage");
         }
+    }
+
+    public function displaySubmit()
+    {
+
+        $this->render->display('auth/submit.twig');
+    }
+
+
+    public function displayGamer()
+    {
+
+        $this->render->display('auth/gamer.twig');
     }
 }

@@ -2,7 +2,7 @@
 
 namespace app\Controllers;
 
-use app\services\sessionService;
+use app\Services\sessionService;
 use Twig\Environment;
 use Twig\Loader\FilesystemLoader;
 
@@ -24,9 +24,7 @@ abstract class TwigController
 
         $this->render->addExtension(new \Twig\Extension\DebugExtension()); // allow dump()
 
-        // user is connected ? put it in session
-        $this->_sessionService = new SessionService();
-        $this->render->addGlobal('user', $this->_sessionService->user);
+
     }
 
 }

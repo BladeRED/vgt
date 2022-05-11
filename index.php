@@ -1,6 +1,8 @@
 <?php
 
 require_once 'vendor/autoload.php';
+
+use app\Controllers\AuthController;
 use app\Controllers\DefaultController;
 use app\Controllers\AdminController;
 use app\Controllers\SecurityController;
@@ -46,6 +48,23 @@ if ($_GET["controller"] == 'admin') {
 
 }
 
+if ($_GET["controller"] == 'auth') {
+
+    $controller = new AuthController();
+
+    if ($_GET["action"] == 'submit') {
+
+        $controller->displaySubmit();
+    }
+
+    if ($_GET["action"] == 'gamer') {
+
+        $controller->displayGamer();
+    }
+
+
+}
+
 if ($_GET["controller"] == "security") {
 
     $controller = new SecurityController();
@@ -68,15 +87,7 @@ if ($_GET["controller"] == "security") {
         $controller->logout();
     }
 
-    if ($_GET["action"] == 'submit') {
 
-        $controller->displaySubmit();
-    }
-
-    if ($_GET["action"] == 'gamer') {
-
-        $controller->displayGamer();
-    }
 
 
 }

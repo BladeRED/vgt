@@ -1,5 +1,9 @@
 <?php
 
+namespace app\Managers;
+
+use app\Models\Gamer;
+
 class GamerManager extends DBManager
 {
 

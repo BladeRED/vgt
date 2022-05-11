@@ -63,7 +63,7 @@ CREATE TABLE `Gamer` (
   `mail` varchar(255) NOT NULL,
   `role` varchar(55) NOT NULL,
   PRIMARY KEY (`Id_Gamer`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -73,7 +73,9 @@ CREATE TABLE `Gamer` (
 LOCK TABLES `Gamer` WRITE;
 /*!40000 ALTER TABLE `Gamer` DISABLE KEYS */;
 INSERT INTO `Gamer` VALUES
-(1,'Vegeta_88','$2y$10$9.wwS.E2UHnwGt4NwDukdeXcXcfV/E5c8K32t92MNoE9fI1An1F.2','SarabadaTrunks@Bulma.jp','[ADMIN]');
+(1,'Vegeta_88','$2y$10$9.wwS.E2UHnwGt4NwDukdeXcXcfV/E5c8K32t92MNoE9fI1An1F.2','SarabadaTrunks@Bulma.jp','[ADMIN]'),
+(2,'KrilinDu49','$2y$10$3KXXsk1tyrMK0bjyUIUUv.bQ.0AzxObkJrg78PKy5.qRCpRw6mtcq','Kienzan@mutenroshi.jp','[GAMER]'),
+(3,'RaditzDu03','$2y$10$plG16.o3W.BR0kdr6qcAKeG5QAiWMaAy34hwChg0fF1ECwoEmsWHi','RaditzLeNaze@youhou.jp','[GAMER]');
 /*!40000 ALTER TABLE `Gamer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -324,4 +326,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-11  8:37:10
+-- Dump completed on 2022-05-11 11:54:56

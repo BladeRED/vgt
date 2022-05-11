@@ -1,7 +1,8 @@
 <?php
 
-class Gamer
+namespace app\Models;
 
+class Gamer
 {
 
     private $id;
@@ -110,4 +111,3 @@ class Gamer
 }
 
 
-?>
