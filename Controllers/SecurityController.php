@@ -154,6 +154,12 @@ class SecurityController extends TwigController
         $this->render->display('security/gamer.twig');
     }
 
+    public function displayDashboard()
+    {
+
+        $this->render->display('admin/admindashboard.twig');
+    }
+
 }
 
 

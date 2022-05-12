@@ -70,5 +70,13 @@ $router->mount('/security', function () use ($controller, $router) {
     $router->get('/logout', function () use ($controller) {
         $controller->logout();
     });
+
+    if ($_SESSION["gamer"] == '[ADMIN]'){
+
+        $router->get('/dashboard', function () use ($controller) {
+            $controller->displayDashboard();
+        });
+
+    }
 });
 $router->run();
