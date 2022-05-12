@@ -1,4 +1,3 @@
 save:
-	git add .
-	git commit -m 'save'
+	git commit -a -m 'save'
 	git push
