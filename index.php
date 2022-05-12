@@ -1,6 +1,7 @@
 <?php
 
 require_once 'vendor/autoload.php';
+$router= new \Bramus\Router\Router();
 
 use app\Controllers\AuthController;
 use app\Controllers\DefaultController;
@@ -18,6 +19,10 @@ $whoops->register();
 if (!isset($_GET["controller"]) && !isset($_GET["action"])) {
 
     header('Location: index.php?controller=default&action=homepage');
+}
+
+if (!isset($_SESSION["gamer"])) {
+    header("Location: index.php?controller=default&action=homepage");
 }
 
 if ($_GET["controller"] == 'default') {

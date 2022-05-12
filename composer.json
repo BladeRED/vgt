@@ -12,7 +12,8 @@
         "twig/twig": "^3.0",
       "ext-pdo": "*",
       "ext-mysqli": "*",
-    "filp/whoops": "^2.14"
+    "filp/whoops": "^2.14",
+    "bramus/router": "~1.6"
     }
 
 
