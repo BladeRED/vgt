@@ -44,7 +44,7 @@ class SecurityController extends TwigController
 
                 } elseif (!is_null($gamer) && password_verify($_POST["passwordInput"], $gamer->getPassword()) && $gamer->getRole() == "[GAMER]") {
                     $_SESSION["gamer"] = serialize($gamer);
-                    $this->render->display('auth/gamer.twig');
+                    $this->render->display('security/gamer.twig');
 
                 } else {
                     $errors[] = "IDENTIFIANTS INCORRECT";
@@ -68,7 +68,7 @@ class SecurityController extends TwigController
 
                 $this->gamermanager->create($gamer);
                 $_SESSION["gamer"] = serialize($gamer);
-                $this->render->display('auth/gamer.twig');
+                $this->render->display('security/gamer.twig');
 
             }
 
@@ -141,7 +141,18 @@ class SecurityController extends TwigController
     }
 
 
+    public function displaySubmit()
+    {
 
+        $this->render->display('security/submit.twig');
+    }
+
+
+    public function displayGamer()
+    {
+
+        $this->render->display('security/gamer.twig');
+    }
 
 }
 

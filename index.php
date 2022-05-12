@@ -2,99 +2,73 @@
 
 require_once 'vendor/autoload.php';
 
-use app\Controllers\AuthController;
 use app\Controllers\DefaultController;
-use app\Controllers\AdminController;
 use app\Controllers\SecurityController;
+use Bramus\Router\Router;
 use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 
+$router = new \Bramus\Router\Router();
 session_start();
 
 $whoops = new Run;
 $whoops->pushHandler(new PrettyPageHandler);
 $whoops->register();
 
+// Default controller, value changing depending on the route //
+$controller = new DefaultController();
+
+// Define routes
+
 if (!isset($_GET["controller"]) && !isset($_GET["action"])) {
 
-    header('Location: index.php?controller=default&action=homepage');
-}
-
-if ($_GET["controller"] == 'default') {
-
-    $controller = new DefaultController();
-
-    if ($_GET["action"] == 'homepage') {
-
+    // default redirection //
+    $router->get('/home', function () use ($controller) {
         $controller->displayHomepage();
-    }
+    });
+}
 
-    if ($_GET["action"] == 'game') {
+$router->mount('/home', function () use ($controller, $router) {
 
+    $router->get('/game', function () use ($controller) {
         $controller->displayGame();
-    }
+    });
 
-    if ($_GET["action"] == 'login') {
-
+    $router->get('/login', function () use ($controller) {
         $controller->displayLogin();
+    });
+
+    $router->post('/connect', function () use ($controller) {
+        $controller->connect();
+    });
+
+    $router->post('/register', function () use ($controller) {
+        $controller->register();
+    });
+});
+
+$router->before('GET|POST', '/security/.*', function () use ($router, $controller) {
+
+    if (!isset($_SESSION['gamer'])) {
+        $controller->displayHomepage();
+        exit();
     }
+});
 
 
-}
-
-
-if ($_GET["controller"] == 'admin') {
-
-    $controller = new AdminController();
-
-    if ($_GET["action"] == 'dashboard') {
-
-        $controller->displayDashboard();
-    }
-
-
-}
-
-if ($_GET["controller"] == 'auth') {
-
-    $controller = new AuthController();
-
-    if ($_GET["action"] == 'submit') {
-
-        $controller->displaySubmit();
-    }
-
-    if ($_GET["action"] == 'gamer') {
-
-        $controller->displayGamer();
-    }
-
-
-}
-
-if ($_GET["controller"] == "security") {
-
+$router->mount('/security', function () use ($controller, $router) {
     $controller = new SecurityController();
 
-    if ($_GET["action"] == "login") {
+    $router->get('/submit', function () use ($controller) {
+        $controller->displaySubmit();
+    });
 
-        $controller->login();
+    $router->get('/gamer', function () use ($controller) {
+        $controller->displayGamer();
+    });
 
-    }
-
-    if ($_GET["action"] == "register") {
-
-        $controller->register();
-
-    }
-
-    if ($_GET["action"] == "logout") {
-
-
+    $router->get('/logout', function () use ($controller) {
         $controller->logout();
-    }
-
-
-
-
-}
+    });
+});
+$router->run();
