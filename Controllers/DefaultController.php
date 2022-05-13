@@ -57,13 +57,12 @@ class DefaultController extends AbstractController
                     $this->sessionService->gamer = serialize($gamer);
                     session_write_close();
                     if ($gamer->getRole() == "[ADMIN]") {
-                        header('Location: /admin/dashboard');
+                        header('Location: /security/dashboard');
                     } else {
 
                         header('Location: /security/gamer');
                     }
                 } else {
-                    echo('alfred');
                     $errors[] = "IDENTIFIANTS INCORRECT";
                 }
             }

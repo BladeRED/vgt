@@ -65,5 +65,10 @@ $router->mount('/security', function () use ($router) {
         $controller->logout();
     });
 
+    $router->get('/dashboard', function () use ($controller) {
+        $controller->displayDashboard();
+    });
+
+
 });
 $router->run();

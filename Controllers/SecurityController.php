@@ -100,8 +100,13 @@ class SecurityController extends AbstractController
 
     public function displayDashboard()
     {
+        if ($this->sessionService->gamer->getRole() == "[ADMIN]") {
+            $this->render->display('security/admindashboard.twig');
+        }else{
 
-        $this->render->display('admin/admindashboard.twig');
+            $this->render->display('default/homepage.twig');
+        }
+
     }
 
 }
