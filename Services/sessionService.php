@@ -6,11 +6,6 @@ class sessionService {
 
     private $data = [];
 
-    public function MARCHEBORDEL(){
-
-        return 'toto';
-
-    }
     public function __construct(){
         $this->data = $_SESSION;
     }

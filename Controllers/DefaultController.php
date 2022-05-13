@@ -42,7 +42,7 @@ class DefaultController extends AbstractController
     {
 
         $errors = null;
-//login with the login form
+//we check if there is errors and if not we check the database//
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -50,7 +50,7 @@ class DefaultController extends AbstractController
 
             if (count($errors) == 0) {
 
-//Database check
+//Database check//
                 $gamer = $this->gamermanager->getOneByGamerName($_POST["pseudoInput"]);
 
                 if (!is_null($gamer) && password_verify($_POST["passwordInput"], $gamer->getPassword())) {
@@ -67,7 +67,6 @@ class DefaultController extends AbstractController
                 }
             }
         };
-        $this->render->display('default/login.twig');
     }
 
     public function register()
