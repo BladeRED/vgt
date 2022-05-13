@@ -4,12 +4,10 @@ namespace app\Controllers;
 
 use app\Models\Gamer;
 use app\Managers\GamerManager;
-use app\Services\sessionService;
 
 class DefaultController extends AbstractController
 {
     private GamerManager $gamermanager;
-    private sessionService $sessionService;
 
     /**
      * @param $gamermanager
@@ -20,7 +18,6 @@ class DefaultController extends AbstractController
     {
         parent::__construct();
         $this->gamermanager = new GamerManager();
-        $this->sessionService = new sessionService();
     }
 
     public function displayHomepage()
@@ -58,12 +55,12 @@ class DefaultController extends AbstractController
 
                 if (!is_null($gamer) && password_verify($_POST["passwordInput"], $gamer->getPassword())) {
                     $this->sessionService->gamer = serialize($gamer);
-
+                    session_write_close();
                     if ($gamer->getRole() == "[ADMIN]") {
-                        $this->render->display('admin/admindashboard.twig');
+                        header('Location: /admin/dashboard');
                     } else {
 
-                        $this->render->display('security/gamer.twig');
+                        header('Location: /security/gamer');
                     }
                 } else {
                     echo('alfred');

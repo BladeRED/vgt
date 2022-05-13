@@ -11,26 +11,17 @@ use Whoops\Run;
 $router = new \Bramus\Router\Router();
 
 
-$sessionService = new \app\Services\sessionService();
-
 $whoops = new Run;
 $whoops->pushHandler(new PrettyPageHandler);
 $whoops->register();
 
-// Default controller, value changing depending on the route //
-$controller = new DefaultController();
-
 // Define routes
 
-if (!isset($_GET["controller"]) && !isset($_GET["action"])) {
-
-    // default redirection //
-    $router->get('/home', function () use ($controller) {
+$router->mount('/home', function () use ($router) {
+    $controller = new DefaultController();
+    $router->get('/homepage', function () use ($controller) {
         $controller->displayHomepage();
     });
-}
-
-$router->mount('/home', function () use ($controller, $router) {
 
     $router->get('/game', function () use ($controller) {
         $controller->displayGame();
@@ -49,16 +40,16 @@ $router->mount('/home', function () use ($controller, $router) {
     });
 });
 
-$router->before('GET|POST', '/security/.*', function () use ($router, $controller) {
+$router->before('GET|POST', '/security/.*', function () use ($router) {
 
-    if (!isset($sessionService->gamer)) {
-        $controller->displayHomepage();
+    if (!isset($_SESSION['gamer'])) {
+        header('Location: /home/homepage');
         exit();
     }
 });
 
 
-$router->mount('/security', function () use ($controller, $router) {
+$router->mount('/security', function () use ($router) {
     $controller = new SecurityController();
 
     $router->get('/submit', function () use ($controller) {
