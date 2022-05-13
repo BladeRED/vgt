@@ -4,10 +4,12 @@ namespace app\Controllers;
 
 use app\Models\Gamer;
 use app\Managers\GamerManager;
+use app\Services\sessionService;
 
-class DefaultController extends TwigController
+class DefaultController extends AbstractController
 {
     private GamerManager $gamermanager;
+    private sessionService $sessionService;
 
     /**
      * @param $gamermanager
@@ -18,6 +20,7 @@ class DefaultController extends TwigController
     {
         parent::__construct();
         $this->gamermanager = new GamerManager();
+        $this->sessionService = new sessionService();
     }
 
     public function displayHomepage()
@@ -53,16 +56,17 @@ class DefaultController extends TwigController
 //Database check
                 $gamer = $this->gamermanager->getOneByGamerName($_POST["pseudoInput"]);
 
-                if (!is_null($gamer) && password_verify($_POST["passwordInput"], $gamer->getPassword()) && $gamer->getRole() == "[ADMIN]") {
-                    $_SESSION["gamer"] = serialize($gamer);
+                if (!is_null($gamer) && password_verify($_POST["passwordInput"], $gamer->getPassword())) {
+                    $this->sessionService->gamer = serialize($gamer);
 
-                    $this->render->display('admin/admindashboard.twig');
+                    if ($gamer->getRole() == "[ADMIN]") {
+                        $this->render->display('admin/admindashboard.twig');
+                    } else {
 
-                } elseif (!is_null($gamer) && password_verify($_POST["passwordInput"], $gamer->getPassword()) && $gamer->getRole() == "[GAMER]") {
-                    $_SESSION["gamer"] = serialize($gamer);
-                    $this->render->display('security/gamer.twig');
-
+                        $this->render->display('security/gamer.twig');
+                    }
                 } else {
+                    echo('alfred');
                     $errors[] = "IDENTIFIANTS INCORRECT";
                 }
             }
@@ -83,7 +87,8 @@ class DefaultController extends TwigController
                 $gamer = new Gamer(null, $_POST["pseudoRegister"], $_POST["passwordRegister"], $_POST["mailRegister"], "[GAMER]");
 
                 $this->gamermanager->create($gamer);
-              $this->gamermanager = new GamerManager();  $_SESSION["gamer"] = serialize($gamer);
+                $this->gamermanager = new GamerManager();
+                $_SESSION["gamer"] = serialize($gamer);
                 $this->render->display('security/gamer.twig');
 
             }

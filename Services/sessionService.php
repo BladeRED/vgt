@@ -6,6 +6,11 @@ class sessionService {
 
     private $data = [];
 
+    public function MARCHEBORDEL(){
+
+        return 'toto';
+
+    }
     public function __construct(){
         $this->data = $_SESSION;
     }
@@ -18,6 +23,8 @@ class sessionService {
 
     public function __set($name, $value){
         $this->data[$name] = $value;
+        $_SESSION = $this->data;
+
     }
 
     public function __isset($name) {
@@ -29,7 +36,9 @@ class sessionService {
     }
 
     public function __destruct(){
+
         $_SESSION = $this->data;
+
     }
 }
 

@@ -2,7 +2,7 @@
 
 namespace app\Controllers;
 
-class AdminController extends AuthController
+class AdminController extends AbstractController
 {
     public function __construct()
     {

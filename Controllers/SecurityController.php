@@ -5,7 +5,7 @@ namespace app\Controllers;
 use app\Models\Gamer;
 use app\Managers\GamerManager;
 
-class SecurityController extends TwigController
+class SecurityController extends AbstractController
 {
 
     private GamerManager $gamermanager;
@@ -20,62 +20,6 @@ class SecurityController extends TwigController
         $this->gamermanager = new GamerManager();
 
 
-    }
-
-    public function login()
-    {
-
-        $errors = null;
-//login with the login form
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-            $errors = $this->isValidLoginForm();
-
-            if (count($errors) == 0) {
-
-//Database check
-                $gamer = $this->gamermanager->getOneByGamerName($_POST["pseudoInput"]);
-
-                if (!is_null($gamer) && password_verify($_POST["passwordInput"], $gamer->getPassword()) && $gamer->getRole() == "[ADMIN]") {
-                    $_SESSION["gamer"] = serialize($gamer);
-
-                    $this->render->display('admin/admindashboard.twig');
-
-                } elseif (!is_null($gamer) && password_verify($_POST["passwordInput"], $gamer->getPassword()) && $gamer->getRole() == "[GAMER]") {
-                    $_SESSION["gamer"] = serialize($gamer);
-                    $this->render->display('security/gamer.twig');
-
-                } else {
-                    $errors[] = "IDENTIFIANTS INCORRECT";
-                }
-            }
-        };
-        $this->render->display('default/login.twig');
-    }
-
-    public function register()
-    {
-        $errors = [];
-
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Check the register form
-            $errors = $this->isValidRegisterForm();
-
-            // Save in the BDD
-            if (count($errors) == 0) {
-                $gamer = new Gamer(null, $_POST["pseudoRegister"], $_POST["passwordRegister"], $_POST["mailRegister"], "[GAMER]");
-
-                $this->gamermanager->create($gamer);
-                $_SESSION["gamer"] = serialize($gamer);
-                $this->render->display('security/gamer.twig');
-
-            }
-
-
-        }
-
-        $this->render->display('default/login.twig');
     }
 
 

@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once 'vendor/autoload.php';
 
 use app\Controllers\DefaultController;
@@ -9,7 +9,9 @@ use Whoops\Handler\PrettyPageHandler;
 use Whoops\Run;
 
 $router = new \Bramus\Router\Router();
-session_start();
+
+
+$sessionService = new \app\Services\sessionService();
 
 $whoops = new Run;
 $whoops->pushHandler(new PrettyPageHandler);
@@ -49,7 +51,7 @@ $router->mount('/home', function () use ($controller, $router) {
 
 $router->before('GET|POST', '/security/.*', function () use ($router, $controller) {
 
-    if (!isset($_SESSION['gamer'])) {
+    if (!isset($sessionService->gamer)) {
         $controller->displayHomepage();
         exit();
     }
@@ -60,6 +62,7 @@ $router->mount('/security', function () use ($controller, $router) {
     $controller = new SecurityController();
 
     $router->get('/submit', function () use ($controller) {
+
         $controller->displaySubmit();
     });
 
@@ -71,12 +74,5 @@ $router->mount('/security', function () use ($controller, $router) {
         $controller->logout();
     });
 
-    if ($_SESSION["gamer"] == '[ADMIN]'){
-
-        $router->get('/dashboard', function () use ($controller) {
-            $controller->displayDashboard();
-        });
-
-    }
 });
 $router->run();
