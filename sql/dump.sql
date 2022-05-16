@@ -62,7 +62,7 @@ CREATE TABLE `Gamer` (
   `password` varchar(255) NOT NULL,
   `mail` varchar(255) NOT NULL,
   `role` varchar(55) NOT NULL,
-  `picture` varchar(512) NOT NULL,
+  `picture` varchar(512) NOT NULL DEFAULT '../../assets/pictures/vegeta_1771.jpg',
   PRIMARY KEY (`Id_Gamer`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -74,10 +74,10 @@ CREATE TABLE `Gamer` (
 LOCK TABLES `Gamer` WRITE;
 /*!40000 ALTER TABLE `Gamer` DISABLE KEYS */;
 INSERT INTO `Gamer` VALUES
-(1,'Vegeta_88','$2y$10$9.wwS.E2UHnwGt4NwDukdeXcXcfV/E5c8K32t92MNoE9fI1An1F.2','SarabadaTrunks@Bulma.jp','[ADMIN]',''),
-(2,'KrilinDu49','$2y$10$3KXXsk1tyrMK0bjyUIUUv.bQ.0AzxObkJrg78PKy5.qRCpRw6mtcq','Kienzan@mutenroshi.jp','[GAMER]',''),
-(3,'RaditzDu03','$2y$10$plG16.o3W.BR0kdr6qcAKeG5QAiWMaAy34hwChg0fF1ECwoEmsWHi','RaditzLeNaze@youhou.jp','[GAMER]',''),
-(4,'MakkankosapoDu14','$2y$10$EeYpaSnTDYD8q3cSE1YaeOWrptscrfgc7SdaySeutoDqkl.q0g1Ky','PiccoloLeNamek@Porunga.jp','[GAMER]','');
+(1,'Vegeta_88','$2y$10$9.wwS.E2UHnwGt4NwDukdeXcXcfV/E5c8K32t92MNoE9fI1An1F.2','SarabadaTrunks@Bulma.jp','[ADMIN]','../../assets/pictures/vegeta_1771.jpg'),
+(2,'KrilinDu49','$2y$10$3KXXsk1tyrMK0bjyUIUUv.bQ.0AzxObkJrg78PKy5.qRCpRw6mtcq','Kienzan@mutenroshi.jp','[GAMER]','../../assets/pictures/vegeta_1771.jpg'),
+(3,'RaditzDu03','$2y$10$plG16.o3W.BR0kdr6qcAKeG5QAiWMaAy34hwChg0fF1ECwoEmsWHi','RaditzLeNaze@youhou.jp','[GAMER]','../../assets/pictures/vegeta_1771.jpg'),
+(4,'MakkankosapoDu14','$2y$10$EeYpaSnTDYD8q3cSE1YaeOWrptscrfgc7SdaySeutoDqkl.q0g1Ky','PiccoloLeNamek@Porunga.jp','[GAMER]','../../assets/pictures/vegeta_1771.jpg');
 /*!40000 ALTER TABLE `Gamer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,4 +328,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-16  8:31:59
+-- Dump completed on 2022-05-16  8:57:04

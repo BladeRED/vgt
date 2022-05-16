@@ -79,12 +79,13 @@ class DefaultController extends AbstractController
 
             // Save in the BDD
             if (count($errors) == 0) {
-                $gamer = new Gamer(null, $_POST["pseudoRegister"], $_POST["passwordRegister"], $_POST["mailRegister"], "[GAMER]");
+                $gamer = new Gamer(null, $_POST["pseudoRegister"], $_POST["passwordRegister"], $_POST["mailRegister"], "[GAMER]", "../../assets/pictures/dragon.png");
 
                 $this->gamermanager->create($gamer);
                 $this->gamermanager = new GamerManager();
-                $_SESSION["gamer"] = serialize($gamer);
-                $this->render->display('security/gamer.twig');
+                $this->sessionService->gamer = serialize($gamer);
+                session_write_close();
+                header('Location: /security/gamer');
 
             }
 

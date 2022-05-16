@@ -16,7 +16,7 @@ class GamerManager extends DBManager
 
         if ($result) {
 
-            $gamer = new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"]);
+            $gamer = new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"]);
 
         }
 
@@ -26,12 +26,13 @@ class GamerManager extends DBManager
     public function create(Gamer $gamer)
     {
 
-        $query = $this->bdd->prepare("INSERT INTO Gamer(pseudo,password,mail,role) VALUES (:pseudo, :password, :mail, :role)");
+        $query = $this->bdd->prepare("INSERT INTO Gamer(pseudo,password,mail,role,picture) VALUES (:pseudo, :password, :mail, :role, :picture)");
         $query->execute([
             "pseudo" => $gamer->getPseudo(),
             "password" => password_hash($gamer->getPassword(), PASSWORD_DEFAULT),
             "mail" => $gamer->getMail(),
             "role" => "[GAMER]",
+            "picture" => $gamer->getPicture()
         ]);
 
     }

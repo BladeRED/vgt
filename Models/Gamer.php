@@ -10,6 +10,7 @@ class Gamer
     private $password;
     private $mail;
     private $role;
+    private $picture;
 
     /**
      * @param $id
@@ -17,14 +18,16 @@ class Gamer
      * @param $password
      * @param $mail
      * @param $role
+     * @param $picture
      */
-    public function __construct($id, $pseudo, $password, $mail, $role)
+    public function __construct($id, $pseudo, $password, $mail, $role, $picture)
     {
         $this->id = $id;
         $this->pseudo = $pseudo;
         $this->password = $password;
         $this->mail = $mail;
         $this->role = $role;
+        $this->picture = $picture;
     }
 
     /**
@@ -105,6 +108,23 @@ class Gamer
     public function setRole($role): void
     {
         $this->role = $role;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }
+
+    /**
+     * @param mixed $picture
+     */
+    public function setPicture($picture): void
+    {
+        $this->picture = $picture;
     }
 
 
