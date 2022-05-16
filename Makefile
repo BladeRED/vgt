@@ -1,3 +1,8 @@
+quicksave:
+	@git commit -a -m 'Save'
+	@git push
+
 save:
-	git commit -a -m 'save'
-	git push
+	@git add .
+	@git commit
+	@git push
