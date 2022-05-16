@@ -23,6 +23,22 @@ class GamerManager extends DBManager
         return $gamer;
     }
 
+    public function getOneByGamerId($id)
+    {
+        $gamer = null;
+        $query = $this->bdd->prepare('SELECT * FROM Gamer WHERE Id_Gamer =:id');
+        $query->execute(["id" => $id]);
+        $result = $query->fetch();
+
+        if ($result) {
+
+            $gamer = new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"]);
+
+        }
+
+        return $gamer;
+    }
+
     public function create(Gamer $gamer)
     {
 
@@ -33,6 +49,20 @@ class GamerManager extends DBManager
             "mail" => $gamer->getMail(),
             "role" => "[GAMER]",
             "picture" => $gamer->getPicture()
+        ]);
+
+    }
+
+    public function update($gamer)
+    {
+
+        $query = $this->bdd->prepare('UPDATE Gamer SET pseudo= :pseudo, password= :password, mail= :mail, picture= :picture WHERE id= :id');
+        $query->execute([
+            "pseudo" => $gamer->getPseudo(),
+            "password" => password_hash($gamer->getPassword(), PASSWORD_DEFAULT),
+            "mail" => $gamer->getMail(),
+            "picture" => $gamer->getPicture(),
+            "id" => $gamer->getId()
         ]);
 
     }

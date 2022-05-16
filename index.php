@@ -53,7 +53,6 @@ $router->mount('/security', function () use ($router) {
     $controller = new SecurityController();
 
     $router->get('/submit', function () use ($controller) {
-
         $controller->displaySubmit();
     });
 
@@ -63,6 +62,10 @@ $router->mount('/security', function () use ($router) {
 
     $router->get('/logout', function () use ($controller) {
         $controller->logout();
+    });
+
+    $router->post('/editGamer', function () use ($controller) {
+        $controller->editGamer();
     });
 
     $router->get('/dashboard', function () use ($controller) {
