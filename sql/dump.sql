@@ -37,7 +37,7 @@ CREATE TABLE `Gamelists` (
   PRIMARY KEY (`Id_Gamelists`),
   KEY `Id_Gamer` (`Id_Gamer`),
   CONSTRAINT `Gamelists_ibfk_1` FOREIGN KEY (`Id_Gamer`) REFERENCES `Gamer` (`Id_Gamer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,6 +46,8 @@ CREATE TABLE `Gamelists` (
 
 LOCK TABLES `Gamelists` WRITE;
 /*!40000 ALTER TABLE `Gamelists` DISABLE KEYS */;
+INSERT INTO `Gamelists` VALUES
+(1,'Ma Draco-liste',13);
 /*!40000 ALTER TABLE `Gamelists` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -64,7 +66,7 @@ CREATE TABLE `Gamer` (
   `role` varchar(55) NOT NULL,
   `picture` varchar(512) NOT NULL DEFAULT '../../assets/pictures/vegeta_1771.jpg',
   PRIMARY KEY (`Id_Gamer`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,9 +77,11 @@ LOCK TABLES `Gamer` WRITE;
 /*!40000 ALTER TABLE `Gamer` DISABLE KEYS */;
 INSERT INTO `Gamer` VALUES
 (1,'Vegeta_88','$2y$10$9.wwS.E2UHnwGt4NwDukdeXcXcfV/E5c8K32t92MNoE9fI1An1F.2','SarabadaTrunks@Bulma.jp','[ADMIN]','../../assets/pictures/vegeta_1771.jpg'),
-(2,'KrilinDu49','$2y$10$3KXXsk1tyrMK0bjyUIUUv.bQ.0AzxObkJrg78PKy5.qRCpRw6mtcq','Kienzan@mutenroshi.jp','[GAMER]','../../assets/pictures/vegeta_1771.jpg'),
-(3,'RaditzDu03','$2y$10$plG16.o3W.BR0kdr6qcAKeG5QAiWMaAy34hwChg0fF1ECwoEmsWHi','RaditzLeNaze@youhou.jp','[GAMER]','../../assets/pictures/vegeta_1771.jpg'),
-(4,'MakkankosapoDu14','$2y$10$EeYpaSnTDYD8q3cSE1YaeOWrptscrfgc7SdaySeutoDqkl.q0g1Ky','PiccoloLeNamek@Porunga.jp','[GAMER]','../../assets/pictures/vegeta_1771.jpg');
+(13,'Dragon','$2y$10$zS4vtQtMQhszpw1gx4/dxudslLHGPoLFXfVtBzqB0vCC.2RKpFqsy','Dragon@dragon.dragon','[GAMER]','628376bab6482.png'),
+(14,'Vegeta_44','$2y$10$AaLa6hY4lLSUf0dW41CX1eSi0lwc4fmuS4mVTefzBGKZbddk01Vym','zfapapeeg@fzapfofzapf.com','[GAMER]','62838d93bcf52.png'),
+(15,'LaFigue','$2y$10$0IjlaRhQZS0a88QdIh.WruZankYQ3msPd0sf9ldzSL3mwYgN3TdZW','LaFigue@lafigue.fr','[GAMER]','../../assets/pictures/dragon.png'),
+(16,'LaBanane','$2y$10$pv3YZazS7kzKe7H.4yvpp.yBhGNsz4..dWZ0mR.mqUFSfn8tWIXMW','LaBanane@banane.fr','[GAMER]','../../assets/pictures/dragon.png'),
+(17,'Végépâté','$2y$10$dt8hwlWRHxHUzzjslnbGtOCs.Yh82Esq0Sl6aaihBYagl9V/JZ2Hy','Vegepate@terrine.jp','[GAMER]','62839eec13cc4.jpeg');
 /*!40000 ALTER TABLE `Gamer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +97,7 @@ CREATE TABLE `Games` (
   `title` varchar(50) NOT NULL,
   `resume` varchar(512) DEFAULT NULL,
   PRIMARY KEY (`Id_Games`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -102,6 +106,11 @@ CREATE TABLE `Games` (
 
 LOCK TABLES `Games` WRITE;
 /*!40000 ALTER TABLE `Games` DISABLE KEYS */;
+INSERT INTO `Games` VALUES
+(1,'Elden Ring','Elden Ring se déroule dans le royaume de l\'Entre-terre, quelque temps après la destruction du Cercle d’Elden et la dispersion de ses fragments, les runes majeures. Autrefois honoré par la présence du Cercle et de l\'Arbre-Monde, le royaume est maintenant gouverné par les descendants demi-dieux de la reine Marika l\'Éternelle, chacun possédant un éclat du Cercle d\'Elden qui les corrompt et les empoisonne par leur pouvoir.'),
+(2,'Pillars of Eternity','L\'histoire se déroule dans le monde d\'Eora, dans une région située dans l\'hémisphère sud, appelée les Contrées Orientales, une région qui a approximativement la taille de l\'Espagne. Les Contrées orientales comportent plusieurs nations, dont le Palatinat Libre du Dyrwood – une ancienne colonie du puissant Empire d\'Aedyr qui a gagné son indépendance au travers d\'une révolution6 – les Républiques de Vailia.'),
+(3,'Zelda: Breath of the Wild','L\'intrigue se déroule dans un univers médiéval-fantastique, le royaume d\'Hyrule. Ce dernier est dévasté à la suite d\'une catastrophe ayant eu lieu un siècle avant l\'aventure, et présente ainsi de nombreux temples et bâtiments en ruines. La nature, par sa faune et sa flore, est en revanche omniprésente. '),
+(4,'Dragon Ball Xenoverse 2','Il s\'agit d\'un jeu de combat en map fermée (mais possédant de grandes limites). L\'attrait principal du jeu est que le joueur peut créer son avatar parmi cinq races qui sont les Majins (comme Boo), les Saiyans (comme Son Goku et Vegeta), les terriens (comme Krilin), les Nameks (comme Piccolo) ou enfin la race de Freezer. ');
 /*!40000 ALTER TABLE `Games` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -125,7 +134,7 @@ CREATE TABLE `Gametimes` (
   KEY `Id_Gamer` (`Id_Gamer`),
   CONSTRAINT `Gametimes_ibfk_1` FOREIGN KEY (`Id_Games`) REFERENCES `Games` (`Id_Games`),
   CONSTRAINT `Gametimes_ibfk_2` FOREIGN KEY (`Id_Gamer`) REFERENCES `Gamer` (`Id_Gamer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -134,6 +143,11 @@ CREATE TABLE `Gametimes` (
 
 LOCK TABLES `Gametimes` WRITE;
 /*!40000 ALTER TABLE `Gametimes` DISABLE KEYS */;
+INSERT INTO `Gametimes` VALUES
+(1,'Histoire',98,57,23,1,13),
+(2,'Complétioniste',257,32,45,2,13),
+(3,'Histoire+Extras',57,57,57,4,13),
+(4,'Histoire',132,43,52,3,13);
 /*!40000 ALTER TABLE `Gametimes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,7 +162,7 @@ CREATE TABLE `Genre` (
   `Id_Genre` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`Id_Genre`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -157,6 +171,18 @@ CREATE TABLE `Genre` (
 
 LOCK TABLES `Genre` WRITE;
 /*!40000 ALTER TABLE `Genre` DISABLE KEYS */;
+INSERT INTO `Genre` VALUES
+(1,'Action'),
+(2,'Aventure'),
+(3,'RPG'),
+(4,'Monde Ouvert'),
+(5,'Combat'),
+(6,'Gestion'),
+(7,'Romance'),
+(8,'JRPG'),
+(9,'Stratégie'),
+(10,'FPS'),
+(11,'Hack n\'Slash');
 /*!40000 ALTER TABLE `Genre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -171,7 +197,7 @@ CREATE TABLE `Platforms` (
   `Id_Platforms` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`Id_Platforms`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -180,6 +206,22 @@ CREATE TABLE `Platforms` (
 
 LOCK TABLES `Platforms` WRITE;
 /*!40000 ALTER TABLE `Platforms` DISABLE KEYS */;
+INSERT INTO `Platforms` VALUES
+(1,'PC'),
+(2,'PS4'),
+(3,'PS5'),
+(4,'PS3'),
+(5,'PS2'),
+(6,'PS1'),
+(7,'Nintendo Switch'),
+(8,'Nintendo 64'),
+(9,'Nintendo 3DS'),
+(10,'Nintendo DS'),
+(11,'Nintendo NES'),
+(12,'Xbox'),
+(13,'Xbox One'),
+(14,'Xbox Series'),
+(15,'Xbox 360');
 /*!40000 ALTER TABLE `Platforms` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -203,7 +245,7 @@ CREATE TABLE `Reviews` (
   KEY `Id_Gamer` (`Id_Gamer`),
   CONSTRAINT `Reviews_ibfk_1` FOREIGN KEY (`Id_Games`) REFERENCES `Games` (`Id_Games`),
   CONSTRAINT `Reviews_ibfk_2` FOREIGN KEY (`Id_Gamer`) REFERENCES `Gamer` (`Id_Gamer`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -212,6 +254,10 @@ CREATE TABLE `Reviews` (
 
 LOCK TABLES `Reviews` WRITE;
 /*!40000 ALTER TABLE `Reviews` DISABLE KEYS */;
+INSERT INTO `Reviews` VALUES
+(1,5,'C\'est trop bien ce jeu !','2021-12-15 11:06:44',1,4,13),
+(2,2,'J\'ai pas aimé...','2022-02-23 21:29:45',1,1,13),
+(3,4,'J\'ai adoré mais moins que Dragon Ball.','2022-05-17 23:32:11',1,3,13);
 /*!40000 ALTER TABLE `Reviews` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -328,4 +374,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-16  8:57:04
+-- Dump completed on 2022-05-17 14:09:11

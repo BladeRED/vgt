@@ -87,7 +87,7 @@ class SecurityController extends AbstractController
         // Creation of an error table //
         $errors = [];
         $editGamer = $this->gamermanager->getOnebyGamerId($this->sessionService->gamer->getId());
-        
+
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // We call the verification function to see if there is errors on the form //
