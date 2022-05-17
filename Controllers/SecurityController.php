@@ -73,7 +73,7 @@ class SecurityController extends AbstractController
         if (count($errors) == 0) {
             $extension = explode("/", $_FILES["pictureFile"]["type"])[1];
             $uniqFilename = uniqid() . '.' . $extension;
-            move_uploaded_file($_FILES["pictureFile"]["tmp_name"], '/assets/pictures/' . $uniqFilename);
+            move_uploaded_file($_FILES["pictureFile"]["tmp_name"],'assets/pictures/'.$uniqFilename);
         }
 
         return ["errors" => $errors, 'filename' => $uniqFilename];
@@ -113,7 +113,7 @@ class SecurityController extends AbstractController
                 $editGamer->setPicture($uniqFileName);
 
                 $this->gamermanager->update($editGamer);
-
+                $this->sessionService->gamer = serialize($editGamer);
                 header("Location: /security/gamer");
             }
         };

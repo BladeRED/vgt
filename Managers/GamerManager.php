@@ -56,7 +56,7 @@ class GamerManager extends DBManager
     public function update($gamer)
     {
 
-        $query = $this->bdd->prepare('UPDATE Gamer SET pseudo= :pseudo, password= :password, mail= :mail, picture= :picture WHERE id= :id');
+        $query = $this->bdd->prepare('UPDATE Gamer SET pseudo= :pseudo, password= :password, mail= :mail, picture= :picture WHERE Id_Gamer= :id');
         $query->execute([
             "pseudo" => $gamer->getPseudo(),
             "password" => password_hash($gamer->getPassword(), PASSWORD_DEFAULT),
