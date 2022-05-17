@@ -87,7 +87,7 @@ class SecurityController extends AbstractController
         // Creation of an error table //
         $errors = [];
         $editGamer = $this->gamermanager->getOnebyGamerId($this->sessionService->gamer->getId());
-
+        
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // We call the verification function to see if there is errors on the form //
@@ -100,6 +100,7 @@ class SecurityController extends AbstractController
                 $upload = $this->uploadPicture($errors);
                 $uniqFileName = $upload["filename"];
                 $errors = $upload["errors"];
+
             } else {
                 $uniqFileName = $editGamer->getPicture();
             }
@@ -113,6 +114,7 @@ class SecurityController extends AbstractController
                 $editGamer->setPicture($uniqFileName);
 
                 $this->gamermanager->update($editGamer);
+
                 $this->sessionService->gamer = serialize($editGamer);
                 header("Location: /security/gamer");
             }

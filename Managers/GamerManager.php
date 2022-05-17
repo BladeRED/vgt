@@ -26,8 +26,8 @@ class GamerManager extends DBManager
     public function getOneByGamerId($id)
     {
         $gamer = null;
-        $query = $this->bdd->prepare('SELECT * FROM Gamer WHERE Id_Gamer =:id');
-        $query->execute(["id" => $id]);
+        $query = $this->bdd->prepare('SELECT * FROM Gamer WHERE Id_Gamer =:Id_Gamer');
+        $query->execute(["Id_Gamer" => $id]);
         $result = $query->fetch();
 
         if ($result) {
@@ -50,6 +50,7 @@ class GamerManager extends DBManager
             "role" => "[GAMER]",
             "picture" => $gamer->getPicture()
         ]);
+
 
     }
 

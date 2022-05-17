@@ -83,9 +83,7 @@ class DefaultController extends AbstractController
 
                 $this->gamermanager->create($gamer);
                 $this->gamermanager = new GamerManager();
-                $this->sessionService->gamer = serialize($gamer);
-                session_write_close();
-                header('Location: /security/gamer');
+                header('Location: /home/homepage');
 
             }
 
