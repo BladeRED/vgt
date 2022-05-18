@@ -20,7 +20,9 @@
             <div class="container shadow-lg rounded bgsection mb-5">
                 <div class="row">
                     <h2 class="text-center mt-5">Bienvenue !</h2>
-
+                    {% for error in errors %}
+                        <div class="alert-danger w-100 shadow-lg rounded text-center mb-3" role="alert">{{error}}</div>
+                    {% endfor %}
                     <div class="col-lg-6 col-md-12 col-sm-12 mt-3 mb-5 py-5 welcome ">
 
                         <div class="row">
@@ -49,6 +51,18 @@
                                             placeholder="Tu t'en rappelles, j'espère ? !"
                                     />
                                 </div>
+
+                                <div class="form-group mb-4 mx-5 px-5 datahide">
+                                    <label for="botLogPrevention" class="my-3 text-white"> Vérifie ton bot de
+                                        passe: </label>
+                                    <input
+                                            type="text"
+                                            class="form-control log mx-auto "
+                                            id="botLogPrevention"
+                                            name="botLogPrevention"
+                                            placeholder="Pour toi le bot, remplis, svp."
+                                    />
+                                </div>
                                 <button
 
                                         type="submit"
@@ -59,14 +73,6 @@
                                 </button>
 
                             </form>
-
-                            {% if errors is not null %}
-                                {% for error in errors %}
-                                    <div class="alert alert-light logerror" role="alert">
-                                        {{ ' . error . ' }}
-                                    </div>
-                                {% endfor %}
-                            {% endif %}
 
                         </div>
                     </div>
@@ -116,6 +122,18 @@
                                             id="passwordVerifRegister"
                                             name="passwordVerifRegister"
                                             placeholder="Vérifie ton mot de passe quand même, on sait jamais."
+                                    />
+                                </div>
+
+                                <div class="form-group mb-4 mx-5 px-5 datahide">
+                                    <label for="botPrevention" class="my-3 text-white"> Vérifie ton bot de
+                                        passe: </label>
+                                    <input
+                                            type="text"
+                                            class="form-control log mx-auto "
+                                            id="botPrevention"
+                                            name="botPrevention"
+                                            placeholder="Pour toi le bot, remplis, svp."
                                     />
                                 </div>
 
