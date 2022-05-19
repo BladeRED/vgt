@@ -24,7 +24,7 @@
                 <div class="d-flex flex-row navhead">
                     <div class="search mt-5 mx-5 py-2 searchbar">
                         <input type="text" class="searchTerm" placeholder="Cherche tes jeux ici !">
-                        <button type="submit" class="searchButton">
+                        <button type="submit" class="searchIcon" aria-label="Search Icon">
                             <i class="fa fa-search"></i>
                         </button>
                     </div>
@@ -35,14 +35,14 @@
             <div class="col-lg-4 ">
                 <!-- Submit and Log buttons-->
                 <div class="d-flex flex-row logsubmit">
-                    <div class="col-lg-6 d-flex justify-content-end">
+                    <div class="col-lg-6 d-flex justify-content-end subutton">
                         <a href="/security/submit">
                             <img src="../../assets/pictures/submit.png" class="img-fluid rounded mx-auto d-block mt-5"
                                  style="height: 64px ;width: 64px" alt="VGT_submit">
                             <p class="text-center"> Soumettre un temps </p>
                         </a>
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-6 logbutton">
                         {% if gamer %}
                             <a href="/security/logout">
                                 <img src="../../assets/pictures/login.png" class="img-fluid rounded mx-auto d-block mt-5"

@@ -11309,6 +11309,15 @@ a:-webkit-any-link:hover {
     font-size: 20px;
   }
 }
+@media screen and (max-width: 1200px) {
+  .cookieflex {
+    width: 41.66666667% !important;
+  }
+
+  .cookieflex2 {
+    width: 58.33333333% !important;
+  }
+}
 @media screen and (max-width: 1100px) {
   .gamecardTable {
     width: 12rem !important;
@@ -11413,6 +11422,20 @@ a:-webkit-any-link:hover {
 
   .chartTime {
     margin-bottom: 3rem !important;
+  }
+
+  .welcome {
+    border-right: 0 !important;
+  }
+
+  .cookieflex {
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .cookieflex2 {
+    display: block !important;
+    width: 100% !important;
   }
 }
 @media screen and (max-width: 991px) and (max-width: 830px) {
@@ -11684,7 +11707,7 @@ body {
   color: #935482;
 }
 
-.searchButton {
+.searchIcon {
   width: 40px;
   height: 36px;
   border: 1px solid #935482;
@@ -11796,6 +11819,14 @@ label {
 
 .welcome {
   border-right: 2px solid #f5f5f5;
+}
+
+.logbutton {
+  z-index: 999 !important;
+}
+
+.subutton {
+  z-index: 999 !important;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -27,6 +27,7 @@ abstract class AbstractController
         // user is connected ? put it in session
         $this->sessionService = new SessionService();
         $this->render->addGlobal('gamer', $this->sessionService->gamer);
+        $this->render->addGlobal('cookies', $_COOKIE);
     }
 
 }

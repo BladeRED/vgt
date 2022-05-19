@@ -31,6 +31,10 @@ $router->mount('/home', function () use ($router) {
         $controller->displayLogin();
     });
 
+    $router->get('/cookie', function () use ($controller) {
+        $controller->acceptCookie();
+    });
+
     $router->post('/connect', function () use ($controller) {
         $controller->connect();
     });

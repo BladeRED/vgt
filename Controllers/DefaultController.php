@@ -103,52 +103,11 @@ class DefaultController extends AbstractController
         $pseudo = $_POST["pseudoInput"];
         $antibot = $_POST["botLogPrevention"];
 
-        if (empty($_POST["pseudoInput"])) {
-
-            $errors[] = "Tu n'as pas saisi ton mot de passe et/ou ton pseudo!";
-        }
-
-        if (empty($_POST["passwordInput"])) {
-
-            $errors[] = "Tu n'as pas saisi ton mot de passe et/ou ton pseudo!";
-
-        }
-
-        // REGEX FOR SECURITY VERIFICATION //
-
-        //Minimum eight characters, at least one upper case English letter, one lower case English letter,
-        //one number and one special character//
-
-        if (!preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/', $password)) {
-
-            $errors[] = "Il faut que ton mot de passe ait au moins une majuscule, une minuscule, un chiffre, et un caractère spécial.Ah, et pas d'espace! Oui c'est embêtant, mais c'est pour sécuriser ton compte !";
-
-        }
-
-        if (!preg_match('#[a-z\d_-]{5,15}#', $pseudo)) {
-            $errors[] = "Ton pseudo doit contenir entre 5 et 15 caractères, sans espace";
-
-        }
-
-        if (preg_match('#\s#', $pseudo) || preg_match('#\s#', $password)) {
-            $errors[] = "Sans espace, on a dit !";
-
-        }
-
-        //ANTIBOT//
-
-        if (!empty($antibot)) {
-
-            $errors[] = "Bien tenté, le bot, bien tenté.";
-
-        }
-
-
-        return $errors;
+        return $this->checkLogForm($password, $errors, $pseudo, $antibot);
 
     }
 
-    private function isValidRegisterForm($errors)
+    private function isValidRegisterForm(): array
     {
 
         $errors = [];
@@ -158,16 +117,6 @@ class DefaultController extends AbstractController
         $pseudo = $_POST["pseudoRegister"];
         $mail = $_POST["mailRegister"];
         $antibot = $_POST["botPrevention"];
-
-        if (empty($pseudo)) {
-
-            $errors[] = "Met donc un pseudo, qu'on sache qui tu es !";
-        }
-
-        if (empty($password)) {
-
-            $errors[] = "T'as oublié de choisir un mot de passe !";
-        }
 
         if (empty($verifPassword)) {
 
@@ -184,6 +133,28 @@ class DefaultController extends AbstractController
             $errors[] = "Laisse nous ton mail, promis on t'enverra (peut-être) pas de bêtises.";
         }
 
+        return $this->checkLogForm($password, $errors, $pseudo, $antibot);
+    }
+
+    /**
+     * @param mixed $password
+     * @param array $errors
+     * @param mixed $pseudo
+     * @param mixed $antibot
+     * @return array
+     */
+    private function checkLogForm(mixed $password, array $errors, mixed $pseudo, mixed $antibot): array
+    {
+        if (empty($pseudo)) {
+
+            $errors[] = "Met donc un pseudo, qu'on sache qui tu es !";
+        }
+
+        if (empty($password)) {
+
+            $errors[] = "T'as oublié de choisir un mot de passe !";
+        }
+
         // REGEX FOR SECURITY VERIFICATION //
 
         //Minimum eight characters, at least one upper case English letter, one lower case English letter,
@@ -215,6 +186,13 @@ class DefaultController extends AbstractController
 
 
         return $errors;
+    }
+
+    public function acceptCookie()
+    {
+
+        setcookie('accepted', '1', time() + 3600 * 24, '/', '', true, true);
+        header('Location: /home/homepage');;
 
     }
 

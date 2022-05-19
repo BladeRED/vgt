@@ -122,6 +122,23 @@
 
 }
 
+@media screen and (max-width: 1200px){
+
+  .cookieflex{
+
+    width: 41.66666667% !important;
+
+  }
+
+  .cookieflex2{
+
+    width: 58.33333333% !important;
+
+  }
+
+
+}
+
 
 @media screen and (max-width: 1100px) {
 
@@ -291,6 +308,25 @@
   .chartTime{
 
     margin-bottom: 3rem !important
+
+  }
+
+  .welcome{
+
+    border-right: 0 !important;
+
+  }
+
+  .cookieflex{
+
+    display: block !important;
+    width: 100% !important;
+  }
+
+  .cookieflex2{
+
+    display: block !important;
+    width: 100% !important;
 
   }
 
