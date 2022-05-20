@@ -40,19 +40,6 @@ class SecurityController extends AbstractController
         $this->render->display('security/gamer.twig');
     }
 
-    // Admin pages //
-
-    public function displayDashboard()
-    {
-        if ($this->sessionService->gamer->getRole() == "[ADMIN]") {
-            $this->render->display('security/admindashboard.twig');
-        } else {
-
-            $this->render->display('default/homepage.twig');
-        }
-
-    }
-
     // Upload pictureFiles //
 
     public function uploadPicture($errors)

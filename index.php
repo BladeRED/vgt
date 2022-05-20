@@ -2,6 +2,7 @@
 session_start();
 require_once 'vendor/autoload.php';
 
+use app\Controllers\AdminController;
 use app\Controllers\DefaultController;
 use app\Controllers\SecurityController;
 use Bramus\Router\Router;
@@ -52,7 +53,6 @@ $router->before('GET|POST', '/security/.*', function () use ($router) {
     }
 });
 
-
 $router->mount('/security', function () use ($router) {
     $controller = new SecurityController();
 
@@ -71,11 +71,42 @@ $router->mount('/security', function () use ($router) {
     $router->post('/editGamer', function () use ($controller) {
         $controller->editGamer();
     });
+});
+
+$router->before('GET|POST', '/admin/.*', function () use ($router) {
+    $role= "[ADMIN]";
+    if (!str_contains($_SESSION["gamer"],$role)) {
+        header('Location: /home/homepage');
+        exit();
+    }
+});
+
+$router->mount('/admin', function () use ($router) {
+    $controller = new AdminController();
+
 
     $router->get('/dashboard', function () use ($controller) {
-        $controller->displayDashboard();
+        $controller->dashboard();
+    });
+
+    $router->get('/gamesAdmin', function () use ($controller) {
+        $controller->gamesAdmin();
+    });
+
+    $router->get('/usersAdmin', function () use ($controller) {
+        $controller->usersAdmin();
+    });
+
+    $router->get('/timesAdmin', function () use ($controller) {
+        $controller->timesAdmin();
+    });
+
+    $router->get('/reviewsAdmin', function () use ($controller) {
+        $controller->reviewsAdmin();
     });
 
 
 });
+
+
 $router->run();
