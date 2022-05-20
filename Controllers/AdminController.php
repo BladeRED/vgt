@@ -22,30 +22,30 @@ class AdminController extends AbstractController
 
     public function dashboard()
     {
-        $this->render->display('security/admindashboard.twig');
+        $this->render->display('admin/dashboard.twig');
 
     }
     public function gamesAdmin()
     {
-        $this->render->display('security/admindashboard.twig');
+        $this->render->display('admin/gamesAdmin.twig');
 
     }
 
     public function usersAdmin()
     {
-        $this->render->display('security/admindashboard.twig');
+        $this->render->display('security/dashboard.twig');
 
     }
 
     public function timesAdmin()
     {
-        $this->render->display('security/admindashboard.twig');
+        $this->render->display('security/dashboard.twig');
 
     }
 
     public function reviewsAdmin()
     {
-        $this->render->display('security/admindashboard.twig');
+        $this->render->display('security/dashboard.twig');
 
     }
 

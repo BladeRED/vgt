@@ -17,9 +17,13 @@ $whoops->pushHandler(new PrettyPageHandler);
 $whoops->register();
 
 // Define routes
+$controller = new DefaultController();
+$router->get('/', function () use ($controller) {
+    $controller->displayHomepage();
+});
 
-$router->mount('/home', function () use ($router) {
-    $controller = new DefaultController();
+$router->mount('/home', function () use ($controller, $router) {
+
     $router->get('/homepage', function () use ($controller) {
         $controller->displayHomepage();
     });
