@@ -7,6 +7,22 @@ use app\Models\Gamer;
 class GamerManager extends DBManager
 {
 
+    public function findAll()
+    {
+
+        $query = $this->bdd->prepare('SELECT * FROM Gamer');
+        $query->execute();
+        $results = $query->fetchAll();
+
+
+        foreach ($results as $result) {
+
+            $gamerList[] = new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"]);
+
+        }
+        return $gamerList;
+    }
+
     public function getOneByGamerName($pseudo)
     {
         $gamer = null;

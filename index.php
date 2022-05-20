@@ -93,20 +93,20 @@ $router->mount('/admin', function () use ($router) {
         $controller->dashboard();
     });
 
-    $router->get('/gamesAdmin', function () use ($controller) {
-        $controller->gamesAdmin();
+    $router->get('/games', function () use ($controller) {
+        $controller->games();
     });
 
-    $router->get('/usersAdmin', function () use ($controller) {
-        $controller->usersAdmin();
+    $router->get('/users', function () use ($controller) {
+        $controller->users();
     });
 
-    $router->get('/timesAdmin', function () use ($controller) {
-        $controller->timesAdmin();
+    $router->get('/times', function () use ($controller) {
+        $controller->times();
     });
 
-    $router->get('/reviewsAdmin', function () use ($controller) {
-        $controller->reviewsAdmin();
+    $router->get('/reviews', function () use ($controller) {
+        $controller->reviews();
     });
 
 
