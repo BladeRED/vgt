@@ -20,40 +20,23 @@
                         <th scope="col">ID</th>
                         <th scope="col" class="text-center">Titre</th>
                         <th scope="col" class="text-center">Résumé</th>
-                        <th scope="col" class="text-center">Genres</th>
-                        <th scope="col" class="text-center">Plateformes</th>
+                        <th scope="col" class="text-center">Actions</th>
+
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>@fat</td>
-                    </tr>
+                    {% for game in games %}
+                        <tr>
+                            <th scope="row">{{game.id}}</th>
+                            <td>{{game.title}}</td>
+                            <td>{{ game.resume }}</td>
+                            <td><a href="#" type="button" class="btn btn-lg btn-secondary my-3">Modifier</a>
+                                <a href="#" type="button" class="btn btn-lg btn-danger my-3 ">Supprimer</a></td>
+                        </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
-
-
-
             </div>
-
-
         </section>
     </main>
 

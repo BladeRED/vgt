@@ -94,15 +94,15 @@ $router->mount('/admin', function () use ($router) {
     });
 
     $router->get('/games', function () use ($controller) {
-        $controller->games();
+        $controller->findAll();
     });
 
     $router->get('/users', function () use ($controller) {
-        $controller->users();
+        $controller->findAll();
     });
 
     $router->get('/times', function () use ($controller) {
-        $controller->times();
+        $controller->findAll();
     });
 
     $router->get('/reviews', function () use ($controller) {

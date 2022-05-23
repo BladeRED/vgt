@@ -66,7 +66,7 @@ CREATE TABLE `Gamer` (
   `role` varchar(55) NOT NULL,
   `picture` varchar(512) NOT NULL DEFAULT '../../assets/pictures/vegeta_1771.jpg',
   PRIMARY KEY (`Id_Gamer`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,12 +76,15 @@ CREATE TABLE `Gamer` (
 LOCK TABLES `Gamer` WRITE;
 /*!40000 ALTER TABLE `Gamer` DISABLE KEYS */;
 INSERT INTO `Gamer` VALUES
-(1,'Vegeta_88','$2y$10$9.wwS.E2UHnwGt4NwDukdeXcXcfV/E5c8K32t92MNoE9fI1An1F.2','SarabadaTrunks@Bulma.jp','[ADMIN]','../../assets/pictures/vegeta_1771.jpg'),
+(1,'Vegeta_88','$2y$10$BIxI080YCPIiZhv9Ea5EPOtXw6jkLsUlEe/0STixb.mzh5LpPLS4m','SarabadaTrunks@Bulma.jp','[ADMIN]','../../assets/pictures/vegeta_1771.jpg'),
 (13,'Dragon','$2y$10$zS4vtQtMQhszpw1gx4/dxudslLHGPoLFXfVtBzqB0vCC.2RKpFqsy','Dragon@dragon.dragon','[GAMER]','628376bab6482.png'),
 (14,'Vegeta_44','$2y$10$AaLa6hY4lLSUf0dW41CX1eSi0lwc4fmuS4mVTefzBGKZbddk01Vym','zfapapeeg@fzapfofzapf.com','[GAMER]','62838d93bcf52.png'),
 (15,'LaFigue','$2y$10$0IjlaRhQZS0a88QdIh.WruZankYQ3msPd0sf9ldzSL3mwYgN3TdZW','LaFigue@lafigue.fr','[GAMER]','../../assets/pictures/dragon.png'),
 (16,'LaBanane','$2y$10$pv3YZazS7kzKe7H.4yvpp.yBhGNsz4..dWZ0mR.mqUFSfn8tWIXMW','LaBanane@banane.fr','[GAMER]','../../assets/pictures/dragon.png'),
-(17,'Végépâté','$2y$10$dt8hwlWRHxHUzzjslnbGtOCs.Yh82Esq0Sl6aaihBYagl9V/JZ2Hy','Vegepate@terrine.jp','[GAMER]','62839eec13cc4.jpeg');
+(17,'Végépâté','$2y$10$dt8hwlWRHxHUzzjslnbGtOCs.Yh82Esq0Sl6aaihBYagl9V/JZ2Hy','Vegepate@terrine.jp','[GAMER]','62839eec13cc4.jpeg'),
+(24,'KrilinDu49','$2y$10$RM/IhCdI3WK2s97w5CjAyumFkiDBjDeui.TTZLFd3j4QoXsW0VLDa','Kienzan@mutenroshi.jp','[GAMER]','../../assets/pictures/dragon.png'),
+(25,'LaPampouze','$2y$10$SD7PHO27UcUC43A7VVZayuaGRssWfGljrapMGPt1WSf4SQxsVjqLy','LaPampouze@pampouze.fr','[GAMER]','../../assets/pictures/dragon.png'),
+(26,'Lama63','$2y$10$rRFeHnptMc/Fd72yz9aMNeHtkqutxmrtbyBbQV.R7PGujiUnPeQee','Lama@lama.fr','[GAMER]','../../assets/pictures/dragon.png');
 /*!40000 ALTER TABLE `Gamer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -134,7 +137,7 @@ CREATE TABLE `Gametimes` (
   KEY `Id_Gamer` (`Id_Gamer`),
   CONSTRAINT `Gametimes_ibfk_1` FOREIGN KEY (`Id_Games`) REFERENCES `Games` (`Id_Games`),
   CONSTRAINT `Gametimes_ibfk_2` FOREIGN KEY (`Id_Gamer`) REFERENCES `Gamer` (`Id_Gamer`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -147,7 +150,9 @@ INSERT INTO `Gametimes` VALUES
 (1,'Histoire',98,57,23,1,13),
 (2,'Complétioniste',257,32,45,2,13),
 (3,'Histoire+Extras',57,57,57,4,13),
-(4,'Histoire',132,43,52,3,13);
+(4,'Histoire',132,43,52,3,13),
+(5,'Histoire',55,23,12,1,17),
+(6,'Complétioniste',132,32,45,1,15);
 /*!40000 ALTER TABLE `Gametimes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -374,4 +379,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-17 14:09:11
+-- Dump completed on 2022-05-23 14:03:06
