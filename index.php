@@ -106,7 +106,7 @@ $router->mount('/admin', function () use ($router) {
     });
 
     $router->get('/reviews', function () use ($controller) {
-        $controller->reviews();
+        $controller->findAll();
     });
 
 
