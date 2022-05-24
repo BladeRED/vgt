@@ -10,20 +10,25 @@ class Review {
     private $date;
     private $isSignaled;
 
+    //For join the gamers model //
+    private $gamer;
+
     /**
      * @param $id
      * @param $note
      * @param $comment
      * @param $date
      * @param $isSignaled
+     * @param $gamer
      */
-    public function __construct($id, $note, $comment, $date, $isSignaled)
+    public function __construct($id, $note, $comment, $date, $isSignaled, $gamer)
     {
         $this->id = $id;
         $this->note = $note;
         $this->comment = $comment;
         $this->date = $date;
         $this->isSignaled = $isSignaled;
+        $this->gamer= $gamer;
     }
 
     /**
@@ -104,6 +109,22 @@ class Review {
     public function setIsSignaled($isSignaled): void
     {
         $this->isSignaled = $isSignaled;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getgamer()
+    {
+        return $this->gamer;
+    }
+
+    /**
+     * @param mixed $gamer
+     */
+    public function setgamer($gamer): void
+    {
+        $this->gamer = $gamer;
     }
 
 

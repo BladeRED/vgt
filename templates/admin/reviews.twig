@@ -22,6 +22,7 @@
                         <th scope="col" class="text-center">Review</th>
                         <th scope="col" class="text-center">Date</th>
                         <th scope="col" class="text-center">Signalé?</th>
+                        <th scope="col" class="text-center">Utilisateur</th>
                         <th scope="col" class="text-center">Actions</th>
 
                     </tr>
@@ -34,6 +35,7 @@
                             <td>{{ review.comment }}</td>
                             <td>{{ review.date }}</td>
                             <td>{{ review.isSignaled }}</td>
+                            <td>{{ review.gamer.pseudo }}</td>
                             <td><a href="#" type="button" class="btn btn-lg btn-secondary my-3">Modifier</a>
                                 <a href="#" type="button" class="btn btn-lg btn-danger my-3 ">Supprimer</a></td>
                         </tr>

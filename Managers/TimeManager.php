@@ -1,10 +1,14 @@
 <?php
 
 namespace app\Managers;
+
 use app\Models\Game;
+use app\Models\game_genre;
+use app\Models\Genre;
 use app\Models\Time;
 
-class TimeManager extends DBManager{
+class TimeManager extends DBManager
+{
 
     public function findAll()
     {
@@ -16,13 +20,11 @@ class TimeManager extends DBManager{
 
         foreach ($results as $result) {
 
-            $timesList[] = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"]);
-
+            $timesList[] = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"], new Game($result["Id_Games"], $result["title"], $result["resume"],'', ''));
 
         }
 
         return $timesList;
     }
-
 
 }

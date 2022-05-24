@@ -20,6 +20,8 @@
                         <th scope="col">ID</th>
                         <th scope="col" class="text-center">Titre</th>
                         <th scope="col" class="text-center">Résumé</th>
+                        <th scope="col" class="text-center">Genre</th>
+                        <th scope="col" class="text-center">Plateforme</th>
                         <th scope="col" class="text-center">Actions</th>
 
                     </tr>
@@ -30,6 +32,8 @@
                             <th scope="row">{{game.id}}</th>
                             <td>{{game.title}}</td>
                             <td>{{ game.resume }}</td>
+                            <td> {{game.genre.name}}</td>
+                            <td> {{game.platform.console}}</td>
                             <td><a href="#" type="button" class="btn btn-lg btn-secondary my-3">Modifier</a>
                                 <a href="#" type="button" class="btn btn-lg btn-danger my-3 ">Supprimer</a></td>
                         </tr>

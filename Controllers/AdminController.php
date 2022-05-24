@@ -51,19 +51,6 @@ class AdminController extends AbstractController
             $this->render->display('admin/reviews.twig', ['reviews' => $reviews]);
         }
     }
-
-    public function times()
-    {
-        $this->render->display('admin/times.twig');
-
-    }
-
-    public function reviews()
-    {
-        $this->render->display('admin/reviews.twig');
-
-    }
-
 }
 
 

@@ -18,9 +18,9 @@
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
-                        <th scope="col" class="text-center">Titre</th>
+                        <th scope="col" class="text-center">Catégorie</th>
                         <th scope="col" class="text-center">Résumé</th>
-                        <th scope="col" class="text-center">ID JEU</th>
+                        <th scope="col" class="text-center">Jeu</th>
                         <th scope="col" class="text-center">Actions</th>
 
                     </tr>
@@ -31,7 +31,7 @@
                             <th scope="row">{{time.id}}</th>
                             <td>{{time.category}}</td>
                             <td>{{ time.hours }}hrs {{ time.minuts }}min {{ time.seconds }}s</td>
-                            <td>{{ time.id_games }}</td>
+                            <td>{{ time.game.title }}</td>
                             <td><a href="#" type="button" class="btn btn-lg btn-secondary my-3">Modifier</a>
                                 <a href="#" type="button" class="btn btn-lg btn-danger my-3 ">Supprimer</a></td>
                         </tr>
