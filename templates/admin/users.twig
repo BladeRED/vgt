@@ -14,6 +14,83 @@
 
         <section>
             <div class="container my-5">
+                <div class="d-flex justify-content-end">
+                    <!-- Large modal -->
+                    <button type="button" class="btn btn-lg btn-outline-success mb-4" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">Ajouter un utilisateur</button>
+
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <form class="mx-auto" method="post" action="/admin/addUsers">
+                                    <div class="form-group mx-5 px-5">
+
+                                        <label for="mailRegister" class="mb-3 text-dark"> Adresse Mail: </label>
+                                        <input
+                                                type="email"
+                                                class="form-control log mx-auto"
+                                                id="mailRegister"
+                                                name="mailRegister"
+                                                placeholder="EldenRing@GOTY22.com"
+                                        />
+                                    </div>
+
+                                    <div class="form-group  mx-5 px-5">
+                                        <label for="pseudoRegister" class="my-3 text-dark">Pseudo: </label>
+                                        <input
+                                                type="text"
+                                                class="form-control log mx-auto"
+                                                id="pseudoRegister"
+                                                name="pseudoRegister"
+                                                placeholder="Malika"
+                                        />
+                                    </div>
+                                    <div class="form-group mx-5 px-5">
+                                        <label for="passwordRegister" class="my-3 text-dark">Mot de passe: </label>
+                                        <input
+                                                type="password"
+                                                class="form-control log mx-auto "
+                                                id="passwordRegister"
+                                                name="passwordRegister"
+                                                placeholder="Essaie de ne pas l'oublier ! !"
+                                        />
+                                    </div>
+
+                                    <div class="form-group  mb-4 mx-5 px-5">
+                                        <label for="passwordVerifRegister" class="my-3 text-dark"> Vérifie ton mot de
+                                            passe: </label>
+                                        <input
+                                                type="password"
+                                                class="form-control log mx-auto "
+                                                id="passwordVerifRegister"
+                                                name="passwordVerifRegister"
+                                                placeholder="Vérifie ton mot de passe quand même, on sait jamais."
+                                        />
+                                    </div>
+
+                                    <div class="form-group mb-4 mx-5 px-5 datahide">
+                                        <label for="botPrevention" class="my-3 text-white"> Vérifie ton bot de
+                                            passe: </label>
+                                        <input
+                                                type="text"
+                                                class="form-control log mx-auto "
+                                                id="botPrevention"
+                                                name="botPrevention"
+                                                placeholder="Pour toi le bot, remplis, svp."
+                                        />
+                                    </div>
+
+                                    <button
+                                            type="submit"
+                                            class="btn btn-lg btn-success mx-auto mb-2 px-5 d-flex justify-content-center text-white"
+                                    >
+                                        Ajouter un utilisateur
+                                    </button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <table class="table table-dark table-striped">
                     <thead>
                     <tr>
@@ -33,7 +110,7 @@
                         <td>{{ user.mail }}</td>
                         <td>{{ user.role }}</td>
                         <td><a href="#" type="button" class="btn btn-lg btn-secondary">Modifier</a>
-                            <a href="#" type="button" class="btn btn-lg btn-danger">Supprimer</a></td>
+                            <a href="/admin/deleteUsers/{{user.id}}" type="button" class="btn btn-lg btn-danger">Supprimer</a></td>
                     </tr>
                   {% endfor %}
                     </tbody>

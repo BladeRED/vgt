@@ -93,6 +93,8 @@ $router->mount('/admin', function () use ($router) {
         $controller->dashboard();
     });
 
+    // lists //
+
     $router->get('/games', function () use ($controller) {
         $controller->findAll();
     });
@@ -109,6 +111,27 @@ $router->mount('/admin', function () use ($router) {
         $controller->findAll();
     });
 
+    // add datas //
+
+    $router->post('/addGames', function () use ($controller) {
+        $controller->add();
+    });
+
+    $router->post('/addUsers', function () use ($controller) {
+        $controller->add();
+    });
+
+    $router->get('/addTimes', function () use ($controller) {
+        $controller->add();
+    });
+
+    $router->get('/addReviews', function () use ($controller) {
+        $controller->add();
+    });
+
+    $router->get('/deleteUsers/{id}', function ($id) use ($controller) {
+        $controller->delete($id);
+    });
 
 });
 

@@ -25,6 +25,18 @@ class GameManager extends DBManager {
         return $gamesList;
     }
 
+    public function add(Game $game)
+    {
+
+        $query = $this->bdd->prepare('INSERT INTO Games (title,resume) VALUES (:title,:resume) ');
+        $query->execute([
+            "title" => $game->getTitle(),
+            "resume" => $game->getResume(),
+            ]);
+
+
+    }
+
 
 
 

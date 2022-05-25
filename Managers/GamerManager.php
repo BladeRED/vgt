@@ -84,6 +84,15 @@ class GamerManager extends DBManager
 
     }
 
+    public function delete($gamer)
+    {
+
+        $query = $this->bdd->prepare('DELETE FROM Gamer WHERE Id_Gamer= :id');
+        $query->execute([
+            "id" => $gamer->getId()
+        ]);
+    }
+
 }
 
 ?>

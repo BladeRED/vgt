@@ -20,7 +20,7 @@ class TimeManager extends DBManager
 
         foreach ($results as $result) {
 
-            $timesList[] = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"], new Game($result["Id_Games"], $result["title"], $result["resume"],'', ''));
+            $timesList[] = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"], new Game($result["Id_Games"], $result["title"], $result["resume"],'', '','',''));
 
         }
 

@@ -39,12 +39,20 @@
                             <p class="text-center"> Soumettre un temps </p>
                         </a>
                     </div>
-                    <div class="col-lg-6">
-                        <a href="/home/login">
-                            <img src="../../assets/pictures/login.png" class="img-fluid rounded mx-auto d-block mt-5"
-                                 style="height: 64px ;width: 64px" alt="VGT_login">
-                            <p class="text-center"> Connexion/Inscription </p>
-                        </a>
+                    <div class="col-lg-6 logbutton">
+                        {% if gamer %}
+                            <a href="/security/logout">
+                                <img src="../../assets/pictures/login.png" class="img-fluid rounded mx-auto d-block mt-5"
+                                     style="height: 64px ;width: 64px" alt="VGT_login">
+                                <p class="text-center"> Déconnexion </p>
+                            </a>
+                        {% else %}
+                            <a href="/home/login">
+                                <img src="../../assets/pictures/login.png" class="img-fluid rounded mx-auto d-block mt-5"
+                                     style="height: 64px ;width: 64px" alt="VGT_login">
+                                <p class="text-center"> Connexion/Inscription </p>
+                            </a>
+                        {% endif %}
                     </div>
 
 

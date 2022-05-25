@@ -14,6 +14,84 @@
 
         <section>
             <div class="container my-5">
+                <div class="d-flex justify-content-end">
+                    <!-- Large modal -->
+                    <button type="button" class="btn btn-lg btn-outline-success mb-4" data-bs-toggle="modal" data-bs-target=".bd-example-modal-lg">Ajouter un jeu</button>
+
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <form class="mx-auto" method="post"
+                                      action="/admin/addGames">
+                                    <div class="form-group my-3 mx-5 px-5">
+                                        <label for="titleInput" class="mt-4 mb-3 text-dark mx-5 px-5"> Titre du jeu </label>
+                                        <input
+                                                type="text"
+                                                class="form-control log mx-auto"
+                                                id="titleInput"
+                                                name="titleInput"
+                                                placeholder="Elden Ring GOTY 2022"
+                                                required
+                                        />
+                                    </div>
+                                    <div class="form-group mt-3 mb-4 mx-5 px-5">
+                                        <label for="resumeInput" class="my-3 text-dark mx-5 px-5">Résumé du jeu: </label>
+                                        <textarea
+                                                type="text"
+                                                class="form-control log mx-auto "
+                                                id="resumeInput"
+                                                name="resumeInput"
+                                                minlength="50"
+                                                maxlength="512"
+                                                required
+                                                placeholder="Veuillez écrire un résumé entre 50 et 512 caractères."
+                                        ></textarea>
+                                    </div>
+
+                                    <div class="form-group mb-4 mx-5 px-5">
+
+                                        <label for="platforms" class="text-center text-dark ms-4">Plateforme:</label>
+
+                                        <select name="plateforms" id="platforms" class="mb-3 align-self-center">
+                                            <option value="PS4">PS4</option>
+                                            <option value="PS5">PS5</option>
+                                            <option value="PC">PC</option>
+                                            <option value="XBOX One">Xbox One</option>
+                                            <option value="XBOX Series">Xbox Series</option>
+                                            <option value="Nintendo Switch">Nintendo Switch</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form-group mb-4 mx-5 px-5">
+
+                                        <label for="genres" class="text-center text-dark ms-5">Genres:</label>
+
+                                        <select name="genres" id="genres" class="mb-3 align-self-center">
+                                            <option value="PS4">RPG</option>
+                                            <option value="PS5">Monde Ouvert</option>
+                                            <option value="PC">Aventure</option>
+                                            <option value="XBOX One">Gestion</option>
+                                            <option value="XBOX Series">Stratégie</option>
+                                            <option value="Nintendo Switch">Combat</option>
+                                        </select>
+                                    </div>
+                                    <button
+
+                                            type="submit"
+                                            class="btn btn-lg btn-success mx-auto mt-5 mb-2 px-5 d-flex justify-content-center text-white"
+                                            style="margin-top:3.25rem !important"
+                                    >
+                                        Ajouter le jeu
+                                    </button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
                 <table class="table table-dark table-striped">
                     <thead>
                     <tr>
@@ -29,11 +107,11 @@
                     <tbody>
                     {% for game in games %}
                         <tr>
-                            <th scope="row">{{game.id}}</th>
-                            <td>{{game.title}}</td>
+                            <th scope="row">{{ game.id }}</th>
+                            <td>{{ game.title }}</td>
                             <td>{{ game.resume }}</td>
-                            <td> {{game.genre.name}}</td>
-                            <td> {{game.platform.console}}</td>
+                            <td> {{ game.genre.name }}</td>
+                            <td> {{ game.platform.console }}</td>
                             <td><a href="#" type="button" class="btn btn-lg btn-secondary my-3">Modifier</a>
                                 <a href="#" type="button" class="btn btn-lg btn-danger my-3 ">Supprimer</a></td>
                         </tr>
