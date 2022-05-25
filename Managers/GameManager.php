@@ -13,7 +13,7 @@ class GameManager extends DBManager {
     public function findAll()
     {
 
-        $query = $this->bdd->prepare('SELECT * FROM Games JOIN game_genre ON Games.Id_Games = game_genre.Id_Games JOIN Genre ON Genre.Id_Genre = game_genre.Id_Genre JOIN game_platform ON Games.Id_Games = game_platform.Id_Games JOIN Platforms ON Platforms.Id_Platforms = game_platform.Id_Platforms;');
+        $query = $this->bdd->prepare('SELECT * FROM Games JOIN game_genre ON Games.Id_Games = game_genre.Id_Games JOIN Genre ON Genre.Id_Genre = game_genre.Id_Genre JOIN game_platform ON Games.Id_Games = game_platform.Id_Games JOIN Platforms ON Platforms.Id_Platforms = game_platform.Id_Platforms GROUP BY Games.Id_Games;');
         $query->execute();
         $results = $query->fetchAll();
 
