@@ -2,7 +2,8 @@
 
 namespace app\Models;
 
-class Time {
+class Time
+{
 
     private $id;
     private $category;
@@ -10,6 +11,7 @@ class Time {
     private $minuts;
     private $seconds;
     private $Id_Games;
+    private $gamer;
 
     //For join the game model //
     private $game;
@@ -21,17 +23,19 @@ class Time {
      * @param $minuts
      * @param $seconds
      * @param $Id_Games
+     * @param $gamer
      * @param $game
      */
-    public function __construct($id, $category, $hours, $minuts, $seconds, $Id_Games, $game)
+    public function __construct($id, $category, $hours, $minuts, $seconds, $Id_Games, $gamer, $game)
     {
         $this->id = $id;
         $this->category = $category;
         $this->hours = $hours;
         $this->minuts = $minuts;
         $this->seconds = $seconds;
-        $this->Id_Games= $Id_Games;
-        $this->game= $game;
+        $this->Id_Games = $Id_Games;
+        $this->gamer = $gamer;
+        $this->game = $game;
     }
 
     /**
@@ -128,6 +132,22 @@ class Time {
     public function setId_Games($Id_Games): void
     {
         $this->Id_Games = $Id_Games;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getgamer()
+    {
+        return $this->gamer;
+    }
+
+    /**
+     * @param mixed $gamer
+     */
+    public function setId_Gamer($gamer): void
+    {
+        $this->gamer = $gamer;
     }
 
     /**

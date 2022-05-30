@@ -33,8 +33,6 @@ class GameManager extends DBManager {
             "title" => $game->getTitle(),
             "resume" => $game->getResume(),
             ]);
-
-
     }
 
 
