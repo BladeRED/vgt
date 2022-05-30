@@ -133,7 +133,7 @@ $router->mount('/admin', function () use ($router) {
         $controller->delete($id);
     });
 
-    $router->get('/editUsers/{id}', function ($id) use ($controller) {
+    $router->post('/editUsers/{id}', function ($id) use ($controller) {
         $controller->edit($id);
     });
 

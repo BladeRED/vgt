@@ -104,7 +104,7 @@ class AdminController extends AbstractController
 
     // Creation of an error table //
     $errors = [];
-    $editGamer = $this->gamermanager->getOnebyGamerId($this->sessionService->gamer->getId());
+    $editGamer = $this->gamermanager->getOnebyGamerId($id);
 
 
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -132,9 +132,7 @@ class AdminController extends AbstractController
             $editGamer->setPicture($uniqFileName);
 
             $this->gamermanager->update($editGamer);
-
-            $this->sessionService->gamer = serialize($editGamer);
-            header("Location: /admin/users");
+            header("Location:/admin/users");
         }
     };
 }
