@@ -34,8 +34,9 @@
                             <td>{{ time.hours }}hrs {{ time.minuts }}min {{ time.seconds }}s</td>
                             <td>{{ time.game.title }}</td>
                             <td>{{ time.gamer.pseudo }}</td>
-                            <td><a href="#" type="button" class="btn btn-lg btn-secondary my-3">Modifier</a>
-                                <a href="#" type="button" class="btn btn-lg btn-danger my-3 ">Supprimer</a></td>
+                            <td>
+                                <a href="/admin/deleteTimes/{{ time.id }}" type="button"
+                                   class="btn btn-lg btn-danger my-3 ">Supprimer</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

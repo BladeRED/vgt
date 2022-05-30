@@ -28,4 +28,29 @@ class TimeManager extends DBManager
         return $timesList;
     }
 
+    public function getOneByTimeId($id)
+    {
+        $time = null;
+        $query = $this->bdd->prepare('SELECT * FROM Gametimes WHERE Id_Gametimes =:Id_Gametimes');
+        $query->execute(["Id_Gametimes" => $id]);
+        $result = $query->fetch();
+
+        if ($result) {
+
+            $time = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"], $result["Id_Gamer"],$result["Id_Games"]);
+
+        }
+
+        return $time;
+    }
+
+    public function delete($time)
+    {
+
+        $query = $this->bdd->prepare('DELETE FROM Gametimes WHERE Id_Gametimes= :id');
+        $query->execute([
+            "id" => $time->getId()
+        ]);
+    }
+
 }

@@ -3,6 +3,7 @@
 namespace app\Managers;
 use app\Models\Gamer;
 use app\Models\Review;
+use app\Models\Time;
 
 class ReviewManager extends DBManager{
 
@@ -22,5 +23,28 @@ class ReviewManager extends DBManager{
         return $reviewsList;
     }
 
+    public function getOneByReviewId($id)
+    {
+        $review = null;
+        $query = $this->bdd->prepare('SELECT * FROM Reviews WHERE Id_Reviews =:Id_Reviews');
+        $query->execute(["Id_Reviews" => $id]);
+        $result = $query->fetch();
 
+        if ($result) {
+
+            $review = new Review($result["Id_Reviews"], $result["note"], $result["comment"], $result["comment_date"], $result["isSignaled"],$result["Id_Gamer"]);
+
+        }
+
+        return $review;
+    }
+
+    public function delete($review)
+    {
+
+        $query = $this->bdd->prepare('DELETE FROM Reviews WHERE Id_Reviews= :id');
+        $query->execute([
+            "id" => $review->getId()
+        ]);
+    }
 }

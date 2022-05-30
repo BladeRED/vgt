@@ -92,54 +92,67 @@ class AdminController extends AbstractController
 
     public function delete($id)
     {
+        if ($_SERVER["REQUEST_URI"] == "/admin/deleteUsers/$id") {
 
-        $deleteGamer = $this->gamermanager->getOnebyGamerId($id);
-        $this->gamermanager->delete($deleteGamer);
-        header('Location:/admin/users');
+            $deleteGamer = $this->gamermanager->getOnebyGamerId($id);
+            $this->gamermanager->delete($deleteGamer);
+            header('Location:/admin/users');
+        } else if ($_SERVER["REQUEST_URI"] == "/admin/deleteTimes/$id") {
 
+            $deleteTime = $this->timemanager->getOnebyTimeId($id);
+            $this->timemanager->delete($deleteTime);
+            header('Location:/admin/times');
+        } else if ($_SERVER["REQUEST_URI"] == "/admin/deleteReviews/$id"){
+
+            $deleteReview = $this->reviewmanager->getOnebyReviewId($id);
+            $this->reviewmanager->delete($deleteReview);
+            header('Location:/admin/reviews');
+
+        }
     }
 
     public function edit($id)
-{
+    {
 
-    // Creation of an error table //
-    $errors = [];
-    $editGamer = $this->gamermanager->getOnebyGamerId($id);
+        // Creation of an error table //
+        $errors = [];
+        $editGamer = $this->gamermanager->getOnebyGamerId($id);
 
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // We call the verification function to see if there is errors on the form //
-        $errors = $this->editGamerForm($errors);
-        // if not, we upload and edit the account informations //
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            // We call the verification function to see if there is errors on the form //
+            $errors = $this->editGamerForm($errors);
+            // if not, we upload and edit the account informations //
 
-        //UPLOAD//
-        if (count($errors) == 0 && $_FILES["pictureFile"]["error"] != 4) {
+            //UPLOAD//
+            if (count($errors) == 0 && $_FILES["pictureFile"]["error"] != 4) {
 
-            $upload = $this->uploadPicture($errors);
-            $uniqFileName = $upload["filename"];
-            $errors = $upload["errors"];
+                $upload = $this->uploadPicture($errors);
+                $uniqFileName = $upload["filename"];
+                $errors = $upload["errors"];
 
-        } else {
-            $uniqFileName = $editGamer->getPicture();
-        }
+            } else {
+                $uniqFileName = $editGamer->getPicture();
+            }
 
-        //EDIT AND REGISTER IN DATABASE//
+            //EDIT AND REGISTER IN DATABASE//
 
-        if (count($errors) == 0) {
-            $editGamer->setMail($_POST["mailEdit"]);
-            $editGamer->setPseudo($_POST["pseudoEdit"]);
-            $editGamer->setPassword($_POST["passwordEdit"]);
-            $editGamer->setPicture($uniqFileName);
+            if (count($errors) == 0) {
+                $editGamer->setMail($_POST["mailEdit"]);
+                $editGamer->setPseudo($_POST["pseudoEdit"]);
+                $editGamer->setPassword($_POST["passwordEdit"]);
+                $editGamer->setPicture($uniqFileName);
 
-            $this->gamermanager->update($editGamer);
-            header("Location:/admin/users");
-        }
-    };
-}
+                $this->gamermanager->update($editGamer);
+                header("Location:/admin/users");
+            }
+        };
+    }
 
-    // FORMS //
+// FORMS //
 
-    public function validForm()
+    public
+    function validForm()
     {
 
         $errors = [];
@@ -163,7 +176,8 @@ class AdminController extends AbstractController
 
     }
 
-    private function addUserForm(): array
+    private
+    function addUserForm(): array
     {
 
         $errors = [];
@@ -192,7 +206,8 @@ class AdminController extends AbstractController
         return $this->checkLogForm($password, $errors, $pseudo, $antibot);
     }
 
-    public function editGamerForm($errors)
+    public
+    function editGamerForm($errors)
     {
 
         $errors = [];
@@ -233,7 +248,8 @@ class AdminController extends AbstractController
      * @param mixed $antibot
      * @return array
      */
-    private function checkLogForm(mixed $password, array $errors, mixed $pseudo, mixed $antibot): array
+    private
+    function checkLogForm(mixed $password, array $errors, mixed $pseudo, mixed $antibot): array
     {
         if (empty($pseudo)) {
 
@@ -278,7 +294,8 @@ class AdminController extends AbstractController
         return $errors;
     }
 
-    public function uploadPicture($errors)
+    public
+    function uploadPicture($errors)
     {
 
         if ($_FILES["pictureFile"]["error"] != 0) {
@@ -296,7 +313,7 @@ class AdminController extends AbstractController
         if (count($errors) == 0) {
             $extension = explode("/", $_FILES["pictureFile"]["type"])[1];
             $uniqFilename = uniqid() . '.' . $extension;
-            move_uploaded_file($_FILES["pictureFile"]["tmp_name"],'assets/pictures/'.$uniqFilename);
+            move_uploaded_file($_FILES["pictureFile"]["tmp_name"], 'assets/pictures/' . $uniqFilename);
         }
 
         return ["errors" => $errors, 'filename' => $uniqFilename];

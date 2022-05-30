@@ -30,14 +30,14 @@
                     <tbody>
                     {% for review in reviews %}
                         <tr>
-                            <th scope="row">{{review.id}}</th>
-                            <td>{{review.note}}</td>
+                            <th scope="row">{{ review.id }}</th>
+                            <td>{{ review.note }}</td>
                             <td>{{ review.comment }}</td>
                             <td>{{ review.date }}</td>
                             <td>{{ review.isSignaled }}</td>
                             <td>{{ review.gamer.pseudo }}</td>
-                            <td><a href="#" type="button" class="btn btn-lg btn-secondary my-3">Modifier</a>
-                                <a href="#" type="button" class="btn btn-lg btn-danger my-3 ">Supprimer</a></td>
+                            <td>
+                                <a href="/admin/deleteReviews/{{review.id}}" type="button" class="btn btn-lg btn-danger my-3 ">Supprimer</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>
