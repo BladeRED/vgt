@@ -66,7 +66,7 @@ CREATE TABLE `Gamer` (
   `role` varchar(55) NOT NULL,
   `picture` varchar(512) NOT NULL DEFAULT '../../assets/pictures/vegeta_1771.jpg',
   PRIMARY KEY (`Id_Gamer`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,15 +76,14 @@ CREATE TABLE `Gamer` (
 LOCK TABLES `Gamer` WRITE;
 /*!40000 ALTER TABLE `Gamer` DISABLE KEYS */;
 INSERT INTO `Gamer` VALUES
-(1,'Vegeta_88','$2y$10$BIxI080YCPIiZhv9Ea5EPOtXw6jkLsUlEe/0STixb.mzh5LpPLS4m','SarabadaTrunks@Bulma.jp','[ADMIN]','../../assets/pictures/vegeta_1771.jpg'),
+(1,'Vegeta_88','$2y$10$2RUXZ5W8zQBx.9AC19fkSOnTxl90kqtzwd9.O9lJ8.BtWkWDqZmqu','juleray@msn.com','[ADMIN]','../../assets/pictures/vegeta_1771.jpg'),
 (13,'Dragon','$2y$10$zS4vtQtMQhszpw1gx4/dxudslLHGPoLFXfVtBzqB0vCC.2RKpFqsy','Dragon@dragon.dragon','[GAMER]','628376bab6482.png'),
 (14,'Vegeta_44','$2y$10$AaLa6hY4lLSUf0dW41CX1eSi0lwc4fmuS4mVTefzBGKZbddk01Vym','zfapapeeg@fzapfofzapf.com','[GAMER]','62838d93bcf52.png'),
 (15,'LaFigue','$2y$10$0IjlaRhQZS0a88QdIh.WruZankYQ3msPd0sf9ldzSL3mwYgN3TdZW','LaFigue@lafigue.fr','[GAMER]','../../assets/pictures/dragon.png'),
 (16,'LaBanane','$2y$10$pv3YZazS7kzKe7H.4yvpp.yBhGNsz4..dWZ0mR.mqUFSfn8tWIXMW','LaBanane@banane.fr','[GAMER]','../../assets/pictures/dragon.png'),
-(17,'Végépâté','$2y$10$dt8hwlWRHxHUzzjslnbGtOCs.Yh82Esq0Sl6aaihBYagl9V/JZ2Hy','Vegepate@terrine.jp','[GAMER]','62839eec13cc4.jpeg'),
-(24,'KrilinDu49','$2y$10$RM/IhCdI3WK2s97w5CjAyumFkiDBjDeui.TTZLFd3j4QoXsW0VLDa','Kienzan@mutenroshi.jp','[GAMER]','../../assets/pictures/dragon.png'),
-(25,'LaPampouze','$2y$10$SD7PHO27UcUC43A7VVZayuaGRssWfGljrapMGPt1WSf4SQxsVjqLy','LaPampouze@pampouze.fr','[GAMER]','../../assets/pictures/dragon.png'),
-(26,'Lama63','$2y$10$rRFeHnptMc/Fd72yz9aMNeHtkqutxmrtbyBbQV.R7PGujiUnPeQee','Lama@lama.fr','[GAMER]','../../assets/pictures/dragon.png');
+(17,'MathieuAjax','$2y$10$6xVURws3UnKAfmrQgU/gpOuz2EfOxu5EZrmw3PBBShUVQ.7ZEZuEO','Vegepate@terrine.jp','[GAMER]','62839eec13cc4.jpeg'),
+(24,'LaRaclette','$2y$10$K40wDFpPB7EmGK72M6xY4OVQtbPwROdOWLw.zZsm/yZQ94oO5g7X6','RacletteParty@truffade.savoie','[GAMER]','6294b0279eabe.png'),
+(29,'Vegeta_Majin_De_La_Mort','$2y$10$tmWd5Ut1giXQGHeW0jAE2eF/Qboly3U/KGgTQ9r1FL8ffrPm2YyLO','zfapapeeg@fzapfofzapf.com','[GAMER]','6296100867ade.jpeg');
 /*!40000 ALTER TABLE `Gamer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -99,8 +98,11 @@ CREATE TABLE `Games` (
   `Id_Games` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
   `resume` varchar(512) DEFAULT NULL,
+  `released` date NOT NULL,
+  `editor` varchar(255) NOT NULL,
+  `studio` varchar(255) NOT NULL,
   PRIMARY KEY (`Id_Games`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -110,10 +112,12 @@ CREATE TABLE `Games` (
 LOCK TABLES `Games` WRITE;
 /*!40000 ALTER TABLE `Games` DISABLE KEYS */;
 INSERT INTO `Games` VALUES
-(1,'Elden Ring','Elden Ring se déroule dans le royaume de l\'Entre-terre, quelque temps après la destruction du Cercle d’Elden et la dispersion de ses fragments, les runes majeures. Autrefois honoré par la présence du Cercle et de l\'Arbre-Monde, le royaume est maintenant gouverné par les descendants demi-dieux de la reine Marika l\'Éternelle, chacun possédant un éclat du Cercle d\'Elden qui les corrompt et les empoisonne par leur pouvoir.'),
-(2,'Pillars of Eternity','L\'histoire se déroule dans le monde d\'Eora, dans une région située dans l\'hémisphère sud, appelée les Contrées Orientales, une région qui a approximativement la taille de l\'Espagne. Les Contrées orientales comportent plusieurs nations, dont le Palatinat Libre du Dyrwood – une ancienne colonie du puissant Empire d\'Aedyr qui a gagné son indépendance au travers d\'une révolution6 – les Républiques de Vailia.'),
-(3,'Zelda: Breath of the Wild','L\'intrigue se déroule dans un univers médiéval-fantastique, le royaume d\'Hyrule. Ce dernier est dévasté à la suite d\'une catastrophe ayant eu lieu un siècle avant l\'aventure, et présente ainsi de nombreux temples et bâtiments en ruines. La nature, par sa faune et sa flore, est en revanche omniprésente. '),
-(4,'Dragon Ball Xenoverse 2','Il s\'agit d\'un jeu de combat en map fermée (mais possédant de grandes limites). L\'attrait principal du jeu est que le joueur peut créer son avatar parmi cinq races qui sont les Majins (comme Boo), les Saiyans (comme Son Goku et Vegeta), les terriens (comme Krilin), les Nameks (comme Piccolo) ou enfin la race de Freezer. ');
+(1,'Elden Ring','Elden Ring se déroule dans le royaume de l\'Entre-terre, quelque temps après la destruction du Cercle d’Elden et la dispersion de ses fragments, les runes majeures. Autrefois honoré par la présence du Cercle et de l\'Arbre-Monde, le royaume est maintenant gouverné par les descendants demi-dieux de la reine Marika l\'Éternelle, chacun possédant un éclat du Cercle d\'Elden qui les corrompt et les empoisonne par leur pouvoir.','2022-02-28','Bandai Namco','From Software'),
+(2,'Pillars of Eternity','L\'histoire se déroule dans le monde d\'Eora, dans une région située dans l\'hémisphère sud, appelée les Contrées Orientales, une région qui a approximativement la taille de l\'Espagne. Les Contrées orientales comportent plusieurs nations, dont le Palatinat Libre du Dyrwood – une ancienne colonie du puissant Empire d\'Aedyr qui a gagné son indépendance au travers d\'une révolution6 – les Républiques de Vailia.','2015-03-26','Paradox Interactive','Obsidian Entertainment'),
+(3,'Zelda: Breath of the Wild','L\'intrigue se déroule dans un univers médiéval-fantastique, le royaume d\'Hyrule. Ce dernier est dévasté à la suite d\'une catastrophe ayant eu lieu un siècle avant l\'aventure, et présente ainsi de nombreux temples et bâtiments en ruines. La nature, par sa faune et sa flore, est en revanche omniprésente. ','2017-03-03','Nintendo','Nintendo'),
+(4,'Dragon Ball Xenoverse 2','Il s\'agit d\'un jeu de combat en map fermée (mais possédant de grandes limites). L\'attrait principal du jeu est que le joueur peut créer son avatar parmi cinq races qui sont les Majins (comme Boo), les Saiyans (comme Son Goku et Vegeta), les terriens (comme Krilin), les Nameks (comme Piccolo) ou enfin la race de Freezer. ','2016-10-24','Bandai Namco','Dimps'),
+(10,'Francky et le Secret du Rhum','aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa','2022-05-10','Niwee productions','Franck'),
+(11,'Divinity 2 Original Sin','À la suite de la mort du Divin, les ensourceleurs attirent le Vide. L\'Ordre Divin dirigé par l\'Evêque Alexandar décide de proscrire l\'utilisation de la Source. Le joueur incarne un(e) ensourceleur(se) renégat victime de la répression de l\'Evêque.','2017-09-14','Larian Studios','Larian Studios');
 /*!40000 ALTER TABLE `Games` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -149,8 +153,6 @@ LOCK TABLES `Gametimes` WRITE;
 INSERT INTO `Gametimes` VALUES
 (1,'Histoire',98,57,23,1,13),
 (2,'Complétioniste',257,32,45,2,13),
-(3,'Histoire+Extras',57,57,57,4,13),
-(4,'Histoire',132,43,52,3,13),
 (5,'Histoire',55,23,12,1,17),
 (6,'Complétioniste',132,32,45,1,15);
 /*!40000 ALTER TABLE `Gametimes` ENABLE KEYS */;
@@ -167,7 +169,7 @@ CREATE TABLE `Genre` (
   `Id_Genre` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`Id_Genre`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -187,7 +189,8 @@ INSERT INTO `Genre` VALUES
 (8,'JRPG'),
 (9,'Stratégie'),
 (10,'FPS'),
-(11,'Hack n\'Slash');
+(11,'Hack n\'Slash'),
+(12,'MMORPG');
 /*!40000 ALTER TABLE `Genre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -200,7 +203,7 @@ DROP TABLE IF EXISTS `Platforms`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Platforms` (
   `Id_Platforms` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) NOT NULL,
+  `console` varchar(50) NOT NULL,
   PRIMARY KEY (`Id_Platforms`)
 ) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -250,7 +253,7 @@ CREATE TABLE `Reviews` (
   KEY `Id_Gamer` (`Id_Gamer`),
   CONSTRAINT `Reviews_ibfk_1` FOREIGN KEY (`Id_Games`) REFERENCES `Games` (`Id_Games`),
   CONSTRAINT `Reviews_ibfk_2` FOREIGN KEY (`Id_Gamer`) REFERENCES `Gamer` (`Id_Gamer`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -261,8 +264,8 @@ LOCK TABLES `Reviews` WRITE;
 /*!40000 ALTER TABLE `Reviews` DISABLE KEYS */;
 INSERT INTO `Reviews` VALUES
 (1,5,'C\'est trop bien ce jeu !','2021-12-15 11:06:44',1,4,13),
-(2,2,'J\'ai pas aimé...','2022-02-23 21:29:45',1,1,13),
-(3,4,'J\'ai adoré mais moins que Dragon Ball.','2022-05-17 23:32:11',1,3,13);
+(3,4,'J\'ai adoré mais moins que Dragon Ball.','2022-05-17 23:32:11',1,3,13),
+(4,3,'Après quelques heures à adorer les combats, je me suis vite lassé. Trop de farm, trop de blabla, scénario presque inintéressant, heureusement que la fin du jeu s\'est vite montré sinon j\'aurais mourru d\'ennui !','2022-05-30 08:51:06',1,4,24);
 /*!40000 ALTER TABLE `Reviews` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -295,7 +298,8 @@ INSERT INTO `game_genre` VALUES
 (1,4),
 (2,3),
 (3,4),
-(4,5);
+(4,5),
+(11,3);
 /*!40000 ALTER TABLE `game_genre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -396,4 +400,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-24 15:13:40
+-- Dump completed on 2022-05-31 15:25:59

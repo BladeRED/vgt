@@ -39,7 +39,7 @@ class GamerManager extends DBManager
         return $gamer;
     }
 
-    public function getOneByGamerId($id)
+    public function findByGamerId($id)
     {
         $gamer = null;
         $query = $this->bdd->prepare('SELECT * FROM Gamer WHERE Id_Gamer =:Id_Gamer');

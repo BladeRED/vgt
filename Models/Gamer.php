@@ -127,6 +127,19 @@ class Gamer
         $this->picture = $picture;
     }
 
+    public function toArray()
+    {
+
+        return [
+            "id" => $this->getId(),
+            "pseudo" => $this->getPseudo(),
+            "password" => $this->getPassword(),
+            "mail" => $this->getMail(),
+            "role" => $this->getRole(),
+            "picture" => $this->getPicture()
+        ];
+    }
+
 
 }
 

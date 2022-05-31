@@ -145,6 +145,13 @@ $router->mount('/admin', function () use ($router) {
         $controller->edit($id);
     });
 
+    //AJAX//
+
+    $router->get('/users/{id}', function ($id) use ($controller) {
+        $controller->ajaxModal($id);
+    });
+
+
 });
 
 

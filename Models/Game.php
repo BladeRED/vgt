@@ -2,11 +2,15 @@
 
 namespace app\Models;
 
-class Game{
+class Game
+{
 
     private $id;
     private $title;
     private $resume;
+    private $released;
+    private $editor;
+    private $studio;
 
     // For join genre and platform tables //
     private $genre;
@@ -18,21 +22,28 @@ class Game{
      * @param $id
      * @param $title
      * @param $resume
+     * @param $released
+     * @param $editor
+     * @param $studio
      * @param $genre
      * @param $game_genre
      * @param $platform
      * @param $game_platform
      */
-    public function __construct($id, $title, $resume, $genre, $game_genre, $platform, $game_platform)
+    public function __construct($id, $title, $resume, $released, $editor, $studio, $genre, $game_genre, $platform, $game_platform)
     {
         $this->id = $id;
         $this->title = $title;
         $this->resume = $resume;
+        $this->released = $released;
+        $this->editor = $editor;
+        $this->studio = $studio;
         $this->genre = $genre;
-        $this->game_genre= $game_genre;
-        $this->platform= $platform;
-        $this->game_platform= $game_platform;
+        $this->game_genre = $game_genre;
+        $this->platform = $platform;
+        $this->game_platform = $game_platform;
     }
+
 
     /**
      * @return mixed
@@ -80,6 +91,54 @@ class Game{
     public function setResume($resume): void
     {
         $this->resume = $resume;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getReleased()
+    {
+        return $this->released;
+    }
+
+    /**
+     * @param mixed $released
+     */
+    public function setReleased($released): void
+    {
+        $this->released = $released;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getEditor()
+    {
+        return $this->editor;
+    }
+
+    /**
+     * @param mixed $editor
+     */
+    public function setEditor($editor): void
+    {
+        $this->editor = $editor;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStudio()
+    {
+        return $this->studio;
+    }
+
+    /**
+     * @param mixed $studio
+     */
+    public function setStudio($studio): void
+    {
+        $this->studio = $studio;
     }
 
     /**

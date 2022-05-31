@@ -4,6 +4,7 @@ namespace app\Controllers;
 
 use app\Services\sessionService;
 use Twig\Environment;
+use Twig\Extra\Intl\IntlExtension;
 use Twig\Loader\FilesystemLoader;
 
 abstract class AbstractController
@@ -21,6 +22,9 @@ abstract class AbstractController
         $this->render = new Environment($this->_loader, [
             'debug' => true, // allow dump()
         ]);
+
+
+        $this->render->addExtension(new IntlExtension());
 
         $this->render->addExtension(new \Twig\Extension\DebugExtension()); // allow dump()
 

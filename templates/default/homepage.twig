@@ -17,20 +17,21 @@
 
                         <div class="modal-body row">
                             <div class="col-lg-4 cookieflex">
-                                <img src="../../assets/pictures/cookie.png" alt="cookie_img" class="img-fluid mx-auto d-block"
+                                <img src="../../assets/pictures/cookie.png" alt="cookie_img"
+                                     class="img-fluid mx-auto d-block"
                                      style="max-width: 380px;max-height: 380px">
 
                             </div>
 
                             <div class="col-lg-8 cookieflex2">
-                                    <p class="mt-5 text-dark text-center py-2">
-                                        Chez VGT, on aime bien s'assurer que tout fonctionne bien, mais pour sa, on a
-                                        besoin que tu mange un petit cookie :).
-                                        Il n'est pas au chocolat ou à la noix de coco, mais il se digère très bien, et
-                                        ne feras aucun mal à tes données personnelles!
-                                        Pour en savoir plus, consulte notre <a href="#"> Politique de
-                                            confidentialité </a> !
-                                    </p>
+                                <p class="mt-5 text-dark text-center py-2">
+                                    Chez VGT, on aime bien s'assurer que tout fonctionne bien, mais pour sa, on a
+                                    besoin que tu mange un petit cookie :).
+                                    Il n'est pas au chocolat ou à la noix de coco, mais il se digère très bien, et
+                                    ne feras aucun mal à tes données personnelles!
+                                    Pour en savoir plus, consulte notre <a href="#"> Politique de
+                                        confidentialité </a> !
+                                </p>
                             </div>
 
                         </div>
@@ -225,7 +226,12 @@
 
     <!-- JS scripts -->
     {% include 'parts/JS_scripts.twig' %}
+    <script>
 
+        let cookie = new bootstrap.Modal(document.getElementById('RGPDModal'));
+        cookie.show();
+
+    </script>
     </body>
 
     </html>

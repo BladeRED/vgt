@@ -94,7 +94,7 @@ class AdminController extends AbstractController
     {
         if ($_SERVER["REQUEST_URI"] == "/admin/deleteUsers/$id") {
 
-            $deleteGamer = $this->gamermanager->getOnebyGamerId($id);
+            $deleteGamer = $this->gamermanager->findbyGamerId($id);
             $this->gamermanager->delete($deleteGamer);
             header('Location:/admin/users');
         } else if ($_SERVER["REQUEST_URI"] == "/admin/deleteTimes/$id") {
@@ -116,7 +116,7 @@ class AdminController extends AbstractController
 
         // Creation of an error table //
         $errors = [];
-        $editGamer = $this->gamermanager->getOnebyGamerId($id);
+        $editGamer = $this->gamermanager->findByGamerId($id);
 
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -149,10 +149,18 @@ class AdminController extends AbstractController
         };
     }
 
+    public function ajaxModal($id){
+
+        $users = $this->gamermanager->findByGamerId($id);
+        $users = $users->toArray();
+        echo(json_encode($users));
+
+
+    }
+
 // FORMS //
 
-    public
-    function validForm()
+    public function validForm()
     {
 
         $errors = [];

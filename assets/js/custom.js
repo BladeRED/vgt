@@ -43,13 +43,6 @@ function hideSection() {
 
 }
 
-function editModal(){
-
-    document.querySelector(".editModal").classList.add("prout")
-
-
-}
-
 //MAIN CODE//
 
 // To be sure that the js will be loaded in last position //

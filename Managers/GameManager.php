@@ -19,7 +19,7 @@ class GameManager extends DBManager {
 
         foreach ($results as $result) {
 
-            $gamesList[] = new Game($result["Id_Games"], $result["title"], $result["resume"], new Genre($result["Id_Genre"], $result["name"], new game_genre($result["Id_Games"], $result["Id_Genre"])), new game_genre($result["Id_Games"], $result["Id_Genre"]), new Platform($result["Id_Platforms"], $result["console"], new game_platform($result["Id_Games"], $result["Id_Platforms"])), new game_platform($result["Id_Games"], $result["Id_Platforms"]));
+            $gamesList[] = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], new Genre($result["Id_Genre"], $result["name"], new game_genre($result["Id_Games"], $result["Id_Genre"])), new game_genre($result["Id_Games"], $result["Id_Genre"]), new Platform($result["Id_Platforms"], $result["console"], new game_platform($result["Id_Games"], $result["Id_Platforms"])), new game_platform($result["Id_Games"], $result["Id_Platforms"]));
 
         }
         return $gamesList;
@@ -28,10 +28,13 @@ class GameManager extends DBManager {
     public function add(Game $game)
     {
 
-        $query = $this->bdd->prepare('INSERT INTO Games (title,resume) VALUES (:title,:resume) ');
+        $query = $this->bdd->prepare('INSERT INTO Games (title,resume,released,editor,studio) VALUES (:title,:resume,:released,:editor, :studio); INSERT INTO game_genre (Id_Games, Id_Genre) VALUES(:Id_Games, :Id_Genre)');
         $query->execute([
             "title" => $game->getTitle(),
             "resume" => $game->getResume(),
+            "released" => $game->getReleased(),
+            "editor" => $game->getEditor(),
+            "studio" => $game->getStudio(),
             ]);
     }
 

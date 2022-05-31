@@ -99,23 +99,32 @@
                 <table class="table table-dark table-striped">
                     <thead>
                     <tr>
-                        <th scope="col">ID</th>
+                        <th scope="col" style="color: #c06faa">ID</th>
                         <th scope="col" class="text-center">Titre</th>
                         <th scope="col" class="text-center">Résumé</th>
                         <th scope="col" class="text-center">Genre</th>
                         <th scope="col" class="text-center">Plateforme</th>
+                        <th scope="col" class="text-center">Date de sortie</th>
+                        <th scope="col" class="text-center">Studio</th>
+                        <th scope="col" class="text-center">Editeur</th>
                         <th scope="col" class="text-center">Actions</th>
 
                     </tr>
                     </thead>
                     <tbody>
+
+
                     {% for game in games %}
+
                         <tr>
-                            <th scope="row">{{ game.id }}</th>
+                            <th scope="row" style="vertical-align: middle;color: #c06faa">{{ game.id }}</th>
                             <td>{{ game.title }}</td>
                             <td>{{ game.resume }}</td>
                             <td> {{ game.genre.name }}</td>
                             <td> {{ game.platform.console }}</td>
+                            <td class="px-5 mx-5"> {{ game.released|format_datetime(locale='fr',pattern="dd MMMM YYYY") }}</td>
+                            <td> {{ game.studio }}</td>
+                            <td> {{ game.editor }}</td>
                             <td><a href="#" type="button" class="btn btn-lg btn-secondary my-3">Modifier</a>
                                 <a href="#" type="button" class="btn btn-lg btn-danger my-3 ">Supprimer</a></td>
                         </tr>
@@ -132,10 +141,6 @@
     <!-- JS scripts -->
 
     {% include 'parts/JS_scripts.twig' %}
-
-    <script>
-
-    </script>
 
     </body>
     </html>

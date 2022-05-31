@@ -25,12 +25,14 @@ class ComposerStaticInit7aa0be6e7bf70713054d020648c8cebc
         ),
         'T' => 
         array (
+            'Twig\\Extra\\Intl\\' => 16,
             'Twig\\' => 5,
         ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
             'Symfony\\Polyfill\\Ctype\\' => 23,
+            'Symfony\\Component\\Intl\\' => 23,
         ),
         'P' => 
         array (
@@ -59,6 +61,10 @@ class ComposerStaticInit7aa0be6e7bf70713054d020648c8cebc
         array (
             0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
         ),
+        'Twig\\Extra\\Intl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/intl-extra',
+        ),
         'Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/twig/src',
@@ -70,6 +76,10 @@ class ComposerStaticInit7aa0be6e7bf70713054d020648c8cebc
         'Symfony\\Polyfill\\Ctype\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
+        ),
+        'Symfony\\Component\\Intl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/intl',
         ),
         'Psr\\Log\\' => 
         array (

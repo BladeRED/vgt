@@ -73,7 +73,7 @@ class SecurityController extends AbstractController
 
         // Creation of an error table //
         $errors = [];
-        $editGamer = $this->gamermanager->getOnebyGamerId($this->sessionService->gamer->getId());
+        $editGamer = $this->gamermanager->findByGamerId($this->sessionService->gamer->getId());
 
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {

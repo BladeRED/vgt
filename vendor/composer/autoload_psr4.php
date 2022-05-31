@@ -11,8 +11,10 @@ return array(
     'app\\Managers\\' => array($baseDir . '/Managers'),
     'app\\Controllers\\' => array($baseDir . '/Controllers'),
     'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),
+    'Twig\\Extra\\Intl\\' => array($vendorDir . '/twig/intl-extra'),
     'Twig\\' => array($vendorDir . '/twig/twig/src'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Polyfill\\Ctype\\' => array($vendorDir . '/symfony/polyfill-ctype'),
+    'Symfony\\Component\\Intl\\' => array($vendorDir . '/symfony/intl'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/src'),
 );
