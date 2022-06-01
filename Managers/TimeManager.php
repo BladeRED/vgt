@@ -21,7 +21,7 @@ class TimeManager extends DBManager
 
         foreach ($results as $result) {
 
-            $timesList[] = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"],new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"]), new Game($result["Id_Games"], $result["title"], $result["resume"],'', '','',''));
+            $timesList[] = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"],new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"]), new Game($result["Id_Games"], $result["title"], $result["resume"],$result["released"], $result["editor"], $result["studio"], '', '', '', ''));
 
         }
 
@@ -44,12 +44,37 @@ class TimeManager extends DBManager
         return $time;
     }
 
+    public function findTimeByGameId($id)
+    {
+        $time = null;
+        $query = $this->bdd->prepare('SELECT * FROM Gametimes WHERE Id_Games =:Id_Games');
+        $query->execute(["Id_Games" => $id]);
+        $result = $query->fetch();
+
+        if ($result) {
+
+            $time = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"], $result["Id_Gamer"],$result["Id_Games"]);
+
+        }
+
+        return $time;
+    }
+
     public function delete($time)
     {
 
         $query = $this->bdd->prepare('DELETE FROM Gametimes WHERE Id_Gametimes= :id');
         $query->execute([
             "id" => $time->getId()
+        ]);
+    }
+
+    public function deleteByGame($game)
+    {
+
+        $query = $this->bdd->prepare('DELETE FROM Gametimes WHERE Id_Games= :id');
+        $query->execute([
+            "id" => $game->getId()
         ]);
     }
 

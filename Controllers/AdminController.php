@@ -2,12 +2,20 @@
 
 namespace app\Controllers;
 
+use app\Managers\game_genreManager;
+use app\Managers\game_platformManager;
 use app\Managers\GameManager;
 use app\Managers\GamerManager;
+use app\Managers\GenreManager;
+use app\Managers\PlatformManager;
 use app\Managers\ReviewManager;
 use app\Managers\TimeManager;
 use app\Models\Game;
+use app\Models\game_genre;
+use app\Models\game_platform;
 use app\Models\Gamer;
+use app\Models\Genre;
+use app\Models\Platform;
 use app\Services\sessionService;
 
 class AdminController extends AbstractController
@@ -16,6 +24,10 @@ class AdminController extends AbstractController
     private GameManager $gamemanager;
     private TimeManager $timemanager;
     private ReviewManager $reviewmanager;
+    private GenreManager $genremanager;
+    private PlatformManager $platformManager;
+    private game_genreManager $game_genremanager;
+    private game_platformManager $game_platformManager;
 
 
     /**
@@ -28,6 +40,10 @@ class AdminController extends AbstractController
         $this->gamemanager = new GameManager();
         $this->timemanager = new TimeManager();
         $this->reviewmanager = new ReviewManager();
+        $this->genremanager = new GenreManager();
+        $this->platformManager = new PlatformManager();
+        $this->game_genremanager= new game_genreManager();
+        $this->game_platformManager = new game_platformManager();
     }
 
     public function dashboard()
@@ -44,7 +60,12 @@ class AdminController extends AbstractController
             $this->render->display('admin/users.twig', ['users' => $users]);
         } else if ($_SERVER['REQUEST_URI'] == '/admin/games') {
             $games = $this->gamemanager->findAll();
-            $this->render->display('admin/gamesAdmin.twig', ['games' => $games]);
+            $platforms = $this->platformManager->findAll();
+            $genres = $this->genremanager->findAll();
+            $this->render->display('admin/gamesAdmin.twig',
+                ['games' => $games,
+                    'platforms' => $platforms,
+                    'genres' => $genres]);
         } else if ($_SERVER['REQUEST_URI'] == '/admin/times') {
             $times = $this->timemanager->findAll();
             $this->render->display('admin/times.twig', ['times' => $times]);
@@ -75,8 +96,26 @@ class AdminController extends AbstractController
 
                 if (count($errors) == 0) {
 
-                    $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], "RPG", "2", "PS4", "4");
+                    // We get the genre and the platform based on the input values
+                    $genre = $this->genremanager->findByGenreName($_POST["genres"]);
+                    $platform = $this->platformManager->findByPlatformConsole($_POST["platforms"]);
+
+                    // Creation of a new game object  and add //
+                    $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], $_POST["release"], $_POST["studio"], $_POST["editor"], "" ,"", "", "");
                     $this->gamemanager->add($game);
+
+                    // Find the newly created game, creation of relation tables objects  //
+                    $game = $this->gamemanager->findByGameTitle($_POST["titleInput"]);
+
+                    $game_genre = new game_genre($game->getId(), $genre->getId());
+                    $game_platform = new game_platform($game->getId(), $platform->getId());
+
+                    // Add the relation in the relation tables //
+
+                    $this->game_genremanager->add($game_genre);
+                    $this->game_platformManager->add($game_platform);
+
+
                 }
                 header('Location:/admin/games');
 
@@ -92,17 +131,38 @@ class AdminController extends AbstractController
 
     public function delete($id)
     {
+
         if ($_SERVER["REQUEST_URI"] == "/admin/deleteUsers/$id") {
 
             $deleteGamer = $this->gamermanager->findbyGamerId($id);
             $this->gamermanager->delete($deleteGamer);
             header('Location:/admin/users');
-        } else if ($_SERVER["REQUEST_URI"] == "/admin/deleteTimes/$id") {
 
-            $deleteTime = $this->timemanager->getOnebyTimeId($id);
-            $this->timemanager->delete($deleteTime);
-            header('Location:/admin/times');
-        } else if ($_SERVER["REQUEST_URI"] == "/admin/deleteReviews/$id"){
+        } else if ($_SERVER["REQUEST_URI"] == "/admin/deleteGames/$id") {
+
+            // Before delete the game, we need to delete all datas linked to it, such as times, or relation tables //
+
+            $deleteGame = $this->gamemanager->findByGameId($id);
+
+            $deleteTimeByGame = $this->timemanager->findTimeByGameId($id);
+            if ($deleteTimeByGame) {
+                $this->timemanager->delete($deleteTimeByGame);
+            }
+            $deleteGenreGame = $this->game_genremanager->findGameGenreById($id);
+            $this->game_genremanager->delete($deleteGenreGame);
+
+            $deletePlatformGame = $this->game_platformManager->findGamePlatformById($id);
+            $this->game_platformManager->delete($deletePlatformGame);
+
+            $this->gamemanager->delete($deleteGame);
+            header('Location:/admin/games');
+
+        }else if ($_SERVER["REQUEST_URI"] == "/admin/deleteTimes/$id") {
+
+                $deleteTime = $this->timemanager->getOnebyTimeId($id);
+                $this->timemanager->delete($deleteTime);
+                header('Location:/admin/times');
+        } else if ($_SERVER["REQUEST_URI"] == "/admin/deleteReviews/$id") {
 
             $deleteReview = $this->reviewmanager->getOnebyReviewId($id);
             $this->reviewmanager->delete($deleteReview);
@@ -149,7 +209,8 @@ class AdminController extends AbstractController
         };
     }
 
-    public function ajaxModal($id){
+    public function ajaxModal($id)
+    {
 
         $users = $this->gamermanager->findByGamerId($id);
         $users = $users->toArray();

@@ -2,6 +2,7 @@
 
 namespace app\Managers;
 
+use app\Models\Gamer;
 use app\Models\Genre;
 
 class GenreManager extends DBManager
@@ -17,10 +18,26 @@ class GenreManager extends DBManager
 
         foreach ($results as $result) {
 
-            $genreList[] = new Genre($result["Id_Genre"], $result["name"], $result["game_genre"]);
+            $genreList[] = new Genre($result["Id_Genre"], $result["name"], "");
 
         }
         return $genreList;
+    }
+
+    public function findByGenreName($name)
+    {
+        $genre = null;
+        $query = $this->bdd->prepare("SELECT * from Genre WHERE name = :name");
+        $query->execute(["name" => $name]);
+        $result = $query->fetch();
+
+        if ($result) {
+
+            $genre = new Genre($result["Id_Genre"], $result["name"], "");
+
+        }
+
+        return $genre;
     }
 
 }

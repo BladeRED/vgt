@@ -4,6 +4,7 @@ namespace app\Managers;
 use app\Models\Game;
 use app\Models\game_genre;
 use app\Models\game_platform;
+use app\Models\Gamer;
 use app\Models\Genre;
 use app\Models\Platform;
 
@@ -25,10 +26,42 @@ class GameManager extends DBManager {
         return $gamesList;
     }
 
+    public function findByGameTitle($title)
+    {
+        $game = null;
+        $query = $this->bdd->prepare("SELECT * from Games WHERE title = :title");
+        $query->execute(["title" => $title]);
+        $result = $query->fetch();
+
+        if ($result) {
+
+            $game = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], "" , "", "", "");
+
+        }
+
+        return $game;
+    }
+
+    public function findByGameId($id)
+    {
+        $game = null;
+        $query = $this->bdd->prepare("SELECT * from Games WHERE Id_Games = :id");
+        $query->execute(["id" => $id]);
+        $result = $query->fetch();
+
+        if ($result) {
+
+            $game = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], "" , "", "", "");
+
+        }
+
+        return $game;
+    }
+
     public function add(Game $game)
     {
 
-        $query = $this->bdd->prepare('INSERT INTO Games (title,resume,released,editor,studio) VALUES (:title,:resume,:released,:editor, :studio); INSERT INTO game_genre (Id_Games, Id_Genre) VALUES(:Id_Games, :Id_Genre)');
+        $query = $this->bdd->prepare('INSERT INTO Games (title,resume,released,editor,studio) VALUES (:title,:resume,:released,:editor, :studio);');
         $query->execute([
             "title" => $game->getTitle(),
             "resume" => $game->getResume(),
@@ -36,6 +69,16 @@ class GameManager extends DBManager {
             "editor" => $game->getEditor(),
             "studio" => $game->getStudio(),
             ]);
+    }
+
+
+    public function delete($game)
+    {
+
+        $query = $this->bdd->prepare('DELETE FROM Games WHERE Id_Games= :id');
+        $query->execute([
+            "id" => $game->getId()
+        ]);
     }
 
 

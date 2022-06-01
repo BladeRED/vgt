@@ -102,7 +102,7 @@ CREATE TABLE `Games` (
   `editor` varchar(255) NOT NULL,
   `studio` varchar(255) NOT NULL,
   PRIMARY KEY (`Id_Games`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -116,7 +116,6 @@ INSERT INTO `Games` VALUES
 (2,'Pillars of Eternity','L\'histoire se déroule dans le monde d\'Eora, dans une région située dans l\'hémisphère sud, appelée les Contrées Orientales, une région qui a approximativement la taille de l\'Espagne. Les Contrées orientales comportent plusieurs nations, dont le Palatinat Libre du Dyrwood – une ancienne colonie du puissant Empire d\'Aedyr qui a gagné son indépendance au travers d\'une révolution6 – les Républiques de Vailia.','2015-03-26','Paradox Interactive','Obsidian Entertainment'),
 (3,'Zelda: Breath of the Wild','L\'intrigue se déroule dans un univers médiéval-fantastique, le royaume d\'Hyrule. Ce dernier est dévasté à la suite d\'une catastrophe ayant eu lieu un siècle avant l\'aventure, et présente ainsi de nombreux temples et bâtiments en ruines. La nature, par sa faune et sa flore, est en revanche omniprésente. ','2017-03-03','Nintendo','Nintendo'),
 (4,'Dragon Ball Xenoverse 2','Il s\'agit d\'un jeu de combat en map fermée (mais possédant de grandes limites). L\'attrait principal du jeu est que le joueur peut créer son avatar parmi cinq races qui sont les Majins (comme Boo), les Saiyans (comme Son Goku et Vegeta), les terriens (comme Krilin), les Nameks (comme Piccolo) ou enfin la race de Freezer. ','2016-10-24','Bandai Namco','Dimps'),
-(10,'Francky et le Secret du Rhum','aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa','2022-05-10','Niwee productions','Franck'),
 (11,'Divinity 2 Original Sin','À la suite de la mort du Divin, les ensourceleurs attirent le Vide. L\'Ordre Divin dirigé par l\'Evêque Alexandar décide de proscrire l\'utilisation de la Source. Le joueur incarne un(e) ensourceleur(se) renégat victime de la répression de l\'Evêque.','2017-09-14','Larian Studios','Larian Studios');
 /*!40000 ALTER TABLE `Games` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -141,7 +140,7 @@ CREATE TABLE `Gametimes` (
   KEY `Id_Gamer` (`Id_Gamer`),
   CONSTRAINT `Gametimes_ibfk_1` FOREIGN KEY (`Id_Games`) REFERENCES `Games` (`Id_Games`),
   CONSTRAINT `Gametimes_ibfk_2` FOREIGN KEY (`Id_Gamer`) REFERENCES `Gamer` (`Id_Gamer`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -330,7 +329,6 @@ INSERT INTO `game_platform` VALUES
 (1,1),
 (1,2),
 (1,3),
-(1,13),
 (1,14),
 (2,1),
 (3,7),
@@ -400,4 +398,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-31 15:25:59
+-- Dump completed on 2022-06-01 16:40:47

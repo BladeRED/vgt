@@ -141,6 +141,10 @@ $router->mount('/admin', function () use ($router) {
         $controller->delete($id);
     });
 
+    $router->get('/deleteGames/{id}', function ($id) use ($controller) {
+        $controller->delete($id);
+    });
+
     $router->post('/editUsers/{id}', function ($id) use ($controller) {
         $controller->edit($id);
     });
