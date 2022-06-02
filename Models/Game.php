@@ -18,6 +18,11 @@ class Game
     private $platform;
     private $game_platform;
 
+    // Concatenation of genres and platforms //
+
+    private $genres;
+    private $platforms;
+
     /**
      * @param $id
      * @param $title
@@ -29,8 +34,10 @@ class Game
      * @param $game_genre
      * @param $platform
      * @param $game_platform
+     * @param $genres
+     * @param $platforms
      */
-    public function __construct($id, $title, $resume, $released, $editor, $studio, $genre, $game_genre, $platform, $game_platform)
+    public function __construct($id, $title, $resume, $released, $editor, $studio, $genre, $game_genre, $platform, $game_platform, $genres, $platforms)
     {
         $this->id = $id;
         $this->title = $title;
@@ -42,6 +49,8 @@ class Game
         $this->game_genre = $game_genre;
         $this->platform = $platform;
         $this->game_platform = $game_platform;
+        $this->genres= $genres;
+        $this->platforms= $platforms;
     }
 
 
@@ -203,6 +212,38 @@ class Game
     public function setgame_platform($game_platform): void
     {
         $this->game_platform = $game_platform;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGenres()
+    {
+        return $this->genres;
+    }
+
+    /**
+     * @param mixed $genres
+     */
+    public function setGenres($genres): void
+    {
+        $this->genres = $genres;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlatforms()
+    {
+        return $this->platforms;
+    }
+
+    /**
+     * @param mixed $platforms
+     */
+    public function setPlatforms($platforms): void
+    {
+        $this->platforms = $platforms;
     }
 
 

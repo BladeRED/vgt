@@ -14,13 +14,13 @@ class GameManager extends DBManager {
     public function findAll()
     {
 
-        $query = $this->bdd->prepare('SELECT * FROM Games JOIN game_genre ON Games.Id_Games = game_genre.Id_Games JOIN Genre ON Genre.Id_Genre = game_genre.Id_Genre JOIN game_platform ON Games.Id_Games = game_platform.Id_Games JOIN Platforms ON Platforms.Id_Platforms = game_platform.Id_Platforms GROUP BY Games.Id_Games;');
+        $query = $this->bdd->prepare('SELECT DISTINCT Games.Id_Games, `title`, `resume`, `released`, `editor`, `studio`, GROUP_CONCAT( DISTINCT Genre.name) AS Genres, GROUP_CONCAT( Distinct Platforms.console)AS Plateformes, Genre.*, Platforms.* FROM Games JOIN game_genre ON Games.Id_Games = game_genre.Id_Games JOIN Genre ON Genre.Id_Genre = game_genre.Id_Genre JOIN game_platform ON Games.Id_Games = game_platform.Id_Games JOIN Platforms ON Platforms.Id_Platforms = game_platform.Id_Platforms GROUP BY Games.Id_Games;');
         $query->execute();
         $results = $query->fetchAll();
 
         foreach ($results as $result) {
 
-            $gamesList[] = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], new Genre($result["Id_Genre"], $result["name"], new game_genre($result["Id_Games"], $result["Id_Genre"])), new game_genre($result["Id_Games"], $result["Id_Genre"]), new Platform($result["Id_Platforms"], $result["console"], new game_platform($result["Id_Games"], $result["Id_Platforms"])), new game_platform($result["Id_Games"], $result["Id_Platforms"]));
+            $gamesList[] = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], new Genre($result["Id_Genre"], $result["name"], new game_genre($result["Id_Games"], $result["Id_Genre"])), new game_genre($result["Id_Games"], $result["Id_Genre"]), new Platform($result["Id_Platforms"], $result["console"], new game_platform($result["Id_Games"], $result["Id_Platforms"])), new game_platform($result["Id_Games"], $result["Id_Platforms"]), $result["Genres"], $result["Plateformes"]);
 
         }
         return $gamesList;
@@ -35,7 +35,7 @@ class GameManager extends DBManager {
 
         if ($result) {
 
-            $game = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], "" , "", "", "");
+            $game = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], "" , "", "", "", "", "");
 
         }
 
@@ -51,7 +51,7 @@ class GameManager extends DBManager {
 
         if ($result) {
 
-            $game = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], "" , "", "", "");
+            $game = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], "" , "", "", "", "", "");
 
         }
 

@@ -19,6 +19,9 @@
 
                 <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
                      aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                    {% for error in errors %}
+                        <div class="alert-danger w-100 shadow-lg rounded text-center mb-3" role="alert">{{error}}</div>
+                    {% endfor %}
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <form class="mx-auto" method="post" action="/admin/addUsers">
@@ -100,6 +103,9 @@
                      aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
+                            {% for error in errors %}
+                                <div class="alert-danger w-100 shadow-lg rounded text-center mb-3" role="alert">{{error}}</div>
+                            {% endfor %}
                             <form class="mx-auto" method="post" enctype="multipart/form-data"
                                   action="" id="editForm">
 

@@ -24,6 +24,9 @@
                          aria-labelledby="myLargeModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
+                                {% for error in errors %}
+                                    <div class="alert-danger w-100 shadow-lg rounded text-center mb-3" role="alert">{{error}}</div>
+                                {% endfor %}
                                 <form class="mx-auto" method="post"
                                       action="/admin/addGames">
                                     <div class="form-group my-3 mx-5 px-5">
@@ -61,7 +64,7 @@
                                                 class="form-control log mx-auto"
                                                 id="release"
                                                 name="release"
-                                                required
+
                                         />
                                     </div>
 
@@ -79,7 +82,7 @@
                                     </div>
 
                                     <div class="form-group my-3 mx-5 px-5">
-                                        <label for="editor" class="mt-4 mb-3 text-dark mx-5 px-5"> Éditeur: </label>
+                                        <label for="editor" class="mt-4 mb-3 text-dark mx-5 px-5"> Éditeur (si aucun mettre le studio): </label>
                                         <input
                                                 type="text"
                                                 class="form-control log mx-auto"
@@ -150,10 +153,10 @@
                         <tr>
                             <th scope="row" style="vertical-align: middle;color: #c06faa">{{ game.id }}</th>
                             <td>{{ game.title }}</td>
-                            <td>{{ game.resume }}</td>
-                            <td> {{ game.genre.name }}</td>
-                            <td> {{ game.platform.console }}</td>
-                            <td class="px-5 mx-5"> {{ game.released|format_datetime(locale='fr',pattern="dd MMMM YYYY") }}</td>
+                            <td style="max-width: 700px">{{ game.resume }}</td>
+                            <td> {{ game.genres }}</td>
+                            <td> {{ game.platforms }}</td>
+                            <td class="px-5 mx-5"> {{ game.released ? game.released|format_datetime(locale='fr',pattern="dd MMMM YYYY") : "Non communiqué" }}</td>
                             <td> {{ game.studio }}</td>
                             <td> {{ game.editor }}</td>
                             <td>

@@ -17,6 +17,7 @@ use app\Models\Gamer;
 use app\Models\Genre;
 use app\Models\Platform;
 use app\Services\sessionService;
+use Cassandra\Date;
 
 class AdminController extends AbstractController
 {
@@ -56,9 +57,12 @@ class AdminController extends AbstractController
     {
 
         if ($_SERVER['REQUEST_URI'] == '/admin/users') {
+
             $users = $this->gamermanager->findAll();
             $this->render->display('admin/users.twig', ['users' => $users]);
+
         } else if ($_SERVER['REQUEST_URI'] == '/admin/games') {
+
             $games = $this->gamemanager->findAll();
             $platforms = $this->platformManager->findAll();
             $genres = $this->genremanager->findAll();
@@ -66,12 +70,17 @@ class AdminController extends AbstractController
                 ['games' => $games,
                     'platforms' => $platforms,
                     'genres' => $genres]);
+
         } else if ($_SERVER['REQUEST_URI'] == '/admin/times') {
+
             $times = $this->timemanager->findAll();
             $this->render->display('admin/times.twig', ['times' => $times]);
+
         } else if ($_SERVER['REQUEST_URI'] == '/admin/reviews') {
+
             $reviews = $this->reviewmanager->findAll();
             $this->render->display('admin/reviews.twig', ['reviews' => $reviews]);
+
         }
     }
 
@@ -96,13 +105,23 @@ class AdminController extends AbstractController
 
                 if (count($errors) == 0) {
 
+                    // Creation of a new game object  and add //
+
+                    if (!$_POST["release"]){
+
+                        $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], null, $_POST["studio"], $_POST["editor"], "" ,"", "", "", "", "");
+
+                    }else{
+
+                        $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], $_POST["release"], $_POST["studio"], $_POST["editor"], "" ,"", "", "", "", "");
+
+                    }
+                    $this->gamemanager->add($game);
+
+
                     // We get the genre and the platform based on the input values
                     $genre = $this->genremanager->findByGenreName($_POST["genres"]);
                     $platform = $this->platformManager->findByPlatformConsole($_POST["platforms"]);
-
-                    // Creation of a new game object  and add //
-                    $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], $_POST["release"], $_POST["studio"], $_POST["editor"], "" ,"", "", "");
-                    $this->gamemanager->add($game);
 
                     // Find the newly created game, creation of relation tables objects  //
                     $game = $this->gamemanager->findByGameTitle($_POST["titleInput"]);
@@ -145,6 +164,8 @@ class AdminController extends AbstractController
             $deleteGame = $this->gamemanager->findByGameId($id);
 
             $deleteTimeByGame = $this->timemanager->findTimeByGameId($id);
+
+            // We delete only if we find a time registered for a game //
             if ($deleteTimeByGame) {
                 $this->timemanager->delete($deleteTimeByGame);
             }
@@ -228,6 +249,8 @@ class AdminController extends AbstractController
 
         $title = $_POST["titleInput"];
         $resume = $_POST["resumeInput"];
+        $studio = $_POST["studio"];
+        $editor= $_POST["editor"];
 
         if (empty($title)) {
 
@@ -238,6 +261,18 @@ class AdminController extends AbstractController
         if (empty($resume)) {
 
             $errors[] = "Vous n'avez pas saisi de résumé";
+
+        }
+
+        if (empty($studio)){
+
+            $errors[] = "Vous n'avez saisi aucun studio";
+
+        }
+
+        if (empty($editor)){
+
+            $errors[] = "Vous n'avez saisi aucun studio";
 
         }
 
