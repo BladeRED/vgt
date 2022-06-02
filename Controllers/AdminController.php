@@ -14,10 +14,7 @@ use app\Models\Game;
 use app\Models\game_genre;
 use app\Models\game_platform;
 use app\Models\Gamer;
-use app\Models\Genre;
-use app\Models\Platform;
-use app\Services\sessionService;
-use Cassandra\Date;
+
 
 class AdminController extends AbstractController
 {
@@ -43,14 +40,25 @@ class AdminController extends AbstractController
         $this->reviewmanager = new ReviewManager();
         $this->genremanager = new GenreManager();
         $this->platformManager = new PlatformManager();
-        $this->game_genremanager= new game_genreManager();
+        $this->game_genremanager = new game_genreManager();
         $this->game_platformManager = new game_platformManager();
     }
 
     public function dashboard()
     {
-        $this->render->display('admin/dashboard.twig');
+        $nbUsers = $this->gamermanager->countUsers();
+        $nbGames = $this->gamemanager->countGames();
+        $nbTimes = $this->timemanager->countTimes();
+        $nbReviews = $this->reviewmanager->countReviews();
+        $totalTime = $this->timemanager->sumTimes();
 
+
+        $this->render->display('admin/dashboard.twig',
+            ['nbUsers' => $nbUsers,
+                'nbGames' => $nbGames,
+                'nbTimes' => $nbTimes,
+                'nbReviews' => $nbReviews,
+                'totalTime' => $totalTime]);
     }
 
     public function findAll()
@@ -94,7 +102,7 @@ class AdminController extends AbstractController
 
                 if (count($errors) == 0) {
 
-                    $gamer = new Gamer(null, $_POST["pseudoRegister"], $_POST["passwordRegister"], $_POST["mailRegister"], "[GAMER]", "../../assets/pictures/dragon.png");
+                    $gamer = new Gamer(null, $_POST["pseudoRegister"], $_POST["passwordRegister"], $_POST["mailRegister"], "[GAMER]", "../../assets/pictures/dragon.png", date('m.d.y'));
                     $this->gamermanager->create($gamer);
                 }
                 header('Location:/admin/users');
@@ -107,13 +115,13 @@ class AdminController extends AbstractController
 
                     // Creation of a new game object  and add //
 
-                    if (!$_POST["release"]){
+                    if (!$_POST["release"]) {
 
-                        $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], null, $_POST["studio"], $_POST["editor"], "" ,"", "", "", "", "");
+                        $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], null, $_POST["studio"], $_POST["editor"], "", "", "", "", "", "", date('m.d.y'));
 
-                    }else{
+                    } else {
 
-                        $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], $_POST["release"], $_POST["studio"], $_POST["editor"], "" ,"", "", "", "", "");
+                        $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], $_POST["release"], $_POST["studio"], $_POST["editor"], "", "", "", "", "", "", date('m.d.y'));
 
                     }
                     $this->gamemanager->add($game);
@@ -178,11 +186,11 @@ class AdminController extends AbstractController
             $this->gamemanager->delete($deleteGame);
             header('Location:/admin/games');
 
-        }else if ($_SERVER["REQUEST_URI"] == "/admin/deleteTimes/$id") {
+        } else if ($_SERVER["REQUEST_URI"] == "/admin/deleteTimes/$id") {
 
-                $deleteTime = $this->timemanager->getOnebyTimeId($id);
-                $this->timemanager->delete($deleteTime);
-                header('Location:/admin/times');
+            $deleteTime = $this->timemanager->getOnebyTimeId($id);
+            $this->timemanager->delete($deleteTime);
+            header('Location:/admin/times');
         } else if ($_SERVER["REQUEST_URI"] == "/admin/deleteReviews/$id") {
 
             $deleteReview = $this->reviewmanager->getOnebyReviewId($id);
@@ -250,7 +258,7 @@ class AdminController extends AbstractController
         $title = $_POST["titleInput"];
         $resume = $_POST["resumeInput"];
         $studio = $_POST["studio"];
-        $editor= $_POST["editor"];
+        $editor = $_POST["editor"];
 
         if (empty($title)) {
 
@@ -264,13 +272,13 @@ class AdminController extends AbstractController
 
         }
 
-        if (empty($studio)){
+        if (empty($studio)) {
 
             $errors[] = "Vous n'avez saisi aucun studio";
 
         }
 
-        if (empty($editor)){
+        if (empty($editor)) {
 
             $errors[] = "Vous n'avez saisi aucun studio";
 
@@ -423,6 +431,36 @@ class AdminController extends AbstractController
         return ["errors" => $errors, 'filename' => $uniqFilename];
     }
 
+    public function findByDate()
+    {
+
+        $errors = [];
+
+        // Check if input date are empty or not //
+        if (empty($_POST["dateBegin"])) {
+
+            $errors = ["Il n'y a pas de date de début !"];
+        } else if (empty($_POST["dateEnd"])) {
+
+
+            $errors = ["Il n'y a pas de date de fin !"];
+        }
+
+        $nbUsers = $this->gamermanager->countUsers();
+        $nbGames = $this->gamemanager->countGames();
+        $nbTimes = $this->timemanager->countTimes();
+        $nbReviews = $this->reviewmanager->countReviews();
+        $totalTime = $this->timemanager->sumTimes();
+
+        // if not, we look for the function find on controller //
+        $usersDate = $this->gamermanager->findByDate($_POST["dateBegin"], $_POST["dateEnd"]);
+        $this->render->display('admin/dashboard.twig', ['usersDate' => $usersDate, 'nbUsers' => $nbUsers,
+            'nbGames' => $nbGames,
+            'nbTimes' => $nbTimes,
+            'nbReviews' => $nbReviews,
+            'totalTime' => $totalTime]);
+
+    }
 }
 
 

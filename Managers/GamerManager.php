@@ -17,7 +17,7 @@ class GamerManager extends DBManager
 
         foreach ($results as $result) {
 
-            $gamerList[] = new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"]);
+            $gamerList[] = new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"], $result["registerDate"]);
 
         }
         return $gamerList;
@@ -32,7 +32,7 @@ class GamerManager extends DBManager
 
         if ($result) {
 
-            $gamer = new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"]);
+            $gamer = new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"], $result["registerDate"]);
 
         }
 
@@ -48,23 +48,44 @@ class GamerManager extends DBManager
 
         if ($result) {
 
-            $gamer = new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"]);
+            $gamer = new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"], $result["registerDate"]);
 
         }
 
         return $gamer;
     }
 
+    public function findByDate($dateBegin,$dateEnd)
+    {
+        $query = $this->bdd->prepare('SELECT COUNT(*) AS nbGamers FROM Gamer WHERE registerDate >=:dateBegin AND registerDate < :dateEnd');
+        $query->execute(["dateBegin" => $dateBegin,
+            "dateEnd" => $dateEnd]);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result['nbGamers'];
+    }
+
+    public function countUsers(){
+
+        $query = $this->bdd->prepare('SELECT COUNT(*)AS TotalUsers FROM Gamer;');
+        $query->execute();
+        $nbGamers = $query->fetch(\PDO::FETCH_ASSOC);
+        return $nbGamers['TotalUsers'];
+
+    }
+
     public function create(Gamer $gamer)
     {
 
-        $query = $this->bdd->prepare("INSERT INTO Gamer(pseudo,password,mail,role,picture) VALUES (:pseudo, :password, :mail, :role, :picture)");
+        $query = $this->bdd->prepare("INSERT INTO Gamer(pseudo,password,mail,role,picture, registerDate) VALUES (:pseudo, :password, :mail, :role, :picture, :registerDate)");
         $query->execute([
             "pseudo" => $gamer->getPseudo(),
             "password" => password_hash($gamer->getPassword(), PASSWORD_DEFAULT),
             "mail" => $gamer->getMail(),
             "role" => "[GAMER]",
-            "picture" => $gamer->getPicture()
+            "picture" => $gamer->getPicture(),
+            "registerDate"=> $gamer->getRegisterdate()
         ]);
 
 

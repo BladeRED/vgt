@@ -23,6 +23,7 @@ class Game
     private $genres;
     private $platforms;
 
+
     /**
      * @param $id
      * @param $title
@@ -30,6 +31,7 @@ class Game
      * @param $released
      * @param $editor
      * @param $studio
+     * @param $addDate
      * @param $genre
      * @param $game_genre
      * @param $platform
@@ -37,7 +39,7 @@ class Game
      * @param $genres
      * @param $platforms
      */
-    public function __construct($id, $title, $resume, $released, $editor, $studio, $genre, $game_genre, $platform, $game_platform, $genres, $platforms)
+    public function __construct($id, $title, $resume, $released, $editor, $studio, $genre, $game_genre, $platform, $game_platform, $genres, $platforms, $addDate)
     {
         $this->id = $id;
         $this->title = $title;
@@ -51,6 +53,7 @@ class Game
         $this->game_platform = $game_platform;
         $this->genres= $genres;
         $this->platforms= $platforms;
+        $this->addDate= $addDate;
     }
 
 
@@ -244,6 +247,22 @@ class Game
     public function setPlatforms($platforms): void
     {
         $this->platforms = $platforms;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAddDate()
+    {
+        return $this->addDate;
+    }
+
+    /**
+     * @param mixed $addDate
+     */
+    public function setAddDate($addDate): void
+    {
+        $this->addDate = $addDate;
     }
 
 

@@ -65,6 +65,7 @@ CREATE TABLE `Gamer` (
   `mail` varchar(255) NOT NULL,
   `role` varchar(55) NOT NULL,
   `picture` varchar(512) NOT NULL DEFAULT '../../assets/pictures/vegeta_1771.jpg',
+  `registerDate` date NOT NULL,
   PRIMARY KEY (`Id_Gamer`)
 ) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -76,14 +77,14 @@ CREATE TABLE `Gamer` (
 LOCK TABLES `Gamer` WRITE;
 /*!40000 ALTER TABLE `Gamer` DISABLE KEYS */;
 INSERT INTO `Gamer` VALUES
-(1,'Vegeta_88','$2y$10$2RUXZ5W8zQBx.9AC19fkSOnTxl90kqtzwd9.O9lJ8.BtWkWDqZmqu','juleray@msn.com','[ADMIN]','../../assets/pictures/vegeta_1771.jpg'),
-(13,'Dragon','$2y$10$zS4vtQtMQhszpw1gx4/dxudslLHGPoLFXfVtBzqB0vCC.2RKpFqsy','Dragon@dragon.dragon','[GAMER]','628376bab6482.png'),
-(14,'Vegeta_44','$2y$10$AaLa6hY4lLSUf0dW41CX1eSi0lwc4fmuS4mVTefzBGKZbddk01Vym','zfapapeeg@fzapfofzapf.com','[GAMER]','62838d93bcf52.png'),
-(15,'LaFigue','$2y$10$0IjlaRhQZS0a88QdIh.WruZankYQ3msPd0sf9ldzSL3mwYgN3TdZW','LaFigue@lafigue.fr','[GAMER]','../../assets/pictures/dragon.png'),
-(16,'LaBanane','$2y$10$pv3YZazS7kzKe7H.4yvpp.yBhGNsz4..dWZ0mR.mqUFSfn8tWIXMW','LaBanane@banane.fr','[GAMER]','../../assets/pictures/dragon.png'),
-(17,'MathieuAjax','$2y$10$6xVURws3UnKAfmrQgU/gpOuz2EfOxu5EZrmw3PBBShUVQ.7ZEZuEO','Vegepate@terrine.jp','[GAMER]','62839eec13cc4.jpeg'),
-(24,'LaRaclette','$2y$10$K40wDFpPB7EmGK72M6xY4OVQtbPwROdOWLw.zZsm/yZQ94oO5g7X6','RacletteParty@truffade.savoie','[GAMER]','6294b0279eabe.png'),
-(29,'Vegeta_Majin_De_La_Mort','$2y$10$tmWd5Ut1giXQGHeW0jAE2eF/Qboly3U/KGgTQ9r1FL8ffrPm2YyLO','zfapapeeg@fzapfofzapf.com','[GAMER]','6296100867ade.jpeg');
+(1,'Vegeta_88','$2y$10$2RUXZ5W8zQBx.9AC19fkSOnTxl90kqtzwd9.O9lJ8.BtWkWDqZmqu','juleray@msn.com','[ADMIN]','../../assets/pictures/vegeta_1771.jpg','2022-04-11'),
+(13,'Dragon','$2y$10$zS4vtQtMQhszpw1gx4/dxudslLHGPoLFXfVtBzqB0vCC.2RKpFqsy','Dragon@dragon.dragon','[GAMER]','628376bab6482.png','2022-04-19'),
+(14,'Vegeta_44','$2y$10$AaLa6hY4lLSUf0dW41CX1eSi0lwc4fmuS4mVTefzBGKZbddk01Vym','zfapapeeg@fzapfofzapf.com','[GAMER]','62838d93bcf52.png','2022-04-26'),
+(15,'LaFigue','$2y$10$0IjlaRhQZS0a88QdIh.WruZankYQ3msPd0sf9ldzSL3mwYgN3TdZW','LaFigue@lafigue.fr','[GAMER]','../../assets/pictures/dragon.png','2022-04-27'),
+(16,'LaBanane','$2y$10$pv3YZazS7kzKe7H.4yvpp.yBhGNsz4..dWZ0mR.mqUFSfn8tWIXMW','LaBanane@banane.fr','[GAMER]','../../assets/pictures/dragon.png','2022-05-09'),
+(17,'MathieuAjax','$2y$10$6xVURws3UnKAfmrQgU/gpOuz2EfOxu5EZrmw3PBBShUVQ.7ZEZuEO','Vegepate@terrine.jp','[GAMER]','62839eec13cc4.jpeg','2022-05-10'),
+(24,'LaRaclette','$2y$10$K40wDFpPB7EmGK72M6xY4OVQtbPwROdOWLw.zZsm/yZQ94oO5g7X6','RacletteParty@truffade.savoie','[GAMER]','6294b0279eabe.png','2022-05-10'),
+(29,'Vegeta_Majin_De_La_Mort','$2y$10$tmWd5Ut1giXQGHeW0jAE2eF/Qboly3U/KGgTQ9r1FL8ffrPm2YyLO','zfapapeeg@fzapfofzapf.com','[GAMER]','6296100867ade.jpeg','2022-05-24');
 /*!40000 ALTER TABLE `Gamer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -98,11 +99,11 @@ CREATE TABLE `Games` (
   `Id_Games` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
   `resume` varchar(512) DEFAULT NULL,
-  `released` date NOT NULL,
+  `released` date DEFAULT NULL,
   `editor` varchar(255) NOT NULL,
   `studio` varchar(255) NOT NULL,
   PRIMARY KEY (`Id_Games`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -398,4 +399,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-01 16:40:47
+-- Dump completed on 2022-06-02 13:18:05

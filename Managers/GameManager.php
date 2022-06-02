@@ -20,7 +20,7 @@ class GameManager extends DBManager {
 
         foreach ($results as $result) {
 
-            $gamesList[] = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], new Genre($result["Id_Genre"], $result["name"], new game_genre($result["Id_Games"], $result["Id_Genre"])), new game_genre($result["Id_Games"], $result["Id_Genre"]), new Platform($result["Id_Platforms"], $result["console"], new game_platform($result["Id_Games"], $result["Id_Platforms"])), new game_platform($result["Id_Games"], $result["Id_Platforms"]), $result["Genres"], $result["Plateformes"]);
+            $gamesList[] = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], new Genre($result["Id_Genre"], $result["name"], new game_genre($result["Id_Games"], $result["Id_Genre"])), new game_genre($result["Id_Games"], $result["Id_Genre"]), new Platform($result["Id_Platforms"], $result["console"], new game_platform($result["Id_Games"], $result["Id_Platforms"])), new game_platform($result["Id_Games"], $result["Id_Platforms"]), $result["Genres"], $result["Plateformes"], "");
 
         }
         return $gamesList;
@@ -35,7 +35,7 @@ class GameManager extends DBManager {
 
         if ($result) {
 
-            $game = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], "" , "", "", "", "", "");
+            $game = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], "" , "", "", "", "", "", "");
 
         }
 
@@ -51,23 +51,33 @@ class GameManager extends DBManager {
 
         if ($result) {
 
-            $game = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], "" , "", "", "", "", "");
+            $game = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], "" , "", "", "", "", "", "");
 
         }
 
         return $game;
     }
 
+    public function countGames(){
+
+        $query = $this->bdd->prepare('SELECT COUNT(*)AS TotalGames FROM Games;');
+        $query->execute();
+        $nbGames = $query->fetch(\PDO::FETCH_ASSOC);
+        return $nbGames['TotalGames'];
+
+    }
+
     public function add(Game $game)
     {
 
-        $query = $this->bdd->prepare('INSERT INTO Games (title,resume,released,editor,studio) VALUES (:title,:resume,:released,:editor, :studio);');
+        $query = $this->bdd->prepare('INSERT INTO Games (title,resume,released,editor,studio, addDate) VALUES (:title,:resume,:released,:editor, :studio, :addDate);');
         $query->execute([
             "title" => $game->getTitle(),
             "resume" => $game->getResume(),
             "released" => $game->getReleased(),
             "editor" => $game->getEditor(),
             "studio" => $game->getStudio(),
+            "addDate" => $game->getAddDate()
             ]);
     }
 

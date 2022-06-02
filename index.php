@@ -155,6 +155,12 @@ $router->mount('/admin', function () use ($router) {
         $controller->ajaxModal($id);
     });
 
+    //dashboard//
+
+    $router->post('/findByDate', function () use ($controller) {
+        $controller->findByDate();
+    });
+
 
 });
 

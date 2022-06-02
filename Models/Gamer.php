@@ -11,6 +11,7 @@ class Gamer
     private $mail;
     private $role;
     private $picture;
+    private $registerdate;
 
     /**
      * @param $id
@@ -19,8 +20,9 @@ class Gamer
      * @param $mail
      * @param $role
      * @param $picture
+     * @param $registerdate;
      */
-    public function __construct($id, $pseudo, $password, $mail, $role, $picture)
+    public function __construct($id, $pseudo, $password, $mail, $role, $picture, $registerdate)
     {
         $this->id = $id;
         $this->pseudo = $pseudo;
@@ -28,6 +30,7 @@ class Gamer
         $this->mail = $mail;
         $this->role = $role;
         $this->picture = $picture;
+        $this->registerdate = $registerdate;
     }
 
     /**
@@ -138,6 +141,22 @@ class Gamer
             "role" => $this->getRole(),
             "picture" => $this->getPicture()
         ];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegisterdate()
+    {
+        return $this->registerdate;
+    }
+
+    /**
+     * @param mixed $registerdate
+     */
+    public function setRegisterdate($registerdate): void
+    {
+        $this->registerdate = $registerdate;
     }
 
 

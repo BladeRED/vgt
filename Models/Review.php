@@ -10,6 +10,7 @@ class Review {
     private $date;
     private $isSignaled;
 
+
     //For join the gamers model //
     private $gamer;
 

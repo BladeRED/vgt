@@ -3,7 +3,6 @@
 namespace app\Managers;
 use app\Models\Gamer;
 use app\Models\Review;
-use app\Models\Time;
 
 class ReviewManager extends DBManager{
 
@@ -17,7 +16,7 @@ class ReviewManager extends DBManager{
 
         foreach ($results as $result) {
 
-            $reviewsList[] = new Review($result["Id_Reviews"], $result["note"], $result["comment"], $result["comment_date"], $result["isSignaled"], new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"]));
+            $reviewsList[] = new Review($result["Id_Reviews"], $result["note"], $result["comment"], $result["comment_date"], $result["isSignaled"], new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"], $result["registerDate"]));
 
         }
         return $reviewsList;
@@ -37,6 +36,15 @@ class ReviewManager extends DBManager{
         }
 
         return $review;
+    }
+
+    public function countReviews(){
+
+        $query = $this->bdd->prepare('SELECT COUNT(*)AS TotalReviews FROM Games;');
+        $query->execute();
+        $nbGames = $query->fetch(\PDO::FETCH_ASSOC);
+        return $nbGames['TotalReviews'];
+
     }
 
     public function delete($review)

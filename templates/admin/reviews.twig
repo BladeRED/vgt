@@ -33,7 +33,7 @@
                             <th scope="row">{{ review.id }}</th>
                             <td>{{ review.note }}</td>
                             <td>{{ review.comment }}</td>
-                            <td>{{ review.date }}</td>
+                            <td>{{ review.date|format_datetime(locale='fr',pattern="dd MMMM YYYY") }}</td>
                             <td>{{ review.isSignaled }}</td>
                             <td>{{ review.gamer.pseudo }}</td>
                             <td>

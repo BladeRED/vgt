@@ -21,7 +21,7 @@ class TimeManager extends DBManager
 
         foreach ($results as $result) {
 
-            $timesList[] = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"],new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"]), new Game($result["Id_Games"], $result["title"], $result["resume"],$result["released"], $result["editor"], $result["studio"], '', '', '', ''));
+            $timesList[] = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"],new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"], $result["registerDate"]), new Game($result["Id_Games"], $result["title"], $result["resume"],$result["released"], $result["editor"], $result["studio"], '', '', '', '', ', ', '', $result["addDate"]));
 
         }
 
@@ -58,6 +58,26 @@ class TimeManager extends DBManager
         }
 
         return $time;
+    }
+
+    public function countTimes(){
+
+        $query = $this->bdd->prepare('SELECT COUNT(*)AS TotalTimes FROM Gametimes;');
+        $query->execute();
+        $nbTimes = $query->fetch(\PDO::FETCH_ASSOC);
+        return $nbTimes['TotalTimes'];
+
+    }
+
+    public function sumTimes(){
+
+        $query = $this->bdd->prepare('SELECT SUM(hours) AS totalhours , SUM(minuts) AS totalminuts, SUM(seconds) AS totalseconds FROM Gametimes;');
+        $query->execute();
+        $dataTimes = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $dataTimes;
+
     }
 
     public function delete($time)
