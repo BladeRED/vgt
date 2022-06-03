@@ -66,6 +66,17 @@ class GamerManager extends DBManager
         return $result['nbGamers'];
     }
 
+    public function checkAllTimesUsers(){
+
+        $query = $this->bdd->prepare('SELECT COUNT(DISTINCT pseudo) AS nbGamerTime FROM Gamer JOIN Gametimes ON Gamer.Id_Gamer = Gametimes.Id_Gamer;');
+        $query->execute();
+        $results = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $results["nbGamerTime"];
+
+    }
+
     public function countUsers(){
 
         $query = $this->bdd->prepare('SELECT COUNT(*)AS TotalUsers FROM Gamer;');
