@@ -58,6 +58,17 @@ class GameManager extends DBManager {
         return $game;
     }
 
+    public function findByDate($dateBegin,$dateEnd)
+    {
+        $query = $this->bdd->prepare('SELECT COUNT(*) AS nbGames FROM Games WHERE addDate >=:dateBegin AND addDate < :dateEnd');
+        $query->execute(["dateBegin" => $dateBegin,
+            "dateEnd" => $dateEnd]);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result['nbGames'];
+    }
+
     public function countGames(){
 
         $query = $this->bdd->prepare('SELECT COUNT(*)AS TotalGames FROM Games;');

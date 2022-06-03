@@ -46,19 +46,53 @@ class AdminController extends AbstractController
 
     public function dashboard()
     {
+
+        $errors = [];
         $nbUsers = $this->gamermanager->countUsers();
         $nbGames = $this->gamemanager->countGames();
         $nbTimes = $this->timemanager->countTimes();
         $nbReviews = $this->reviewmanager->countReviews();
         $totalTime = $this->timemanager->sumTimes();
+        $usersDate = null;
+        $gamesDate = null;
+        $timesDate = null;
+        $sumTimes = null;
+        $reviewsTime = null;
+        $dateBegin = null;
+        $dateEnd = null;
 
+        if (!empty($_POST["dateBegin"])) {
+            $dateBegin = $_POST["dateBegin"];
+            $dateEnd = $_POST["dateEnd"];
+            if ($dateEnd < $dateBegin) {
+
+                $errors[] = "Veuillez saisir une période correct, car il est impossible de remonter le temps :)";
+
+            }
+            $usersDate = $this->gamermanager->findByDate($dateBegin, $dateEnd);
+            $gamesDate = $this->gamemanager->findByDate($dateBegin, $dateEnd);
+            $timesDate = $this->timemanager->findByDate($dateBegin, $dateEnd);
+            $sumTimes = $this->timemanager->sumByDate($dateBegin, $dateEnd);
+            $reviewsTime = $this->reviewmanager->findByDate($dateBegin, $dateEnd);
+        }
 
         $this->render->display('admin/dashboard.twig',
-            ['nbUsers' => $nbUsers,
+            ['errors' => $errors,
+                'nbUsers' => $nbUsers,
                 'nbGames' => $nbGames,
                 'nbTimes' => $nbTimes,
                 'nbReviews' => $nbReviews,
-                'totalTime' => $totalTime]);
+                'totalTime' => $totalTime,
+                'dateBegin' => $dateBegin,
+                'dateEnd' => $dateEnd,
+                'usersDate' => $usersDate,
+                'gamesDate' => $gamesDate,
+                'timesDate' => $timesDate,
+                'sumTimes' => $sumTimes,
+            'reviewsTime' => $reviewsTime],
+
+
+        );
     }
 
     public function findAll()
@@ -431,36 +465,7 @@ class AdminController extends AbstractController
         return ["errors" => $errors, 'filename' => $uniqFilename];
     }
 
-    public function findByDate()
-    {
 
-        $errors = [];
-
-        // Check if input date are empty or not //
-        if (empty($_POST["dateBegin"])) {
-
-            $errors = ["Il n'y a pas de date de début !"];
-        } else if (empty($_POST["dateEnd"])) {
-
-
-            $errors = ["Il n'y a pas de date de fin !"];
-        }
-
-        $nbUsers = $this->gamermanager->countUsers();
-        $nbGames = $this->gamemanager->countGames();
-        $nbTimes = $this->timemanager->countTimes();
-        $nbReviews = $this->reviewmanager->countReviews();
-        $totalTime = $this->timemanager->sumTimes();
-
-        // if not, we look for the function find on controller //
-        $usersDate = $this->gamermanager->findByDate($_POST["dateBegin"], $_POST["dateEnd"]);
-        $this->render->display('admin/dashboard.twig', ['usersDate' => $usersDate, 'nbUsers' => $nbUsers,
-            'nbGames' => $nbGames,
-            'nbTimes' => $nbTimes,
-            'nbReviews' => $nbReviews,
-            'totalTime' => $totalTime]);
-
-    }
 }
 
 

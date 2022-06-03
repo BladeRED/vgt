@@ -78,8 +78,8 @@ $router->mount('/security', function () use ($router) {
 });
 
 $router->before('GET|POST', '/admin/.*', function () use ($router) {
-    $role= "[ADMIN]";
-    if (!str_contains($_SESSION["gamer"],$role)) {
+    $role = "[ADMIN]";
+    if (!str_contains($_SESSION["gamer"], $role)) {
         header('Location: /home/homepage');
         exit();
     }
@@ -88,6 +88,11 @@ $router->before('GET|POST', '/admin/.*', function () use ($router) {
 $router->mount('/admin', function () use ($router) {
     $controller = new AdminController();
 
+//dashboard//
+
+    $router->post('/dashboard', function () use ($controller) {
+        $controller->dashboard();
+    });
 
     $router->get('/dashboard', function () use ($controller) {
         $controller->dashboard();
@@ -153,12 +158,6 @@ $router->mount('/admin', function () use ($router) {
 
     $router->get('/users/{id}', function ($id) use ($controller) {
         $controller->ajaxModal($id);
-    });
-
-    //dashboard//
-
-    $router->post('/findByDate', function () use ($controller) {
-        $controller->findByDate();
     });
 
 

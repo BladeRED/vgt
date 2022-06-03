@@ -3,9 +3,7 @@
 namespace app\Managers;
 
 use app\Models\Game;
-use app\Models\game_genre;
 use app\Models\Gamer;
-use app\Models\Genre;
 use app\Models\Time;
 
 class TimeManager extends DBManager
@@ -21,11 +19,33 @@ class TimeManager extends DBManager
 
         foreach ($results as $result) {
 
-            $timesList[] = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"],new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"], $result["registerDate"]), new Game($result["Id_Games"], $result["title"], $result["resume"],$result["released"], $result["editor"], $result["studio"], '', '', '', '', ', ', '', $result["addDate"]));
+            $timesList[] = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"],new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"], $result["registerDate"]), new Game($result["Id_Games"], $result["title"], $result["resume"],$result["released"], $result["editor"], $result["studio"], '', '', '', '', ', ', '', $result["addDate"]), $result["addDate"]);
 
         }
 
         return $timesList;
+    }
+
+    public function findByDate($dateBegin,$dateEnd)
+    {
+        $query = $this->bdd->prepare('SELECT COUNT(*) AS nbTimes FROM Gametimes WHERE addDate >=:dateBegin AND addDate < :dateEnd');
+        $query->execute(["dateBegin" => $dateBegin,
+            "dateEnd" => $dateEnd]);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result['nbTimes'];
+    }
+
+    public function sumByDate($dateBegin,$dateEnd)
+    {
+        $query = $this->bdd->prepare('SELECT SUM(hours) as sumHrs,SUM(minuts) AS sumMins, SUM(seconds) AS sumScs FROM Gametimes WHERE addDate >=:dateBegin AND addDate < :dateEnd');
+        $query->execute(["dateBegin" => $dateBegin,
+            "dateEnd" => $dateEnd]);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result;
     }
 
     public function getOneByTimeId($id)

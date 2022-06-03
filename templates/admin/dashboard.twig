@@ -13,14 +13,17 @@
         <!--INSERT CODE HERE -->
         <div class="container my-5">
             <div class="row mb-3">
+                {% for error in errors %}
+                    <div class="alert-danger w-100 shadow-lg rounded text-center mb-3" role="alert">{{error}}</div>
+                {% endfor %}
                 <form class="row mb-3" method="post"
-                      action="/admin/findByDate">
+                      action="/admin/dashboard">
                     <div class="col-lg-5 d-flex justify-content-center">
 
                         <p class="me-3"> Choisissez la période à analyser:</p>
 
                         <div class="form-group">
-                            <input id="dateBegin" name="dateBegin" type="date" class="form-control">
+                            <input id="dateBegin" name="dateBegin" type="date" class="form-control" value="{{dateBegin}}" required>
                         </div>
 
                     </div>
@@ -28,7 +31,7 @@
                         <p class="me-3"> Au:</p>
 
                         <div class="form-group">
-                            <input id="dateEnd" name="dateEnd" type="date" class="form-control">
+                            <input id="dateEnd" name="dateEnd" type="date" class="form-control" value="{{dateEnd}}" required>
                         </div>
 
                         <button type="submit"
@@ -77,22 +80,60 @@
                                 <h5 class="fw-bold">
                                     Nouveaux jeux:
                                 </h5>
-                                <p> 999 999 999 </p>
+                                {% if gamesDate  is null%}
+                                    <p> 0 </p>
+                                {% else %}
+                                    <p> {{ gamesDate }} </p>
+                                {% endif %}
 
                                 <h5 class="fw-bold">
                                     Nouveaux temps de jeux:
                                 </h5>
-                                <p> 999 999 999 </p>
+                                {% if timesDate  is null%}
+                                    <p> 0 </p>
+                                {% else %}
+                                    <p> {{ timesDate }} </p>
+                                {% endif %}
 
                                 <h5 class="fw-bold">
                                     Temps de jeux cumulés:
                                 </h5>
-                                <p> 999 999 999 </p>
+                                {% set hrs = sumTimes.sumHrs%}
+                                {% set mins = sumTimes.sumMins%}
+                                {% set secs = sumTimes.sumScs%}
+
+                                {% if timesDate  is null%}
+                                    <p> 0h 0min 0sec </p>
+                                {% else %}
+
+                                    {% if mins > 59 and secs <= 59%}
+
+                                    <p>{{hrs+1}} h {{mins-60}} min {{secs}} sec</p>
+
+                                    {% elseif secs > 59 and mins < 59 %}
+
+                                        <p>{{hrs}} h {{mins+1}} min {{secs-60}} sec</p>
+
+                                    {% elseif mins > 59 and secs > 59 %}
+
+                                        <p>{{hrs+1}} h {{mins-59}} min {{secs-60}} sec</p>
+
+                                    {% else %}
+
+                                    <p>{{hrs}} h {{mins}} min {{secs}} sec</p>
+
+                                    {% endif %}
+                                {% endif %}
+
 
                                 <h5 class="fw-bold">
                                     Nouvelles reviews:
                                 </h5>
-                                <p> 999 999 999 </p>
+                                {% if reviewsTime  is null%}
+                                    <p> 0 </p>
+                                {% else %}
+                                    <p> {{ reviewsTime }} </p>
+                                {% endif %}
 
                             </div>
 

@@ -81,7 +81,7 @@ class DefaultController extends AbstractController
 
             // Save in the BDD
             if (count($errors) == 0) {
-                $gamer = new Gamer(null, $_POST["pseudoRegister"], $_POST["passwordRegister"], $_POST["mailRegister"], "[GAMER]", "../../assets/pictures/dragon.png");
+                $gamer = new Gamer(null, $_POST["pseudoRegister"], $_POST["passwordRegister"], $_POST["mailRegister"], "[GAMER]", "../../assets/pictures/dragon.png", date("m.d.y"));
 
                 $this->gamermanager->create($gamer);
                 $this->gamermanager = new GamerManager();
@@ -192,7 +192,7 @@ class DefaultController extends AbstractController
     {
 
         setcookie('accepted', '1', time() + 3600 * 24, '/', '', true, true);
-        header('Location: /home/homepage');;
+        header('Location: /');;
 
     }
 

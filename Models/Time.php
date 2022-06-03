@@ -12,6 +12,7 @@ class Time
     private $seconds;
     private $Id_Games;
     private $gamer;
+    private $addDate;
 
     //For join the game model //
     private $game;
@@ -25,8 +26,9 @@ class Time
      * @param $Id_Games
      * @param $gamer
      * @param $game
+     * @param $addDate
      */
-    public function __construct($id, $category, $hours, $minuts, $seconds, $Id_Games, $gamer, $game)
+    public function __construct($id, $category, $hours, $minuts, $seconds, $Id_Games, $gamer, $game,  $addDate)
     {
         $this->id = $id;
         $this->category = $category;
@@ -36,6 +38,7 @@ class Time
         $this->Id_Games = $Id_Games;
         $this->gamer = $gamer;
         $this->game = $game;
+        $this->addDate = $addDate;
     }
 
     /**
@@ -153,6 +156,11 @@ class Time
     /**
      * @return mixed
      */
+
+
+    /**
+     * @return mixed
+     */
     public function getgame()
     {
         return $this->game;
@@ -166,5 +174,16 @@ class Time
         $this->game = $game;
     }
 
+    public function getAddDate()
+    {
+        return $this->addDate;
+    }
 
+    /**
+     * @param mixed $addDate
+     */
+    public function setAddDate($addDate): void
+    {
+        $this->addDate = $addDate;
+    }
 }

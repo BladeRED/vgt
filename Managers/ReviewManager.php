@@ -22,6 +22,17 @@ class ReviewManager extends DBManager{
         return $reviewsList;
     }
 
+    public function findByDate($dateBegin,$dateEnd)
+    {
+        $query = $this->bdd->prepare('SELECT COUNT(*) AS nbReviews FROM Reviews WHERE comment_date >=:dateBegin AND comment_date < :dateEnd');
+        $query->execute(["dateBegin" => $dateBegin,
+            "dateEnd" => $dateEnd]);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result['nbReviews'];
+    }
+
     public function getOneByReviewId($id)
     {
         $review = null;
