@@ -58,10 +58,15 @@ class AdminController extends AbstractController
         $timesDate = null;
         $sumTimes = null;
         $reviewsTime = null;
-        $allTimesUsers = null;
-        $allNullTimesUsers = null;
+        $allTimesUsers = $this->gamermanager->checkAllTimesUsers();
+        $allNullTimesUsers = $this->gamermanager->checkAllNullTimesUsers();
         $dateBegin = null;
         $dateEnd = null;
+
+        $allTimesUsers= json_encode($allTimesUsers);
+        $allNullTimesUsers =json_encode($allNullTimesUsers);
+        var_dump($allTimesUsers);
+
 
         if (!empty($_POST["dateBegin"])) {
             $dateBegin = $_POST["dateBegin"];
@@ -76,8 +81,8 @@ class AdminController extends AbstractController
             $timesDate = $this->timemanager->findByDate($dateBegin, $dateEnd);
             $sumTimes = $this->timemanager->sumByDate($dateBegin, $dateEnd);
             $reviewsTime = $this->reviewmanager->findByDate($dateBegin, $dateEnd);
-            $allTimesUsers = $this->gamermanager->checkAllTimesUsers();
-            $allNullTimesUsers = $this->gamermanager->checkAllNullTimesUsers();
+
+
         }
 
         $this->render->display('admin/dashboard.twig',

@@ -63,7 +63,7 @@
                     </div>
                 </div>
                 <div class="col-lg-6 shadow-lg-rounded bgsection">
-
+                    {{allNullTimesUsers}}
                     {% if allTimesUsers is null %}
 
                     {% else %}
@@ -201,6 +201,27 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+
+        function findJSONOnPage(){
+            console.log()
+            fetch('/admin/dashboard')
+                .then(function(response){
+                    // return response.text();
+                    return response.json();
+                })
+                .then(function(datas){
+
+                    document.get('allTimesUsers').value =datas.timesUsers;
+
+
+
+
+                })
+                .catch(function(error) {
+                    alert("Erreur : " + error);
+                });
+
+        }
         const labels = [
             'Utilisateurs avec temps de jeux',
             'Utilisateurs sans temps de jeux',
@@ -215,7 +236,7 @@
                     '#6B3D5F',
                     '#935482',
                 ],
-                data: [70, 30],
+                data: [datas.timesUsers, 30],
             }]
         };
 
