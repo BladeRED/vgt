@@ -14,7 +14,7 @@
         <div class="container my-5">
             <div class="row mb-3">
                 {% for error in errors %}
-                    <div class="alert-danger w-100 shadow-lg rounded text-center mb-3" role="alert">{{error}}</div>
+                    <div class="alert-danger w-100 shadow-lg rounded text-center mb-3" role="alert">{{ error }}</div>
                 {% endfor %}
                 <form class="row mb-3" method="post"
                       action="/admin/dashboard">
@@ -23,7 +23,8 @@
                         <p class="me-3"> Choisissez la période à analyser:</p>
 
                         <div class="form-group">
-                            <input id="dateBegin" name="dateBegin" type="date" class="form-control" value="{{dateBegin}}" required>
+                            <input id="dateBegin" name="dateBegin" type="date" class="form-control"
+                                   value="{{ dateBegin }}" required>
                         </div>
 
                     </div>
@@ -31,7 +32,8 @@
                         <p class="me-3"> Au:</p>
 
                         <div class="form-group">
-                            <input id="dateEnd" name="dateEnd" type="date" class="form-control" value="{{dateEnd}}" required>
+                            <input id="dateEnd" name="dateEnd" type="date" class="form-control" value="{{ dateEnd }}"
+                                   required>
                         </div>
 
                         <button type="submit"
@@ -61,7 +63,12 @@
                     </div>
                 </div>
                 <div class="col-lg-6 shadow-lg-rounded bgsection">
-{{allTimesUsers}}
+
+                    {% if allTimesUsers is null %}
+
+                    {% else %}
+                        {{ allTimesUsers }}
+                    {% endif %}
                     <h2 class="text-center my-3"> Statistiques globales</h2>
                     <div class="row">
                         <div class="col-lg-6">
@@ -70,7 +77,7 @@
                                 <h5 class="fw-bold">
                                     Nouveaux utilisateurs:
                                 </h5>
-                                {% if usersDate  is null%}
+                                {% if usersDate  is null %}
                                     <p> 0 </p>
                                 {% else %}
                                     <p> {{ usersDate }} </p>
@@ -80,7 +87,7 @@
                                 <h5 class="fw-bold">
                                     Nouveaux jeux:
                                 </h5>
-                                {% if gamesDate  is null%}
+                                {% if gamesDate  is null %}
                                     <p> 0 </p>
                                 {% else %}
                                     <p> {{ gamesDate }} </p>
@@ -89,7 +96,7 @@
                                 <h5 class="fw-bold">
                                     Nouveaux temps de jeux:
                                 </h5>
-                                {% if timesDate  is null%}
+                                {% if timesDate  is null %}
                                     <p> 0 </p>
                                 {% else %}
                                     <p> {{ timesDate }} </p>
@@ -98,29 +105,29 @@
                                 <h5 class="fw-bold">
                                     Temps de jeux cumulés:
                                 </h5>
-                                {% set hrs = sumTimes.sumHrs%}
-                                {% set mins = sumTimes.sumMins%}
-                                {% set secs = sumTimes.sumScs%}
+                                {% set hrs = sumTimes.sumHrs %}
+                                {% set mins = sumTimes.sumMins %}
+                                {% set secs = sumTimes.sumScs %}
 
-                                {% if timesDate  is null%}
+                                {% if timesDate  is null %}
                                     <p> 0h 0min 0sec </p>
                                 {% else %}
 
-                                    {% if mins > 59 and secs <= 59%}
+                                    {% if mins > 59 and secs <= 59 %}
 
-                                    <p>{{hrs+1}} h {{mins-60}} min {{secs}} sec</p>
+                                        <p>{{ hrs+1 }} h {{ mins-60 }} min {{ secs }} sec</p>
 
                                     {% elseif secs > 59 and mins < 59 %}
 
-                                        <p>{{hrs}} h {{mins+1}} min {{secs-60}} sec</p>
+                                        <p>{{ hrs }} h {{ mins+1 }} min {{ secs-60 }} sec</p>
 
                                     {% elseif mins > 59 and secs > 59 %}
 
-                                        <p>{{hrs+1}} h {{mins-59}} min {{secs-60}} sec</p>
+                                        <p>{{ hrs+1 }} h {{ mins-59 }} min {{ secs-60 }} sec</p>
 
                                     {% else %}
 
-                                    <p>{{hrs}} h {{mins}} min {{secs}} sec</p>
+                                        <p>{{ hrs }} h {{ mins }} min {{ secs }} sec</p>
 
                                     {% endif %}
                                 {% endif %}
@@ -129,7 +136,7 @@
                                 <h5 class="fw-bold">
                                     Nouvelles reviews:
                                 </h5>
-                                {% if reviewsTime  is null%}
+                                {% if reviewsTime  is null %}
                                     <p> 0 </p>
                                 {% else %}
                                     <p> {{ reviewsTime }} </p>

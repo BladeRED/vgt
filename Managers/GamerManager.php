@@ -77,6 +77,17 @@ class GamerManager extends DBManager
 
     }
 
+    public function checkAllNullTimesUsers(){
+
+        $query = $this->bdd->prepare('SELECT COUNT(DISTINCT pseudo) AS Total FROM Gamer LEFT JOIN Gametimes On Gamer.Id_Gamer = Gametimes.Id_Gamer WHERE Gametimes.Id_Gamer IS NULL;');
+        $query->execute();
+        $results = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $results["nbGamerNullTime"];
+
+    }
+
     public function countUsers(){
 
         $query = $this->bdd->prepare('SELECT COUNT(*)AS TotalUsers FROM Gamer;');

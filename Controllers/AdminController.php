@@ -58,6 +58,8 @@ class AdminController extends AbstractController
         $timesDate = null;
         $sumTimes = null;
         $reviewsTime = null;
+        $allTimesUsers = null;
+        $allNullTimesUsers = null;
         $dateBegin = null;
         $dateEnd = null;
 
@@ -75,6 +77,7 @@ class AdminController extends AbstractController
             $sumTimes = $this->timemanager->sumByDate($dateBegin, $dateEnd);
             $reviewsTime = $this->reviewmanager->findByDate($dateBegin, $dateEnd);
             $allTimesUsers = $this->gamermanager->checkAllTimesUsers();
+            $allNullTimesUsers = $this->gamermanager->checkAllNullTimesUsers();
         }
 
         $this->render->display('admin/dashboard.twig',
@@ -91,7 +94,8 @@ class AdminController extends AbstractController
                 'timesDate' => $timesDate,
                 'sumTimes' => $sumTimes,
                 'reviewsTime' => $reviewsTime,
-                'allTimesUsers' => $allTimesUsers],
+                'allTimesUsers' => $allTimesUsers,
+                'allNullTimesUsers' => $allNullTimesUsers],
         );
     }
 
