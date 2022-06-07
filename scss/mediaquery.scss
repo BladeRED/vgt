@@ -170,6 +170,12 @@
 
 @media screen and (max-width: 991px) {
 
+  div.col-lg-4.account{
+
+    margin-top: 7.5rem !important;
+
+  }
+
   .game {
 
     flex-wrap: wrap !important;
@@ -233,15 +239,13 @@
 
 
     justify-content: space-between !important;
-
-
   }
 
   .submitsection {
 
-    margin-left: 0 !important;
+    margin-left: 500px !important;
     margin-top: 0 !important;
-
+    color: red !important;
   }
 
 
@@ -330,10 +334,7 @@
 
   }
 
-  .account{
 
-    margin-top: 7.5rem !important;
-  }
 
   @media screen and (max-width: 830px) {
 
@@ -417,6 +418,7 @@
     margin-left: 0 !important;
 
   }
+
 
 
   @media screen and (max-width: 700px) {
@@ -559,6 +561,7 @@
 
       margin-left: 0 !important;
       margin-bottom: 0 !important;
+
 
     }
 

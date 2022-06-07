@@ -64,8 +64,21 @@
                 </div>
                 <div class="col-lg-6 shadow-lg-rounded bgsection">
 
-                    <input type="hidden" id="allNullTimesUsers" value="{{allNullTimesUsers}}">
+                    <input type="hidden" id="allNullTimesUsers" value="{{ allNullTimesUsers }}">
                     <input type="hidden" id="allTimesUsers" value="{{ allTimesUsers }}">
+                    <input type="hidden" id="histCateg" value="{{ histCateg }}">
+                    <input type="hidden" id="compCateg" value="{{ compCateg }}">
+                    <input type="hidden" id="extraCateg" value="{{ extraCateg }}">
+                    {% if histDates is null %}
+                        <input type="hidden" id="histDates" value="0">
+                        <input type="hidden" id="compDates" value="0">
+                        <input type="hidden" id="extraDates" value="0">
+                     {% else %}
+                         <input type="hidden" id="histDates" value="{{ histDates }}">
+                         <input type="hidden" id="compDates" value="{{ compDates }}">
+                         <input type="hidden" id="extraDates" value="{{ extraDates }}">
+                    {% endif %}
+
 
                     <h2 class="text-center my-3"> Statistiques globales</h2>
                     <div class="row">
@@ -204,12 +217,33 @@
 
             let allTimesUsers = document.getElementById('allTimesUsers').value;
             let allNullTimesUsers = document.getElementById('allNullTimesUsers').value;
-            console.log(allTimesUsers, allNullTimesUsers)
+            let histCateg = document.getElementById('histCateg').value;
+            let extraCateg = document.getElementById('extraCateg').value;
+            let compCateg = document.getElementById('compCateg').value;
+
+            // BY DATES //
+            let histDates = document.getElementById('histDates').value;
+            let compDates = document.getElementById('compDates').value;
+            let extraDates = document.getElementById('extraDates').value;
+            let dateBegin = document.getElementById('dateBegin').value;
+
+            if (dateBegin){
+                histCateg= histDates;
+                compCateg = compDates;
+                extraCateg= extraDates;
+            }
+
+
+            console.log(dateBegin);
+            console.log(histCateg);
 
             let dataPie1 = JSON.parse(allTimesUsers);
             let dataPie2 = JSON.parse(allNullTimesUsers);
 
-            console.log(dataPie1);
+            let dataPie3 = JSON.parse(histCateg);
+            let dataPie4 = JSON.parse(extraCateg);
+            let dataPie5 = JSON.parse(compCateg);
+
 
             const labels = [
                 'Utilisateurs avec temps de jeux',
@@ -228,7 +262,7 @@
                     data: [dataPie1, dataPie2]
                 }]
             };
-console.log(data.datasets);
+            console.log(data.datasets);
             const config = {
                 type: 'doughnut',
                 data: data,
@@ -252,10 +286,10 @@ console.log(data.datasets);
                         '#935482',
                         '#c06faa'
                     ],
-                    data: [70, 30, 25],
+
+                    data: [dataPie3, dataPie4, dataPie5],
                 }]
             };
-
             const configTime = {
                 type: 'doughnut',
                 data: dataTime,
@@ -271,15 +305,6 @@ console.log(data.datasets);
                 configTime
             );
         });
-    </script>
-
-    <script>
-
-    </script>
-
-    <script>
-
-
     </script>
     </body>
     </html>

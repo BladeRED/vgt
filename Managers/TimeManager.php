@@ -48,10 +48,67 @@ class TimeManager extends DBManager
         return $result;
     }
 
-    public function findByCateg(){
+    public function findByHistDate($dateBegin,$dateEnd)
+    {
+        $query = $this->bdd->prepare('SELECT COUNT(*) AS nbTimes FROM Gametimes WHERE category = "Histoire" AND addDate >=:dateBegin AND addDate < :dateEnd');
+        $query->execute(["dateBegin" => $dateBegin,
+            "dateEnd" => $dateEnd]);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
 
 
+        return $result['nbTimes'];
+    }
 
+    public function findByHistCateg()
+    {
+        $query = $this->bdd->prepare('SELECT COUNT(*) AS Histoire FROM Gametimes WHERE category="Histoire";SELECT COUNT(*) AS Complétioniste FROM Gametimes WHERE category="Complétioniste";SELECT COUNT(*) AS Extras FROM Gametimes WHERE category = "Histoire+Extras";');
+        $query->execute();
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result["Histoire"];
+    }
+
+    public function findByCompDate($dateBegin,$dateEnd)
+    {
+        $query = $this->bdd->prepare('SELECT COUNT(*) AS nbTimes FROM Gametimes WHERE category = "Complétioniste" AND addDate >=:dateBegin AND addDate < :dateEnd');
+        $query->execute(["dateBegin" => $dateBegin,
+            "dateEnd" => $dateEnd]);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result['nbTimes'];
+    }
+
+    public function findByCompCateg()
+    {
+        $query = $this->bdd->prepare('SELECT COUNT(*) AS Complétioniste FROM Gametimes WHERE category="Complétioniste";');
+        $query->execute();
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result["Complétioniste"];
+    }
+
+    public function findByExtraDate($dateBegin,$dateEnd)
+    {
+        $query = $this->bdd->prepare('SELECT COUNT(*) AS nbTimes FROM Gametimes WHERE category = "Histoire+Extras" AND addDate >=:dateBegin AND addDate < :dateEnd');
+        $query->execute(["dateBegin" => $dateBegin,
+            "dateEnd" => $dateEnd]);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result['nbTimes'];
+    }
+
+    public function findByExtraCateg()
+    {
+        $query = $this->bdd->prepare('SELECT COUNT(*) AS Extras FROM Gametimes WHERE category = "Histoire+Extras";');
+        $query->execute();
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result["Extras"];
     }
 
     public function getOneByTimeId($id)

@@ -52,20 +52,28 @@ class AdminController extends AbstractController
         $nbGames = $this->gamemanager->countGames();
         $nbTimes = $this->timemanager->countTimes();
         $nbReviews = $this->reviewmanager->countReviews();
-        $totalTime = $this->timemanager->sumTimes();
+
+
         $usersDate = null;
         $gamesDate = null;
         $timesDate = null;
+
+        $histDates = null;
+        $compDates = null;
+        $extraDates = null;
+        $histCateg = $this->timemanager->findByHistCateg();
+        $compCateg = $this->timemanager->findByCompCateg();
+        $extraCateg = $this->timemanager->findByExtraCateg();
+
         $sumTimes = null;
+        $totalTime = $this->timemanager->sumTimes();
         $reviewsTime = null;
+
         $allTimesUsers = $this->gamermanager->checkAllTimesUsers();
         $allNullTimesUsers = $this->gamermanager->checkAllNullTimesUsers();
+
         $dateBegin = null;
         $dateEnd = null;
-
-        $allTimesUsers= json_encode($allTimesUsers);
-        $allNullTimesUsers =json_encode($allNullTimesUsers);
-        var_dump($allTimesUsers);
 
 
         if (!empty($_POST["dateBegin"])) {
@@ -79,8 +87,14 @@ class AdminController extends AbstractController
             $usersDate = $this->gamermanager->findByDate($dateBegin, $dateEnd);
             $gamesDate = $this->gamemanager->findByDate($dateBegin, $dateEnd);
             $timesDate = $this->timemanager->findByDate($dateBegin, $dateEnd);
+
             $sumTimes = $this->timemanager->sumByDate($dateBegin, $dateEnd);
             $reviewsTime = $this->reviewmanager->findByDate($dateBegin, $dateEnd);
+
+            // BY DATES //
+            $histDates = $this->timemanager->findByHistDate($dateBegin, $dateEnd);
+            $compDates = $this->timemanager->findByCompDate($dateBegin, $dateEnd);
+            $extraDates = $this->timemanager->findByExtraDate($dateBegin, $dateEnd);
 
 
         }
@@ -100,7 +114,13 @@ class AdminController extends AbstractController
                 'sumTimes' => $sumTimes,
                 'reviewsTime' => $reviewsTime,
                 'allTimesUsers' => $allTimesUsers,
-                'allNullTimesUsers' => $allNullTimesUsers],
+                'allNullTimesUsers' => $allNullTimesUsers,
+                'histCateg' => $histCateg,
+                'extraCateg' => $extraCateg,
+                'compCateg' => $compCateg,
+                'histDates' => $histDates,
+                'compDates' => $compDates,
+                'extraDates' => $extraDates],
         );
     }
 
