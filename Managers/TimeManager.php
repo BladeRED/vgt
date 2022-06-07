@@ -48,6 +48,12 @@ class TimeManager extends DBManager
         return $result;
     }
 
+    public function findByCateg(){
+
+
+
+    }
+
     public function getOneByTimeId($id)
     {
         $time = null;

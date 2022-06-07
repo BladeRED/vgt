@@ -11437,6 +11437,10 @@ a:-webkit-any-link:hover {
     display: block !important;
     width: 100% !important;
   }
+
+  .account {
+    margin-top: 7.5rem !important;
+  }
 }
 @media screen and (max-width: 991px) and (max-width: 830px) {
   h3, .h3 {
@@ -11580,6 +11584,10 @@ a:-webkit-any-link:hover {
 
   .submitgametext {
     margin-left: 0 !important;
+  }
+
+  .account {
+    margin-right: 2.5rem !important;
   }
 }
 @media screen and (max-width: 780px) and (max-width: 650px) and (max-width: 450px) {

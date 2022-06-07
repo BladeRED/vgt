@@ -7,7 +7,7 @@
 //FUNCTIONS //
 
 function onClickModalUser(userId){
-console.log(userId)
+
     fetch('/admin/users/'+userId)
         .then(function(response){
             // return response.text();

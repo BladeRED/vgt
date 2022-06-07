@@ -63,12 +63,10 @@
                     </div>
                 </div>
                 <div class="col-lg-6 shadow-lg-rounded bgsection">
-                    {{allNullTimesUsers}}
-                    {% if allTimesUsers is null %}
 
-                    {% else %}
-                        {{ allTimesUsers }}
-                    {% endif %}
+                    <input type="hidden" id="allNullTimesUsers" value="{{allNullTimesUsers}}">
+                    <input type="hidden" id="allTimesUsers" value="{{ allTimesUsers }}">
+
                     <h2 class="text-center my-3"> Statistiques globales</h2>
                     <div class="row">
                         <div class="col-lg-6">
@@ -202,75 +200,77 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
 
-        function findJSONOnPage(){
-            console.log()
-            fetch('/admin/dashboard')
-                .then(function(response){
-                    // return response.text();
-                    return response.json();
-                })
-                .then(function(datas){
+        document.addEventListener("DOMContentLoaded", function () {
 
-                    document.get('allTimesUsers').value =datas.timesUsers;
+            let allTimesUsers = document.getElementById('allTimesUsers').value;
+            let allNullTimesUsers = document.getElementById('allNullTimesUsers').value;
+            console.log(allTimesUsers, allNullTimesUsers)
 
+            let dataPie1 = JSON.parse(allTimesUsers);
+            let dataPie2 = JSON.parse(allNullTimesUsers);
 
+            console.log(dataPie1);
 
+            const labels = [
+                'Utilisateurs avec temps de jeux',
+                'Utilisateurs sans temps de jeux',
 
-                })
-                .catch(function(error) {
-                    alert("Erreur : " + error);
-                });
+            ];
 
-        }
-        const labels = [
-            'Utilisateurs avec temps de jeux',
-            'Utilisateurs sans temps de jeux',
+            const data = {
+                labels: labels,
+                datasets: [{
+                    label: 'Données utilisateurs',
+                    backgroundColor: [
+                        '#6B3D5F',
+                        '#935482',
+                    ],
+                    data: [dataPie1, dataPie2]
+                }]
+            };
+console.log(data.datasets);
+            const config = {
+                type: 'doughnut',
+                data: data,
+            };
 
-        ];
+            // Gametime chart doughnut //
 
-        const data = {
-            labels: labels,
-            datasets: [{
-                label: 'Données utilisateurs',
-                backgroundColor: [
-                    '#6B3D5F',
-                    '#935482',
-                ],
-                data: [datas.timesUsers, 30],
-            }]
-        };
+            const labelsTime = [
+                'Histoire',
+                'Histoire + Extras',
+                'Complétioniste',
 
-        const config = {
-            type: 'doughnut',
-            data: data,
-        };
+            ];
 
-        // Gametime chart doughnut //
+            const dataTime = {
+                labels: labelsTime,
+                datasets: [{
+                    label: 'Données temps de jeux',
+                    backgroundColor: [
+                        '#6B3D5F',
+                        '#935482',
+                        '#c06faa'
+                    ],
+                    data: [70, 30, 25],
+                }]
+            };
 
-        const labelsTime = [
-            'Histoire',
-            'Histoire + Extras',
-            'Complétioniste',
+            const configTime = {
+                type: 'doughnut',
+                data: dataTime,
+            };
 
-        ];
+            const myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
 
-        const dataTime = {
-            labels: labelsTime,
-            datasets: [{
-                label: 'Données temps de jeux',
-                backgroundColor: [
-                    '#6B3D5F',
-                    '#935482',
-                    '#c06faa'
-                ],
-                data: [70, 30, 25],
-            }]
-        };
-
-        const configTime = {
-            type: 'doughnut',
-            data: dataTime,
-        };
+            const myChart2 = new Chart(
+                document.getElementById('myChart2'),
+                configTime
+            );
+        });
     </script>
 
     <script>
@@ -279,15 +279,7 @@
 
     <script>
 
-        const myChart = new Chart(
-            document.getElementById('myChart'),
-            config
-        );
 
-        const myChart2 = new Chart(
-            document.getElementById('myChart2'),
-            configTime
-        );
     </script>
     </body>
     </html>

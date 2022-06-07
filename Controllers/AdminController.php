@@ -423,7 +423,7 @@ class AdminController extends AbstractController
 
         if (!preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/', $password)) {
 
-            $errors[] = "Il faut que ton mot de passe ait au moins une majuscule, une minuscule, un chiffre, et un caractère spécial.Ah, et pas d'espace! Oui c'est embêtant, mais c'est pour sécuriser ton compte !";
+            $errors[] = "Il faut que ton mot de passe ait au moins une majuscule, une minuscule, un chiffre, et un caractère spécial. Oui c'est embêtant, mais c'est pour sécuriser ton compte !";
 
         }
 
