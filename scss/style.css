@@ -11447,6 +11447,10 @@ a:-webkit-any-link:hover {
   h3, .h3 {
     font-size: 18px;
   }
+
+  .resume {
+    display: none;
+  }
 }
 @media screen and (max-width: 780px) {
   table {
@@ -11838,9 +11842,29 @@ label {
   z-index: 999 !important;
 }
 
-.gametable {
-  width: 100%;
-  overflow: scroll;
+#gametable_length.dataTables_length {
+  margin-bottom: 1.5rem;
+}
+
+div.dataTables_wrapper div.dataTables_length label {
+  color: white !important;
+}
+
+div.dataTables_wrapper div.dataTables_filter label {
+  color: white !important;
+}
+
+#gametable_paginate.dataTables_paginate.paging_simple_numbers {
+  margin-top: 1.5rem;
+}
+
+#gametable_info.dataTables_info {
+  color: white !important;
+}
+
+.page-item.active .page-link {
+  background-color: #c06faa !important;
+  border-color: #c06faa;
 }
 
 /*# sourceMappingURL=style.css.map */

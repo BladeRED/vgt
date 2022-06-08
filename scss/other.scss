@@ -48,12 +48,40 @@ label {
 
 }
 
-.gametable{
+#gametable_length.dataTables_length{
 
-  width: 100%;
-  overflow: scroll;
+  margin-bottom: 1.5rem;
 
 }
 
+div.dataTables_wrapper div.dataTables_length label {
+
+  color: white !important;
+
+}
+
+div.dataTables_wrapper div.dataTables_filter label{
+
+  color: white !important;
+
+}
+
+#gametable_paginate.dataTables_paginate.paging_simple_numbers {
+
+  margin-top: 1.5rem;
 
 
+}
+
+#gametable_info.dataTables_info {
+
+  color: white !important;
+
+}
+
+.page-item.active .page-link{
+
+  background-color: #c06faa !important;
+  border-color: #c06faa;
+
+}
