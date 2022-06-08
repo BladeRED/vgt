@@ -11838,4 +11838,9 @@ label {
   z-index: 999 !important;
 }
 
+.gametable {
+  width: 100%;
+  overflow: scroll;
+}
+
 /*# sourceMappingURL=style.css.map */

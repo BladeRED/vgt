@@ -129,11 +129,10 @@
                     </div>
                 </div>
 
-                <div class="container gametable d-flex justify-content-center overflow-auto">
+                <div class="container gametable d-flex justify-content-center">
                 <table class="table table-dark table-striped">
                     <thead>
                     <tr>
-                        <th scope="col" style="color: #c06faa">ID</th>
                         <th scope="col" class="text-center">Titre</th>
                         <th scope="col" class="text-center">Résumé</th>
                         <th scope="col" class="text-center">Genre</th>
@@ -151,7 +150,6 @@
                     {% for game in games %}
 
                         <tr>
-                            <th scope="row" style="vertical-align: middle;color: #c06faa">{{ game.id }}</th>
                             <td>{{ game.title }}</td>
                             <td style="max-width: 700px">{{ game.resume }}</td>
                             <td> {{ game.genres }}</td>
