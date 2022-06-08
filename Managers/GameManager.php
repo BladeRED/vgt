@@ -73,7 +73,7 @@ class GameManager extends DBManager {
     {
 
         $query = $this->bdd->prepare('SELECT * FROM Games WHERE title LIKE :searchResult;');
-        $query->execute(["searchResult" => $searchResult.'%']);
+        $query->execute(["searchResult" => '%'.$searchResult.'%']);
         $result = $query->fetchAll();
 
         return $result;

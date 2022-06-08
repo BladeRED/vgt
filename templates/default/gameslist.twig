@@ -17,28 +17,34 @@
                 <div class="row mb-5">
 
 
-                    <div class="d-flex flex-row gamesection">
-
+                    <div class="d-flex flex-column gamesection">
+                        {% if searches is null %}
+                            <h2 class="text-center mt-5 "> Aucun résultat trouvé, saisis au moins 4 caractères, par
+                                Alduin !</h2>
+                        {% endif %}
                         {% for search in searches|slice(0,50) %}
-                            <div class="col-lg-3 mt-4">
-                                <div class="flip-card ms-3 gamecard" style="width:15rem;height:21rem;">
-                                    <div class="flip-card-inner">
-                                        <div class="flip-card-front">
-                                            <img src="../../assets/pictures/Elden_Ring.jpg" class="img-fluid w-100"
-                                                 style="width:15rem;height:21rem;border-radius: 8px" alt="Elden Ring">
-                                        </div>
-                                        <div class="flip-card-back">
-                                            <h2 class="mt-4">{{ search.title }}</h2>
-                                            <p class="text-white mt-4">Temps de jeu moyen:</p>
-                                            <p class="text-white-50">999h 99 min 59s</p>
-                                            <p class="text-white">Note moyenne des utilisateurs:</p>
-                                            <p class="text-white-50">4.5/5</p>
-                                            <a href="/home/game/{{search.Id_Games}}" type="button" class="btn bgsection1">Consulter</a>
+                            <div class="d-flex flex-row gamesection">
+                                <div class="col-lg-6 mt-4">
+                                    <div class="flip-card ms-3 gamecard" style="width:15rem;height:21rem;">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front">
+                                                <img src="../../assets/pictures/Elden_Ring.jpg" class="img-fluid w-100"
+                                                     style="width:15rem;height:21rem;border-radius: 8px"
+                                                     alt="Elden Ring">
+                                            </div>
+                                            <div class="flip-card-back">
+                                                <h2 class="mt-4">{{ search.title }}</h2>
+                                                <p class="text-white mt-4">Temps de jeu moyen:</p>
+                                                <p class="text-white-50">999h 99 min 59s</p>
+                                                <p class="text-white">Note moyenne des utilisateurs:</p>
+                                                <p class="text-white-50">4.5/5</p>
+                                                <a href="/home/game/{{ search.Id_Games }}" type="button"
+                                                   class="btn bgsection1">Consulter</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         {% endfor %}
                     </div>
 
