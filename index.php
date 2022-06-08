@@ -24,12 +24,8 @@ $router->get('/', function () use ($controller) {
 
 $router->mount('/home', function () use ($controller, $router) {
 
-    $router->get('/homepage', function () use ($controller) {
-        $controller->displayHomepage();
-    });
-
-    $router->get('/game', function () use ($controller) {
-        $controller->displayGame();
+    $router->get('/game/{id}', function ($id) use ($controller) {
+        $controller->displayGame($id);
     });
 
     $router->get('/login', function () use ($controller) {
@@ -46,6 +42,11 @@ $router->mount('/home', function () use ($controller, $router) {
 
     $router->post('/register', function () use ($controller) {
         $controller->register();
+    });
+
+    $router->post('/search', function () use ($controller) {
+
+        $controller->search();
     });
 });
 

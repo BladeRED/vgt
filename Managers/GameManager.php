@@ -69,6 +69,16 @@ class GameManager extends DBManager {
         return $result['nbGames'];
     }
 
+    public function search($searchResult)
+    {
+
+        $query = $this->bdd->prepare('SELECT * FROM Games WHERE title LIKE :searchResult;');
+        $query->execute(["searchResult" => $searchResult.'%']);
+        $result = $query->fetchAll();
+
+        return $result;
+    }
+
     public function countGames(){
 
         $query = $this->bdd->prepare('SELECT COUNT(*)AS TotalGames FROM Games;');

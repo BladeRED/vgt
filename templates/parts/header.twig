@@ -1,4 +1,3 @@
-
 <header>
     <div class="container-fluid">
 
@@ -21,12 +20,15 @@
 
                 <!-- Searchbar -->
                 <div class="d-flex flex-row navhead">
-                    <div class="search mt-5 mx-5 py-2 searchbar">
-                        <input type="text" class="searchTerm" placeholder="Cherche tes jeux ici !">
-                        <button type="submit" class="searchIcon" aria-label="Search Icon">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
+                    <form method="post" action="/home/search" class="w-100">
+                        <div class="search mt-5 mx-5 py-2 searchbar">
+                            <input type="text" class="searchTerm" name="searchResult" id="searchResult" placeholder="Cherche tes jeux ici !">
+                            <button type="submit" class="searchIcon" aria-label="Search Icon">
+                                <i class="fa fa-search"></i>
+                            </button>
+
+                        </div>
+                    </form>
                 </div>
             </div>
 
@@ -36,14 +38,15 @@
                 <!-- Submit and Log buttons-->
                 <div class="d-flex flex-row logsubmit">
                     {% if gamer %}
-                    <div class="col-lg-4 d-flex justify-content-end subutton">
-                        <a href="/security/submit">
-                            <img src="../../assets/pictures/submit.png" class="img-fluid rounded mx-auto d-block mt-5"
-                                 style="height: 64px ;width: 64px" alt="VGT_submit">
-                            <p class="text-center"> Soumettre un temps </p>
-                        </a>
-                    </div>
-                    <div class="col-lg-4 account">
+                        <div class="col-lg-4 d-flex justify-content-end subutton">
+                            <a href="/security/submit">
+                                <img src="../../assets/pictures/submit.png"
+                                     class="img-fluid rounded mx-auto d-block mt-5"
+                                     style="height: 64px ;width: 64px" alt="VGT_submit">
+                                <p class="text-center"> Soumettre un temps </p>
+                            </a>
+                        </div>
+                        <div class="col-lg-4 account">
 
                             <a href="/security/gamer">
                                 <img src="../../assets/pictures/home.png" class="img-fluid rounded mx-auto d-block mt-5"
@@ -51,11 +54,12 @@
                                 <p class="text-center"> Mon compte </p>
                             </a>
 
-                    </div>
+                        </div>
                         <div class="col-lg-4 logbutton">
 
                             <a href="/security/logout">
-                                <img src="../../assets/pictures/login.png" class="img-fluid rounded mx-auto d-block mt-5"
+                                <img src="../../assets/pictures/login.png"
+                                     class="img-fluid rounded mx-auto d-block mt-5"
                                      style="height: 64px ;width: 64px" alt="VGT_login">
                                 <p class="text-center"> Déconnexion </p>
                             </a>
@@ -64,7 +68,8 @@
                     {% else %}
                         <div class="col-lg-6 d-flex justify-content-end subutton">
                             <a href="/security/submit">
-                                <img src="../../assets/pictures/submit.png" class="img-fluid rounded mx-auto d-block mt-5"
+                                <img src="../../assets/pictures/submit.png"
+                                     class="img-fluid rounded mx-auto d-block mt-5"
                                      style="height: 64px ;width: 64px" alt="VGT_submit">
                                 <p class="text-center"> Soumettre un temps </p>
                             </a>
@@ -72,7 +77,8 @@
                         <div class="col-lg-6 logbutton">
 
                             <a href="/home/login">
-                                <img src="../../assets/pictures/login.png" class="img-fluid rounded mx-auto d-block mt-5"
+                                <img src="../../assets/pictures/login.png"
+                                     class="img-fluid rounded mx-auto d-block mt-5"
                                      style="height: 64px ;width: 64px" alt="VGT_login">
                                 <p class="text-center"> Connexion/Inscription </p>
                             </a>

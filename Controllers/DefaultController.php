@@ -2,12 +2,14 @@
 
 namespace app\Controllers;
 
+use app\Managers\GameManager;
 use app\Models\Gamer;
 use app\Managers\GamerManager;
 
 class DefaultController extends AbstractController
 {
     private GamerManager $gamermanager;
+    private GameManager $gamemanager;
 
     /**
      * @param $gamermanager
@@ -18,6 +20,7 @@ class DefaultController extends AbstractController
     {
         parent::__construct();
         $this->gamermanager = new GamerManager();
+        $this->gamemanager = new GameManager();
     }
 
     public function displayHomepage()
@@ -26,10 +29,10 @@ class DefaultController extends AbstractController
         $this->render->display('default/homepage.twig');
     }
 
-    public function displayGame()
+    public function displayGame($id)
     {
-
-        $this->render->display('default/game.twig');
+        $game = $this->gamemanager->findByGameId($id);
+        $this->render->display('default/game.twig', ['game' => $game]);
     }
 
     public function displayLogin()
@@ -92,6 +95,22 @@ class DefaultController extends AbstractController
         }
 
         $this->render->display('default/login.twig', ['errors' => $errors]);
+    }
+
+    public function search()
+    {
+
+        $errors= [];
+        $searchResult = $_POST["searchResult"];
+
+        if (strlen($searchResult) >0 && strlen($searchResult)<= 3) {
+
+        } else {
+            $searches = $this->gamemanager->search($searchResult);
+
+            $this->render->display('default/gameslist.twig', ['searches' => $searches,
+                'errors' => $errors]);
+        }
     }
 
     private function isValidLoginForm(): array
