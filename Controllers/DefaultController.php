@@ -101,9 +101,9 @@ class DefaultController extends AbstractController
     {
 
         $errors= [];
-        $searchResult = $_POST["searchResult"];
+        $searchResult = trim($_POST["searchResult"]);
 
-        if (strlen($searchResult) >=0 && strlen($searchResult)<= 3) {
+        if (strlen($searchResult) >=0 && strlen($searchResult)<= 2) {
                     $searches = null;
             $this->render->display('default/gameslist.twig', ['searches' => $searches,
                 'errors' => $errors]);

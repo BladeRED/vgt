@@ -11,16 +11,22 @@
 
     <main>
         <!--SUBMIT GAMETIME FORM -->
-        <section class="mb-5 pb-5">
+        <section>
 
-            <div class="container-fluid bgsection pb-5 mb-5 shadow-lg rounded">
-                <div class="row mb-5">
+            <div class="container-fluid bgsection shadow-lg rounded">
+                <div class="row">
 
 
                     <div class="d-flex flex-column gamesection">
                         {% if searches is null %}
-                            <h2 class="text-center mt-5 "> Aucun résultat trouvé, saisis au moins 4 caractères, par
-                                Alduin !</h2>
+
+                            <container class="my-5 py-5">
+                                <img src="../../assets/pictures/no_result.png" alt="VGT_No_Result"
+                                     class="mx-auto d-block">
+                                <h2 class="text-center mt-5 "> Aucun résultat trouvé, saisis au moins 4 caractères, par
+                                    Alduin !</h2>
+                            </container>
+
                         {% endif %}
                         {% for search in searches|slice(0,50) %}
                             <div class="d-flex flex-row gamesection">
@@ -56,7 +62,6 @@
         </section>
 
     </main>
-    <div class="mb-3 pb-5"></div>
     {% include 'parts/footer.twig' %}
 
     <!-- JS script contained in node_modules -->

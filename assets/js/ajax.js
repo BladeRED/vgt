@@ -1,9 +1,5 @@
 "use strict";
 
-// VARIABLES //
-
-
-
 //FUNCTIONS //
 
 function onClickModalUser(userId){

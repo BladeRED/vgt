@@ -24,7 +24,7 @@ class SecurityController extends AbstractController
     {
 //logout the session
         session_destroy();
-        header("Location: /home/homepage");
+        header("Location: /");
     }
 
     public function displaySubmit()

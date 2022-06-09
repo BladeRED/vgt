@@ -11867,4 +11867,8 @@ div.dataTables_wrapper div.dataTables_filter label {
   border-color: #c06faa;
 }
 
+.searchHide {
+  display: none !important;
+}
+
 /*# sourceMappingURL=style.css.map */

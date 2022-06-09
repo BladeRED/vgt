@@ -67,13 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
             .querySelector(".sectionbutton")
             .addEventListener("click", hideSection)
 
-    }else if (btn4) {
-
-        document
-            .querySelector(".editAdmin")
-            .addEventListener("click", editModal)
-
-
     }
 
 });
