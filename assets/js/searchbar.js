@@ -8,11 +8,36 @@ let searchResult = document.querySelector("#searchResult");
 
 function showSuggestionsOnChange() {
 
-    document.querySelector(".searchHidden").classList.remove("searchHide");
+    let ulSearch = document.querySelector(".searchHidden");
+    let formSearch = document.querySelector("#formSearch");
 
-    if (searchResult.value >3){
 
-        console.log ("Mathieu");
+    let searchSuggest = searchResult.value
+    if (searchSuggest.length > 3) {
+
+        ulSearch.classList.remove("searchHide")
+        let myFormData = new FormData(formSearch);
+        let init = { method: 'POST',
+        body: myFormData}
+        fetch('/searchInput', init)
+            .then(function (response) {
+                console.log("prout")
+                // return response.text();
+                return response.json();
+            })
+            .then(function (datas) {
+
+
+                searchSuggest = datas.title
+
+                ulSearch.insertAdjacentHTML("beforeend", `<li class ="list-group-item" id ="searchSuggest"><a href="$(datas.id)">${datas.title}</a></li>`)
+                console.log(searchSuggest);
+
+
+            })
+            .catch(function (error) {
+                alert("Erreur : " + error);
+            });
 
     }
 
@@ -24,7 +49,7 @@ function showSuggestionsOnChange() {
 document.addEventListener("DOMContentLoaded", function () {
 
 
-        searchResult
+    searchResult
         .addEventListener("input",
             showSuggestionsOnChange)
 

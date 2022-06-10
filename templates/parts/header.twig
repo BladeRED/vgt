@@ -20,7 +20,7 @@
 
                 <!-- Searchbar -->
                 <div class="d-flex flex-row navhead">
-                    <form method="post" action="/home/search" class="w-100">
+                    <form method="post" action="/home/search" class="w-100" id="formSearch" name="formSearch">
                         <div class="search mt-5 mx-5 py-2 searchbar">
                             <input type="text" class="searchTerm" name="searchResult" id="searchResult"
                                    placeholder="Cherche tes jeux ici !">
@@ -29,12 +29,7 @@
                             </button>
 
                         </div>
-                        <ul class="bg-light py-3  ms-5 rounded-2 w-75 list-group list-group-flush searchHide searchHidden">
-                            <li class ="list-group-item">Tartiflette</li>
-                            <li class ="list-group-item">Tartiflette</li>
-                            <li class ="list-group-item">Tartiflette</li>
-                            <li class ="list-group-item">Tartiflette</li>
-
+                        <ul class="bg-light py-3  ms-5 rounded-2 w-75 list-group list-group-flush searchHide searchHidden scroller">
 
                         </ul>
                     </form>

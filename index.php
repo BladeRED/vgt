@@ -48,6 +48,11 @@ $router->mount('/home', function () use ($controller, $router) {
 
         $controller->search();
     });
+
+    $router->post('/searchInput', function () use ($controller) {
+
+        $controller->searchInput();
+    });
 });
 
 $router->before('GET|POST', '/security/.*', function () use ($router) {

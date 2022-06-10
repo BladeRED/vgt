@@ -100,18 +100,43 @@ class DefaultController extends AbstractController
     public function search()
     {
 
-        $errors= [];
         $searchResult = trim($_POST["searchResult"]);
 
         if (strlen($searchResult) >=0 && strlen($searchResult)<= 2) {
                     $searches = null;
-            $this->render->display('default/gameslist.twig', ['searches' => $searches,
-                'errors' => $errors]);
+            $this->render->display('default/gameslist.twig', ['searches' => $searches]);
         } else {
             $searches = $this->gamemanager->search($searchResult);
 
-            $this->render->display('default/gameslist.twig', ['searches' => $searches,
-                'errors' => $errors]);
+            if (empty($searches)) {
+                $searches = null;
+                $this->render->display('default/gameslist.twig', ['searches' => $searches]);
+
+            }else{
+                $this->render->display('default/gameslist.twig', ['searches' => $searches]);
+            }
+        }
+    }
+
+    public function searchInput()
+    {
+
+        $searchResult = trim($_POST["searchResult"]);
+
+
+        if (strlen($searchResult) >=0 && strlen($searchResult)<= 2) {
+            $searches = null;
+            $this->render->display('default/gameslist.twig', ['searches' => $searches]);
+        } else {
+            $searches = $this->gamemanager->search($searchResult);
+
+            if (empty($searches)) {
+                $searches = null;
+                $this->render->display('default/gameslist.twig', ['searches' => $searches]);
+
+            }else{
+                $searches = json_encode($searches);
+            }
         }
     }
 
