@@ -3,6 +3,7 @@
 // VARIABLES //
 
 let searchResult = document.querySelector("#searchResult");
+let searchSuggest = document.querySelector("#searchSuggest");
 
 //FUNCTIONS //
 
@@ -12,13 +13,15 @@ function showSuggestionsOnChange() {
     let formSearch = document.querySelector("#formSearch");
 
 
-    let searchSuggest = searchResult.value
-    if (searchSuggest.length > 3) {
+    let searchValue = searchResult.value
+    if (searchValue.length > 3) {
 
         ulSearch.classList.remove("searchHide")
         let myFormData = new FormData(formSearch);
-        let init = { method: 'POST',
-        body: myFormData}
+        let init = {
+            method: 'POST',
+            body: myFormData
+        }
         fetch('/home/searchInput', init)
             .then(function (response) {
 
@@ -26,7 +29,11 @@ function showSuggestionsOnChange() {
                 return response.json();
             })
             .then(function (datas) {
-                ulSearch.insertAdjacentHTML("beforeend", `<li class ="list-group-item" id ="searchSuggest"><a href="/home/game/${datas[0].Id_Games}">${datas[0].title}</a></li>`)
+
+
+                    ulSearch.insertAdjacentHTML("beforeend", `<li class ="list-group-item" id ="searchSuggest"><a href="/home/game/${datas[0].Id_Games}">${datas[0].title}</a></li>`)
+                    ulSearch.removeChild(ulSearch.firstChild)
+
             })
             .catch(function (error) {
                 alert("Erreur : " + error);
@@ -45,5 +52,5 @@ document.addEventListener("DOMContentLoaded", function () {
     searchResult
         .addEventListener("input",
             showSuggestionsOnChange)
-    ulSearch.insertAdjacentHTML("beforeend", `<li class ="list-group-item" id ="searchSuggest"><a href="/home/game/${datas[0].Id_Games}">${datas[0].title}</a></li>`)
+
 });
