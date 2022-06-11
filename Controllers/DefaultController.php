@@ -113,6 +113,7 @@ class DefaultController extends AbstractController
                 $this->render->display('default/gameslist.twig', ['searches' => $searches]);
 
             }else{
+                $searches = json_encode($searches);
                 $this->render->display('default/gameslist.twig', ['searches' => $searches]);
             }
         }
@@ -136,6 +137,7 @@ class DefaultController extends AbstractController
 
             }else{
                 $searches = json_encode($searches);
+                echo($searches);
             }
         }
     }

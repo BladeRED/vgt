@@ -19,21 +19,14 @@ function showSuggestionsOnChange() {
         let myFormData = new FormData(formSearch);
         let init = { method: 'POST',
         body: myFormData}
-        fetch('/searchInput', init)
+        fetch('/home/searchInput', init)
             .then(function (response) {
-                console.log("prout")
+
                 // return response.text();
                 return response.json();
             })
             .then(function (datas) {
-
-
-                searchSuggest = datas.title
-
-                ulSearch.insertAdjacentHTML("beforeend", `<li class ="list-group-item" id ="searchSuggest"><a href="$(datas.id)">${datas.title}</a></li>`)
-                console.log(searchSuggest);
-
-
+                ulSearch.insertAdjacentHTML("beforeend", `<li class ="list-group-item" id ="searchSuggest"><a href="/home/game/${datas[0].Id_Games}">${datas[0].title}</a></li>`)
             })
             .catch(function (error) {
                 alert("Erreur : " + error);
@@ -52,5 +45,5 @@ document.addEventListener("DOMContentLoaded", function () {
     searchResult
         .addEventListener("input",
             showSuggestionsOnChange)
-
+    ulSearch.insertAdjacentHTML("beforeend", `<li class ="list-group-item" id ="searchSuggest"><a href="/home/game/${datas[0].Id_Games}">${datas[0].title}</a></li>`)
 });

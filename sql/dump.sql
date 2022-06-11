@@ -67,7 +67,7 @@ CREATE TABLE `Gamer` (
   `picture` varchar(512) NOT NULL DEFAULT '../../assets/pictures/vegeta_1771.jpg',
   `registerDate` date NOT NULL,
   PRIMARY KEY (`Id_Gamer`)
-) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,7 +84,10 @@ INSERT INTO `Gamer` VALUES
 (16,'LaBanane','$2y$10$pv3YZazS7kzKe7H.4yvpp.yBhGNsz4..dWZ0mR.mqUFSfn8tWIXMW','LaBanane@banane.fr','[GAMER]','../../assets/pictures/dragon.png','2022-05-09'),
 (17,'MathieuAjax','$2y$10$6xVURws3UnKAfmrQgU/gpOuz2EfOxu5EZrmw3PBBShUVQ.7ZEZuEO','Vegepate@terrine.jp','[GAMER]','62839eec13cc4.jpeg','2022-05-10'),
 (24,'LaRaclette','$2y$10$K40wDFpPB7EmGK72M6xY4OVQtbPwROdOWLw.zZsm/yZQ94oO5g7X6','RacletteParty@truffade.savoie','[GAMER]','6294b0279eabe.png','2022-05-10'),
-(29,'Vegeta_Majin_De_La_Mort','$2y$10$tmWd5Ut1giXQGHeW0jAE2eF/Qboly3U/KGgTQ9r1FL8ffrPm2YyLO','zfapapeeg@fzapfofzapf.com','[GAMER]','6296100867ade.jpeg','2022-05-24');
+(29,'Vegeta_Majin_De_La_Mort','$2y$10$tmWd5Ut1giXQGHeW0jAE2eF/Qboly3U/KGgTQ9r1FL8ffrPm2YyLO','zfapapeeg@fzapfofzapf.com','[GAMER]','6296100867ade.jpeg','2022-05-24'),
+(30,'Totoro','$2y$10$jZCWboiukkl0eo7f9NM8NuiE0yqimqXGCaTgZ4BjTDnRnRu6PVwxS','Totoro@totoro.jp','[GAMER]','../../assets/pictures/dragon.png','2006-02-22'),
+(31,'MalikaLeternelle','$2y$10$Q2oFge3uNOZ5sR/Kede5uuess3vGrxmbbN8W3vB2sbLUR8TWDFJKy','PiccoloLeNamek@Porunga.jp','[GAMER]','../../assets/pictures/dragon.png','2006-07-22'),
+(32,'GodrickLeGreffe','$2y$10$3p9eSvjaKQqofbZOTt4z/.Swi9Pg.ociAfDyalYwrm5T5o93M9pnW','EldenRing@GOTY22.fr','[GAMER]','../../assets/pictures/dragon.png','2006-07-22');
 /*!40000 ALTER TABLE `Gamer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -102,8 +105,9 @@ CREATE TABLE `Games` (
   `released` date DEFAULT NULL,
   `editor` varchar(255) NOT NULL,
   `studio` varchar(255) NOT NULL,
+  `addDate` date NOT NULL,
   PRIMARY KEY (`Id_Games`)
-) ENGINE=InnoDB AUTO_INCREMENT=36 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,11 +117,13 @@ CREATE TABLE `Games` (
 LOCK TABLES `Games` WRITE;
 /*!40000 ALTER TABLE `Games` DISABLE KEYS */;
 INSERT INTO `Games` VALUES
-(1,'Elden Ring','Elden Ring se déroule dans le royaume de l\'Entre-terre, quelque temps après la destruction du Cercle d’Elden et la dispersion de ses fragments, les runes majeures. Autrefois honoré par la présence du Cercle et de l\'Arbre-Monde, le royaume est maintenant gouverné par les descendants demi-dieux de la reine Marika l\'Éternelle, chacun possédant un éclat du Cercle d\'Elden qui les corrompt et les empoisonne par leur pouvoir.','2022-02-28','Bandai Namco','From Software'),
-(2,'Pillars of Eternity','L\'histoire se déroule dans le monde d\'Eora, dans une région située dans l\'hémisphère sud, appelée les Contrées Orientales, une région qui a approximativement la taille de l\'Espagne. Les Contrées orientales comportent plusieurs nations, dont le Palatinat Libre du Dyrwood – une ancienne colonie du puissant Empire d\'Aedyr qui a gagné son indépendance au travers d\'une révolution6 – les Républiques de Vailia.','2015-03-26','Paradox Interactive','Obsidian Entertainment'),
-(3,'Zelda: Breath of the Wild','L\'intrigue se déroule dans un univers médiéval-fantastique, le royaume d\'Hyrule. Ce dernier est dévasté à la suite d\'une catastrophe ayant eu lieu un siècle avant l\'aventure, et présente ainsi de nombreux temples et bâtiments en ruines. La nature, par sa faune et sa flore, est en revanche omniprésente. ','2017-03-03','Nintendo','Nintendo'),
-(4,'Dragon Ball Xenoverse 2','Il s\'agit d\'un jeu de combat en map fermée (mais possédant de grandes limites). L\'attrait principal du jeu est que le joueur peut créer son avatar parmi cinq races qui sont les Majins (comme Boo), les Saiyans (comme Son Goku et Vegeta), les terriens (comme Krilin), les Nameks (comme Piccolo) ou enfin la race de Freezer. ','2016-10-24','Bandai Namco','Dimps'),
-(11,'Divinity 2 Original Sin','À la suite de la mort du Divin, les ensourceleurs attirent le Vide. L\'Ordre Divin dirigé par l\'Evêque Alexandar décide de proscrire l\'utilisation de la Source. Le joueur incarne un(e) ensourceleur(se) renégat victime de la répression de l\'Evêque.','2017-09-14','Larian Studios','Larian Studios');
+(1,'Elden Ring','Elden Ring se déroule dans le royaume de l\'Entre-terre, quelque temps après la destruction du Cercle d’Elden et la dispersion de ses fragments, les runes majeures. Autrefois honoré par la présence du Cercle et de l\'Arbre-Monde, le royaume est maintenant gouverné par les descendants demi-dieux de la reine Marika l\'Éternelle, chacun possédant un éclat du Cercle d\'Elden qui les corrompt et les empoisonne par leur pouvoir.','2022-02-28','Bandai Namco','From Software','2022-05-24'),
+(2,'Pillars of Eternity','L\'histoire se déroule dans le monde d\'Eora, dans une région située dans l\'hémisphère sud, appelée les Contrées Orientales, une région qui a approximativement la taille de l\'Espagne. Les Contrées orientales comportent plusieurs nations, dont le Palatinat Libre du Dyrwood – une ancienne colonie du puissant Empire d\'Aedyr qui a gagné son indépendance au travers d\'une révolution6 – les Républiques de Vailia.','2015-03-26','Paradox Interactive','Obsidian Entertainment','2022-05-25'),
+(3,'Zelda: Breath of the Wild','L\'intrigue se déroule dans un univers médiéval-fantastique, le royaume d\'Hyrule. Ce dernier est dévasté à la suite d\'une catastrophe ayant eu lieu un siècle avant l\'aventure, et présente ainsi de nombreux temples et bâtiments en ruines. La nature, par sa faune et sa flore, est en revanche omniprésente. ','2017-03-03','Nintendo','Nintendo','2022-05-25'),
+(4,'Dragon Ball Xenoverse 2','Il s\'agit d\'un jeu de combat en map fermée (mais possédant de grandes limites). L\'attrait principal du jeu est que le joueur peut créer son avatar parmi cinq races qui sont les Majins (comme Boo), les Saiyans (comme Son Goku et Vegeta), les terriens (comme Krilin), les Nameks (comme Piccolo) ou enfin la race de Freezer. ','2016-10-24','Bandai Namco','Dimps','2022-06-01'),
+(11,'Divinity 2 Original Sin','À la suite de la mort du Divin, les ensourceleurs attirent le Vide. L\'Ordre Divin dirigé par l\'Evêque Alexandar décide de proscrire l\'utilisation de la Source. Le joueur incarne un(e) ensourceleur(se) renégat victime de la répression de l\'Evêque.','2017-09-14','Larian Studios','Larian Studios','2022-06-01'),
+(36,'Pokémon Version Violet','Pokémon Écarlate et Pokémon Violet se déroulent dans un monde ouvert dans lequel les différentes villes s\'intègrent naturellement au paysage environnant, sans aucune transition2,3. La région semble être inspirée de la Péninsule Ibérique, d’après les images diffusées lors de l’annonce des jeux, où l\'on voit ce qui peut s\'apparenter à une hacienda, d\'autres bâtiments semblent reprendre l\'architecture de la ville de Lisbonne ou encore un bâtiment ressemblant à la Sagrada Familia de Barcelone',NULL,'Game Freak','Nintendo','2006-02-22'),
+(37,'Pokémon Version Ecarlate','geazgzggggezvezvezv. ezvezvezvezvbezbezbezbezbezbebebebeebebevevev. eveavgzvbezvzevezvzevezvezvezvzevvzevezvezvezvezv','2022-11-18','Game Freak','Nintendo','2006-03-22');
 /*!40000 ALTER TABLE `Games` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,12 +142,13 @@ CREATE TABLE `Gametimes` (
   `seconds` int(11) NOT NULL,
   `Id_Games` int(11) NOT NULL,
   `Id_Gamer` int(11) NOT NULL,
+  `addDate` date NOT NULL,
   PRIMARY KEY (`Id_Gametimes`),
   KEY `Id_Games` (`Id_Games`),
   KEY `Id_Gamer` (`Id_Gamer`),
   CONSTRAINT `Gametimes_ibfk_1` FOREIGN KEY (`Id_Games`) REFERENCES `Games` (`Id_Games`),
   CONSTRAINT `Gametimes_ibfk_2` FOREIGN KEY (`Id_Gamer`) REFERENCES `Gamer` (`Id_Gamer`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -151,10 +158,14 @@ CREATE TABLE `Gametimes` (
 LOCK TABLES `Gametimes` WRITE;
 /*!40000 ALTER TABLE `Gametimes` DISABLE KEYS */;
 INSERT INTO `Gametimes` VALUES
-(1,'Histoire',98,57,23,1,13),
-(2,'Complétioniste',257,32,45,2,13),
-(5,'Histoire',55,23,12,1,17),
-(6,'Complétioniste',132,32,45,1,15);
+(1,'Histoire',98,57,23,1,13,'2022-04-12'),
+(2,'Complétioniste',257,32,45,2,13,'2022-05-17'),
+(5,'Histoire',55,23,12,1,17,'2022-05-29'),
+(6,'Complétioniste',132,32,45,1,15,'2022-06-01'),
+(16,'Histoire+Extras',98,32,45,2,15,'2022-06-07'),
+(17,'Histoire+Extras',57,43,12,11,30,'2022-06-05'),
+(18,'Complétioniste',257,43,52,4,29,'2022-06-03'),
+(19,'Histoire',43,25,13,3,31,'2022-06-02');
 /*!40000 ALTER TABLE `Gametimes` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -248,6 +259,7 @@ CREATE TABLE `Reviews` (
   `isSignaled` tinyint(1) NOT NULL,
   `Id_Games` int(11) NOT NULL,
   `Id_Gamer` int(11) NOT NULL,
+  `addDate` date NOT NULL,
   PRIMARY KEY (`Id_Reviews`),
   KEY `Id_Games` (`Id_Games`),
   KEY `Id_Gamer` (`Id_Gamer`),
@@ -263,9 +275,9 @@ CREATE TABLE `Reviews` (
 LOCK TABLES `Reviews` WRITE;
 /*!40000 ALTER TABLE `Reviews` DISABLE KEYS */;
 INSERT INTO `Reviews` VALUES
-(1,5,'C\'est trop bien ce jeu !','2021-12-15 11:06:44',1,4,13),
-(3,4,'J\'ai adoré mais moins que Dragon Ball.','2022-05-17 23:32:11',1,3,13),
-(4,3,'Après quelques heures à adorer les combats, je me suis vite lassé. Trop de farm, trop de blabla, scénario presque inintéressant, heureusement que la fin du jeu s\'est vite montré sinon j\'aurais mourru d\'ennui !','2022-05-30 08:51:06',1,4,24);
+(1,5,'C\'est trop bien ce jeu !','2021-12-15 11:06:44',1,4,13,'2022-06-01'),
+(3,4,'J\'ai adoré mais moins que Dragon Ball.','2022-05-17 23:32:11',1,3,13,'2022-06-02'),
+(4,3,'Après quelques heures à adorer les combats, je me suis vite lassé. Trop de farm, trop de blabla, scénario presque inintéressant, heureusement que la fin du jeu s\'est vite montré sinon j\'aurais mourru d\'ennui !','2022-05-30 08:51:06',1,4,24,'2022-05-31');
 /*!40000 ALTER TABLE `Reviews` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -299,7 +311,9 @@ INSERT INTO `game_genre` VALUES
 (2,3),
 (3,4),
 (4,5),
-(11,3);
+(11,3),
+(36,3),
+(37,3);
 /*!40000 ALTER TABLE `game_genre` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -334,7 +348,9 @@ INSERT INTO `game_platform` VALUES
 (2,1),
 (3,7),
 (4,1),
-(4,7);
+(4,7),
+(36,7),
+(37,7);
 /*!40000 ALTER TABLE `game_platform` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -399,4 +415,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-02 13:18:05
+-- Dump completed on 2022-06-11 13:21:56
