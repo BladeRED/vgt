@@ -14,7 +14,7 @@ function showSuggestionsOnChange() {
 
 
     let searchValue = searchResult.value
-    if (searchValue.length > 3) {
+    if (searchValue.length > 2) {
 
         ulSearch.classList.remove("searchHide")
         let myFormData = new FormData(formSearch);
@@ -30,15 +30,36 @@ function showSuggestionsOnChange() {
             })
             .then(function (datas) {
 
+                if (datas) {
+                    while (ulSearch.firstChild) {
+                        ulSearch.removeChild(ulSearch.firstChild)
+                    }
+                }else if(!datas && searchValue.length === 3){
+                    ulSearch.insertAdjacentHTML("beforeend", `<li class ="list-group-item" id ="searchSuggest"> Aucun résultat ne correspond à votre recherche</li>`)
 
-                    ulSearch.insertAdjacentHTML("beforeend", `<li class ="list-group-item" id ="searchSuggest"><a href="/home/game/${datas[0].Id_Games}">${datas[0].title}</a></li>`)
-                    ulSearch.removeChild(ulSearch.firstChild)
+                }
+                for (let i = 0; i < datas.length; i++) {
+
+                    ulSearch.insertAdjacentHTML("beforeend", `<li class ="list-group-item " id ="searchSuggest"><a href="/home/game/${datas[i].Id_Games}" class="searchLinks">${datas[i].title}</a></li>`)
+                }
+
 
             })
-            .catch(function (error) {
-                alert("Erreur : " + error);
+            .catch(function (error, datas) {
+
+
+                console.log(datas)
+
+                console.log(error)
+
             });
 
+    } else if (searchValue.length == 0) {
+
+        ulSearch.classList.add("searchHide")
+        while (ulSearch.firstChild) {
+            ulSearch.removeChild(ulSearch.firstChild)
+        }
     }
 
 }

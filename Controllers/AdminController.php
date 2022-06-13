@@ -165,7 +165,7 @@ class AdminController extends AbstractController
 
                 if (count($errors) == 0) {
 
-                    $gamer = new Gamer(null, $_POST["pseudoRegister"], $_POST["passwordRegister"], $_POST["mailRegister"], "[GAMER]", "../../assets/pictures/dragon.png", date('m.d.y'));
+                    $gamer = new Gamer(null, $_POST["pseudoRegister"], $_POST["passwordRegister"], $_POST["mailRegister"], "[GAMER]", "../../assets/pictures/dragon.png", date('Y-m-d'));
                     $this->gamermanager->create($gamer);
                 }
                 header('Location:/admin/users');
@@ -180,11 +180,11 @@ class AdminController extends AbstractController
 
                     if (!$_POST["release"]) {
 
-                        $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], null, $_POST["studio"], $_POST["editor"], "", "", "", "", "", "", date('m.d.y'));
+                        $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], null, $_POST["studio"], $_POST["editor"], "", "", "", "", "", "", date('Y-m-d'));
 
                     } else {
 
-                        $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], $_POST["release"], $_POST["studio"], $_POST["editor"], "", "", "", "", "", "", date('m.d.y'));
+                        $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], $_POST["release"], $_POST["studio"], $_POST["editor"], "", "", "", "", "", "", date('Y-m-d'));
 
                     }
                     $this->gamemanager->add($game);

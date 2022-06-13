@@ -102,8 +102,8 @@ class DefaultController extends AbstractController
 
         $searchResult = trim($_POST["searchResult"]);
 
-        if (strlen($searchResult) >=0 && strlen($searchResult)<= 2) {
-                    $searches = null;
+        if (strlen($searchResult) >= 0 && strlen($searchResult) <= 2) {
+            $searches = null;
             $this->render->display('default/gameslist.twig', ['searches' => $searches]);
         } else {
             $searches = $this->gamemanager->search($searchResult);
@@ -112,7 +112,7 @@ class DefaultController extends AbstractController
                 $searches = null;
                 $this->render->display('default/gameslist.twig', ['searches' => $searches]);
 
-            }else{
+            } else {
                 $searches = json_encode($searches);
                 $this->render->display('default/gameslist.twig', ['searches' => $searches]);
             }
@@ -125,20 +125,20 @@ class DefaultController extends AbstractController
         $searchResult = trim($_POST["searchResult"]);
 
 
-        if (strlen($searchResult) >=0 && strlen($searchResult)<= 2) {
+        if (strlen($searchResult) >= 0 && strlen($searchResult) <= 2) {
             $searches = null;
-            $this->render->display('default/gameslist.twig', ['searches' => $searches]);
+            echo($searches);
+
         } else {
             $searches = $this->gamemanager->search($searchResult);
 
-            if (empty($searches)) {
+            if (!$searches) {
                 $searches = null;
-                $this->render->display('default/gameslist.twig', ['searches' => $searches]);
 
-            }else{
+            }
                 $searches = json_encode($searches);
                 echo($searches);
-            }
+
         }
     }
 
