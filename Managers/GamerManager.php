@@ -55,7 +55,7 @@ class GamerManager extends DBManager
         return $gamer;
     }
 
-    public function findByDate($dateBegin,$dateEnd)
+    public function findByDate($dateBegin, $dateEnd)
     {
         $query = $this->bdd->prepare('SELECT COUNT(*) AS nbGamers FROM Gamer WHERE registerDate >=:dateBegin AND registerDate < :dateEnd');
         $query->execute(["dateBegin" => $dateBegin,
@@ -66,7 +66,8 @@ class GamerManager extends DBManager
         return $result['nbGamers'];
     }
 
-    public function checkAllTimesUsers(){
+    public function checkAllTimesUsers()
+    {
 
         $query = $this->bdd->prepare('SELECT COUNT(DISTINCT pseudo) AS nbGamerTime FROM Gamer JOIN Gametimes ON Gamer.Id_Gamer = Gametimes.Id_Gamer;');
         $query->execute();
@@ -77,7 +78,8 @@ class GamerManager extends DBManager
 
     }
 
-    public function checkAllNullTimesUsers(){
+    public function checkAllNullTimesUsers()
+    {
 
         $query = $this->bdd->prepare('SELECT COUNT(DISTINCT pseudo) AS nbGamerNullTime FROM Gamer LEFT JOIN Gametimes On Gamer.Id_Gamer = Gametimes.Id_Gamer WHERE Gametimes.Id_Gamer IS NULL;');
         $query->execute();
@@ -88,7 +90,8 @@ class GamerManager extends DBManager
 
     }
 
-    public function countUsers(){
+    public function countUsers()
+    {
 
         $query = $this->bdd->prepare('SELECT COUNT(*)AS TotalUsers FROM Gamer;');
         $query->execute();
@@ -107,7 +110,7 @@ class GamerManager extends DBManager
             "mail" => $gamer->getMail(),
             "role" => "[GAMER]",
             "picture" => $gamer->getPicture(),
-            "registerDate"=> $gamer->getRegisterdate()
+            "registerDate" => $gamer->getRegisterdate()
         ]);
 
 

@@ -84,11 +84,11 @@ class DefaultController extends AbstractController
 
             // Save in the BDD
             if (count($errors) == 0) {
-                $gamer = new Gamer(null, $_POST["pseudoRegister"], $_POST["passwordRegister"], $_POST["mailRegister"], "[GAMER]", "../../assets/pictures/dragon.png", date("m.d.y"));
+                $gamer = new Gamer(null, $_POST["pseudoRegister"], $_POST["passwordRegister"], $_POST["mailRegister"], "[GAMER]", "../../assets/pictures/dragon.png", date("Y-m-d"));
 
                 $this->gamermanager->create($gamer);
                 $this->gamermanager = new GamerManager();
-                header('Location: /home/homepage');
+                header('Location: /');
 
             }
 
@@ -138,6 +138,29 @@ class DefaultController extends AbstractController
             }
                 $searches = json_encode($searches);
                 echo($searches);
+
+        }
+    }
+
+    public function submitInput()
+    {
+
+        $submitResult = trim($_POST["submitResult"]);
+
+
+        if (strlen($submitResult) >= 0 && strlen($submitResult) <= 2) {
+            $searches = null;
+            echo($searches);
+
+        } else {
+            $searches = $this->gamemanager->search($submitResult);
+
+            if (!$searches) {
+                $searches = null;
+
+            }
+            $searches = json_encode($searches);
+            echo($searches);
 
         }
     }

@@ -4,7 +4,8 @@
     "bootstrap": "^5.1.3",
     "chart.js": "^3.7.1",
     "gulp-sass": "^5.1.0",
-    "sass": "^1.51.0"
+    "sass": "^1.51.0",
+    "sweetalert2": "^11.4.17"
   },
   "scripts": {
     "sass": "sass --watch ./scss/style.scss:./assets/css/style.css --style compressed"

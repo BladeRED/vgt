@@ -129,7 +129,7 @@ class SecurityController extends AbstractController
 
         if ($_POST["passwordEdit"] != $_POST["verifPasswordEdit"]) {
 
-            $errors[] = "T'as ptet confondu avec l'ancien :) :)";
+            $errors[] = "T'as peut-être confondu avec l'ancien :) :)";
         }
 
         if (empty($_POST["mailEdit"])) {

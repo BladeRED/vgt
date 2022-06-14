@@ -3,7 +3,7 @@
 // VARIABLES //
 
 let searchResult = document.querySelector("#searchResult");
-let searchSuggest = document.querySelector("#searchSuggest");
+
 
 //FUNCTIONS //
 

@@ -92,6 +92,12 @@ div.dataTables_wrapper div.dataTables_filter label{
 
 }
 
+.submitHide{
+
+  display: none !important;
+
+}
+
 .scroller {
   width: 300px;
   height: 150px;
@@ -99,8 +105,21 @@ div.dataTables_wrapper div.dataTables_filter label{
 
 }
 
+.subscroller {
+  width: 300px;
+  height: 100px;
+  overflow-y: scroll;
+
+}
+
 .searchLinks:hover{
 
   color: #935482 !important;
+
+}
+
+.modal-backdrop {
+
+  position: relative !important;
 
 }

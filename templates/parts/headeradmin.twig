@@ -19,12 +19,19 @@
 
                 <!-- Searchbar -->
                 <div class="d-flex flex-row navhead">
-                    <div class="search mt-5 mx-5 py-2 searchbar">
-                        <input type="text" class="searchTerm" placeholder="Cherche tes jeux ici !">
-                        <button type="submit" class="searchButton">
-                            <i class="fa fa-search"></i>
-                        </button>
-                    </div>
+                    <form method="post" action="/home/search" class="w-100" id="formSearch" name="formSearch">
+                        <div class="search mt-5 mx-5 py-2 searchbar">
+                            <input type="text" class="searchTerm" name="searchResult" id="searchResult"
+                                   placeholder="Cherche tes jeux ici !">
+                            <button type="submit" class="searchIcon" aria-label="Search Icon">
+                                <i class="fa fa-search"></i>
+                            </button>
+
+                        </div>
+                        <ul class="bg-light py-3  ms-5 rounded-2 w-75 list-group list-group-flush searchHide searchHidden scroller">
+
+                        </ul>
+                    </form>
                 </div>
             </div>
 
@@ -83,7 +90,7 @@
             </div>
         </div>
 
-        <nav class="navbar navbar-expand-lg navbar-light bgsection">
+        <nav class="navbar navbar-expand-lg navbar-light bgsection ">
             <div class="container-fluid">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -120,5 +127,5 @@
                 </div>
             </div>
         </nav>
-
+        {% include "parts/searchbar.twig" %}
 </header>

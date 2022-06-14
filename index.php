@@ -53,12 +53,17 @@ $router->mount('/home', function () use ($controller, $router) {
 
         $controller->searchInput();
     });
+
+    $router->post('/submitInput', function () use ($controller) {
+
+        $controller->submitInput();
+    });
 });
 
 $router->before('GET|POST', '/security/.*', function () use ($router) {
 
     if (!isset($_SESSION['gamer'])) {
-        header('Location: /home/homepage');
+        header('Location: /');
         exit();
     }
 });

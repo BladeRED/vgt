@@ -1,5 +1,5 @@
 <header>
-    <div class="container-fluid">
+    <div class="container-fluid position-sticky">
 
         <div class="row ">
 
@@ -43,12 +43,109 @@
                 <div class="d-flex flex-row logsubmit">
                     {% if gamer %}
                         <div class="col-lg-4 d-flex justify-content-end subutton">
-                            <a href="/security/submit">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#noConnect">
                                 <img src="../../assets/pictures/submit.png"
                                      class="img-fluid rounded mx-auto d-block mt-5"
                                      style="height: 64px ;width: 64px" alt="VGT_submit">
                                 <p class="text-center"> Soumettre un temps </p>
                             </a>
+
+                            <!-- Modal Submit -->
+                            <div class="modal fade" id="noConnect" data-bs-backdrop="static" data-bs-keyboard="false"
+                                 tabindex="-1" aria-labelledby="noConnectLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header d-flex justify-content-center">
+                                            <div class="row d-flex justify-content-center">
+
+                                                <h5 class="modal-title text-dark text-center" id="noConnectLabel">
+
+                                                    🎮 Trouve ton jeu et saisis ton temps ! 🎮
+                                                </h5>
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <form method="post" action="#" id="formSubmit"
+                                                  name="formSubmit">
+                                                <div class="d-flex flex-column">
+                                                <label for="submitResult" class="text-center text-dark mb-2">Recherche
+                                                    ton jeu ici:</label>
+
+                                                <input type="text"
+                                                       class="submitTerm w-50 align-self-center text-center mb-2"
+                                                       name="submitResult"
+                                                       id="submitResult"
+                                                       placeholder="Niwee Simulator 2022">
+                                                <ul class="bg-light py-3  ms-5 rounded-2 w-75 list-group list-group-flush submitHide submitHidden subscroller">
+
+                                                </ul>
+                                                </div>
+                                            </form>
+                                            <form method="post" action="/security/submit">
+                                                <div class="d-flex flex-column submitsection">
+
+                                                    <label for="plateformes" class="text-center text-dark mb-2">Choisis
+                                                        une
+                                                        plateforme:</label>
+
+                                                    <select name="plateformes" id="plateformes"
+                                                            class="mb-3 align-self-center">
+                                                        <option value="PS4">PS4</option>
+                                                        <option value="PS5">PS5</option>
+                                                        <option value="PC">PC</option>
+                                                        <option value="XBOX One">Xbox One</option>
+                                                        <option value="XBOX Series">Xbox Series</option>
+                                                        <option value="Nintendo Switch">Nintendo Switch</option>
+                                                    </select>
+
+                                                    <label for="categories" class="text-center text-dark mb-2">Choisis
+                                                        une
+                                                        catégorie de temps de
+                                                        jeu:</label>
+
+                                                    <select name="categories" id="categories"
+                                                            class="align-self-center mb-2">
+                                                        <option value="Histoire">Histoire</option>
+                                                        <option value="Histoire + Extras">Histoire + Extras</option>
+                                                        <option value="Complétioniste">Complétioniste</option>
+
+                                                    </select>
+
+                                                    <form class="mt-3 d-flex flex-column">
+                                                        <label for="appt-time" class="text-center text-dark mb-2">Enregistre
+                                                            ton
+                                                            temps
+                                                            (heures/min/secondes) : </label>
+                                                        <input id="appt-time" type="time" name="appt-time" step="2"
+                                                               class="align-self-center mb-2">
+                                                    </form>
+
+
+                                                    <button
+                                                            type="button"
+                                                            class="btn btn-lg bgsection1 mx-auto mb-2 mt-3 d-flex justify-content-center text-white"
+                                                            value="Validate"
+                                                    >
+                                                        Valider le temps de jeu
+                                                    </button>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer d-flex justify-content-center">
+                                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                                                C'est parti, mon kiki !
+                                            </button>
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                                Finalement, flemme
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-4 account">
 
@@ -71,12 +168,47 @@
                         </div>
                     {% else %}
                         <div class="col-lg-6 d-flex justify-content-end subutton">
-                            <a href="/security/submit">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#noConnect">
                                 <img src="../../assets/pictures/submit.png"
                                      class="img-fluid rounded mx-auto d-block mt-5"
                                      style="height: 64px ;width: 64px" alt="VGT_submit">
                                 <p class="text-center"> Soumettre un temps </p>
                             </a>
+                            <!-- Modal Submit -->
+                            <div class="modal fade" id="noConnect" data-bs-backdrop="static" data-bs-keyboard="false"
+                                 tabindex="-1" aria-labelledby="noConnectLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header d-flex justify-content-center">
+                                            <div class="row d-flex justify-content-center">
+
+                                                <h5 class="modal-title text-dark text-center" id="noConnectLabel">
+                                                    <img
+                                                            src="assets/pictures/babyyoda.webp"
+                                                            style="max-width: 64px; max-height: 64px">
+                                                    Connecté tu dois être <img
+                                                            src="assets/pictures/babyyoda.webp"
+                                                            style="max-width: 64px; max-height: 64px"></h5>
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="text-dark"> Il faut avoir un compte chez VGT pour soumettre un
+                                                temps de jeu, clique sur le bouton à côté, l'inscription est rapide
+                                                !</p>
+                                        </div>
+                                        <div class="modal-footer d-flex justify-content-center">
+                                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                                                Que la Connexion soit avec moi !
+                                            </button>
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                                Ou pas
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-6 logbutton">
 
@@ -97,5 +229,9 @@
 
     {% include "parts/searchbar.twig" %}
 
+
+    {% if gamer %}
+        {% include "parts/submitbar.twig" %}
+    {% endif %}
 </header>
 
