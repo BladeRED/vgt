@@ -19,7 +19,7 @@ class TimeManager extends DBManager
 
         foreach ($results as $result) {
 
-            $timesList[] = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"],new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"], $result["registerDate"]), new Game($result["Id_Games"], $result["title"], $result["resume"],$result["released"], $result["editor"], $result["studio"], '', '', '', '', ', ', '', $result["addDate"]), $result["addDate"]);
+            $timesList[] = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"],new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"], $result["registerDate"]), new Game($result["Id_Games"], $result["title"], $result["resume"],$result["released"], $result["editor"], $result["studio"], '', '', '', '', ', ', '', $result["addDate"], $result["picture"]), $result["addDate"]);
 
         }
 
@@ -120,7 +120,7 @@ class TimeManager extends DBManager
 
         if ($result) {
 
-            $time = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"], $result["Id_Gamer"],$result["Id_Games"]);
+            $time = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"], $result["Id_Gamer"],$result["Id_Games"], $result["addDate"]);
 
         }
 
@@ -136,7 +136,7 @@ class TimeManager extends DBManager
 
         if ($result) {
 
-            $time = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"], $result["Id_Gamer"],$result["Id_Games"]);
+            $time = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"], $result["Id_Gamer"],$result["Id_Games"], $result["addDate"]);
 
         }
 

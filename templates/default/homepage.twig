@@ -51,7 +51,7 @@
 
             <div class="container mt-3 mb-3">
 
-                <h2 class="text-center sectiontitle why"> Ne perds plus ton temps avec VGT !</h2>
+                <h2 class="text-center sectiontitle why"> Gagne du temps, avec VGT !</h2>
                 <div class="row">
 
                     <div class="col-lg-6">
@@ -76,7 +76,8 @@
                             diskar
                             kontrol er.<br/>
                             <span class="d-flex justify-content-end">
-                                <a href="/home/login" type="button" class="btn btn-lg bgsection1 me-3 text-white calltoaction"> Inscris-toi !</a>
+                                <a href="/home/login" type="button"
+                                   class="btn btn-lg bgsection1 me-3 text-white calltoaction"> Inscris-toi !</a>
 
                             </span>
 
@@ -92,30 +93,30 @@
                     </div>
 
 
-                    </div>
                 </div>
+            </div>
 
             </div>
 
         </section>
 
         <!-- The most popular games section -->
-        <section class="px-5 py-5" >
+        <section class="px-5 py-5">
 
             <div class="container">
 
                 <h2 class="text-center mb-5" id="popular_games"> Jeux Populaires </h2>
 
                 <div class="d-flex flex-row justify-content-center game">
-
+                    {% for game in games|slice(0,4) %}
                     <div class="flip-card me-3 gamecard" style="width:15rem;height:21rem;">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
-                                <img src="../../assets/pictures/Elden_Ring.jpg" class="img-fluid w-100"
+                                <img src="{{game.picture}}" class="img-fluid w-100"
                                      style="width:15rem;height:21rem;border-radius: 8px" alt="Elden Ring">
                             </div>
                             <div class="flip-card-back">
-                                <h2 class="mt-4">Elden Ring</h2>
+                                <h2 class="mt-4">{{ game.title }}</h2>
                                 <p class="text-white mt-4">Temps de jeu moyen:</p>
                                 <p class="text-purple">999h 99 min 59s</p>
                                 <p class="text-white">Note moyenne des utilisateurs:</p>
@@ -124,53 +125,9 @@
                         </div>
                     </div>
 
-                    <div class="flip-card mx-3 gamecard" style="width:15rem;height:21rem;">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="../../assets/pictures/Elden_Ring.jpg" class="img-fluid w-100"
-                                     style="width:15rem;height:21rem;border-radius: 8px" alt="Elden Ring">
-                            </div>
-                            <div class="flip-card-back">
-                                <h2 class="mt-4">Elden Ring</h2>
-                                <p class="text-white mt-4">Temps de jeu moyen:</p>
-                                <p class="text-purple">999h 99 min 59s</p>
-                                <p class="text-white">Note moyenne des utilisateurs:</p>
-                                <p class="text-purple">4.5/5</p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
 
-                    <div class="flip-card mx-3 gamecard" style="width:15rem;height:21rem;">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="../../assets/pictures/Elden_Ring.jpg" class="img-fluid w-100"
-                                     style="width:15rem;height:21rem;border-radius: 8px" alt="Elden Ring">
-                            </div>
-                            <div class="flip-card-back">
-                                <h2 class="mt-4">Elden Ring</h2>
-                                <p class="text-white mt-4">Temps de jeu moyen:</p>
-                                <p class="text-purple">999h 99 min 59s</p>
-                                <p class="text-white">Note moyenne des utilisateurs:</p>
-                                <p class="text-purple">4.5/5</p>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="flip-card ms-3 gamecard" style="width:15rem;height:21rem;">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="../../assets/pictures/Elden_Ring.jpg" class="img-fluid w-100"
-                                     style="width:15rem;height:21rem;border-radius: 8px" alt="Elden Ring">
-                            </div>
-                            <div class="flip-card-back">
-                                <h2 class="mt-4">Elden Ring</h2>
-                                <p class="text-white mt-4">Temps de jeu moyen:</p>
-                                <p class="text-purple">999h 99 min 59s</p>
-                                <p class="text-white">Note moyenne des utilisateurs:</p>
-                                <p class="text-purple">4.5/5</p>
-                            </div>
-                        </div>
-                    </div>
 
                 </div>
 

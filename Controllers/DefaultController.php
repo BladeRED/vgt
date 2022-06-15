@@ -25,8 +25,8 @@ class DefaultController extends AbstractController
 
     public function displayHomepage()
     {
-
-        $this->render->display('default/homepage.twig');
+        $games = $this->gamemanager->findAll();
+        $this->render->display('default/homepage.twig', ['games' => $games]);
     }
 
     public function displayGame($id)

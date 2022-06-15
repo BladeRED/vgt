@@ -180,11 +180,11 @@ class AdminController extends AbstractController
 
                     if (!$_POST["release"]) {
 
-                        $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], null, $_POST["studio"], $_POST["editor"], "", "", "", "", "", "", date('Y-m-d'));
+                        $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], null, $_POST["studio"], $_POST["editor"], "", "", "", "", "", "", date('Y-m-d'), "../../assets/pictures/Elden_Ring.jpg");
 
                     } else {
 
-                        $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], $_POST["release"], $_POST["studio"], $_POST["editor"], "", "", "", "", "", "", date('Y-m-d'));
+                        $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], $_POST["release"], $_POST["studio"], $_POST["editor"], "", "", "", "", "", "", date('Y-m-d'), "../../assets/pictures/Elden_Ring.jpg");
 
                     }
                     $this->gamemanager->add($game);

@@ -12,6 +12,7 @@ class Game
     private $editor;
     private $studio;
 
+
     // For join genre and platform tables //
     private $genre;
     private $game_genre;
@@ -22,6 +23,10 @@ class Game
 
     private $genres;
     private $platforms;
+
+    //For the pictures //
+
+    private $picture;
 
 
     /**
@@ -38,8 +43,9 @@ class Game
      * @param $game_platform
      * @param $genres
      * @param $platforms
+     * @param $picture
      */
-    public function __construct($id, $title, $resume, $released, $editor, $studio, $genre, $game_genre, $platform, $game_platform, $genres, $platforms, $addDate)
+    public function __construct($id, $title, $resume, $released, $editor, $studio, $genre, $game_genre, $platform, $game_platform, $genres, $platforms, $addDate, $picture)
     {
         $this->id = $id;
         $this->title = $title;
@@ -51,9 +57,10 @@ class Game
         $this->game_genre = $game_genre;
         $this->platform = $platform;
         $this->game_platform = $game_platform;
-        $this->genres= $genres;
-        $this->platforms= $platforms;
-        $this->addDate= $addDate;
+        $this->genres = $genres;
+        $this->platforms = $platforms;
+        $this->addDate = $addDate;
+        $this->picture = $picture;
     }
 
 
@@ -263,6 +270,20 @@ class Game
     public function setAddDate($addDate): void
     {
         $this->addDate = $addDate;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPicture()
+    {
+        return $this->picture;
+    }/**
+     * @param mixed $picture
+     */
+    public function setPicture($picture): void
+    {
+        $this->picture = $picture;
     }
 
 
