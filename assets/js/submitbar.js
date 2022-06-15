@@ -3,8 +3,12 @@
 // VARIABLES //
 
 let submitResult = document.querySelector("#submitResult");
-let submitSuggest = document.querySelector("#submitSuggest");
-let submitLink = document.querySelector("#submitLink")
+let submitLink;
+let submitValue;
+let submitLinkValue;
+let submitGame = document.querySelector("#submitGame")
+let formHidden = document.querySelector(".formHidden");
+
 
 
 //FUNCTIONS //
@@ -13,7 +17,7 @@ function showSubmitSuggestionsOnChange() {
 
     let ulSubmit = document.querySelector(".submitHidden");
     let formSubmit = document.querySelector("#formSubmit");
-    let submitValue = submitResult.value
+    submitValue = submitResult.value
 
     if (submitValue.length > 2) {
 
@@ -31,19 +35,36 @@ function showSubmitSuggestionsOnChange() {
             })
             .then(function (datas) {
 
+                // if there is a response with the ajax request, then we keep the ul empty with the while loop
                 if (datas) {
                     while (ulSubmit.firstChild) {
                         ulSubmit.removeChild(ulSubmit.firstChild)
                     }
+                    // if there is no result //
                 } else if (!datas && submitValue.length === 3) {
                     ulSubmit.insertAdjacentHTML("beforeend", `<li class ="list-group-item" id ="submitSuggest"> Aucun résultat ne correspond à votre recherche</li>`)
 
                 }
+                // if there is result, we put them in our ul with the insertAdjacentHtml, by looping our results //
                 for (let i = 0; i < datas.length; i++) {
 
-                    ulSubmit.insertAdjacentHTML("beforeend", `<button type ="button" class="list-group-item" id="submitLink">${datas[i].title}</button>`)
+                    ulSubmit.insertAdjacentHTML("beforeend", `<button type ="button" class="list-group-item submitLink">${datas[i].title}</button>`)
                 }
 
+                // We aim all our newly created results with a selector all and we loop for adding an event listener changing the input for the form //
+                submitLink = document.querySelectorAll(".submitLink")
+
+
+                for (let i = 0; i < submitLink.length; i++) {
+
+                    submitLinkValue = submitLink[i]
+                    console.log(submitLinkValue.textContent)
+                    submitLink[i].classList.add("subsubmit" + i)
+                    let subsubmit = [];
+                    subsubmit[i] = document.querySelector(".subsubmit" + i)
+                    subsubmit[i].addEventListener("click", fillInputSearch)
+
+                }
 
             })
             .catch(function (error, datas) {
@@ -56,7 +77,7 @@ function showSubmitSuggestionsOnChange() {
             });
 
     } else if (submitValue.length == 0) {
-
+        // if we empty the search input, we hide the ul //
         ulSubmit.classList.add("submitHide")
         while (ulSubmit.firstChild) {
             ulSubmit.removeChild(ulSubmit.firstChild)
@@ -67,9 +88,17 @@ function showSubmitSuggestionsOnChange() {
 
 function fillInputSearch() {
 
-    console.log("Patrick");
 
+    console.log(submitValue)
+
+    submitValue = submitLinkValue.textContent;
+    submitResult.textContent = submitValue
+    console.log(submitValue)
+    formHidden.classList.remove("formHide")
+    submitGame.value= submitLinkValue.textContent
 }
+
+
 
 //MAIN CODE//
 
@@ -80,8 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
     submitResult
         .addEventListener("input",
             showSubmitSuggestionsOnChange)
-    if (submitLink) {
-        submitLink
-            .addEventListener("click", fillInputSearch)
-    }
+
+
+
 });

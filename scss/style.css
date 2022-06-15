@@ -11169,6 +11169,10 @@ a:-webkit-any-link:hover {
   color: #f5f5f5;
 }
 
+.text-purple {
+  color: #EE9CD9;
+}
+
 /* Footer */
 .footertext {
   font-family: "Play", sans-serif;
@@ -11334,7 +11338,7 @@ a:-webkit-any-link:hover {
   }
 }
 @media screen and (max-width: 991px) {
-  div.col-lg-4.account {
+  .account {
     margin-top: 7.5rem !important;
   }
 
@@ -11666,8 +11670,7 @@ body {
 }
 
 .bgsection {
-  background: rgb(147, 84, 130);
-  background: linear-gradient(47deg, rgb(147, 84, 130) 0%, rgb(107, 61, 95) 53%, rgb(62, 36, 55) 100%);
+  background-image: radial-gradient(circle at 91% 26%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 3%, transparent 3%, transparent 100%), radial-gradient(circle at 27% 63%, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 3%, transparent 3%, transparent 100%), radial-gradient(circle at 59% 48%, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 3%, transparent 3%, transparent 100%), radial-gradient(circle at 58% 65%, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 3%, transparent 3%, transparent 100%), radial-gradient(circle at 55% 21%, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 3%, transparent 3%, transparent 100%), radial-gradient(circle at 88% 4%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 9% 23%, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 40% 78%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 78% 5%, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 11% 87%, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 11% 24%, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 18% 75%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 71% 80%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 7%, transparent 7%, transparent 100%), radial-gradient(circle at 34% 79%, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 5%, transparent 5%, transparent 100%), radial-gradient(circle at 9% 51%, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.03) 5%, transparent 5%, transparent 100%), radial-gradient(circle at 46% 69%, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 5%, transparent 5%, transparent 100%), radial-gradient(circle at 54% 90%, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 5%, transparent 5%, transparent 100%), radial-gradient(circle at 55% 58%, rgba(255, 255, 255, 0.01) 0%, rgba(255, 255, 255, 0.01) 5%, transparent 5%, transparent 100%), radial-gradient(circle at 95% 37%, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 5%, transparent 5%, transparent 100%), radial-gradient(circle at 9% 4%, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 5%, transparent 5%, transparent 100%), linear-gradient(135deg, rgb(147, 84, 130), rgb(107, 61, 95));
 }
 
 .bgsection1 {
@@ -11802,7 +11805,7 @@ td {
 
 /* Style the back side */
 .flip-card-back {
-  background-color: #3E2437;
+  background-image: linear-gradient(90deg, rgb(62, 36, 55) 0%, transparent 59%), repeating-linear-gradient(45deg, rgba(168, 168, 168, 0.1) 0px, rgba(168, 168, 168, 0.1) 1px, transparent 1px, transparent 13px), repeating-linear-gradient(135deg, rgba(168, 168, 168, 0.1) 0px, rgba(168, 168, 168, 0.1) 1px, transparent 1px, transparent 13px), linear-gradient(90deg, rgb(62, 36, 55), rgb(62, 36, 55));
   color: white;
   transform: rotateY(180deg);
 }
@@ -11893,6 +11896,19 @@ div.dataTables_wrapper div.dataTables_filter label {
 
 .modal-backdrop {
   position: relative !important;
+}
+
+.calltoaction:hover {
+  background: #f5f5f5 !important;
+  color: #3E2437 !important;
+}
+
+.modal-open {
+  padding-right: 0 !important;
+}
+
+.formHide {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

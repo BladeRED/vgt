@@ -72,7 +72,7 @@ $router->mount('/security', function () use ($router) {
     $controller = new SecurityController();
 
     $router->get('/submit', function () use ($controller) {
-        $controller->displaySubmit();
+        $controller->submitTime();
     });
 
     $router->get('/gamer', function () use ($controller) {

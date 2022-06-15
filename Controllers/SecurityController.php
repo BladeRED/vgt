@@ -3,7 +3,9 @@
 namespace app\Controllers;
 
 use app\Managers\GamerManager;
-use app\Services\sessionService;
+use app\Models\Game;
+use app\Models\Time;
+
 
 class SecurityController extends AbstractController
 {
@@ -27,10 +29,17 @@ class SecurityController extends AbstractController
         header("Location: /");
     }
 
-    public function displaySubmit()
+    public function submitTime()
     {
 
-        $this->render->display('security/submit.twig');
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+            $time = new Time(null,$_POST["categories"],$_POST[], $_POST[], $_POST[], $_POST["idSubmitGame"],$this->sessionService->gamer,new Game (null, $_POST["titleInput"], $_POST["resumeInput"], $_POST["release"], $_POST["studio"], $_POST["editor"], "", "", "", "", "", "", date('Y-m-d')), date("Y-m-d"));
+
+
+        }
+
+
     }
 
 
@@ -100,9 +109,10 @@ class SecurityController extends AbstractController
                 $editGamer->setPassword($_POST["passwordEdit"]);
                 $editGamer->setPicture($uniqFileName);
 
-                $this->gamermanager->update($editGamer);
+                $this->gamermanagdisplaySer->update($editGamer);
 
                 $this->sessionService->gamer = serialize($editGamer);
+                session_write_close();
                 header("Location: /security/gamer");
             }
         };
