@@ -3,6 +3,8 @@
 namespace app\Controllers;
 
 use app\Managers\GameManager;
+use app\Managers\GenreManager;
+use app\Managers\PlatformManager;
 use app\Models\Gamer;
 use app\Managers\GamerManager;
 
@@ -10,6 +12,8 @@ class DefaultController extends AbstractController
 {
     private GamerManager $gamermanager;
     private GameManager $gamemanager;
+    private PlatformManager $platformManager;
+    private GenreManager $genremanager;
 
     /**
      * @param $gamermanager
@@ -21,6 +25,8 @@ class DefaultController extends AbstractController
         parent::__construct();
         $this->gamermanager = new GamerManager();
         $this->gamemanager = new GameManager();
+        $this->platformManager = new PlatformManager();
+        $this->genremanager = new GenreManager();
     }
 
     public function displayHomepage()
@@ -32,7 +38,9 @@ class DefaultController extends AbstractController
     public function displayGame($id)
     {
         $game = $this->gamemanager->findByGameId($id);
-        $this->render->display('default/game.twig', ['game' => $game]);
+        $platforms = $this->platformManager->findAll();
+        $genres = $this->genremanager->findAll();
+        $this->render->display('default/game.twig', ['game' => $game, 'platforms' =>$platforms, 'genres' =>$genres]);
     }
 
     public function displayLogin()

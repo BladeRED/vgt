@@ -11447,23 +11447,26 @@ a:-webkit-any-link:hover {
     width: 100% !important;
   }
 }
-@media screen and (max-width: 991px) and (max-width: 830px) {
-  h3, .h3 {
-    font-size: 18px;
+@media screen and (max-width: 860px) {
+  .gameimg {
+    width: 22rem !important;
+    height: 24rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    display: block !important;
   }
 
-  .resume {
-    display: none;
-  }
-}
-@media screen and (max-width: 780px) {
-  table {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+  .gametext {
+    display: block !important;
+    margin-left: 0 !important;
   }
 
-  th h3, th .h3 {
-    font-size: 18px;
+  .subgametext {
+    margin-left: 0 !important;
+  }
+
+  .gamesection {
+    display: block !important;
   }
 
   .gamecardTable {
@@ -11482,29 +11485,27 @@ a:-webkit-any-link:hover {
     text-align: center !important;
     margin-left: 3rem !important;
   }
-
-  .gamesection {
-    display: block !important;
+}
+@media screen and (max-width: 835px) {
+  h3, .h3 {
+    font-size: 18px;
   }
 
-  .gameimg {
-    width: 22rem !important;
-    height: 24rem !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    display: block !important;
-  }
-
-  .gametext {
-    display: block !important;
-    margin-left: 0 !important;
-  }
-
-  .subgametext {
-    margin-left: 0 !important;
+  .resume {
+    display: none;
   }
 }
-@media screen and (max-width: 780px) and (max-width: 700px) {
+@media screen and (max-width: 780px) {
+  table {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  th h3, th .h3 {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 700px) {
   .staticon {
     justify-content: start !important;
     margin-left: 3rem;
@@ -11516,7 +11517,7 @@ a:-webkit-any-link:hover {
     display: block !important;
   }
 }
-@media screen and (max-width: 780px) and (max-width: 650px) {
+@media screen and (max-width: 650px) {
   h1, .h1 {
     display: none;
   }
@@ -11599,13 +11600,13 @@ a:-webkit-any-link:hover {
     margin-right: 2.5rem !important;
   }
 }
-@media screen and (max-width: 780px) and (max-width: 650px) and (max-width: 450px) {
+@media screen and (max-width: 650px) and (max-width: 450px) {
   .gameimg {
     width: 24rem !important;
     height: 28rem !important;
   }
 }
-@media screen and (max-width: 780px) and (max-width: 400px) {
+@media screen and (max-width: 400px) {
   .logo {
     order: 1;
     position: initial;

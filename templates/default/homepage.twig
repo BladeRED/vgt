@@ -109,6 +109,7 @@
 
                 <div class="d-flex flex-row justify-content-center game">
                     {% for game in games|slice(0,4) %}
+                        <a href="/home/game/{{game.id}}">
                     <div class="flip-card me-3 gamecard" style="width:15rem;height:21rem;">
                         <div class="flip-card-inner">
                             <div class="flip-card-front">
@@ -124,7 +125,7 @@
                             </div>
                         </div>
                     </div>
-
+                        </a>
                     {% endfor %}
 
 

@@ -172,6 +172,22 @@ class TimeManager extends DBManager
         ]);
     }
 
+    public function add(Time $time)
+    {
+
+        $query = $this->bdd->prepare("INSERT INTO Gametimes(category,hours,minuts,seconds,Id_Games,Id_Gamer,addDate) VALUES (:category, :hours, :minuts, :seconds, :Id_Games, :Id_Gamer, :addDate)");
+        $query->execute([
+            "pseudo" => $gamer->getPseudo(),
+            "password" => password_hash($gamer->getPassword(), PASSWORD_DEFAULT),
+            "mail" => $gamer->getMail(),
+            "role" => "[GAMER]",
+            "picture" => $gamer->getPicture(),
+            "registerDate" => $gamer->getRegisterdate()
+        ]);
+
+
+    }
+
     public function deleteByGame($game)
     {
 

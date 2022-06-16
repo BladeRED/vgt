@@ -3,6 +3,7 @@
 namespace app\Controllers;
 
 use app\Managers\GamerManager;
+use app\Managers\TimeManager;
 use app\Models\Game;
 use app\Models\Time;
 
@@ -10,6 +11,7 @@ use app\Models\Time;
 class SecurityController extends AbstractController
 {
     private GamerManager $gamermanager;
+    private  TimeManager $timemanager;
 
 
     /**
@@ -19,6 +21,7 @@ class SecurityController extends AbstractController
     {
         parent::__construct();
         $this->gamermanager = new GamerManager();
+        $this->timemanager= new TimeManager();
 
     }
 
@@ -34,12 +37,14 @@ class SecurityController extends AbstractController
 
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-            $time = new Time(null,$_POST["categories"],$_POST[], $_POST[], $_POST[], $_POST["idSubmitGame"],$this->sessionService->gamer,new Game (null, $_POST["titleInput"], $_POST["resumeInput"], $_POST["release"], $_POST["studio"], $_POST["editor"], "", "", "", "", "", "", date('Y-m-d')), date("Y-m-d"));
+            $time = new Time(null,$_POST["categories"],$_POST["hours"], $_POST["minuts"], $_POST["seconds"], $_POST["idSubmitGame"],$this->sessionService->gamer,"", date("Y-m-d"));
 
 
         }
 
+        $this->timemanager->add($time);
 
+        header('Location:/');
     }
 
 

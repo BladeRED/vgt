@@ -71,7 +71,7 @@ $router->before('GET|POST', '/security/.*', function () use ($router) {
 $router->mount('/security', function () use ($router) {
     $controller = new SecurityController();
 
-    $router->get('/submit', function () use ($controller) {
+    $router->post('/submit', function () use ($controller) {
         $controller->submitTime();
     });
 

@@ -8,7 +8,7 @@ let submitValue;
 let submitLinkValue;
 let submitGame = document.querySelector("#submitGame")
 let formHidden = document.querySelector(".formHidden");
-
+let idSubmitGame = document.querySelector("#idSubmitGame");
 
 
 //FUNCTIONS //
@@ -48,23 +48,25 @@ function showSubmitSuggestionsOnChange() {
                 // if there is result, we put them in our ul with the insertAdjacentHtml, by looping our results //
                 for (let i = 0; i < datas.length; i++) {
 
-                    ulSubmit.insertAdjacentHTML("beforeend", `<button type ="button" class="list-group-item submitLink">${datas[i].title}</button>`)
+                    ulSubmit.insertAdjacentHTML("beforeend", `<button type ="button" class="list-group-item submitLink" id="${datas[i].Id_Games}">${datas[i].title}</button>`)
                 }
 
                 // We aim all our newly created results with a selector all and we loop for adding an event listener changing the input for the form //
                 submitLink = document.querySelectorAll(".submitLink")
 
+                submitLink.forEach((target) => {
 
-                for (let i = 0; i < submitLink.length; i++) {
+                    target.addEventListener("click", () => {
 
-                    submitLinkValue = submitLink[i]
-                    console.log(submitLinkValue.textContent)
-                    submitLink[i].classList.add("subsubmit" + i)
-                    let subsubmit = [];
-                    subsubmit[i] = document.querySelector(".subsubmit" + i)
-                    subsubmit[i].addEventListener("click", fillInputSearch)
+                        submitResult.value = target.textContent;
+                        formHidden.classList.remove("formHide")
+                        submitGame.value = target.textContent
+                        idSubmitGame.value = target.id
+                    })
 
-                }
+                })
+
+                console.log(submitLinkValue.textContent)
 
             })
             .catch(function (error, datas) {
@@ -88,16 +90,11 @@ function showSubmitSuggestionsOnChange() {
 
 function fillInputSearch() {
 
+    submitResult.value = submitLinkValue.textContent;
 
-    console.log(submitValue)
-
-    submitValue = submitLinkValue.textContent;
-    submitResult.textContent = submitValue
-    console.log(submitValue)
     formHidden.classList.remove("formHide")
-    submitGame.value= submitLinkValue.textContent
+    submitGame.value = submitLinkValue.textContent
 }
-
 
 
 //MAIN CODE//
@@ -109,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
     submitResult
         .addEventListener("input",
             showSubmitSuggestionsOnChange)
-
 
 
 });
