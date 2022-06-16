@@ -177,12 +177,13 @@ class TimeManager extends DBManager
 
         $query = $this->bdd->prepare("INSERT INTO Gametimes(category,hours,minuts,seconds,Id_Games,Id_Gamer,addDate) VALUES (:category, :hours, :minuts, :seconds, :Id_Games, :Id_Gamer, :addDate)");
         $query->execute([
-            "pseudo" => $gamer->getPseudo(),
-            "password" => password_hash($gamer->getPassword(), PASSWORD_DEFAULT),
-            "mail" => $gamer->getMail(),
-            "role" => "[GAMER]",
-            "picture" => $gamer->getPicture(),
-            "registerDate" => $gamer->getRegisterdate()
+            "category" => $time->getCategory(),
+            "hours" => $time->getHours(),
+            "minuts" => $time->getMinuts(),
+            "seconds" => $time->getSeconds(),
+            "Id_Games" => $time->getId_Games(),
+            "Id_Gamer" => $time->getgamer(),
+            "addDate" => $time->getAddDate(),
         ]);
 
 

@@ -8,10 +8,11 @@
                     <!-- Logo -->
                     <a href="/">
                         <img src="../../assets/pictures/logo.svg" class="py-2 mx-3"
-                             style="height: 160px ;width: 160px"
+                             style="height: 140px ;width: 140px"
                              alt="VGT_logo">
                     </a>
                     <h1>VideoGameTime</h1>
+
                 </div>
             </div>
 
@@ -35,52 +36,191 @@
                 </div>
             </div>
 
+
             <div class="col-lg-4 ">
+
                 <!-- Submit and Log buttons-->
                 <div class="d-flex flex-row logsubmit">
                     {% if gamer %}
-                        <div class="col-lg-4 d-flex justify-content-end subutton">
-                            <a href="/security/submit">
+                        <div class="col-lg-3 d-flex justify-content-end subutton">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#noConnect">
                                 <img src="../../assets/pictures/submit.png"
                                      class="img-fluid rounded mx-auto d-block mt-5"
-                                     style="height: 64px ;width: 64px" alt="VGT_submit">
-                                <p class="text-center"> Soumettre un temps </p>
+                                     style="height: 48px ;width: 48px" alt="VGT_submit">
+                                <p class="text-center"> Ajoute ton temps ! </p>
                             </a>
+
+                            <!-- Modal Submit -->
+                            <div class="modal fade" id="noConnect" data-bs-backdrop="static" data-bs-keyboard="false"
+                                 tabindex="-1" aria-labelledby="noConnectLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header d-flex justify-content-center">
+                                            <div class="row d-flex justify-content-center">
+
+                                                <h5 class="modal-title text-dark text-center" id="noConnectLabel">
+
+                                                    🎮 Trouve ton jeu et saisis ton temps ! 🎮
+                                                </h5>
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-body">
+
+                                            <form method="post" action="#" id="formSubmit"
+                                                  name="formSubmit">
+                                                <div class="d-flex flex-column">
+                                                    <label for="submitResult" class="text-center text-dark mb-2">Recherche
+                                                        ton jeu ici:</label>
+
+                                                    <input type="text"
+                                                           class="submitTerm w-50 align-self-center text-center mb-2"
+                                                           name="submitResult"
+                                                           id="submitResult"
+                                                           placeholder="Niwee Simulator 2022" value=""/>
+                                                    <ul class="bg-light py-3  ms-5 rounded-2 w-75 list-group list-group-flush submitHide submitHidden subscroller">
+
+                                                    </ul>
+                                                </div>
+                                            </form>
+                                            <form method="post" action="/security/submit">
+                                                <div class="d-flex flex-column">
+                                                    <div class="form-group formHide formHidden">
+
+                                                        <label for="jeu" class="text-center text-dark mb-2">Jeu
+                                                            choisi:</label>
+                                                        <input type="text" class="submitGame" name="submitGame"
+                                                               id="submitGame" value="">
+
+                                                    </div>
+
+                                                    <div class="form-group idFormHide idFormHidden">
+
+                                                        <label for="idSubmitGame" class="text-center text-dark mb-2"> ID
+                                                            Jeu choisi:</label>
+                                                        <input type="number" class="submitGame" name="idSubmitGame"
+                                                               id="idSubmitGame" value="">
+
+                                                    </div>
+
+                                                    <label for="categories" class="text-center text-dark mb-2">Choisis
+                                                        une
+                                                        catégorie de temps de
+                                                        jeu:</label>
+
+                                                    <select name="categories" id="categories"
+                                                            class="form-select align-self-center mb-2">
+                                                        <option value="Histoire">Histoire</option>
+                                                        <option value="Histoire + Extras">Histoire + Extras</option>
+                                                        <option value="Complétioniste">Complétioniste</option>
+
+                                                    </select>
+
+                                                    <div class=" form-group mt-3 d-flex flex-column">
+                                                        <label for="hours">Enregistre ton temps de jeux
+                                                            (heures/minutes/secondes):</label>
+                                                        <div class="row d-flex justify-content-center">
+                                                            <input type="number" id="hours" name="hours"
+                                                                   min="1" max="9999" class="w-25 ">
+                                                            <p class="text-dark">h</p>
+                                                            <input type="number" id="minuts" name="minuts"
+                                                                   min="1" max="59" class="w-25 ">
+                                                            <p class="text-dark">min</p>
+                                                            <input type="number" id="seconds" name="seconds"
+                                                                   min="1" max="59" class="w-25 ">
+                                                            <p class="text-dark">sec</p>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <button
+                                                            type="submit"
+                                                            class="btn btn-lg bgsection1 mx-auto mb-2 mt-3 d-flex justify-content-center text-white"
+                                                            value="Validate"
+                                                    >
+                                                        Valider le temps de jeu
+                                                    </button>
+
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer d-flex justify-content-center">
+
+                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">
+                                                Finalement, flemme
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-lg-4 account logbutton prout">
+                        <div class="col-lg-5 account ">
 
                             <a href="/security/gamer">
                                 <img src="../../assets/pictures/home.png" class="img-fluid rounded mx-auto d-block mt-5"
-                                     style="height: 64px ;width: 64px" alt="VGT_login">
+                                     style="height: 48px ;width: 48px" alt="VGT_login">
                                 <p class="text-center"> Mon compte </p>
                             </a>
 
                         </div>
-                        <div class="col-lg-4 logbutton">
+                        <div class="col-lg-3 logbutton">
 
                             <a href="/security/logout">
                                 <img src="../../assets/pictures/login.png"
                                      class="img-fluid rounded mx-auto d-block mt-5"
-                                     style="height: 64px ;width: 64px" alt="VGT_login">
+                                     style="height: 48px ;width: 48px" alt="VGT_login">
                                 <p class="text-center"> Déconnexion </p>
                             </a>
 
                         </div>
                     {% else %}
                         <div class="col-lg-6 d-flex justify-content-end subutton">
-                            <a href="/security/submit">
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#noConnect">
                                 <img src="../../assets/pictures/submit.png"
                                      class="img-fluid rounded mx-auto d-block mt-5"
-                                     style="height: 64px ;width: 64px" alt="VGT_submit">
-                                <p class="text-center"> Soumettre un temps </p>
+                                     style="height: 48px ;width: 48px" alt="VGT_submit">
+                                <p class="text-center"> Ajoute ton temps ! </p>
                             </a>
+                            <!-- Modal Submit -->
+                            <div class="modal fade" id="noConnect" data-bs-backdrop="static" data-bs-keyboard="false"
+                                 tabindex="-1" aria-labelledby="noConnectLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header d-flex justify-content-center">
+                                            <div class="row d-flex justify-content-center">
+
+                                                <h5 class="modal-title text-dark text-center" id="noConnectLabel">
+                                                    <img
+                                                            src="assets/pictures/babyyoda.webp"
+                                                            style="max-width: 64px; max-height: 64px">
+                                                    Connecté tu dois être <img
+                                                            src="assets/pictures/babyyoda.webp"
+                                                            style="max-width: 64px; max-height: 64px"></h5>
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p class="text-dark"> Il faut avoir un compte chez VGT pour soumettre un
+                                                temps de jeu, clique sur le bouton à côté, l'inscription est rapide
+                                                !</p>
+                                        </div>
+                                        <div class="modal-footer d-flex justify-content-center">
+                                            <button type="button" class="btn btn-success" data-bs-dismiss="modal">
+                                                Connecter je vais me !
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="col-lg-6 logbutton">
 
                             <a href="/home/login">
                                 <img src="../../assets/pictures/login.png"
                                      class="img-fluid rounded mx-auto d-block mt-5"
-                                     style="height: 64px ;width: 64px" alt="VGT_login">
+                                     style="height: 48px ;width: 48px" alt="VGT_login">
                                 <p class="text-center"> Connexion/Inscription </p>
                             </a>
 
@@ -89,43 +229,48 @@
                 </div>
             </div>
         </div>
+    </div>
 
-        <nav class="navbar navbar-expand-lg navbar-light bgsection ">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav w-100 d-flex justify-content-center">
-                        <li class="nav-item me-3 ">
-                            <a class="nav-link active navbarAnimation d-flex align-items-center me-5 "
-                               aria-current="page"
-                               href="/admin/dashboard">
-                                <i class="fa-solid fa-chart-pie fa-2x py-2 fa-fw"></i>
-                                Dashboard</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link navbarAnimation d-flex align-items-center mx-5" href="/admin/users">
-                                <i class="fa-solid fa-user-gear fa-2x py-2 me-2"></i>
-                                Utilisateurs</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link navbarAnimation d-flex align-items-center mx-5" href="/admin/games"><i
-                                        class="fa-solid fa-gamepad fa-2x py-2 me-2"></i>Jeux</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link navbarAnimation d-flex align-items-center mx-5" href="/admin/times"><i
-                                        class="fa-solid fa-stopwatch fa-2x py-2 me-2"></i>
-                                Temps de jeux</a>
-                        </li>
-                        <li class="nav-item ">
-                            <a class="nav-link navbarAnimation d-flex align-items-center ms-5" href="/admin/reviews"><i
-                                        class="fa-solid fa-comment fa-2x py-2 me-2"></i>Reviews</a>
-                        </li>
-                    </ul>
-                </div>
+    <nav class="navbar navbar-expand-lg navbar-light bgsection ">
+        <div class="container-fluid">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav w-100 d-flex justify-content-center">
+                    <li class="nav-item me-3 ">
+                        <a class="nav-link active navbarAnimation d-flex align-items-center me-5 "
+                           aria-current="page"
+                           href="/admin/dashboard">
+                            <i class="fa-solid fa-chart-pie fa-2x py-2 fa-fw"></i>
+                            Dashboard</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link navbarAnimation d-flex align-items-center mx-5" href="/admin/users">
+                            <i class="fa-solid fa-user-gear fa-2x py-2 me-2"></i>
+                            Utilisateurs</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link navbarAnimation d-flex align-items-center mx-5" href="/admin/games"><i
+                                    class="fa-solid fa-gamepad fa-2x py-2 me-2"></i>Jeux</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link navbarAnimation d-flex align-items-center mx-5" href="/admin/times"><i
+                                    class="fa-solid fa-stopwatch fa-2x py-2 me-2"></i>
+                            Temps de jeux</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link navbarAnimation d-flex align-items-center ms-5" href="/admin/reviews"><i
+                                    class="fa-solid fa-comment fa-2x py-2 me-2"></i>Reviews</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
-        {% include "parts/searchbar.twig" %}
+        </div>
+    </nav>
+    {% include "parts/searchbar.twig" %}
+
+    {% if gamer %}
+        {% include "parts/submitbar.twig" %}
+    {% endif %}
 </header>

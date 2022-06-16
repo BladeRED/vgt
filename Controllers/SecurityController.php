@@ -34,17 +34,17 @@ class SecurityController extends AbstractController
 
     public function submitTime()
     {
-
+        $redirect= $_SERVER['HTTP_REFERER'];
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-            $time = new Time(null,$_POST["categories"],$_POST["hours"], $_POST["minuts"], $_POST["seconds"], $_POST["idSubmitGame"],$this->sessionService->gamer,"", date("Y-m-d"));
+            $time = new Time(null,$_POST["categories"],$_POST["hours"], $_POST["minuts"], $_POST["seconds"], $_POST["idSubmitGame"],$this->sessionService->gamer->getId(),"", date("Y-m-d"));
 
 
         }
 
         $this->timemanager->add($time);
 
-        header('Location:/');
+        header("Location: $redirect");
     }
 
 
