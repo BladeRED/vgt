@@ -45,13 +45,13 @@ class GameManager extends DBManager {
     public function findByGameId($id)
     {
         $game = null;
-        $query = $this->bdd->prepare("SELECT * from Games WHERE Id_Games = :id");
+        $query = $this->bdd->prepare("SELECT DISTINCT Games.Id_Games, `title`, `resume`, `released`, `editor`, `studio`,`picture`, GROUP_CONCAT( DISTINCT Genre.name) AS Genres, GROUP_CONCAT( Distinct Platforms.console)AS Plateformes, Genre.*, Platforms.* FROM Games JOIN game_genre ON Games.Id_Games = game_genre.Id_Games JOIN Genre ON Genre.Id_Genre = game_genre.Id_Genre JOIN game_platform ON Games.Id_Games = game_platform.Id_Games JOIN Platforms ON Platforms.Id_Platforms = game_platform.Id_Platforms WHERE Games.Id_Games= :id GROUP BY Games.Id_Games ");
         $query->execute(["id" => $id]);
         $result = $query->fetch();
 
         if ($result) {
 
-            $game = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], "" , "", "", "", "", "", "", $result["picture"]);
+            $game = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"],$result["editor"], $result["studio"], new Genre($result["Id_Genre"], $result["name"], new game_genre($result["Id_Games"], $result["Id_Genre"])) , new game_genre($result["Id_Games"], $result["Id_Genre"]), new Platform($result["Id_Genre"], $result["console"], new game_platform($result["Id_Games"],$result["Id_Platforms"])), new game_platform($result["Id_Games"],$result["Id_Platforms"]), $result["Genres"], $result["Plateformes"], "", $result["picture"]);
 
         }
 
@@ -60,7 +60,7 @@ class GameManager extends DBManager {
 
     public function findByDate($dateBegin,$dateEnd)
     {
-        $query = $this->bdd->prepare('SELECT COUNT(*) AS nbGames FROM Games WHERE addDate >=:dateBegin AND addDate < :dateEnd');
+        $query = $this->bdd->prepare('SELECT COUNT(1) AS nbGames FROM Games WHERE addDate >=:dateBegin AND addDate < :dateEnd');
         $query->execute(["dateBegin" => $dateBegin,
             "dateEnd" => $dateEnd]);
         $result = $query->fetch(\PDO::FETCH_ASSOC);
@@ -81,7 +81,7 @@ class GameManager extends DBManager {
 
     public function countGames(){
 
-        $query = $this->bdd->prepare('SELECT COUNT(*)AS TotalGames FROM Games;');
+        $query = $this->bdd->prepare('SELECT COUNT(1)AS TotalGames FROM Games;');
         $query->execute();
         $nbGames = $query->fetch(\PDO::FETCH_ASSOC);
         return $nbGames['TotalGames'];

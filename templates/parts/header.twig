@@ -52,7 +52,7 @@
                             </a>
 
                             <!-- Modal Submit -->
-                            <div class="modal fade" id="noConnect" data-bs-backdrop="static" data-bs-keyboard="false"
+                            <div class="modal fade" id="noConnect" data-bs-keyboard="false"
                                  tabindex="-1" aria-labelledby="noConnectLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -95,7 +95,7 @@
 
                                                     </div>
 
-                                                    <div class="form-group idFormHide idFormHidden">
+                                                    <div class="form-group formHide idFormHidden">
 
                                                         <label for="idSubmitGame" class="text-center text-dark mb-2"> ID
                                                             Jeu choisi:</label>
@@ -110,27 +110,26 @@
                                                         jeu:</label>
 
                                                     <select name="categories" id="categories"
-                                                            class="form-select align-self-center mb-2">
+                                                            class="form-select align-self-center mb-2 w-50">
                                                         <option value="Histoire">Histoire</option>
                                                         <option value="Histoire + Extras">Histoire + Extras</option>
                                                         <option value="Complétioniste">Complétioniste</option>
 
                                                     </select>
+                                                    <label for="hours" class="text-center">Enregistre ton temps de jeux
+                                                        (heures/minutes/secondes):</label>
+                                                    <div class=" form-group mt-3 d-flex flex-row justify-content-center">
 
-                                                    <div class=" form-group mt-3 d-flex flex-column">
-                                                        <label for="hours">Enregistre ton temps de jeux
-                                                            (heures/minutes/secondes):</label>
-                                                        <div class="row d-flex justify-content-center">
-                                                            <input type="number" id="hours" name="hours"
-                                                                   min="1" max="9999" class="w-25 ">
-                                                            <p class="text-dark">h</p>
-                                                            <input type="number" id="minuts" name="minuts"
-                                                                   min="1" max="59" class="w-25 ">
-                                                            <p class="text-dark">min</p>
-                                                            <input type="number" id="seconds" name="seconds"
-                                                                   min="1" max="59" class="w-25 ">
-                                                            <p class="text-dark">sec</p>
-                                                        </div>
+                                                        <input type="number" id="hours" name="hours"
+                                                               min="1" max="9999" style="width:10%;height:10%">
+                                                        <p class="text-dark">h</p>
+                                                        <input type="number" id="minuts" name="minuts"
+                                                               min="1" max="59" style="width:10%;height:10%">
+                                                        <p class="text-dark">min</p>
+                                                        <input type="number" id="seconds" name="seconds"
+                                                               min="1" max="59" style="width:10%;height:10%">
+                                                        <p class="text-dark">sec</p>
+
                                                     </div>
 
 
@@ -184,7 +183,7 @@
                                 <p class="text-center"> Ajoute ton temps ! </p>
                             </a>
                             <!-- Modal Submit -->
-                            <div class="modal fade" id="noConnect"  data-bs-keyboard="false"
+                            <div class="modal fade" id="noConnect" data-bs-keyboard="false"
                                  tabindex="-1" aria-labelledby="noConnectLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -207,9 +206,11 @@
                                                 !</p>
                                         </div>
                                         <div class="modal-footer d-flex justify-content-center">
-                                            <a href="/home/login"><button type="button" class="btn btn-success" title="Me connecter">
-                                                Connecter je vais !
-                                            </button></a>
+                                            <a href="/home/login">
+                                                <button type="button" class="btn btn-success" title="Me connecter">
+                                                    Connecter je vais !
+                                                </button>
+                                            </a>
 
                                         </div>
                                     </div>

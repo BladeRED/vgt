@@ -24,7 +24,7 @@ class ReviewManager extends DBManager{
 
     public function findByDate($dateBegin,$dateEnd)
     {
-        $query = $this->bdd->prepare('SELECT COUNT(*) AS nbReviews FROM Reviews WHERE comment_date >=:dateBegin AND comment_date < :dateEnd');
+        $query = $this->bdd->prepare('SELECT COUNT(1) AS nbReviews FROM Reviews WHERE comment_date >=:dateBegin AND comment_date < :dateEnd');
         $query->execute(["dateBegin" => $dateBegin,
             "dateEnd" => $dateEnd]);
         $result = $query->fetch(\PDO::FETCH_ASSOC);
@@ -51,7 +51,7 @@ class ReviewManager extends DBManager{
 
     public function countReviews(){
 
-        $query = $this->bdd->prepare('SELECT COUNT(*)AS TotalReviews FROM Games;');
+        $query = $this->bdd->prepare('SELECT COUNT(1)AS TotalReviews FROM Games;');
         $query->execute();
         $nbGames = $query->fetch(\PDO::FETCH_ASSOC);
         return $nbGames['TotalReviews'];

@@ -57,7 +57,7 @@ class GamerManager extends DBManager
 
     public function findByDate($dateBegin, $dateEnd)
     {
-        $query = $this->bdd->prepare('SELECT COUNT(*) AS nbGamers FROM Gamer WHERE registerDate >=:dateBegin AND registerDate < :dateEnd');
+        $query = $this->bdd->prepare('SELECT COUNT(1) AS nbGamers FROM Gamer WHERE registerDate >=:dateBegin AND registerDate < :dateEnd');
         $query->execute(["dateBegin" => $dateBegin,
             "dateEnd" => $dateEnd]);
         $result = $query->fetch(\PDO::FETCH_ASSOC);
@@ -93,7 +93,7 @@ class GamerManager extends DBManager
     public function countUsers()
     {
 
-        $query = $this->bdd->prepare('SELECT COUNT(*)AS TotalUsers FROM Gamer;');
+        $query = $this->bdd->prepare('SELECT COUNT(1)AS TotalUsers FROM Gamer;');
         $query->execute();
         $nbGamers = $query->fetch(\PDO::FETCH_ASSOC);
         return $nbGamers['TotalUsers'];

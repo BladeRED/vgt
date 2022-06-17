@@ -59,7 +59,6 @@ function showSubmitSuggestionsOnChange() {
                     target.addEventListener("click", () => {
 
                         submitResult.value = target.textContent;
-                        formHidden.classList.remove("formHide")
                         submitGame.value = target.textContent
                         idSubmitGame.value = target.id
                     })

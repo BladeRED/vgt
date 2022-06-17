@@ -28,7 +28,7 @@ class TimeManager extends DBManager
 
     public function findByDate($dateBegin,$dateEnd)
     {
-        $query = $this->bdd->prepare('SELECT COUNT(*) AS nbTimes FROM Gametimes WHERE addDate >=:dateBegin AND addDate < :dateEnd');
+        $query = $this->bdd->prepare('SELECT COUNT(1) AS nbTimes FROM Gametimes WHERE addDate >=:dateBegin AND addDate < :dateEnd');
         $query->execute(["dateBegin" => $dateBegin,
             "dateEnd" => $dateEnd]);
         $result = $query->fetch(\PDO::FETCH_ASSOC);
@@ -50,7 +50,7 @@ class TimeManager extends DBManager
 
     public function findByHistDate($dateBegin,$dateEnd)
     {
-        $query = $this->bdd->prepare('SELECT COUNT(*) AS nbTimes FROM Gametimes WHERE category = "Histoire" AND addDate >=:dateBegin AND addDate < :dateEnd');
+        $query = $this->bdd->prepare('SELECT COUNT(1) AS nbTimes FROM Gametimes WHERE category = "Histoire" AND addDate >=:dateBegin AND addDate < :dateEnd');
         $query->execute(["dateBegin" => $dateBegin,
             "dateEnd" => $dateEnd]);
         $result = $query->fetch(\PDO::FETCH_ASSOC);
@@ -61,7 +61,7 @@ class TimeManager extends DBManager
 
     public function findByHistCateg()
     {
-        $query = $this->bdd->prepare('SELECT COUNT(*) AS Histoire FROM Gametimes WHERE category="Histoire";SELECT COUNT(*) AS Complétioniste FROM Gametimes WHERE category="Complétioniste";SELECT COUNT(*) AS Extras FROM Gametimes WHERE category = "Histoire+Extras";');
+        $query = $this->bdd->prepare('SELECT COUNT(1) AS Histoire FROM Gametimes WHERE category="Histoire";SELECT COUNT(*) AS Complétioniste FROM Gametimes WHERE category="Complétioniste";SELECT COUNT(*) AS Extras FROM Gametimes WHERE category = "Histoire+Extras";');
         $query->execute();
         $result = $query->fetch(\PDO::FETCH_ASSOC);
 
@@ -71,7 +71,7 @@ class TimeManager extends DBManager
 
     public function findByCompDate($dateBegin,$dateEnd)
     {
-        $query = $this->bdd->prepare('SELECT COUNT(*) AS nbTimes FROM Gametimes WHERE category = "Complétioniste" AND addDate >=:dateBegin AND addDate < :dateEnd');
+        $query = $this->bdd->prepare('SELECT COUNT(1) AS nbTimes FROM Gametimes WHERE category = "Complétioniste" AND addDate >=:dateBegin AND addDate < :dateEnd');
         $query->execute(["dateBegin" => $dateBegin,
             "dateEnd" => $dateEnd]);
         $result = $query->fetch(\PDO::FETCH_ASSOC);
@@ -82,7 +82,7 @@ class TimeManager extends DBManager
 
     public function findByCompCateg()
     {
-        $query = $this->bdd->prepare('SELECT COUNT(*) AS Complétioniste FROM Gametimes WHERE category="Complétioniste";');
+        $query = $this->bdd->prepare('SELECT COUNT(1) AS Complétioniste FROM Gametimes WHERE category="Complétioniste";');
         $query->execute();
         $result = $query->fetch(\PDO::FETCH_ASSOC);
 
@@ -92,7 +92,7 @@ class TimeManager extends DBManager
 
     public function findByExtraDate($dateBegin,$dateEnd)
     {
-        $query = $this->bdd->prepare('SELECT COUNT(*) AS nbTimes FROM Gametimes WHERE category = "Histoire+Extras" AND addDate >=:dateBegin AND addDate < :dateEnd');
+        $query = $this->bdd->prepare('SELECT COUNT(1) AS nbTimes FROM Gametimes WHERE category = "Histoire+Extras" AND addDate >=:dateBegin AND addDate < :dateEnd');
         $query->execute(["dateBegin" => $dateBegin,
             "dateEnd" => $dateEnd]);
         $result = $query->fetch(\PDO::FETCH_ASSOC);
@@ -103,7 +103,7 @@ class TimeManager extends DBManager
 
     public function findByExtraCateg()
     {
-        $query = $this->bdd->prepare('SELECT COUNT(*) AS Extras FROM Gametimes WHERE category = "Histoire+Extras";');
+        $query = $this->bdd->prepare('SELECT COUNT(1) AS Extras FROM Gametimes WHERE category = "Histoire+Extras";');
         $query->execute();
         $result = $query->fetch(\PDO::FETCH_ASSOC);
 
@@ -145,7 +145,7 @@ class TimeManager extends DBManager
 
     public function countTimes(){
 
-        $query = $this->bdd->prepare('SELECT COUNT(*)AS TotalTimes FROM Gametimes;');
+        $query = $this->bdd->prepare('SELECT COUNT(1)AS TotalTimes FROM Gametimes;');
         $query->execute();
         $nbTimes = $query->fetch(\PDO::FETCH_ASSOC);
         return $nbTimes['TotalTimes'];
