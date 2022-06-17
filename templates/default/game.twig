@@ -11,7 +11,7 @@
 
 <main>
     <!--SUBMIT GAMETIME FORM -->
-    <section>
+    <section class="overflow-hidden">
 
         <div class="container-fluid bgsection pb-5 mb-5 shadow-lg rounded">
             <div class="row mb-5">
@@ -67,7 +67,10 @@
 
                             <div class="d-flex flex-column align-items-center ms-5 subgametext">
                                 <h3>Genres:</h3>
-                                <p>{{ game.genres }}</p>
+
+                                {% for prout in games%}
+                                <p>{{ prout.genres }}</p>
+                                {% endfor %}
                             </div>
 
                             <div class="d-flex flex-column align-items-center ms-5 subgametext">

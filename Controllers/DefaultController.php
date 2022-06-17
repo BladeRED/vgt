@@ -37,10 +37,11 @@ class DefaultController extends AbstractController
 
     public function displayGame($id)
     {
+        $games = $this->gamemanager->findAll();
         $game = $this->gamemanager->findByGameId($id);
         $platforms = $this->platformManager->findAll();
         $genres = $this->genremanager->findAll();
-        $this->render->display('default/game.twig', ['game' => $game, 'platforms' =>$platforms, 'genres' =>$genres]);
+        $this->render->display('default/game.twig', ['game' => $game,'games'=>$games, 'platforms' =>$platforms, 'genres' =>$genres]);
     }
 
     public function displayLogin()
