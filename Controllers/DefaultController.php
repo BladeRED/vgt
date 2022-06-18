@@ -45,13 +45,37 @@ class DefaultController extends AbstractController
         $platforms = $this->platformManager->findAll();
         $genres = $this->genremanager->findAll();
         $timeGame = $this->timemanager->findAvgTimeByGameId($id);
+        $histTimeGame = $this->timemanager->findHistAvgTimeByGameId($id);
+        $extraTimeGame = $this->timemanager->findExtraAvgTimeByGameId($id);
+        $compTimeGame = $this->timemanager->findCompAvgTimeByGameId($id);
 
         // We take the value of our array timeGame into variables, and we treat them for rendering the good time display //
 
+        //ALL //
         $timeDays = 0;
-        $timeHrs = $timeGame["Hours"];;
-        $timeMins = $timeGame["Minuts"];;
-        $timeSecs = $timeGame["Seconds"];;
+        $timeHrs = $timeGame["Hours"];
+        $timeMins = $timeGame["Minuts"];
+        $timeSecs = $timeGame["Seconds"];
+
+        //History//
+
+        $histTimeDays = 0;
+        $timeHrs = $histTimeGame["Hours"];
+        $timeMins = $histTimeGame["Minuts"];
+        $timeSecs = $histTimeGame["Seconds"];
+
+        //History+Extras//
+        $extraTimeDays = 0;
+        $timeHrs = $timeGame["Hours"];
+        $timeMins = $timeGame["Minuts"];
+        $timeSecs = $timeGame["Seconds"];
+
+        //Completionist//
+        $compTimeDays = 0;
+        $timeHrs = $timeGame["Hours"];
+        $timeMins = $timeGame["Minuts"];
+        $timeSecs = $timeGame["Seconds"];
+
 
         while ($timeSecs > 59) {
 

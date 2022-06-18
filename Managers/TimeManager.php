@@ -154,6 +154,39 @@ class TimeManager extends DBManager
         return $result;
     }
 
+    public function findHistAvgTimeByGameId($id)
+    {
+        $time = null;
+        $query = $this->bdd->prepare('SELECT ROUND(AVG(hours)) AS Hours ,ROUND(AVG(minuts)) AS Minuts, ROUND(AVG(seconds)) AS Seconds FROM Gametimes WHERE Id_Games =:Id_Games AND category="Histoire";');
+        $query->execute(["Id_Games" => $id]);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result;
+    }
+
+    public function findExtraAvgTimeByGameId($id)
+    {
+        $time = null;
+        $query = $this->bdd->prepare('SELECT ROUND(AVG(hours)) AS Hours ,ROUND(AVG(minuts)) AS Minuts, ROUND(AVG(seconds)) AS Seconds FROM Gametimes WHERE Id_Games =:Id_Games AND category="Histoire+Extras";');
+        $query->execute(["Id_Games" => $id]);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result;
+    }
+
+    public function findCompAvgTimeByGameId($id)
+    {
+        $time = null;
+        $query = $this->bdd->prepare('SELECT ROUND(AVG(hours)) AS Hours ,ROUND(AVG(minuts)) AS Minuts, ROUND(AVG(seconds)) AS Seconds FROM Gametimes WHERE Id_Games =:Id_Games AND category="Complétioniste";');
+        $query->execute(["Id_Games" => $id]);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result;
+    }
+
     public function countTimes(){
 
         $query = $this->bdd->prepare('SELECT COUNT(1)AS TotalTimes FROM Gametimes;');
