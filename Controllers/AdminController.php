@@ -66,6 +66,10 @@ class AdminController extends AbstractController
         $extraCateg = $this->timemanager->findByExtraCateg();
 
         $sumTimes = null;
+        $sumDays = 0;
+        $sumHrs = 0;
+        $sumMins = 0;
+        $sumScs = 0;
         $totalTime = $this->timemanager->sumTimes();
         $reviewsTime = null;
 
@@ -96,7 +100,34 @@ class AdminController extends AbstractController
             $compDates = $this->timemanager->findByCompDate($dateBegin, $dateEnd);
             $extraDates = $this->timemanager->findByExtraDate($dateBegin, $dateEnd);
 
+            //Gestion of times for template rendering//
 
+            $sumHrs = $sumTimes["sumHrs"];
+            $sumMins = $sumTimes["sumMins"];
+            $sumScs = $sumTimes["sumScs"];
+
+            // While our time value (hours, minuts, or seconds) exceed the limit time, we add 1 to the upper time value //
+
+            while ($sumScs > 59) {
+
+                $sumScs = $sumScs - 59;
+                $sumMins += 1;
+
+            }
+
+            while ($sumMins > 59) {
+
+                $sumMins = $sumMins - 59;
+                $sumHrs += 1;
+
+            }
+
+            while ($sumHrs > 23) {
+
+                $sumHrs = $sumHrs - 24;
+                $sumDays += 1;
+
+            }
         }
 
         $this->render->display('admin/dashboard.twig',
@@ -112,6 +143,10 @@ class AdminController extends AbstractController
                 'gamesDate' => $gamesDate,
                 'timesDate' => $timesDate,
                 'sumTimes' => $sumTimes,
+                'sumDays' => $sumDays,
+                'sumHrs' => $sumHrs,
+                'sumMins' => $sumMins,
+                'sumScs' => $sumScs,
                 'reviewsTime' => $reviewsTime,
                 'allTimesUsers' => $allTimesUsers,
                 'allNullTimesUsers' => $allNullTimesUsers,

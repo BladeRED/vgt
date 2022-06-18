@@ -117,31 +117,14 @@
                                 <h5 class="fw-bold">
                                     Temps de jeux cumulés:
                                 </h5>
-                                {% set hrs = sumTimes.sumHrs %}
-                                {% set mins = sumTimes.sumMins %}
-                                {% set secs = sumTimes.sumScs %}
+
 
                                 {% if timesDate  is null %}
-                                    <p> 0h 0min 0sec </p>
+                                    <p> 0j 0h 0min 0sec </p>
                                 {% else %}
 
-                                    {% if mins > 59 and secs <= 59 %}
+                                    <p> {{sumDays}}j {{sumHrs}}h {{sumMins}}min {{sumScs}}sec </p>
 
-                                        <p>{{ hrs+1 }} h {{ mins-60 }} min {{ secs }} sec</p>
-
-                                    {% elseif secs > 59 and mins < 59 %}
-
-                                        <p>{{ hrs }} h {{ mins+1 }} min {{ secs-60 }} sec</p>
-
-                                    {% elseif mins > 59 and secs > 59 %}
-
-                                        <p>{{ hrs+1 }} h {{ mins-59 }} min {{ secs-60 }} sec</p>
-
-                                    {% else %}
-
-                                        <p>{{ hrs }} h {{ mins }} min {{ secs }} sec</p>
-
-                                    {% endif %}
                                 {% endif %}
 
 

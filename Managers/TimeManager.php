@@ -143,6 +143,17 @@ class TimeManager extends DBManager
         return $time;
     }
 
+    public function findAvgTimeByGameId($id)
+    {
+        $time = null;
+        $query = $this->bdd->prepare('SELECT ROUND(AVG(hours)) AS Hours ,ROUND(AVG(minuts)) AS Minuts, ROUND(AVG(seconds)) AS Seconds FROM Gametimes WHERE Id_Games =:Id_Games;');
+        $query->execute(["Id_Games" => $id]);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result;
+    }
+
     public function countTimes(){
 
         $query = $this->bdd->prepare('SELECT COUNT(1)AS TotalTimes FROM Gametimes;');

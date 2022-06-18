@@ -5,6 +5,7 @@ namespace app\Controllers;
 use app\Managers\GameManager;
 use app\Managers\GenreManager;
 use app\Managers\PlatformManager;
+use app\Managers\TimeManager;
 use app\Models\Gamer;
 use app\Managers\GamerManager;
 
@@ -14,6 +15,7 @@ class DefaultController extends AbstractController
     private GameManager $gamemanager;
     private PlatformManager $platformManager;
     private GenreManager $genremanager;
+    private TimeManager $timemanager;
 
     /**
      * @param $gamermanager
@@ -27,6 +29,7 @@ class DefaultController extends AbstractController
         $this->gamemanager = new GameManager();
         $this->platformManager = new PlatformManager();
         $this->genremanager = new GenreManager();
+        $this->timemanager = new TimeManager();
     }
 
     public function displayHomepage()
@@ -41,7 +44,45 @@ class DefaultController extends AbstractController
         $game = $this->gamemanager->findByGameId($id);
         $platforms = $this->platformManager->findAll();
         $genres = $this->genremanager->findAll();
-        $this->render->display('default/game.twig', ['game' => $game,'games'=>$games, 'platforms' =>$platforms, 'genres' =>$genres]);
+        $timeGame = $this->timemanager->findAvgTimeByGameId($id);
+
+        // We take the value of our array timeGame into variables, and we treat them for rendering the good time display //
+
+        $timeDays = 0;
+        $timeHrs = $timeGame["Hours"];;
+        $timeMins = $timeGame["Minuts"];;
+        $timeSecs = $timeGame["Seconds"];;
+
+        while ($timeSecs > 59) {
+
+            $timeSecs = $timeSecs - 59;
+            $timeMins += 1;
+
+        }
+
+        while ($timeMins > 59) {
+
+            $timeMins = $timeMins - 59;
+            $timeHrs += 1;
+
+        }
+
+        while ($timeHrs > 23) {
+
+            $timeHrs = $timeHrs - 24;
+            $timeDays += 1;
+
+        }
+
+        $this->render->display('default/game.twig',
+            ['game' => $game, 'games' => $games,
+                'platforms' => $platforms,
+                'genres' => $genres,
+                'timeGame' => $timeGame,
+                'timeDays' => $timeDays,
+                'timeHrs' => $timeHrs,
+                'timeMins' => $timeMins,
+                'timeSecs' => $timeSecs]);
     }
 
     public function displayLogin()
@@ -145,8 +186,8 @@ class DefaultController extends AbstractController
                 $searches = null;
 
             }
-                $searches = json_encode($searches);
-                echo($searches);
+            $searches = json_encode($searches);
+            echo($searches);
 
         }
     }
