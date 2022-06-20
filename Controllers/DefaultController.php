@@ -34,8 +34,35 @@ class DefaultController extends AbstractController
 
     public function displayHomepage()
     {
+
+        $dateToday = date('Y-m-d');
+        $dateLastWeek = date('Y-m-d', time() - 60 * 60 * 168);
         $games = $this->gamemanager->findAll();
-        $this->render->display('default/homepage.twig', ['games' => $games]);
+        $gamesIds = [];
+        $gamesAvgs = [];
+        $gamesAvgsTotals = [];
+        $gamesAvgsHours = [];
+
+        for ($i=0;$i<count($games);$i++){
+
+            $gamesIds[$i] = $games[$i]->getId();
+            $gamesAvgs[$i] = $this->timemanager->findAvgTimeByGameId($gamesIds[$i]);
+            $gamesAvgsTotals[$i] = $gamesAvgs[$i];
+
+        }
+
+        var_dump($gamesAvgsTotals);
+
+        $todayGame = $this->gamemanager->findByTodayDate($dateToday, $dateLastWeek);
+        $todayTime = $this->timemanager->findByTodayDate($dateToday, $dateLastWeek);
+        $todayGamer = $this->gamermanager->findByTodayDate($dateToday, $dateLastWeek);
+        $this->render->display('default/homepage.twig',
+            ['games' => $games,
+                'todayGame' => $todayGame,
+                'gamesAvgs' => $gamesAvgs,
+                'gamesAvgTotals' => $gamesAvgsTotals,
+                'todayTime' => $todayTime,
+                'todayGamer' => $todayGamer]);
     }
 
     public function displayGame($id)
@@ -60,21 +87,23 @@ class DefaultController extends AbstractController
         //History//
 
         $histTimeDays = 0;
-        $timeHrs = $histTimeGame["Hours"];
-        $timeMins = $histTimeGame["Minuts"];
-        $timeSecs = $histTimeGame["Seconds"];
+        $histTimeHrs = $histTimeGame["Hours"];
+        $histTimeMins = $histTimeGame["Minuts"];
+        $histTimeSecs = $histTimeGame["Seconds"];
 
         //History+Extras//
+
         $extraTimeDays = 0;
-        $timeHrs = $timeGame["Hours"];
-        $timeMins = $timeGame["Minuts"];
-        $timeSecs = $timeGame["Seconds"];
+        $extraTimeHrs = $extraTimeGame["Hours"];
+        $extraTimeMins = $extraTimeGame["Minuts"];
+        $extraTimeSecs = $extraTimeGame["Seconds"];
 
         //Completionist//
+
         $compTimeDays = 0;
-        $timeHrs = $timeGame["Hours"];
-        $timeMins = $timeGame["Minuts"];
-        $timeSecs = $timeGame["Seconds"];
+        $compTimeHrs = $compTimeGame["Hours"];
+        $compTimeMins = $compTimeGame["Minuts"];
+        $compTimeSecs = $compTimeGame["Seconds"];
 
 
         while ($timeSecs > 59) {
@@ -98,6 +127,75 @@ class DefaultController extends AbstractController
 
         }
 
+        //History//
+
+        while ($histTimeSecs > 59) {
+
+            $histTimeSecs = $histTimeSecs - 59;
+            $histTimeMins += 1;
+
+        }
+
+        while ($histTimeMins > 59) {
+
+            $histTimeMins = $histTimeMins - 59;
+            $histTimeHrs += 1;
+
+        }
+
+        while ($histTimeHrs > 23) {
+
+            $histTimeHrs = $histTimeHrs - 24;
+            $histTimeDays += 1;
+
+        }
+
+        //History+Extras//
+
+        while ($extraTimeSecs > 59) {
+
+            $extraTimeSecs = $extraTimeSecs - 59;
+            $extraTimeMins += 1;
+
+        }
+
+        while ($extraTimeMins > 59) {
+
+            $extraTimeMins = $extraTimeMins - 59;
+            $extraTimeHrs += 1;
+
+        }
+
+        while ($extraTimeHrs > 23) {
+
+            $extraTimeHrs = $extraTimeHrs - 24;
+            $extraTimeDays += 1;
+
+        }
+
+        //Completionist//
+
+        while ($compTimeSecs > 59) {
+
+            $compTimeSecs = $compTimeSecs - 59;
+            $compTimeMins += 1;
+
+        }
+
+        while ($compTimeMins > 59) {
+
+            $compTimeMins = $compTimeMins - 59;
+            $compTimeHrs += 1;
+
+        }
+
+        while ($compTimeHrs > 23) {
+
+            $compTimeHrs = $compTimeHrs - 24;
+            $compTimeDays += 1;
+
+        }
+
         $this->render->display('default/game.twig',
             ['game' => $game, 'games' => $games,
                 'platforms' => $platforms,
@@ -106,7 +204,20 @@ class DefaultController extends AbstractController
                 'timeDays' => $timeDays,
                 'timeHrs' => $timeHrs,
                 'timeMins' => $timeMins,
-                'timeSecs' => $timeSecs]);
+                'timeSecs' => $timeSecs,
+                'histTimeDays' => $histTimeDays,
+                'histTimeHrs' => $histTimeHrs,
+                'histTimeMins' => $histTimeMins,
+                'histTimeSecs' => $histTimeSecs,
+                'extraTimeDays' => $extraTimeDays,
+                'extraTimeHrs' => $extraTimeHrs,
+                'extraTimeMins' => $extraTimeMins,
+                'extraTimeSecs' => $extraTimeSecs,
+                'compTimeDays' => $compTimeDays,
+                'compTimeHrs' => $compTimeHrs,
+                'compTimeMins' => $compTimeMins,
+                'compTimeSecs' => $compTimeSecs,
+            ]);
     }
 
     public function displayLogin()

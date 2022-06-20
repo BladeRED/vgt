@@ -59,9 +59,13 @@
 
                         <p class="mt-4">
                             Bienvenue sur VideoGameTime, le site où tu connais la durée de vie d'un jeu !<br/><br/>
-                            Ce site est là pour tous les gamers et non-gamers qui se sont déjà posé la question "Mais combien de temps dure RÉÉLLEMENT ce jeu ?".<br/><br/>
-                            Car s'il existe de nombreux sites qui estiment en combien de temps se termine un jeu, les testeurs, souvent, ne donne qu'une estimation.<br/><br/>
-                            Avec VGT, nous permettons aux gens de donner leurs temps de jeux, et nous nous chargeons de faire la moyenne par jeu, afin de donner la durée de vie la plus probable pour chaque jeu vidéo.
+                            Ce site est là pour tous les gamers et non-gamers qui se sont déjà posé la question "Mais
+                            combien de temps dure RÉÉLLEMENT ce jeu ?".<br/><br/>
+                            Car s'il existe de nombreux sites qui estiment en combien de temps se termine un jeu, les
+                            testeurs, souvent, ne donne qu'une estimation.<br/><br/>
+                            Avec VGT, nous permettons aux gens de donner leurs temps de jeux, et nous nous chargeons de
+                            faire la moyenne par jeu, afin de donner la durée de vie la plus probable pour chaque jeu
+                            vidéo.
                             Alors, qu'attends-tu ?<br/>
 
                             <span class="d-flex justify-content-end">
@@ -79,7 +83,7 @@
                              class="img-fluid w-100 rounded mx-auto d-block mb-5"
                              style="margin-top: 2rem"
                              alt="Image d'une manette de gamer"
-                        title="Gagne du temps, avec VGT!">
+                             title="Gagne du temps, avec VGT!">
                     </div>
 
 
@@ -99,25 +103,37 @@
 
                 <div class="d-flex flex-row justify-content-center game">
                     {% for game in games|slice(0,4) %}
-                        <a href="/home/game/{{game.id}}">
-                    <div class="flip-card me-3 gamecard" style="width:15rem;height:21rem;">
-                        <div class="flip-card-inner">
-                            <div class="flip-card-front">
-                                <img src="{{game.picture}}" class="img-fluid w-100"
-                                     style="width:15rem;height:21rem;border-radius: 8px" alt="Elden Ring" title="{{game.title}}">
+                        <a href="/home/game/{{ game.id }}">
+                            <div class="flip-card me-3 gamecard" style="width:15rem;height:21rem;">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                        <img src="{{ game.picture }}" class="img-fluid w-100"
+                                             style="width:15rem;height:21rem;border-radius: 8px" alt="Elden Ring"
+                                             title="{{ game.title }}">
+                                    </div>
+                                    <div class="flip-card-back">
+                                        <h2 class="mt-4">{{ game.title }}</h2>
+                                        <p class="text-white mt-4">Temps de jeu moyen:</p>
+
+                                            {% if gamesAvgTotals is null %}
+                                                <p class="text-purple">0j 0h 0min 0sec</p>
+                                            {% else %}
+
+                                                {% for key in gamesAvgTotals|keys %}
+
+                                                    {% set patate = key %}
+                                                <p class="text-purple">{{ gamesAvgTotals.patate.Hours }}</p>
+                                                {% endfor %}
+                                            {% endif %}
+
+
+                                        <p class="text-white">Note moyenne des utilisateurs:</p>
+                                        <p class="text-purple">4.5/5</p>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="flip-card-back">
-                                <h2 class="mt-4">{{ game.title }}</h2>
-                                <p class="text-white mt-4">Temps de jeu moyen:</p>
-                                <p class="text-purple">999h 99 min 59s</p>
-                                <p class="text-white">Note moyenne des utilisateurs:</p>
-                                <p class="text-purple">4.5/5</p>
-                            </div>
-                        </div>
-                    </div>
                         </a>
                     {% endfor %}
-
 
 
                 </div>
@@ -134,7 +150,7 @@
                 <div class="d-flex flex-row-reverse sectiontitle">
                     <div class="col-lg-6-md-12 whatnew">
                         <h2 class="text-center mb-5 pe-5 sectiontitle ">
-                            Quoi de neuf en 48h?
+                            Quoi de neuf cette semaine ?
                         </h2>
                     </div>
                 </div>
@@ -145,7 +161,7 @@
                          alt="VGT_icon">
                     <h3 class="py-3 ms-2">
                         <!-- Numbers will be changed when the bdd will be implemented -->
-                        999 999 nouveaux jeux enregistrés
+                        {{ todayGame }} nouveaux jeux enregistrés
                     </h3>
 
                 </div>
@@ -156,7 +172,7 @@
                          alt="VGT_icon">
                     <h3 class="py-3 ms-2">
                         <!-- Numbers will be changed when the bdd will be implemented -->
-                        999 999 nouveaux temps de jeux
+                        {{ todayTime }} nouveaux temps de jeux
                     </h3>
 
                 </div>
@@ -167,7 +183,7 @@
                          alt="VGT_icon">
                     <h3 class="py-3 ms-2">
                         <!-- Numbers will be changed when the bdd will be implemented -->
-                        999 999 nouveaux utilisateurs
+                        {{ todayGamer }} nouveaux utilisateurs
                     </h3>
 
                 </div>

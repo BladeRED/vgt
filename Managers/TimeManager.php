@@ -19,14 +19,14 @@ class TimeManager extends DBManager
 
         foreach ($results as $result) {
 
-            $timesList[] = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"],new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"], $result["registerDate"]), new Game($result["Id_Games"], $result["title"], $result["resume"],$result["released"], $result["editor"], $result["studio"], '', '', '', '', ', ', '', $result["addDate"], $result["picture"]), $result["addDate"]);
+            $timesList[] = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"], new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"], $result["registerDate"]), new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"], $result["editor"], $result["studio"], '', '', '', '', ', ', '', $result["addDate"], $result["picture"]), $result["addDate"]);
 
         }
 
         return $timesList;
     }
 
-    public function findByDate($dateBegin,$dateEnd)
+    public function findByDate($dateBegin, $dateEnd)
     {
         $query = $this->bdd->prepare('SELECT COUNT(1) AS nbTimes FROM Gametimes WHERE addDate >=:dateBegin AND addDate < :dateEnd');
         $query->execute(["dateBegin" => $dateBegin,
@@ -37,7 +37,7 @@ class TimeManager extends DBManager
         return $result['nbTimes'];
     }
 
-    public function sumByDate($dateBegin,$dateEnd)
+    public function sumByDate($dateBegin, $dateEnd)
     {
         $query = $this->bdd->prepare('SELECT SUM(hours) as sumHrs,SUM(minuts) AS sumMins, SUM(seconds) AS sumScs FROM Gametimes WHERE addDate >=:dateBegin AND addDate < :dateEnd');
         $query->execute(["dateBegin" => $dateBegin,
@@ -48,7 +48,7 @@ class TimeManager extends DBManager
         return $result;
     }
 
-    public function findByHistDate($dateBegin,$dateEnd)
+    public function findByHistDate($dateBegin, $dateEnd)
     {
         $query = $this->bdd->prepare('SELECT COUNT(1) AS nbTimes FROM Gametimes WHERE category = "Histoire" AND addDate >=:dateBegin AND addDate < :dateEnd');
         $query->execute(["dateBegin" => $dateBegin,
@@ -69,7 +69,7 @@ class TimeManager extends DBManager
         return $result["Histoire"];
     }
 
-    public function findByCompDate($dateBegin,$dateEnd)
+    public function findByCompDate($dateBegin, $dateEnd)
     {
         $query = $this->bdd->prepare('SELECT COUNT(1) AS nbTimes FROM Gametimes WHERE category = "Complétioniste" AND addDate >=:dateBegin AND addDate < :dateEnd');
         $query->execute(["dateBegin" => $dateBegin,
@@ -90,7 +90,7 @@ class TimeManager extends DBManager
         return $result["Complétioniste"];
     }
 
-    public function findByExtraDate($dateBegin,$dateEnd)
+    public function findByExtraDate($dateBegin, $dateEnd)
     {
         $query = $this->bdd->prepare('SELECT COUNT(1) AS nbTimes FROM Gametimes WHERE category = "Histoire+Extras" AND addDate >=:dateBegin AND addDate < :dateEnd');
         $query->execute(["dateBegin" => $dateBegin,
@@ -120,7 +120,7 @@ class TimeManager extends DBManager
 
         if ($result) {
 
-            $time = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"], $result["Id_Gamer"],$result["Id_Games"], $result["addDate"]);
+            $time = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"], $result["Id_Gamer"], $result["Id_Games"], $result["addDate"]);
 
         }
 
@@ -136,7 +136,7 @@ class TimeManager extends DBManager
 
         if ($result) {
 
-            $time = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"], $result["Id_Gamer"],$result["Id_Games"], $result["addDate"]);
+            $time = new Time($result["Id_Gametimes"], $result["category"], $result["hours"], $result["minuts"], $result["seconds"], $result["Id_Games"], $result["Id_Gamer"], $result["Id_Games"], $result["addDate"]);
 
         }
 
@@ -168,7 +168,7 @@ class TimeManager extends DBManager
     public function findExtraAvgTimeByGameId($id)
     {
         $time = null;
-        $query = $this->bdd->prepare('SELECT ROUND(AVG(hours)) AS Hours ,ROUND(AVG(minuts)) AS Minuts, ROUND(AVG(seconds)) AS Seconds FROM Gametimes WHERE Id_Games =:Id_Games AND category="Histoire+Extras";');
+        $query = $this->bdd->prepare('SELECT ROUND(AVG(hours)) AS Hours ,ROUND(AVG(minuts)) AS Minuts, ROUND(AVG(seconds)) AS Seconds FROM Gametimes WHERE Id_Games =:Id_Games AND category="Histoire + Extras";');
         $query->execute(["Id_Games" => $id]);
         $result = $query->fetch(\PDO::FETCH_ASSOC);
 
@@ -187,7 +187,18 @@ class TimeManager extends DBManager
         return $result;
     }
 
-    public function countTimes(){
+    public function findByTodayDate($dateToday, $dateLastWeek)
+    {
+        $query = $this->bdd->prepare('SELECT COUNT(1) AS nbTimes FROM `Gametimes` WHERE addDate >= :dateLastWeek AND addDate <= :dateToday;');
+        $query->execute(["dateToday" => $dateToday, "dateLastWeek" => $dateLastWeek]);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result['nbTimes'];
+    }
+
+    public function countTimes()
+    {
 
         $query = $this->bdd->prepare('SELECT COUNT(1)AS TotalTimes FROM Gametimes;');
         $query->execute();
@@ -196,7 +207,8 @@ class TimeManager extends DBManager
 
     }
 
-    public function sumTimes(){
+    public function sumTimes()
+    {
 
         $query = $this->bdd->prepare('SELECT SUM(hours) AS totalhours , SUM(minuts) AS totalminuts, SUM(seconds) AS totalseconds FROM Gametimes;');
         $query->execute();

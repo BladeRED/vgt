@@ -90,6 +90,16 @@ class GamerManager extends DBManager
 
     }
 
+    public function findByTodayDate($dateToday, $dateLastWeek)
+    {
+        $query = $this->bdd->prepare('SELECT COUNT(1) AS nbGamers FROM Gamer WHERE registerDate >= :dateLastWeek AND registerDate <= :dateToday;');
+        $query->execute(["dateToday" => $dateToday, "dateLastWeek" => $dateLastWeek]);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result['nbGamers'];
+    }
+
     public function countUsers()
     {
 

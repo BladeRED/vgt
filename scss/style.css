@@ -11917,4 +11917,8 @@ div.dataTables_wrapper div.dataTables_filter label {
   display: none;
 }
 
+.row.useraccount {
+  --bs-gutter-x: 0rem !important ;
+}
+
 /*# sourceMappingURL=style.css.map */
