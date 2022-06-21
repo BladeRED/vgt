@@ -32,6 +32,14 @@ $router->mount('/home', function () use ($controller, $router) {
         $controller->displayLogin();
     });
 
+    $router->get('/politique', function () use ($controller) {
+        $controller->displayPolitique();
+    });
+
+    $router->get('/mentions', function () use ($controller) {
+        $controller->displayMentions();
+    });
+
     $router->get('/cookie', function () use ($controller) {
         $controller->acceptCookie();
     });

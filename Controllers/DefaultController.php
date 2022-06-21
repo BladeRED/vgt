@@ -42,16 +42,19 @@ class DefaultController extends AbstractController
         $gamesAvgs = [];
         $gamesAvgsTotals = [];
         $gamesAvgsHours = [];
+        $raclette = null;
 
-        for ($i=0;$i<count($games);$i++){
+       /* for ($i=0;$i<count($games);$i++){
 
             $gamesIds[$i] = $games[$i]->getId();
             $gamesAvgs[$i] = $this->timemanager->findAvgTimeByGameId($gamesIds[$i]);
             $gamesAvgsTotals[$i] = $gamesAvgs[$i];
 
-        }
+            $raclette= $gamesAvgsTotals;
+            $truffade = $gamesAvgsTotals[$i];
 
-        var_dump($gamesAvgsTotals);
+
+        }*/
 
         $todayGame = $this->gamemanager->findByTodayDate($dateToday, $dateLastWeek);
         $todayTime = $this->timemanager->findByTodayDate($dateToday, $dateLastWeek);
@@ -62,7 +65,8 @@ class DefaultController extends AbstractController
                 'gamesAvgs' => $gamesAvgs,
                 'gamesAvgTotals' => $gamesAvgsTotals,
                 'todayTime' => $todayTime,
-                'todayGamer' => $todayGamer]);
+                'todayGamer' => $todayGamer,
+                'raclette' => $raclette]);
     }
 
     public function displayGame($id)
@@ -224,6 +228,18 @@ class DefaultController extends AbstractController
     {
 
         $this->render->display('default/login.twig');
+    }
+
+    public function displayPolitique()
+    {
+
+        $this->render->display('default/politique.twig');
+    }
+
+    public function displayMentions()
+    {
+
+        $this->render->display('default/mentions.twig');
     }
 
     public function connect()

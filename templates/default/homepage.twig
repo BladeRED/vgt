@@ -29,14 +29,14 @@
                                     besoin que tu mange un petit cookie :).
                                     Il n'est pas au chocolat ou à la noix de coco, mais il se digère très bien, et
                                     ne feras aucun mal à tes données personnelles!
-                                    Pour en savoir plus, consulte notre <a href="#"> Politique de
+                                    Pour en savoir plus, consulte notre <a href="/home/politique"> Politique de
                                         confidentialité </a> !
                                 </p>
                             </div>
 
                         </div>
                         <div class="modal-footer d-flex justify-content-center">
-                            <a id="modal-add-link" href="#" class="btn btn-lg bgsection3 text-white me-4">Plus
+                            <a id="modal-add-link" href="/home/politique" class="btn btn-lg bgsection3 text-white me-4">Plus
                                 d'infos</a>
                             <a href="/home/cookie" type="button" class="btn btn-lg bgsection1 text-white">Accepter les
                                 cookies</a>
@@ -121,7 +121,7 @@
 
                                                 {% for key in gamesAvgTotals|keys %}
 
-                                                    {% set patate = key %}
+                                                    {% set patate = 0 %}
                                                 <p class="text-purple">{{ gamesAvgTotals.patate.Hours }}</p>
                                                 {% endfor %}
                                             {% endif %}
