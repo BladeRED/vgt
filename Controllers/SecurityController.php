@@ -3,15 +3,16 @@
 namespace app\Controllers;
 
 use app\Managers\GamerManager;
+use app\Managers\ReviewManager;
 use app\Managers\TimeManager;
-use app\Models\Game;
 use app\Models\Time;
 
 
 class SecurityController extends AbstractController
 {
     private GamerManager $gamermanager;
-    private  TimeManager $timemanager;
+    private TimeManager $timemanager;
+    private ReviewManager $reviewmanager;
 
 
     /**
@@ -21,7 +22,8 @@ class SecurityController extends AbstractController
     {
         parent::__construct();
         $this->gamermanager = new GamerManager();
-        $this->timemanager= new TimeManager();
+        $this->timemanager = new TimeManager();
+        $this->reviewmanager = new ReviewManager();
 
     }
 
@@ -34,10 +36,10 @@ class SecurityController extends AbstractController
 
     public function submitTime()
     {
-        $redirect= $_SERVER['HTTP_REFERER'];
+        $redirect = $_SERVER['HTTP_REFERER'];
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-            $time = new Time(null,$_POST["categories"],$_POST["hours"], $_POST["minuts"], $_POST["seconds"], $_POST["idSubmitGame"],$this->sessionService->gamer->getId(),"", date("Y-m-d"));
+            $time = new Time(null, $_POST["categories"], $_POST["hours"], $_POST["minuts"], $_POST["seconds"], $_POST["idSubmitGame"], $this->sessionService->gamer->getId(), "", date("Y-m-d"));
 
 
         }
@@ -51,7 +53,11 @@ class SecurityController extends AbstractController
     public function displayGamer()
     {
 
-        $this->render->display('security/gamer.twig');
+
+        $timesGamer = $this->timemanager->findTimeByGamerId($this->sessionService->gamer->getId());
+        $timesReviews = $this->reviewmanager->findReviewByGamerId($this->sessionService->gamer->getId());
+
+        $this->render->display('security/gamer.twig', ['timesGamer' => $timesGamer, 'timesReviews' => $timesReviews]);
     }
 
     // Upload pictureFiles //
@@ -74,7 +80,7 @@ class SecurityController extends AbstractController
         if (count($errors) == 0) {
             $extension = explode("/", $_FILES["pictureFile"]["type"])[1];
             $uniqFilename = uniqid() . '.' . $extension;
-            move_uploaded_file($_FILES["pictureFile"]["tmp_name"],'assets/pictures/'.$uniqFilename);
+            move_uploaded_file($_FILES["pictureFile"]["tmp_name"], 'assets/pictures/' . $uniqFilename);
         }
 
         return ["errors" => $errors, 'filename' => $uniqFilename];

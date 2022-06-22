@@ -90,8 +90,6 @@
                 </div>
             </div>
 
-            </div>
-
         </section>
 
         <!-- The most popular games section -->
@@ -102,7 +100,9 @@
                 <h2 class="text-center mb-5" id="popular_games"> Jeux Populaires </h2>
 
                 <div class="d-flex flex-row justify-content-center game">
+
                     {% for game in games|slice(0,4) %}
+
                         <a href="/home/game/{{ game.id }}">
                             <div class="flip-card me-3 gamecard" style="width:15rem;height:21rem;">
                                 <div class="flip-card-inner">
@@ -115,16 +115,20 @@
                                         <h2 class="mt-4">{{ game.title }}</h2>
                                         <p class="text-white mt-4">Temps de jeu moyen:</p>
 
-                                            {% if gamesAvgTotals is null %}
-                                                <p class="text-purple">0j 0h 0min 0sec</p>
-                                            {% else %}
-
-                                                {% for key in gamesAvgTotals|keys %}
-
-                                                    {% set patate = 0 %}
-                                                <p class="text-purple">{{ gamesAvgTotals.patate.Hours }}</p>
-                                                {% endfor %}
+                                        {% if gamesTimesAvg is null %}
+                                            <p class="text-purple">0j 0h 0min 0sec</p>
+                                        {% else %}
+                                            {% if game.id == 1 %}
+                                                <p class="text-purple">{{ gamesTimesAvg.0.Hours }}h {{ gamesTimesAvg.0.Minuts }}min {{ gamesTimesAvg.0.Seconds }}secs</p>
+                                            {% elseif game.id == 2 %}
+                                                <p class="text-purple">{{ gamesTimesAvg.1.Hours }}h {{ gamesTimesAvg.1.Minuts }}min {{ gamesTimesAvg.1.Seconds }}secs</p>
+                                            {% elseif game.id == 3 %}
+                                                <p class="text-purple">{{ gamesTimesAvg.2.Hours }}h {{ gamesTimesAvg.2.Minuts }}min {{ gamesTimesAvg.2.Seconds }}secs</p>
+                                            {% elseif game.id == 4 %}
+                                                <p class="text-purple">{{ gamesTimesAvg.3.Hours }}h {{ gamesTimesAvg.3.Minuts }}min {{ gamesTimesAvg.3.Seconds }}secs</p>
                                             {% endif %}
+
+                                        {% endif %}
 
 
                                         <p class="text-white">Note moyenne des utilisateurs:</p>

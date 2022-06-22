@@ -38,35 +38,26 @@ class DefaultController extends AbstractController
         $dateToday = date('Y-m-d');
         $dateLastWeek = date('Y-m-d', time() - 60 * 60 * 168);
         $games = $this->gamemanager->findAll();
-        $gamesIds = [];
-        $gamesAvgs = [];
-        $gamesAvgsTotals = [];
-        $gamesAvgsHours = [];
-        $raclette = null;
 
-       /* for ($i=0;$i<count($games);$i++){
+        $gamesTimesAvg = $this->timemanager->findAvgTimeByGame();
 
-            $gamesIds[$i] = $games[$i]->getId();
-            $gamesAvgs[$i] = $this->timemanager->findAvgTimeByGameId($gamesIds[$i]);
-            $gamesAvgsTotals[$i] = $gamesAvgs[$i];
-
-            $raclette= $gamesAvgsTotals;
-            $truffade = $gamesAvgsTotals[$i];
+        $EldenRing = $gamesTimesAvg[0];
 
 
-        }*/
+
 
         $todayGame = $this->gamemanager->findByTodayDate($dateToday, $dateLastWeek);
         $todayTime = $this->timemanager->findByTodayDate($dateToday, $dateLastWeek);
         $todayGamer = $this->gamermanager->findByTodayDate($dateToday, $dateLastWeek);
+
         $this->render->display('default/homepage.twig',
             ['games' => $games,
                 'todayGame' => $todayGame,
-                'gamesAvgs' => $gamesAvgs,
-                'gamesAvgTotals' => $gamesAvgsTotals,
                 'todayTime' => $todayTime,
                 'todayGamer' => $todayGamer,
-                'raclette' => $raclette]);
+                'gamesTimesAvg' => $gamesTimesAvg,
+                'EldenRing' => $EldenRing]
+        );
     }
 
     public function displayGame($id)

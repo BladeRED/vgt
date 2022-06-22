@@ -49,6 +49,17 @@ class ReviewManager extends DBManager{
         return $review;
     }
 
+    public function findReviewByGamerId($id)
+    {
+
+        $query = $this->bdd->prepare('SELECT COUNT(1) AS Total_Reviews FROM Reviews WHERE Id_Gamer =:Id_Gamer');
+        $query->execute(["Id_Gamer" => $id]);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result["Total_Reviews"];
+    }
+
     public function countReviews(){
 
         $query = $this->bdd->prepare('SELECT COUNT(1)AS TotalReviews FROM Games;');

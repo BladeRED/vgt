@@ -200,8 +200,13 @@ class AdminController extends AbstractController
 
                 if (count($errors) == 0) {
 
+
                     $gamer = new Gamer(null, $_POST["pseudoRegister"], $_POST["passwordRegister"], $_POST["mailRegister"], "[GAMER]", "../../assets/pictures/dragon.png", date('Y-m-d'));
                     $this->gamermanager->create($gamer);
+                }else{
+
+                    $this->render->display('/admin/users.twig', ['errors' => $errors]);
+
                 }
                 header('Location:/admin/users');
 

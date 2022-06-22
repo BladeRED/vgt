@@ -38,10 +38,19 @@
 
                     <div class="col-lg-6 my-5">
                         <h2 class="text-center mb-5 prout">Informations personnelles</h2>
-                        <p class="my-3 text-center"> 999 999 999 jeux enregistrés</p>
-                        <p class="my-3 text-center"> 999 999 999 temps de jeux</p>
-                        <p class="my-3 text-center"> 999 999 999 reviews</p>
-                        <p class="my-3 text-center">Inscrit depuis le: {{gamer.registerDate|format_datetime(locale='fr',pattern="dd MMMM YYYY")}}</p>
+                        {% if timesGamer is null %}
+                            <p class="my-3 text-center"> 0 temps de jeux</p>
+                        {% else %}
+                            <p class="my-3 text-center"> {{ timesGamer }} temps de jeux</p>
+                        {% endif %}
+
+                        {% if timesReviews is null %}
+                            <p class="my-3 text-center"> 0 reviews</p>
+                        {% else %}
+                            <p class="my-3 text-center"> {{ timesReviews }} reviews</p>
+                        {% endif %}
+                        <p class="my-3 text-center">Inscrit depuis
+                            le: {{ gamer.registerDate|format_datetime(locale='fr',pattern="dd MMMM YYYY") }}</p>
                     </div>
 
                 </div>
@@ -52,7 +61,7 @@
             <div class="container datahidden datahide">
                 <h2 class="text-center mb-4">Mes données personnelles</h2>
                 <div class="row">
-                    <form class="mx-auto" method="post" enctype="multipart/form-data" action="/security/editGamer" >
+                    <form class="mx-auto" method="post" enctype="multipart/form-data" action="/security/editGamer">
                         <div class="form-group mx-5 px-5 d-flex flex-column justify-content-center">
                             <label for="mailEdit" class="mb-3 text-white text-center"> Ton Adresse Mail: </label>
                             <input

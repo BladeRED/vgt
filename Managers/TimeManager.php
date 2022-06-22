@@ -143,9 +143,20 @@ class TimeManager extends DBManager
         return $time;
     }
 
+    public function findTimeByGamerId($id)
+    {
+
+        $query = $this->bdd->prepare('SELECT COUNT(1) AS Total_Times FROM Gametimes WHERE Id_Gamer =:Id_Gamer');
+        $query->execute(["Id_Gamer" => $id]);
+        $result = $query->fetch(\PDO::FETCH_ASSOC);
+
+
+        return $result["Total_Times"];
+    }
+
     public function findAvgTimeByGameId($id)
     {
-        $time = null;
+
         $query = $this->bdd->prepare('SELECT ROUND(AVG(hours)) AS Hours ,ROUND(AVG(minuts)) AS Minuts, ROUND(AVG(seconds)) AS Seconds FROM Gametimes WHERE Id_Games =:Id_Games;');
         $query->execute(["Id_Games" => $id]);
         $result = $query->fetch(\PDO::FETCH_ASSOC);
@@ -156,7 +167,7 @@ class TimeManager extends DBManager
 
     public function findHistAvgTimeByGameId($id)
     {
-        $time = null;
+
         $query = $this->bdd->prepare('SELECT ROUND(AVG(hours)) AS Hours ,ROUND(AVG(minuts)) AS Minuts, ROUND(AVG(seconds)) AS Seconds FROM Gametimes WHERE Id_Games =:Id_Games AND category="Histoire";');
         $query->execute(["Id_Games" => $id]);
         $result = $query->fetch(\PDO::FETCH_ASSOC);
@@ -167,7 +178,7 @@ class TimeManager extends DBManager
 
     public function findExtraAvgTimeByGameId($id)
     {
-        $time = null;
+
         $query = $this->bdd->prepare('SELECT ROUND(AVG(hours)) AS Hours ,ROUND(AVG(minuts)) AS Minuts, ROUND(AVG(seconds)) AS Seconds FROM Gametimes WHERE Id_Games =:Id_Games AND category="Histoire + Extras";');
         $query->execute(["Id_Games" => $id]);
         $result = $query->fetch(\PDO::FETCH_ASSOC);
@@ -178,13 +189,23 @@ class TimeManager extends DBManager
 
     public function findCompAvgTimeByGameId($id)
     {
-        $time = null;
+
         $query = $this->bdd->prepare('SELECT ROUND(AVG(hours)) AS Hours ,ROUND(AVG(minuts)) AS Minuts, ROUND(AVG(seconds)) AS Seconds FROM Gametimes WHERE Id_Games =:Id_Games AND category="Complétioniste";');
         $query->execute(["Id_Games" => $id]);
         $result = $query->fetch(\PDO::FETCH_ASSOC);
 
 
         return $result;
+    }
+
+    public function findAvgTimeByGame()
+    {
+
+        $query = $this->bdd->prepare('SELECT ROUND(AVG(hours)) AS Hours ,ROUND(AVG(minuts)) AS Minuts, ROUND(AVG(seconds)) AS Seconds FROM Gametimes GROUP BY Id_Games;');
+        $query->execute();
+        $results = $query->fetchAll(\PDO::FETCH_ASSOC);
+
+        return $results;
     }
 
     public function findByTodayDate($dateToday, $dateLastWeek)
