@@ -2,7 +2,8 @@
 
 namespace app\Models;
 
-class Platform {
+class Platform
+{
 
     private $id;
     private $console;
@@ -15,11 +16,16 @@ class Platform {
      * @param $console
      * @param $game_platform
      */
-    public function __construct($id, $console,$game_platform)
+    public function __construct($id,
+                                $console,
+                                $game_platform)
     {
-        $this->id = $id;
-        $this->console = $console;
-        $this->game_platform= $game_platform;
+        $this->id =
+            $id;
+        $this->console =
+            $console;
+        $this->game_platform =
+            $game_platform;
     }
 
     /**
@@ -35,7 +41,8 @@ class Platform {
      */
     public function setId($id): void
     {
-        $this->id = $id;
+        $this->id =
+            $id;
     }
 
     /**
@@ -51,7 +58,8 @@ class Platform {
      */
     public function setConsole($console): void
     {
-        $this->console = $console;
+        $this->console =
+            $console;
     }
 
     /**
@@ -67,10 +75,9 @@ class Platform {
      */
     public function setgame_platform($game_platform): void
     {
-        $this->game = $game_platform;
+        $this->game =
+            $game_platform;
     }
-
-
 
 
 }

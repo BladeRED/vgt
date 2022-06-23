@@ -25,10 +25,10 @@
 
                             <div class="col-lg-8 cookieflex2">
                                 <p class="mt-5 text-dark text-center py-2">
-                                    Chez VGT, on aime bien s'assurer que tout fonctionne bien, mais pour sa, on a
-                                    besoin que tu mange un petit cookie :).
+                                    Chez VGT, on aime bien s'assurer que tout fonctionne bien, mais pour ça, on a
+                                    besoin que tu manges un petit cookie :).
                                     Il n'est pas au chocolat ou à la noix de coco, mais il se digère très bien, et
-                                    ne feras aucun mal à tes données personnelles!
+                                    ne feras aucun mal à tes données personnelles !
                                     Pour en savoir plus, consulte notre <a href="/home/politique"> Politique de
                                         confidentialité </a> !
                                 </p>
@@ -119,13 +119,21 @@
                                             <p class="text-purple">0j 0h 0min 0sec</p>
                                         {% else %}
                                             {% if game.id == 1 %}
-                                                <p class="text-purple">{{ gamesTimesAvg.0.Hours }}h {{ gamesTimesAvg.0.Minuts }}min {{ gamesTimesAvg.0.Seconds }}secs</p>
+                                                <p class="text-purple">{{ gamesTimesAvg.0.Hours }}
+                                                    h {{ gamesTimesAvg.0.Minuts }}min {{ gamesTimesAvg.0.Seconds }}
+                                                    secs</p>
                                             {% elseif game.id == 2 %}
-                                                <p class="text-purple">{{ gamesTimesAvg.1.Hours }}h {{ gamesTimesAvg.1.Minuts }}min {{ gamesTimesAvg.1.Seconds }}secs</p>
+                                                <p class="text-purple">{{ gamesTimesAvg.1.Hours }}
+                                                    h {{ gamesTimesAvg.1.Minuts }}min {{ gamesTimesAvg.1.Seconds }}
+                                                    secs</p>
                                             {% elseif game.id == 3 %}
-                                                <p class="text-purple">{{ gamesTimesAvg.2.Hours }}h {{ gamesTimesAvg.2.Minuts }}min {{ gamesTimesAvg.2.Seconds }}secs</p>
+                                                <p class="text-purple">{{ gamesTimesAvg.2.Hours }}
+                                                    h {{ gamesTimesAvg.2.Minuts }}min {{ gamesTimesAvg.2.Seconds }}
+                                                    secs</p>
                                             {% elseif game.id == 4 %}
-                                                <p class="text-purple">{{ gamesTimesAvg.3.Hours }}h {{ gamesTimesAvg.3.Minuts }}min {{ gamesTimesAvg.3.Seconds }}secs</p>
+                                                <p class="text-purple">{{ gamesTimesAvg.3.Hours }}
+                                                    h {{ gamesTimesAvg.3.Minuts }}min {{ gamesTimesAvg.3.Seconds }}
+                                                    secs</p>
                                             {% endif %}
 
                                         {% endif %}

@@ -2,7 +2,8 @@
 
 namespace app\Models;
 
-class Review {
+class Review
+{
 
     private $id;
     private $note;
@@ -22,14 +23,25 @@ class Review {
      * @param $isSignaled
      * @param $gamer
      */
-    public function __construct($id, $note, $comment, $date, $isSignaled, $gamer)
+    public function __construct($id,
+                                $note,
+                                $comment,
+                                $date,
+                                $isSignaled,
+                                $gamer)
     {
-        $this->id = $id;
-        $this->note = $note;
-        $this->comment = $comment;
-        $this->date = $date;
-        $this->isSignaled = $isSignaled;
-        $this->gamer= $gamer;
+        $this->id =
+            $id;
+        $this->note =
+            $note;
+        $this->comment =
+            $comment;
+        $this->date =
+            $date;
+        $this->isSignaled =
+            $isSignaled;
+        $this->gamer =
+            $gamer;
     }
 
     /**
@@ -45,7 +57,8 @@ class Review {
      */
     public function setId($id): void
     {
-        $this->id = $id;
+        $this->id =
+            $id;
     }
 
     /**
@@ -61,7 +74,8 @@ class Review {
      */
     public function setNote($note): void
     {
-        $this->note = $note;
+        $this->note =
+            $note;
     }
 
     /**
@@ -77,7 +91,8 @@ class Review {
      */
     public function setComment($comment): void
     {
-        $this->comment = $comment;
+        $this->comment =
+            $comment;
     }
 
     /**
@@ -93,7 +108,8 @@ class Review {
      */
     public function setDate($date): void
     {
-        $this->date = $date;
+        $this->date =
+            $date;
     }
 
     /**
@@ -109,7 +125,8 @@ class Review {
      */
     public function setIsSignaled($isSignaled): void
     {
-        $this->isSignaled = $isSignaled;
+        $this->isSignaled =
+            $isSignaled;
     }
 
     /**
@@ -125,10 +142,9 @@ class Review {
      */
     public function setgamer($gamer): void
     {
-        $this->gamer = $gamer;
+        $this->gamer =
+            $gamer;
     }
-
-
 
 
 }

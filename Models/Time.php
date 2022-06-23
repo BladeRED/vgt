@@ -28,17 +28,34 @@ class Time
      * @param $game
      * @param $addDate
      */
-    public function __construct($id, $category, $hours, $minuts, $seconds, $Id_Games, $gamer, $game,  $addDate)
+    public function __construct($id,
+                                $category,
+                                $hours,
+                                $minuts,
+                                $seconds,
+                                $Id_Games,
+                                $gamer,
+                                $game,
+                                $addDate)
     {
-        $this->id = $id;
-        $this->category = $category;
-        $this->hours = $hours;
-        $this->minuts = $minuts;
-        $this->seconds = $seconds;
-        $this->Id_Games = $Id_Games;
-        $this->gamer = $gamer;
-        $this->game = $game;
-        $this->addDate = $addDate;
+        $this->id =
+            $id;
+        $this->category =
+            $category;
+        $this->hours =
+            $hours;
+        $this->minuts =
+            $minuts;
+        $this->seconds =
+            $seconds;
+        $this->Id_Games =
+            $Id_Games;
+        $this->gamer =
+            $gamer;
+        $this->game =
+            $game;
+        $this->addDate =
+            $addDate;
     }
 
     /**
@@ -54,7 +71,8 @@ class Time
      */
     public function setId($id): void
     {
-        $this->id = $id;
+        $this->id =
+            $id;
     }
 
     /**
@@ -70,7 +88,8 @@ class Time
      */
     public function setCategory($category): void
     {
-        $this->category = $category;
+        $this->category =
+            $category;
     }
 
     /**
@@ -86,7 +105,8 @@ class Time
      */
     public function setHours($hours): void
     {
-        $this->hours = $hours;
+        $this->hours =
+            $hours;
     }
 
     /**
@@ -102,7 +122,8 @@ class Time
      */
     public function setMinuts($minuts): void
     {
-        $this->minuts = $minuts;
+        $this->minuts =
+            $minuts;
     }
 
     /**
@@ -118,7 +139,8 @@ class Time
      */
     public function setSeconds($seconds): void
     {
-        $this->seconds = $seconds;
+        $this->seconds =
+            $seconds;
     }
 
     /**
@@ -134,7 +156,8 @@ class Time
      */
     public function setId_Games($Id_Games): void
     {
-        $this->Id_Games = $Id_Games;
+        $this->Id_Games =
+            $Id_Games;
     }
 
     /**
@@ -150,7 +173,8 @@ class Time
      */
     public function setId_Gamer($gamer): void
     {
-        $this->gamer = $gamer;
+        $this->gamer =
+            $gamer;
     }
 
     /**
@@ -171,7 +195,8 @@ class Time
      */
     public function setgame($game): void
     {
-        $this->game = $game;
+        $this->game =
+            $game;
     }
 
     public function getAddDate()
@@ -184,6 +209,7 @@ class Time
      */
     public function setAddDate($addDate): void
     {
-        $this->addDate = $addDate;
+        $this->addDate =
+            $addDate;
     }
 }

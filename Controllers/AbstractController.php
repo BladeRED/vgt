@@ -14,14 +14,19 @@ abstract class AbstractController
 
     protected $sessionService;
 
-    public function __construct(){
+    public function __construct()
+    {
         // where are the templates ?
-        $this->_loader = new FilesystemLoader('templates');
+        $this->_loader =
+            new FilesystemLoader('templates');
 
         // setting up the twig environment
-        $this->render = new Environment($this->_loader, [
-            'debug' => true, // allow dump()
-        ]);
+        $this->render =
+            new Environment($this->_loader,
+                [
+                    'debug' => true,
+                    // allow dump()
+                ]);
 
 
         $this->render->addExtension(new IntlExtension());
@@ -29,9 +34,12 @@ abstract class AbstractController
         $this->render->addExtension(new \Twig\Extension\DebugExtension()); // allow dump()
 
         // user is connected ? put it in session
-        $this->sessionService = new SessionService();
-        $this->render->addGlobal('gamer', $this->sessionService->gamer);
-        $this->render->addGlobal('cookies', $_COOKIE);
+        $this->sessionService =
+            new SessionService();
+        $this->render->addGlobal('gamer',
+            $this->sessionService->gamer);
+        $this->render->addGlobal('cookies',
+            $_COOKIE);
     }
 
 }

@@ -20,17 +20,30 @@ class Gamer
      * @param $mail
      * @param $role
      * @param $picture
-     * @param $registerdate;
+     * @param $registerdate ;
      */
-    public function __construct($id, $pseudo, $password, $mail, $role, $picture, $registerdate)
+    public function __construct($id,
+                                $pseudo,
+                                $password,
+                                $mail,
+                                $role,
+                                $picture,
+                                $registerdate)
     {
-        $this->id = $id;
-        $this->pseudo = $pseudo;
-        $this->password = $password;
-        $this->mail = $mail;
-        $this->role = $role;
-        $this->picture = $picture;
-        $this->registerdate = $registerdate;
+        $this->id =
+            $id;
+        $this->pseudo =
+            $pseudo;
+        $this->password =
+            $password;
+        $this->mail =
+            $mail;
+        $this->role =
+            $role;
+        $this->picture =
+            $picture;
+        $this->registerdate =
+            $registerdate;
     }
 
     /**
@@ -46,7 +59,8 @@ class Gamer
      */
     public function setId($id): void
     {
-        $this->id = $id;
+        $this->id =
+            $id;
     }
 
     /**
@@ -62,7 +76,8 @@ class Gamer
      */
     public function setPseudo($pseudo): void
     {
-        $this->pseudo = $pseudo;
+        $this->pseudo =
+            $pseudo;
     }
 
     /**
@@ -78,7 +93,8 @@ class Gamer
      */
     public function setPassword($password): void
     {
-        $this->password = $password;
+        $this->password =
+            $password;
     }
 
     /**
@@ -94,7 +110,8 @@ class Gamer
      */
     public function setMail($mail): void
     {
-        $this->mail = $mail;
+        $this->mail =
+            $mail;
     }
 
     /**
@@ -110,7 +127,8 @@ class Gamer
      */
     public function setRole($role): void
     {
-        $this->role = $role;
+        $this->role =
+            $role;
     }
 
 
@@ -127,7 +145,8 @@ class Gamer
      */
     public function setPicture($picture): void
     {
-        $this->picture = $picture;
+        $this->picture =
+            $picture;
     }
 
     public function toArray()
@@ -156,7 +175,8 @@ class Gamer
      */
     public function setRegisterdate($registerdate): void
     {
-        $this->registerdate = $registerdate;
+        $this->registerdate =
+            $registerdate;
     }
 
 

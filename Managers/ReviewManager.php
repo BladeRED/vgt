@@ -1,33 +1,57 @@
 <?php
 
 namespace app\Managers;
+
 use app\Models\Gamer;
 use app\Models\Review;
 
-class ReviewManager extends DBManager{
+class ReviewManager
+    extends
+    DBManager
+{
 
     public function findAll()
     {
 
-        $query = $this->bdd->prepare('SELECT * FROM Reviews JOIN Gamer ON Reviews.Id_Gamer=Gamer.Id_Gamer');
+        $query =
+            $this->bdd->prepare('SELECT * FROM Reviews JOIN Gamer ON Reviews.Id_Gamer=Gamer.Id_Gamer');
         $query->execute();
-        $results = $query->fetchAll();
+        $results =
+            $query->fetchAll();
 
 
-        foreach ($results as $result) {
+        foreach ($results
+                 as
+                 $result)
+        {
 
-            $reviewsList[] = new Review($result["Id_Reviews"], $result["note"], $result["comment"], $result["comment_date"], $result["isSignaled"], new Gamer($result["Id_Gamer"], $result["pseudo"], $result["password"], $result["mail"], $result["role"], $result["picture"], $result["registerDate"]));
+            $reviewsList[] =
+                new Review($result["Id_Reviews"],
+                    $result["note"],
+                    $result["comment"],
+                    $result["comment_date"],
+                    $result["isSignaled"],
+                    new Gamer($result["Id_Gamer"],
+                        $result["pseudo"],
+                        $result["password"],
+                        $result["mail"],
+                        $result["role"],
+                        $result["picture"],
+                        $result["registerDate"]));
 
         }
         return $reviewsList;
     }
 
-    public function findByDate($dateBegin,$dateEnd)
+    public function findByDate($dateBegin,
+                               $dateEnd)
     {
-        $query = $this->bdd->prepare('SELECT COUNT(1) AS nbReviews FROM Reviews WHERE comment_date >=:dateBegin AND comment_date < :dateEnd');
+        $query =
+            $this->bdd->prepare('SELECT COUNT(1) AS nbReviews FROM Reviews WHERE comment_date >=:dateBegin AND comment_date < :dateEnd');
         $query->execute(["dateBegin" => $dateBegin,
             "dateEnd" => $dateEnd]);
-        $result = $query->fetch(\PDO::FETCH_ASSOC);
+        $result =
+            $query->fetch(\PDO::FETCH_ASSOC);
 
 
         return $result['nbReviews'];
@@ -35,14 +59,23 @@ class ReviewManager extends DBManager{
 
     public function getOneByReviewId($id)
     {
-        $review = null;
-        $query = $this->bdd->prepare('SELECT * FROM Reviews WHERE Id_Reviews =:Id_Reviews');
+        $review =
+            null;
+        $query =
+            $this->bdd->prepare('SELECT * FROM Reviews WHERE Id_Reviews =:Id_Reviews');
         $query->execute(["Id_Reviews" => $id]);
-        $result = $query->fetch();
+        $result =
+            $query->fetch();
 
         if ($result) {
 
-            $review = new Review($result["Id_Reviews"], $result["note"], $result["comment"], $result["comment_date"], $result["isSignaled"],$result["Id_Gamer"]);
+            $review =
+                new Review($result["Id_Reviews"],
+                    $result["note"],
+                    $result["comment"],
+                    $result["comment_date"],
+                    $result["isSignaled"],
+                    $result["Id_Gamer"]);
 
         }
 
@@ -52,19 +85,24 @@ class ReviewManager extends DBManager{
     public function findReviewByGamerId($id)
     {
 
-        $query = $this->bdd->prepare('SELECT COUNT(1) AS Total_Reviews FROM Reviews WHERE Id_Gamer =:Id_Gamer');
+        $query =
+            $this->bdd->prepare('SELECT COUNT(1) AS Total_Reviews FROM Reviews WHERE Id_Gamer =:Id_Gamer');
         $query->execute(["Id_Gamer" => $id]);
-        $result = $query->fetch(\PDO::FETCH_ASSOC);
+        $result =
+            $query->fetch(\PDO::FETCH_ASSOC);
 
 
         return $result["Total_Reviews"];
     }
 
-    public function countReviews(){
+    public function countReviews()
+    {
 
-        $query = $this->bdd->prepare('SELECT COUNT(1)AS TotalReviews FROM Games;');
+        $query =
+            $this->bdd->prepare('SELECT COUNT(1)AS TotalReviews FROM Games;');
         $query->execute();
-        $nbGames = $query->fetch(\PDO::FETCH_ASSOC);
+        $nbGames =
+            $query->fetch(\PDO::FETCH_ASSOC);
         return $nbGames['TotalReviews'];
 
     }
@@ -72,7 +110,8 @@ class ReviewManager extends DBManager{
     public function delete($review)
     {
 
-        $query = $this->bdd->prepare('DELETE FROM Reviews WHERE Id_Reviews= :id');
+        $query =
+            $this->bdd->prepare('DELETE FROM Reviews WHERE Id_Reviews= :id');
         $query->execute([
             "id" => $review->getId()
         ]);

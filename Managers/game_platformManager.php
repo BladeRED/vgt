@@ -1,23 +1,34 @@
 <?php
 
 namespace app\Managers;
+
 use app\Models\game_genre;
 use app\Models\game_platform;
 
 
-class game_platformManager extends DBManager {
+class game_platformManager
+    extends
+    DBManager
+{
 
     public function findAll()
     {
 
-        $query = $this->bdd->prepare('SELECT * FROM game_platform');
+        $query =
+            $this->bdd->prepare('SELECT * FROM game_platform');
         $query->execute();
-        $results = $query->fetchAll();
+        $results =
+            $query->fetchAll();
 
 
-        foreach ($results as $result) {
+        foreach ($results
+                 as
+                 $result)
+        {
 
-            $game_platformList[] = new game_platform($result["Id_Games"], $result["Id_Platforms"]);
+            $game_platformList[] =
+                new game_platform($result["Id_Games"],
+                    $result["Id_Platforms"]);
 
         }
         return $game_platformList;
@@ -25,14 +36,19 @@ class game_platformManager extends DBManager {
 
     public function findGamePlatformById($id)
     {
-        $gameplatform = null;
-        $query = $this->bdd->prepare('SELECT * FROM game_platform WHERE Id_Games =:Id_Games');
+        $gameplatform =
+            null;
+        $query =
+            $this->bdd->prepare('SELECT * FROM game_platform WHERE Id_Games =:Id_Games');
         $query->execute(["Id_Games" => $id]);
-        $result = $query->fetch();
+        $result =
+            $query->fetch();
 
         if ($result) {
 
-            $gameplatform = new game_genre($result["Id_Games"], $result["Id_Platforms"]);
+            $gameplatform =
+                new game_genre($result["Id_Games"],
+                    $result["Id_Platforms"]);
 
         }
 
@@ -42,7 +58,8 @@ class game_platformManager extends DBManager {
     public function add(game_platform $game_platform)
     {
 
-        $query = $this->bdd->prepare('INSERT INTO game_platform (Id_Games,Id_Platforms) VALUES(:Id_Games, :Id_Platforms)');
+        $query =
+            $this->bdd->prepare('INSERT INTO game_platform (Id_Games,Id_Platforms) VALUES(:Id_Games, :Id_Platforms)');
         $query->execute([
             "Id_Games" => $game_platform->getIdGame(),
             "Id_Platforms" => $game_platform->getIdPlatform(),
@@ -53,7 +70,8 @@ class game_platformManager extends DBManager {
     public function delete($id)
     {
 
-        $query = $this->bdd->prepare('DELETE FROM game_platform WHERE Id_Games= :id');
+        $query =
+            $this->bdd->prepare('DELETE FROM game_platform WHERE Id_Games= :id');
         $query->execute([
             "id" => $id->getIdGame()
         ]);

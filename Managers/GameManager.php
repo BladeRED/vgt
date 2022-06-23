@@ -10,19 +10,48 @@ use app\Models\Genre;
 use app\Models\Platform;
 
 
-class GameManager extends DBManager
+class GameManager
+    extends
+    DBManager
 {
 
     public function findAll()
     {
 
-        $query = $this->bdd->prepare('SELECT DISTINCT Games.Id_Games, `title`, `resume`, `released`, `editor`, `studio`,`picture`, GROUP_CONCAT( DISTINCT Genre.name) AS Genres, GROUP_CONCAT( Distinct Platforms.console)AS Plateformes, Genre.*, Platforms.* FROM Games JOIN game_genre ON Games.Id_Games = game_genre.Id_Games JOIN Genre ON Genre.Id_Genre = game_genre.Id_Genre JOIN game_platform ON Games.Id_Games = game_platform.Id_Games JOIN Platforms ON Platforms.Id_Platforms = game_platform.Id_Platforms GROUP BY Games.Id_Games;');
+        $query =
+            $this->bdd->prepare('SELECT DISTINCT Games.Id_Games, `title`, `resume`, `released`, `editor`, `studio`,`picture`, GROUP_CONCAT( DISTINCT Genre.name) AS Genres, GROUP_CONCAT( Distinct Platforms.console)AS Plateformes, Genre.*, Platforms.* FROM Games JOIN game_genre ON Games.Id_Games = game_genre.Id_Games JOIN Genre ON Genre.Id_Genre = game_genre.Id_Genre JOIN game_platform ON Games.Id_Games = game_platform.Id_Games JOIN Platforms ON Platforms.Id_Platforms = game_platform.Id_Platforms GROUP BY Games.Id_Games;');
         $query->execute();
-        $results = $query->fetchAll();
+        $results =
+            $query->fetchAll();
 
-        foreach ($results as $result) {
+        foreach ($results
+                 as
+                 $result)
+        {
 
-            $gamesList[] = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"], $result["editor"], $result["studio"], new Genre($result["Id_Genre"], $result["name"], new game_genre($result["Id_Games"], $result["Id_Genre"])), new game_genre($result["Id_Games"], $result["Id_Genre"]), new Platform($result["Id_Platforms"], $result["console"], new game_platform($result["Id_Games"], $result["Id_Platforms"])), new game_platform($result["Id_Games"], $result["Id_Platforms"]), $result["Genres"], $result["Plateformes"], "", $result["picture"]);
+            $gamesList[] =
+                new Game($result["Id_Games"],
+                    $result["title"],
+                    $result["resume"],
+                    $result["released"],
+                    $result["editor"],
+                    $result["studio"],
+                    new Genre($result["Id_Genre"],
+                        $result["name"],
+                        new game_genre($result["Id_Games"],
+                            $result["Id_Genre"])),
+                    new game_genre($result["Id_Games"],
+                        $result["Id_Genre"]),
+                    new Platform($result["Id_Platforms"],
+                        $result["console"],
+                        new game_platform($result["Id_Games"],
+                            $result["Id_Platforms"])),
+                    new game_platform($result["Id_Games"],
+                        $result["Id_Platforms"]),
+                    $result["Genres"],
+                    $result["Plateformes"],
+                    "",
+                    $result["picture"]);
 
         }
         return $gamesList;
@@ -30,14 +59,31 @@ class GameManager extends DBManager
 
     public function findByGameTitle($title)
     {
-        $game = null;
-        $query = $this->bdd->prepare("SELECT * from Games WHERE title = :title");
+        $game =
+            null;
+        $query =
+            $this->bdd->prepare("SELECT * from Games WHERE title = :title");
         $query->execute(["title" => $title]);
-        $result = $query->fetch();
+        $result =
+            $query->fetch();
 
         if ($result) {
 
-            $game = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"], $result["editor"], $result["studio"], "", "", "", "", "", "", "", $result["picture"]);
+            $game =
+                new Game($result["Id_Games"],
+                    $result["title"],
+                    $result["resume"],
+                    $result["released"],
+                    $result["editor"],
+                    $result["studio"],
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    "",
+                    $result["picture"]);
 
         }
 
@@ -46,36 +92,68 @@ class GameManager extends DBManager
 
     public function findByGameId($id)
     {
-        $game = null;
-        $query = $this->bdd->prepare("SELECT DISTINCT Games.Id_Games, `title`, `resume`, `released`, `editor`, `studio`,`picture`, GROUP_CONCAT( DISTINCT Genre.name) AS Genres, GROUP_CONCAT( Distinct Platforms.console)AS Plateformes, Genre.*, Platforms.* FROM Games JOIN game_genre ON Games.Id_Games = game_genre.Id_Games JOIN Genre ON Genre.Id_Genre = game_genre.Id_Genre JOIN game_platform ON Games.Id_Games = game_platform.Id_Games JOIN Platforms ON Platforms.Id_Platforms = game_platform.Id_Platforms WHERE Games.Id_Games= :id GROUP BY Games.Id_Games ");
+        $game =
+            null;
+        $query =
+            $this->bdd->prepare("SELECT DISTINCT Games.Id_Games, `title`, `resume`, `released`, `editor`, `studio`,`picture`, GROUP_CONCAT( DISTINCT Genre.name) AS Genres, GROUP_CONCAT( Distinct Platforms.console)AS Plateformes, Genre.*, Platforms.* FROM Games JOIN game_genre ON Games.Id_Games = game_genre.Id_Games JOIN Genre ON Genre.Id_Genre = game_genre.Id_Genre JOIN game_platform ON Games.Id_Games = game_platform.Id_Games JOIN Platforms ON Platforms.Id_Platforms = game_platform.Id_Platforms WHERE Games.Id_Games= :id GROUP BY Games.Id_Games ");
         $query->execute(["id" => $id]);
-        $result = $query->fetch();
+        $result =
+            $query->fetch();
 
         if ($result) {
 
-            $game = new Game($result["Id_Games"], $result["title"], $result["resume"], $result["released"], $result["editor"], $result["studio"], new Genre($result["Id_Genre"], $result["name"], new game_genre($result["Id_Games"], $result["Id_Genre"])), new game_genre($result["Id_Games"], $result["Id_Genre"]), new Platform($result["Id_Genre"], $result["console"], new game_platform($result["Id_Games"], $result["Id_Platforms"])), new game_platform($result["Id_Games"], $result["Id_Platforms"]), $result["Genres"], $result["Plateformes"], "", $result["picture"]);
+            $game =
+                new Game($result["Id_Games"],
+                    $result["title"],
+                    $result["resume"],
+                    $result["released"],
+                    $result["editor"],
+                    $result["studio"],
+                    new Genre($result["Id_Genre"],
+                        $result["name"],
+                        new game_genre($result["Id_Games"],
+                            $result["Id_Genre"])),
+                    new game_genre($result["Id_Games"],
+                        $result["Id_Genre"]),
+                    new Platform($result["Id_Genre"],
+                        $result["console"],
+                        new game_platform($result["Id_Games"],
+                            $result["Id_Platforms"])),
+                    new game_platform($result["Id_Games"],
+                        $result["Id_Platforms"]),
+                    $result["Genres"],
+                    $result["Plateformes"],
+                    "",
+                    $result["picture"]);
 
         }
 
         return $game;
     }
 
-    public function findByDate($dateBegin, $dateEnd)
+    public function findByDate($dateBegin,
+                               $dateEnd)
     {
-        $query = $this->bdd->prepare('SELECT COUNT(1) AS nbGames FROM Games WHERE addDate >=:dateBegin AND addDate < :dateEnd');
+        $query =
+            $this->bdd->prepare('SELECT COUNT(1) AS nbGames FROM Games WHERE addDate >=:dateBegin AND addDate < :dateEnd');
         $query->execute(["dateBegin" => $dateBegin,
             "dateEnd" => $dateEnd]);
-        $result = $query->fetch(\PDO::FETCH_ASSOC);
+        $result =
+            $query->fetch(\PDO::FETCH_ASSOC);
 
 
         return $result['nbGames'];
     }
 
-    public function findByTodayDate($dateToday, $dateLastWeek)
+    public function findByTodayDate($dateToday,
+                                    $dateLastWeek)
     {
-        $query = $this->bdd->prepare('SELECT COUNT(1) AS nbGames FROM `Games` WHERE addDate >= :dateLastWeek AND addDate <= :dateToday;');
-        $query->execute(["dateToday" => $dateToday, "dateLastWeek" => $dateLastWeek]);
-        $result = $query->fetch(\PDO::FETCH_ASSOC);
+        $query =
+            $this->bdd->prepare('SELECT COUNT(1) AS nbGames FROM `Games` WHERE addDate >= :dateLastWeek AND addDate <= :dateToday;');
+        $query->execute(["dateToday" => $dateToday,
+            "dateLastWeek" => $dateLastWeek]);
+        $result =
+            $query->fetch(\PDO::FETCH_ASSOC);
 
 
         return $result['nbGames'];
@@ -84,9 +162,13 @@ class GameManager extends DBManager
     public function search($searchResult)
     {
 
-        $query = $this->bdd->prepare('SELECT * FROM Games WHERE title LIKE :searchResult;');
-        $query->execute(["searchResult" => '%' . $searchResult . '%']);
-        $result = $query->fetchAll();
+        $query =
+            $this->bdd->prepare('SELECT * FROM Games WHERE title LIKE :searchResult;');
+        $query->execute(["searchResult" => '%' .
+            $searchResult .
+            '%']);
+        $result =
+            $query->fetchAll();
 
         return $result;
     }
@@ -94,9 +176,11 @@ class GameManager extends DBManager
     public function countGames()
     {
 
-        $query = $this->bdd->prepare('SELECT COUNT(1)AS TotalGames FROM Games;');
+        $query =
+            $this->bdd->prepare('SELECT COUNT(1)AS TotalGames FROM Games;');
         $query->execute();
-        $nbGames = $query->fetch(\PDO::FETCH_ASSOC);
+        $nbGames =
+            $query->fetch(\PDO::FETCH_ASSOC);
         return $nbGames['TotalGames'];
 
     }
@@ -104,7 +188,8 @@ class GameManager extends DBManager
     public function add(Game $game)
     {
 
-        $query = $this->bdd->prepare('INSERT INTO Games (title,resume,released,editor,studio, addDate, picture) VALUES (:title,:resume,:released,:editor, :studio, :addDate, :picture);');
+        $query =
+            $this->bdd->prepare('INSERT INTO Games (title,resume,released,editor,studio, addDate, picture) VALUES (:title,:resume,:released,:editor, :studio, :addDate, :picture);');
         $query->execute([
             "title" => $game->getTitle(),
             "resume" => $game->getResume(),
@@ -120,7 +205,8 @@ class GameManager extends DBManager
     public function delete($game)
     {
 
-        $query = $this->bdd->prepare('DELETE FROM Games WHERE Id_Games= :id');
+        $query =
+            $this->bdd->prepare('DELETE FROM Games WHERE Id_Games= :id');
         $query->execute([
             "id" => $game->getId()
         ]);

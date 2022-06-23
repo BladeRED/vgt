@@ -16,7 +16,9 @@ use app\Models\game_platform;
 use app\Models\Gamer;
 
 
-class AdminController extends AbstractController
+class AdminController
+    extends
+    AbstractController
 {
     private GamerManager $gamermanager;
     private GameManager $gamemanager;
@@ -34,97 +36,162 @@ class AdminController extends AbstractController
     public function __construct()
     {
         parent::__construct();
-        $this->gamermanager = new GamerManager();
-        $this->gamemanager = new GameManager();
-        $this->timemanager = new TimeManager();
-        $this->reviewmanager = new ReviewManager();
-        $this->genremanager = new GenreManager();
-        $this->platformManager = new PlatformManager();
-        $this->game_genremanager = new game_genreManager();
-        $this->game_platformManager = new game_platformManager();
+        $this->gamermanager =
+            new GamerManager();
+        $this->gamemanager =
+            new GameManager();
+        $this->timemanager =
+            new TimeManager();
+        $this->reviewmanager =
+            new ReviewManager();
+        $this->genremanager =
+            new GenreManager();
+        $this->platformManager =
+            new PlatformManager();
+        $this->game_genremanager =
+            new game_genreManager();
+        $this->game_platformManager =
+            new game_platformManager();
     }
 
     public function dashboard()
     {
 
-        $errors = [];
-        $nbUsers = $this->gamermanager->countUsers();
-        $nbGames = $this->gamemanager->countGames();
-        $nbTimes = $this->timemanager->countTimes();
-        $nbReviews = $this->reviewmanager->countReviews();
+        $errors =
+            [];
+        $nbUsers =
+            $this->gamermanager->countUsers();
+        $nbGames =
+            $this->gamemanager->countGames();
+        $nbTimes =
+            $this->timemanager->countTimes();
+        $nbReviews =
+            $this->reviewmanager->countReviews();
 
 
-        $usersDate = null;
-        $gamesDate = null;
-        $timesDate = null;
+        $usersDate =
+            null;
+        $gamesDate =
+            null;
+        $timesDate =
+            null;
 
-        $histDates = null;
-        $compDates = null;
-        $extraDates = null;
-        $histCateg = $this->timemanager->findByHistCateg();
-        $compCateg = $this->timemanager->findByCompCateg();
-        $extraCateg = $this->timemanager->findByExtraCateg();
+        $histDates =
+            null;
+        $compDates =
+            null;
+        $extraDates =
+            null;
+        $histCateg =
+            $this->timemanager->findByHistCateg();
+        $compCateg =
+            $this->timemanager->findByCompCateg();
+        $extraCateg =
+            $this->timemanager->findByExtraCateg();
 
-        $sumTimes = null;
-        $sumDays = 0;
-        $sumHrs = 0;
-        $sumMins = 0;
-        $sumScs = 0;
-        $totalTime = $this->timemanager->sumTimes();
-        $reviewsTime = null;
+        $sumTimes =
+            null;
+        $sumDays =
+            0;
+        $sumHrs =
+            0;
+        $sumMins =
+            0;
+        $sumScs =
+            0;
+        $totalTime =
+            $this->timemanager->sumTimes();
+        $reviewsTime =
+            null;
 
-        $allTimesUsers = $this->gamermanager->checkAllTimesUsers();
-        $allNullTimesUsers = $this->gamermanager->checkAllNullTimesUsers();
+        $allTimesUsers =
+            $this->gamermanager->checkAllTimesUsers();
+        $allNullTimesUsers =
+            $this->gamermanager->checkAllNullTimesUsers();
 
-        $dateBegin = null;
-        $dateEnd = null;
+        $dateBegin =
+            null;
+        $dateEnd =
+            null;
 
 
         if (!empty($_POST["dateBegin"])) {
-            $dateBegin = $_POST["dateBegin"];
-            $dateEnd = $_POST["dateEnd"];
-            if ($dateEnd < $dateBegin) {
+            $dateBegin =
+                $_POST["dateBegin"];
+            $dateEnd =
+                $_POST["dateEnd"];
+            if ($dateEnd <
+                $dateBegin) {
 
-                $errors[] = "Veuillez saisir une période correct, car il est impossible de remonter le temps :)";
+                $errors[] =
+                    "Veuillez saisir une période correct, car il est impossible de remonter le temps :)";
 
             }
-            $usersDate = $this->gamermanager->findByDate($dateBegin, $dateEnd);
-            $gamesDate = $this->gamemanager->findByDate($dateBegin, $dateEnd);
-            $timesDate = $this->timemanager->findByDate($dateBegin, $dateEnd);
+            $usersDate =
+                $this->gamermanager->findByDate($dateBegin,
+                    $dateEnd);
+            $gamesDate =
+                $this->gamemanager->findByDate($dateBegin,
+                    $dateEnd);
+            $timesDate =
+                $this->timemanager->findByDate($dateBegin,
+                    $dateEnd);
 
-            $sumTimes = $this->timemanager->sumByDate($dateBegin, $dateEnd);
-            $reviewsTime = $this->reviewmanager->findByDate($dateBegin, $dateEnd);
+            $sumTimes =
+                $this->timemanager->sumByDate($dateBegin,
+                    $dateEnd);
+            $reviewsTime =
+                $this->reviewmanager->findByDate($dateBegin,
+                    $dateEnd);
 
             // BY DATES //
-            $histDates = $this->timemanager->findByHistDate($dateBegin, $dateEnd);
-            $compDates = $this->timemanager->findByCompDate($dateBegin, $dateEnd);
-            $extraDates = $this->timemanager->findByExtraDate($dateBegin, $dateEnd);
+            $histDates =
+                $this->timemanager->findByHistDate($dateBegin,
+                    $dateEnd);
+            $compDates =
+                $this->timemanager->findByCompDate($dateBegin,
+                    $dateEnd);
+            $extraDates =
+                $this->timemanager->findByExtraDate($dateBegin,
+                    $dateEnd);
 
             //Gestion of times for template rendering//
 
-            $sumHrs = $sumTimes["sumHrs"];
-            $sumMins = $sumTimes["sumMins"];
-            $sumScs = $sumTimes["sumScs"];
+            $sumHrs =
+                $sumTimes["sumHrs"];
+            $sumMins =
+                $sumTimes["sumMins"];
+            $sumScs =
+                $sumTimes["sumScs"];
 
             // While our time value (hours, minuts, or seconds) exceed the limit time, we add 1 to the upper time value //
 
-            while ($sumScs > 59) {
+            while ($sumScs >
+                59) {
 
-                $sumScs = $sumScs - 59;
+                $sumScs =
+                    $sumScs -
+                    59;
                 $sumMins += 1;
 
             }
 
-            while ($sumMins > 59) {
+            while ($sumMins >
+                59) {
 
-                $sumMins = $sumMins - 59;
+                $sumMins =
+                    $sumMins -
+                    59;
                 $sumHrs += 1;
 
             }
 
-            while ($sumHrs > 23) {
+            while ($sumHrs >
+                23) {
 
-                $sumHrs = $sumHrs - 24;
+                $sumHrs =
+                    $sumHrs -
+                    24;
                 $sumDays += 1;
 
             }
@@ -162,99 +229,181 @@ class AdminController extends AbstractController
     public function findAll()
     {
 
-        if ($_SERVER['REQUEST_URI'] == '/admin/users') {
+        if ($_SERVER['REQUEST_URI'] ==
+            '/admin/users') {
 
-            $users = $this->gamermanager->findAll();
-            $this->render->display('admin/users.twig', ['users' => $users]);
+            $users =
+                $this->gamermanager->findAll();
+            $this->render->display('admin/users.twig',
+                ['users' => $users]);
 
-        } else if ($_SERVER['REQUEST_URI'] == '/admin/games') {
+        } else {
+            if ($_SERVER['REQUEST_URI'] ==
+                '/admin/games') {
 
-            $games = $this->gamemanager->findAll();
-            $platforms = $this->platformManager->findAll();
-            $genres = $this->genremanager->findAll();
-            $this->render->display('admin/gamesAdmin.twig',
-                ['games' => $games,
-                    'platforms' => $platforms,
-                    'genres' => $genres]);
+                $games =
+                    $this->gamemanager->findAll();
+                $platforms =
+                    $this->platformManager->findAll();
+                $genres =
+                    $this->genremanager->findAll();
+                $this->render->display('admin/gamesAdmin.twig',
+                    ['games' => $games,
+                        'platforms' => $platforms,
+                        'genres' => $genres]);
 
-        } else if ($_SERVER['REQUEST_URI'] == '/admin/times') {
+            } else {
+                if ($_SERVER['REQUEST_URI'] ==
+                    '/admin/times') {
 
-            $times = $this->timemanager->findAll();
-            $this->render->display('admin/times.twig', ['times' => $times]);
+                    $times =
+                        $this->timemanager->findAll();
+                    $this->render->display('admin/times.twig',
+                        ['times' => $times]);
 
-        } else if ($_SERVER['REQUEST_URI'] == '/admin/reviews') {
+                } else {
+                    if ($_SERVER['REQUEST_URI'] ==
+                        '/admin/reviews') {
 
-            $reviews = $this->reviewmanager->findAll();
-            $this->render->display('admin/reviews.twig', ['reviews' => $reviews]);
+                        $reviews =
+                            $this->reviewmanager->findAll();
+                        $this->render->display('admin/reviews.twig',
+                            ['reviews' => $reviews]);
 
+                    }
+                }
+            }
         }
     }
 
     public function add()
     {
-        $errors = [];
-        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+        $errors =
+            [];
+        if ($_SERVER['REQUEST_METHOD'] ==
+            "POST") {
 
-            if ($_SERVER['REQUEST_URI'] == '/admin/addUsers') {
-                $errors = $this->addUserForm();
+            if ($_SERVER['REQUEST_URI'] ==
+                '/admin/addUsers') {
+                $errors =
+                    $this->addUserForm();
 
-                if (count($errors) == 0) {
+                if (count($errors) ==
+                    0) {
 
 
-                    $gamer = new Gamer(null, $_POST["pseudoRegister"], $_POST["passwordRegister"], $_POST["mailRegister"], "[GAMER]", "../../assets/pictures/dragon.png", date('Y-m-d'));
+                    $gamer =
+                        new Gamer(null,
+                            $_POST["pseudoRegister"],
+                            $_POST["passwordRegister"],
+                            $_POST["mailRegister"],
+                            "[GAMER]",
+                            "../../assets/pictures/dragon.png",
+                            date('Y-m-d'));
                     $this->gamermanager->create($gamer);
-                }else{
+                } else {
 
-                    $this->render->display('/admin/users.twig', ['errors' => $errors]);
+                    $this->render->display('/admin/users.twig',
+                        ['errors' => $errors]);
 
                 }
                 header('Location:/admin/users');
 
-            } else if ($_SERVER['REQUEST_URI'] == '/admin/addGames') {
+            } else {
+                if ($_SERVER['REQUEST_URI'] ==
+                    '/admin/addGames') {
 
-                $errors = $this->validForm();
+                    $errors =
+                        $this->validForm();
 
-                if (count($errors) == 0) {
+                    if (count($errors) ==
+                        0) {
 
-                    // Creation of a new game object  and add //
+                        // Creation of a new game object  and add //
 
-                    if (!$_POST["release"]) {
+                        if (!$_POST["release"]) {
 
-                        $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], null, $_POST["studio"], $_POST["editor"], "", "", "", "", "", "", date('Y-m-d'), "../../assets/pictures/Elden_Ring.jpg");
+                            $game =
+                                new Game (null,
+                                    $_POST["titleInput"],
+                                    $_POST["resumeInput"],
+                                    null,
+                                    $_POST["studio"],
+                                    $_POST["editor"],
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    date('Y-m-d'),
+                                    "../../assets/pictures/Elden_Ring.jpg");
 
-                    } else {
+                        } else {
 
-                        $game = new Game (null, $_POST["titleInput"], $_POST["resumeInput"], $_POST["release"], $_POST["studio"], $_POST["editor"], "", "", "", "", "", "", date('Y-m-d'), "../../assets/pictures/Elden_Ring.jpg");
+                            $game =
+                                new Game (null,
+                                    $_POST["titleInput"],
+                                    $_POST["resumeInput"],
+                                    $_POST["release"],
+                                    $_POST["studio"],
+                                    $_POST["editor"],
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    "",
+                                    date('Y-m-d'),
+                                    "../../assets/pictures/Elden_Ring.jpg");
+
+                        }
+                        $this->gamemanager->add($game);
+
+
+                        // We get the genre and the platform based on the input values
+                        $genre =
+                            $this->genremanager->findByGenreName($_POST["genres"]);
+                        $platform =
+                            $this->platformManager->findByPlatformConsole($_POST["platforms"]);
+
+                        // Find the newly created game, creation of relation tables objects  //
+                        $game =
+                            $this->gamemanager->findByGameTitle($_POST["titleInput"]);
+
+                        $game_genre =
+                            new game_genre($game->getId(),
+                                $genre->getId());
+                        $game_platform =
+                            new game_platform($game->getId(),
+                                $platform->getId());
+
+                        // Add the relation in the relation tables //
+
+                        $this->game_genremanager->add($game_genre);
+                        $this->game_platformManager->add($game_platform);
+
 
                     }
-                    $this->gamemanager->add($game);
+                    header('Location:/admin/games');
 
-
-                    // We get the genre and the platform based on the input values
-                    $genre = $this->genremanager->findByGenreName($_POST["genres"]);
-                    $platform = $this->platformManager->findByPlatformConsole($_POST["platforms"]);
-
-                    // Find the newly created game, creation of relation tables objects  //
-                    $game = $this->gamemanager->findByGameTitle($_POST["titleInput"]);
-
-                    $game_genre = new game_genre($game->getId(), $genre->getId());
-                    $game_platform = new game_platform($game->getId(), $platform->getId());
-
-                    // Add the relation in the relation tables //
-
-                    $this->game_genremanager->add($game_genre);
-                    $this->game_platformManager->add($game_platform);
-
-
+                } else {
+                    if ($_SERVER['REQUEST_URI'] ==
+                        '/admin/addTimes') {
+                        $times =
+                            $this->timemanager->findAll();
+                        $this->render->display('admin/times.twig',
+                            ['times' => $times]);
+                    } else {
+                        if ($_SERVER['REQUEST_URI'] ==
+                            '/admin/addReviews') {
+                            $reviews =
+                                $this->reviewmanager->findAll();
+                            $this->render->display('admin/reviews.twig',
+                                ['reviews' => $reviews]);
+                        }
+                    }
                 }
-                header('Location:/admin/games');
-
-            } else if ($_SERVER['REQUEST_URI'] == '/admin/addTimes') {
-                $times = $this->timemanager->findAll();
-                $this->render->display('admin/times.twig', ['times' => $times]);
-            } else if ($_SERVER['REQUEST_URI'] == '/admin/addReviews') {
-                $reviews = $this->reviewmanager->findAll();
-                $this->render->display('admin/reviews.twig', ['reviews' => $reviews]);
             }
         }
     }
@@ -262,44 +411,61 @@ class AdminController extends AbstractController
     public function delete($id)
     {
 
-        if ($_SERVER["REQUEST_URI"] == "/admin/deleteUsers/$id") {
+        if ($_SERVER["REQUEST_URI"] ==
+            "/admin/deleteUsers/$id") {
 
-            $deleteGamer = $this->gamermanager->findbyGamerId($id);
+            $deleteGamer =
+                $this->gamermanager->findbyGamerId($id);
             $this->gamermanager->delete($deleteGamer);
             header('Location:/admin/users');
 
-        } else if ($_SERVER["REQUEST_URI"] == "/admin/deleteGames/$id") {
+        } else {
+            if ($_SERVER["REQUEST_URI"] ==
+                "/admin/deleteGames/$id") {
 
-            // Before delete the game, we need to delete all datas linked to it, such as times, or relation tables //
+                // Before delete the game, we need to delete all datas linked to it, such as times, or relation tables //
 
-            $deleteGame = $this->gamemanager->findByGameId($id);
+                $deleteGame =
+                    $this->gamemanager->findByGameId($id);
 
-            $deleteTimeByGame = $this->timemanager->findTimeByGameId($id);
+                $deleteTimeByGame =
+                    $this->timemanager->findTimeByGameId($id);
 
-            // We delete only if we find a time registered for a game //
-            if ($deleteTimeByGame) {
-                $this->timemanager->delete($deleteTimeByGame);
+                // We delete only if we find a time registered for a game //
+                if ($deleteTimeByGame) {
+                    $this->timemanager->delete($deleteTimeByGame);
+                }
+                $deleteGenreGame =
+                    $this->game_genremanager->findGameGenreById($id);
+                $this->game_genremanager->delete($deleteGenreGame);
+
+                $deletePlatformGame =
+                    $this->game_platformManager->findGamePlatformById($id);
+                $this->game_platformManager->delete($deletePlatformGame);
+
+                $this->gamemanager->delete($deleteGame);
+                header('Location:/admin/games');
+
+            } else {
+                if ($_SERVER["REQUEST_URI"] ==
+                    "/admin/deleteTimes/$id") {
+
+                    $deleteTime =
+                        $this->timemanager->getOnebyTimeId($id);
+                    $this->timemanager->delete($deleteTime);
+                    header('Location:/admin/times');
+                } else {
+                    if ($_SERVER["REQUEST_URI"] ==
+                        "/admin/deleteReviews/$id") {
+
+                        $deleteReview =
+                            $this->reviewmanager->getOnebyReviewId($id);
+                        $this->reviewmanager->delete($deleteReview);
+                        header('Location:/admin/reviews');
+
+                    }
+                }
             }
-            $deleteGenreGame = $this->game_genremanager->findGameGenreById($id);
-            $this->game_genremanager->delete($deleteGenreGame);
-
-            $deletePlatformGame = $this->game_platformManager->findGamePlatformById($id);
-            $this->game_platformManager->delete($deletePlatformGame);
-
-            $this->gamemanager->delete($deleteGame);
-            header('Location:/admin/games');
-
-        } else if ($_SERVER["REQUEST_URI"] == "/admin/deleteTimes/$id") {
-
-            $deleteTime = $this->timemanager->getOnebyTimeId($id);
-            $this->timemanager->delete($deleteTime);
-            header('Location:/admin/times');
-        } else if ($_SERVER["REQUEST_URI"] == "/admin/deleteReviews/$id") {
-
-            $deleteReview = $this->reviewmanager->getOnebyReviewId($id);
-            $this->reviewmanager->delete($deleteReview);
-            header('Location:/admin/reviews');
-
         }
     }
 
@@ -307,29 +473,41 @@ class AdminController extends AbstractController
     {
 
         // Creation of an error table //
-        $errors = [];
-        $editGamer = $this->gamermanager->findByGamerId($id);
+        $errors =
+            [];
+        $editGamer =
+            $this->gamermanager->findByGamerId($id);
 
 
-        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if ($_SERVER["REQUEST_METHOD"] ==
+            "POST") {
             // We call the verification function to see if there is errors on the form //
-            $errors = $this->editGamerForm($errors);
+            $errors =
+                $this->editGamerForm($errors);
             // if not, we upload and edit the account informations //
 
             //UPLOAD//
-            if (count($errors) == 0 && $_FILES["pictureFile"]["error"] != 4) {
+            if (count($errors) ==
+                0 &&
+                $_FILES["pictureFile"]["error"] !=
+                4) {
 
-                $upload = $this->uploadPicture($errors);
-                $uniqFileName = $upload["filename"];
-                $errors = $upload["errors"];
+                $upload =
+                    $this->uploadPicture($errors);
+                $uniqFileName =
+                    $upload["filename"];
+                $errors =
+                    $upload["errors"];
 
             } else {
-                $uniqFileName = $editGamer->getPicture();
+                $uniqFileName =
+                    $editGamer->getPicture();
             }
 
             //EDIT AND REGISTER IN DATABASE//
 
-            if (count($errors) == 0) {
+            if (count($errors) ==
+                0) {
                 $editGamer->setMail($_POST["mailEdit"]);
                 $editGamer->setPseudo($_POST["pseudoEdit"]);
                 $editGamer->setPassword($_POST["passwordEdit"]);
@@ -344,8 +522,10 @@ class AdminController extends AbstractController
     public function ajaxModal($id)
     {
 
-        $users = $this->gamermanager->findByGamerId($id);
-        $users = $users->toArray();
+        $users =
+            $this->gamermanager->findByGamerId($id);
+        $users =
+            $users->toArray();
         echo(json_encode($users));
 
 
@@ -356,34 +536,43 @@ class AdminController extends AbstractController
     public function validForm()
     {
 
-        $errors = [];
+        $errors =
+            [];
 
-        $title = $_POST["titleInput"];
-        $resume = $_POST["resumeInput"];
-        $studio = $_POST["studio"];
-        $editor = $_POST["editor"];
+        $title =
+            $_POST["titleInput"];
+        $resume =
+            $_POST["resumeInput"];
+        $studio =
+            $_POST["studio"];
+        $editor =
+            $_POST["editor"];
 
         if (empty($title)) {
 
-            $errors[] = "Vous n'avez pas saisi de titre";
+            $errors[] =
+                "Vous n'avez pas saisi de titre";
 
         }
 
         if (empty($resume)) {
 
-            $errors[] = "Vous n'avez pas saisi de résumé";
+            $errors[] =
+                "Vous n'avez pas saisi de résumé";
 
         }
 
         if (empty($studio)) {
 
-            $errors[] = "Vous n'avez saisi aucun studio";
+            $errors[] =
+                "Vous n'avez saisi aucun studio";
 
         }
 
         if (empty($editor)) {
 
-            $errors[] = "Vous n'avez saisi aucun studio";
+            $errors[] =
+                "Vous n'avez saisi aucun studio";
 
         }
 
@@ -395,60 +584,80 @@ class AdminController extends AbstractController
     function addUserForm(): array
     {
 
-        $errors = [];
+        $errors =
+            [];
 
-        $password = $_POST["passwordRegister"];
-        $verifPassword = $_POST["passwordVerifRegister"];
-        $pseudo = $_POST["pseudoRegister"];
-        $mail = $_POST["mailRegister"];
-        $antibot = $_POST["botPrevention"];
+        $password =
+            $_POST["passwordRegister"];
+        $verifPassword =
+            $_POST["passwordVerifRegister"];
+        $pseudo =
+            $_POST["pseudoRegister"];
+        $mail =
+            $_POST["mailRegister"];
+        $antibot =
+            $_POST["botPrevention"];
 
         if (empty($verifPassword)) {
 
-            $errors[] = "Vérifie que t'as bien écrit ton mot de passe, quand même.";
+            $errors[] =
+                "Vérifie que t'as bien écrit ton mot de passe, quand même.";
         }
 
-        if ($password != $verifPassword) {
+        if ($password !=
+            $verifPassword) {
 
-            $errors[] = "C'est pas le même mot de passe !";
+            $errors[] =
+                "C'est pas le même mot de passe !";
         }
 
         if (empty($mail)) {
 
-            $errors[] = "Laisse nous ton mail, promis on t'enverra (peut-être) pas de bêtises.";
+            $errors[] =
+                "Laisse nous ton mail, promis on t'enverra (peut-être) pas de bêtises.";
         }
 
-        return $this->checkLogForm($password, $errors, $pseudo, $antibot);
+        return $this->checkLogForm($password,
+            $errors,
+            $pseudo,
+            $antibot);
     }
 
     public
     function editGamerForm($errors)
     {
 
-        $errors = [];
+        $errors =
+            [];
         if (empty($_POST["pseudoEdit"])) {
 
-            $errors[] = "Nouveau pseudo, nouvelle vie !";
+            $errors[] =
+                "Nouveau pseudo, nouvelle vie !";
         }
 
         if (empty($_POST["passwordEdit"])) {
 
-            $errors[] = "Nouveau mot de passe, attention confond pas avec l'ancien!";
+            $errors[] =
+                "Nouveau mot de passe, attention confond pas avec l'ancien!";
         }
 
         if (empty($_POST["verifPasswordEdit"])) {
 
-            $errors[] = "Pour être sûr que tu confond pas avec l'ancien :)";
+            $errors[] =
+                "Pour être sûr que tu confond pas avec l'ancien :)";
         }
 
-        if ($_POST["passwordEdit"] != $_POST["verifPasswordEdit"]) {
+        if ($_POST["passwordEdit"] !=
+            $_POST["verifPasswordEdit"]) {
 
-            $errors[] = "T'as ptet confondu avec l'ancien :) :)";
+            $errors[] =
+                "T'as ptet confondu avec l'ancien :) :)";
         }
 
         if (empty($_POST["mailEdit"])) {
 
-            $errors[] = "Il nous faut toujours un mail, au cas où.";
+            $errors[] =
+                "Il nous faut toujours un mail, au cas où.";
         }
 
 
@@ -464,16 +673,21 @@ class AdminController extends AbstractController
      * @return array
      */
     private
-    function checkLogForm(mixed $password, array $errors, mixed $pseudo, mixed $antibot): array
+    function checkLogForm(mixed $password,
+                          array $errors,
+                          mixed $pseudo,
+                          mixed $antibot): array
     {
         if (empty($pseudo)) {
 
-            $errors[] = "Met donc un pseudo, qu'on sache qui tu es !";
+            $errors[] =
+                "Met donc un pseudo, qu'on sache qui tu es !";
         }
 
         if (empty($password)) {
 
-            $errors[] = "T'as oublié de choisir un mot de passe !";
+            $errors[] =
+                "T'as oublié de choisir un mot de passe !";
         }
 
         // REGEX FOR SECURITY VERIFICATION //
@@ -481,19 +695,27 @@ class AdminController extends AbstractController
         //Minimum eight characters, at least one upper case English letter, one lower case English letter,
         //one number and one special character//
 
-        if (!preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/', $password)) {
+        if (!preg_match('/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/',
+            $password)) {
 
-            $errors[] = "Il faut que ton mot de passe ait au moins une majuscule, une minuscule, un chiffre, et un caractère spécial. Oui c'est embêtant, mais c'est pour sécuriser ton compte !";
-
-        }
-
-        if (!preg_match('#[a-z\d_-]{5,15}#', $pseudo)) {
-            $errors[] = "Ton pseudo doit contenir entre 5 et 15 caractères, sans espace";
+            $errors[] =
+                "Il faut que ton mot de passe ait au moins une majuscule, une minuscule, un chiffre, et un caractère spécial. Oui c'est embêtant, mais c'est pour sécuriser ton compte !";
 
         }
 
-        if (preg_match('#\s#', $pseudo) || preg_match('#\s#', $password)) {
-            $errors[] = "Sans espace, on a dit !";
+        if (!preg_match('#[a-z\d_-]{5,15}#',
+            $pseudo)) {
+            $errors[] =
+                "Ton pseudo doit contenir entre 5 et 15 caractères, sans espace";
+
+        }
+
+        if (preg_match('#\s#',
+                $pseudo) ||
+            preg_match('#\s#',
+                $password)) {
+            $errors[] =
+                "Sans espace, on a dit !";
 
         }
 
@@ -501,7 +723,8 @@ class AdminController extends AbstractController
 
         if (!empty($antibot)) {
 
-            $errors[] = "Bien tenté, le bot, bien tenté.";
+            $errors[] =
+                "Bien tenté, le bot, bien tenté.";
 
         }
 
@@ -513,25 +736,43 @@ class AdminController extends AbstractController
     function uploadPicture($errors)
     {
 
-        if ($_FILES["pictureFile"]["error"] != 0) {
-            $errors[] = 'Une erreur dans l\'upload';
+        if ($_FILES["pictureFile"]["error"] !=
+            0) {
+            $errors[] =
+                'Une erreur dans l\'upload';
         }
-        $types = ["image/jpeg", "image/png"];
-        if (!in_array($_FILES["pictureFile"]["type"], $types)) {
-            $errors[] = 'Jpg ou PNG en format d\'image s\'il te plaît!';
-        }
-
-        if ($_FILES["pictureFile"]["size"] > 3 * 1048576) {
-            $errors[] = 'Le fichier ne doit pas dépasser 3 Mo';
-        }
-
-        if (count($errors) == 0) {
-            $extension = explode("/", $_FILES["pictureFile"]["type"])[1];
-            $uniqFilename = uniqid() . '.' . $extension;
-            move_uploaded_file($_FILES["pictureFile"]["tmp_name"], 'assets/pictures/' . $uniqFilename);
+        $types =
+            ["image/jpeg",
+                "image/png"];
+        if (!in_array($_FILES["pictureFile"]["type"],
+            $types)) {
+            $errors[] =
+                'Jpg ou PNG en format d\'image s\'il te plaît!';
         }
 
-        return ["errors" => $errors, 'filename' => $uniqFilename];
+        if ($_FILES["pictureFile"]["size"] >
+            3 *
+            1048576) {
+            $errors[] =
+                'Le fichier ne doit pas dépasser 3 Mo';
+        }
+
+        if (count($errors) ==
+            0) {
+            $extension =
+                explode("/",
+                    $_FILES["pictureFile"]["type"])[1];
+            $uniqFilename =
+                uniqid() .
+                '.' .
+                $extension;
+            move_uploaded_file($_FILES["pictureFile"]["tmp_name"],
+                'assets/pictures/' .
+                $uniqFilename);
+        }
+
+        return ["errors" => $errors,
+            'filename' => $uniqFilename];
     }
 
 

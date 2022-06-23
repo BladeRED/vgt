@@ -45,22 +45,49 @@ class Game
      * @param $platforms
      * @param $picture
      */
-    public function __construct($id, $title, $resume, $released, $editor, $studio, $genre, $game_genre, $platform, $game_platform, $genres, $platforms, $addDate, $picture)
+    public function __construct($id,
+                                $title,
+                                $resume,
+                                $released,
+                                $editor,
+                                $studio,
+                                $genre,
+                                $game_genre,
+                                $platform,
+                                $game_platform,
+                                $genres,
+                                $platforms,
+                                $addDate,
+                                $picture)
     {
-        $this->id = $id;
-        $this->title = $title;
-        $this->resume = $resume;
-        $this->released = $released;
-        $this->editor = $editor;
-        $this->studio = $studio;
-        $this->genre = $genre;
-        $this->game_genre = $game_genre;
-        $this->platform = $platform;
-        $this->game_platform = $game_platform;
-        $this->genres = $genres;
-        $this->platforms = $platforms;
-        $this->addDate = $addDate;
-        $this->picture = $picture;
+        $this->id =
+            $id;
+        $this->title =
+            $title;
+        $this->resume =
+            $resume;
+        $this->released =
+            $released;
+        $this->editor =
+            $editor;
+        $this->studio =
+            $studio;
+        $this->genre =
+            $genre;
+        $this->game_genre =
+            $game_genre;
+        $this->platform =
+            $platform;
+        $this->game_platform =
+            $game_platform;
+        $this->genres =
+            $genres;
+        $this->platforms =
+            $platforms;
+        $this->addDate =
+            $addDate;
+        $this->picture =
+            $picture;
     }
 
 
@@ -77,7 +104,8 @@ class Game
      */
     public function setId($id): void
     {
-        $this->id = $id;
+        $this->id =
+            $id;
     }
 
     /**
@@ -93,7 +121,8 @@ class Game
      */
     public function setTitle($title): void
     {
-        $this->title = $title;
+        $this->title =
+            $title;
     }
 
     /**
@@ -109,7 +138,8 @@ class Game
      */
     public function setResume($resume): void
     {
-        $this->resume = $resume;
+        $this->resume =
+            $resume;
     }
 
     /**
@@ -125,7 +155,8 @@ class Game
      */
     public function setReleased($released): void
     {
-        $this->released = $released;
+        $this->released =
+            $released;
     }
 
     /**
@@ -141,7 +172,8 @@ class Game
      */
     public function setEditor($editor): void
     {
-        $this->editor = $editor;
+        $this->editor =
+            $editor;
     }
 
     /**
@@ -157,7 +189,8 @@ class Game
      */
     public function setStudio($studio): void
     {
-        $this->studio = $studio;
+        $this->studio =
+            $studio;
     }
 
     /**
@@ -173,7 +206,8 @@ class Game
      */
     public function setGenre($genre): void
     {
-        $this->genre = $genre;
+        $this->genre =
+            $genre;
     }
 
     /**
@@ -189,7 +223,8 @@ class Game
      */
     public function setgame_genre($game_genre): void
     {
-        $this->game_genre = $game_genre;
+        $this->game_genre =
+            $game_genre;
     }
 
     /**
@@ -205,7 +240,8 @@ class Game
      */
     public function setplatform($platform): void
     {
-        $this->platform = $platform;
+        $this->platform =
+            $platform;
     }
 
     /**
@@ -221,7 +257,8 @@ class Game
      */
     public function setgame_platform($game_platform): void
     {
-        $this->game_platform = $game_platform;
+        $this->game_platform =
+            $game_platform;
     }
 
     /**
@@ -237,7 +274,8 @@ class Game
      */
     public function setGenres($genres): void
     {
-        $this->genres = $genres;
+        $this->genres =
+            $genres;
     }
 
     /**
@@ -253,7 +291,8 @@ class Game
      */
     public function setPlatforms($platforms): void
     {
-        $this->platforms = $platforms;
+        $this->platforms =
+            $platforms;
     }
 
     /**
@@ -269,7 +308,8 @@ class Game
      */
     public function setAddDate($addDate): void
     {
-        $this->addDate = $addDate;
+        $this->addDate =
+            $addDate;
     }
 
     /**
@@ -278,12 +318,15 @@ class Game
     public function getPicture()
     {
         return $this->picture;
-    }/**
+    }
+
+    /**
      * @param mixed $picture
      */
     public function setPicture($picture): void
     {
-        $this->picture = $picture;
+        $this->picture =
+            $picture;
     }
 
 

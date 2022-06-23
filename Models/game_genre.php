@@ -2,7 +2,8 @@
 
 namespace app\Models;
 
-class game_genre {
+class game_genre
+{
 
     private $id_game;
     private $id_genre;
@@ -12,10 +13,13 @@ class game_genre {
      * @param $id_game
      * @param $id_genre
      */
-    public function __construct($id_game, $id_genre)
+    public function __construct($id_game,
+                                $id_genre)
     {
-        $this->id_game = $id_game;
-        $this->id_genre = $id_genre;
+        $this->id_game =
+            $id_game;
+        $this->id_genre =
+            $id_genre;
 
     }
 
@@ -32,7 +36,8 @@ class game_genre {
      */
     public function setIdGame($id_game): void
     {
-        $this->id_game = $id_game;
+        $this->id_game =
+            $id_game;
     }
 
     /**
@@ -48,9 +53,9 @@ class game_genre {
      */
     public function setIdGenre($id_genre): void
     {
-        $this->id_genre = $id_genre;
+        $this->id_genre =
+            $id_genre;
     }
-
 
 
 }

@@ -74,10 +74,10 @@
                         <input type="hidden" id="histDates" value="0">
                         <input type="hidden" id="compDates" value="0">
                         <input type="hidden" id="extraDates" value="0">
-                     {% else %}
-                         <input type="hidden" id="histDates" value="{{ histDates }}">
-                         <input type="hidden" id="compDates" value="{{ compDates }}">
-                         <input type="hidden" id="extraDates" value="{{ extraDates }}">
+                    {% else %}
+                        <input type="hidden" id="histDates" value="{{ histDates }}">
+                        <input type="hidden" id="compDates" value="{{ compDates }}">
+                        <input type="hidden" id="extraDates" value="{{ extraDates }}">
                     {% endif %}
 
 
@@ -123,7 +123,7 @@
                                     <p> 0j 0h 0min 0sec </p>
                                 {% else %}
 
-                                    <p> {{sumDays}}j {{sumHrs}}h {{sumMins}}min {{sumScs}}sec </p>
+                                    <p> {{ sumDays }}j {{ sumHrs }}h {{ sumMins }}min {{ sumScs }}sec </p>
 
                                 {% endif %}
 
@@ -194,7 +194,7 @@
 
     {% include 'parts/JS_scripts.twig' %}
 
-    {% include 'parts/dougnuts.twig'%}
+    {% include 'parts/dougnuts.twig' %}
     </body>
     </html>
 {% endblock %}
