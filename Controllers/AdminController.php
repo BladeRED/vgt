@@ -16,6 +16,9 @@ use app\Models\game_platform;
 use app\Models\Gamer;
 
 
+/**
+ *
+ */
 class AdminController
     extends
     AbstractController
@@ -30,9 +33,6 @@ class AdminController
     private game_platformManager $game_platformManager;
 
 
-    /**
-     * @param $gamermanager
-     */
     public function __construct()
     {
         parent::__construct();
@@ -68,6 +68,7 @@ class AdminController
         $nbReviews =
             $this->reviewmanager->countReviews();
 
+        // We need to set null variables for twig rendering //
 
         $usersDate =
             null;
@@ -82,6 +83,9 @@ class AdminController
             null;
         $extraDates =
             null;
+
+        //finding the category of gametimes //
+
         $histCateg =
             $this->timemanager->findByHistCateg();
         $compCateg =
@@ -101,6 +105,10 @@ class AdminController
             0;
         $totalTime =
             $this->timemanager->sumTimes();
+        $totalHrs = $totalTime["totalhours"];
+        $totalMins = $totalTime["totalminuts"];
+        $totalScs = $totalTime["totalseconds"];
+        $totalDays = 0;
         $reviewsTime =
             null;
 
@@ -113,6 +121,38 @@ class AdminController
             null;
         $dateEnd =
             null;
+
+        // for rendering the total times by days //
+
+        while ($totalScs >
+            59) {
+
+            $totalScs =
+                $totalScs -
+                59;
+            $totalMins += 1;
+
+        }
+
+        while ($totalMins >
+            59) {
+
+            $totalMins =
+                $totalMins -
+                59;
+            $totalHrs += 1;
+
+        }
+
+        while ($totalHrs >
+            23) {
+
+            $totalHrs =
+                $totalHrs -
+                24;
+            $totalDays += 1;
+
+        }
 
 
         if (!empty($_POST["dateBegin"])) {
@@ -164,6 +204,11 @@ class AdminController
             $sumScs =
                 $sumTimes["sumScs"];
 
+            $totalHrs = $totalTime["totalhours"];
+            $totalMins = $totalTime["totalminuts"];
+            $totalScs = $totalTime["totalseconds"];
+            $totalDays = 0;
+
             // While our time value (hours, minuts, or seconds) exceed the limit time, we add 1 to the upper time value //
 
             while ($sumScs >
@@ -195,6 +240,8 @@ class AdminController
                 $sumDays += 1;
 
             }
+
+
         }
 
         $this->render->display('admin/dashboard.twig',
@@ -204,6 +251,10 @@ class AdminController
                 'nbTimes' => $nbTimes,
                 'nbReviews' => $nbReviews,
                 'totalTime' => $totalTime,
+                'totalDays' => $totalDays,
+                'totalHours' => $totalHrs,
+                'totalMinuts' => $totalMins,
+                'totalSeconds' => $totalScs,
                 'dateBegin' => $dateBegin,
                 'dateEnd' => $dateEnd,
                 'usersDate' => $usersDate,
@@ -228,6 +279,9 @@ class AdminController
 
     public function findAll()
     {
+
+        // depending on the route we came from, we use different functions for finding, adding, updating and deleting
+        //  different datas //
 
         if ($_SERVER['REQUEST_URI'] ==
             '/admin/users') {
@@ -522,6 +576,7 @@ class AdminController
     public function ajaxModal($id)
     {
 
+        // We use this function  for fill our edit modal with the users datas //
         $users =
             $this->gamermanager->findByGamerId($id);
         $users =

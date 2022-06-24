@@ -8,6 +8,9 @@ use app\Managers\TimeManager;
 use app\Models\Time;
 
 
+/**
+ *
+ */
 class SecurityController
     extends
     AbstractController
@@ -16,10 +19,6 @@ class SecurityController
     private TimeManager $timemanager;
     private ReviewManager $reviewmanager;
 
-
-    /**
-     * @param $gamermanager
-     */
     public function __construct()
     {
         parent::__construct();
@@ -170,7 +169,7 @@ class SecurityController
                 $editGamer->setPassword($_POST["passwordEdit"]);
                 $editGamer->setPicture($uniqFileName);
 
-                $this->gamermanagdisplaySer->update($editGamer);
+                $this->gamermanager->update($editGamer);
 
                 $this->sessionService->gamer =
                     serialize($editGamer);

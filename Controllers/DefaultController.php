@@ -9,6 +9,9 @@ use app\Managers\TimeManager;
 use app\Models\Gamer;
 use app\Managers\GamerManager;
 
+/**
+ *
+ */
 class DefaultController
     extends
     AbstractController
@@ -18,10 +21,6 @@ class DefaultController
     private PlatformManager $platformManager;
     private GenreManager $genremanager;
     private TimeManager $timemanager;
-
-    /**
-     * @param $gamermanager
-     */
 
 
     public function __construct()
@@ -56,10 +55,6 @@ class DefaultController
         $gamesTimesAvg =
             $this->timemanager->findAvgTimeByGame();
 
-        $EldenRing =
-            $gamesTimesAvg[0];
-
-
         $todayGame =
             $this->gamemanager->findByTodayDate($dateToday,
                 $dateLastWeek);
@@ -76,7 +71,7 @@ class DefaultController
                 'todayTime' => $todayTime,
                 'todayGamer' => $todayGamer,
                 'gamesTimesAvg' => $gamesTimesAvg,
-                'EldenRing' => $EldenRing]
+            ]
         );
     }
 
@@ -632,7 +627,8 @@ class DefaultController
             '/',
             '',
             true,
-            true);
+            true,
+        );
         header('Location: /');;
 
     }

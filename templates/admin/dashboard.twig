@@ -1,7 +1,7 @@
 {% block body %}
     <!doctype html>
     <html lang="fr">
-    {% include 'parts/head.twig' %}
+    {% include 'parts/headadmin.twig' %}
 
     <body>
 
@@ -161,8 +161,8 @@
                                 <h5 class="fw-bold">
                                     Temps total cumulés:
                                 </h5>
-                                <p> {{ totalTime.totalhours }}h {{ totalTime.totalminuts }}
-                                    min {{ totalTime.totalseconds }}sec</p>
+                                <p>{{ totalDays }}j {{ totalHours }}h {{ totalMinuts }}
+                                    min {{ totalSeconds }}sec</p>
 
                                 <h5 class="fw-bold">
                                     Total reviews:

@@ -11,6 +11,7 @@ function onClickModalUser(userId){
         })
         .then(function(datas){
 
+            // Fill the form with the datas values //
 
             document.getElementById("pseudoEdit").value = datas.pseudo
             document.getElementById("mailEdit").value = datas.mail
