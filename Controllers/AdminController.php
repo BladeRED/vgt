@@ -154,7 +154,7 @@ class AdminController
 
         }
 
-
+        // Verification of the post date values //
         if (!empty($_POST["dateBegin"])) {
             $dateBegin =
                 $_POST["dateBegin"];
@@ -339,6 +339,9 @@ class AdminController
 
             if ($_SERVER['REQUEST_URI'] ==
                 '/admin/addUsers') {
+
+                // Verification of  the possible errors with addUserForm //
+
                 $errors =
                     $this->addUserForm();
 
@@ -603,6 +606,8 @@ class AdminController
         $editor =
             $_POST["editor"];
 
+        // Verification if the user submit an empty form, or incomplete one //
+
         if (empty($title)) {
 
             $errors[] =
@@ -796,6 +801,8 @@ class AdminController
             $errors[] =
                 'Une erreur dans l\'upload';
         }
+
+        // Extensions supported for the pictures //
         $types =
             ["image/jpeg",
                 "image/png"];
@@ -805,12 +812,15 @@ class AdminController
                 'Jpg ou PNG en format d\'image s\'il te plaît!';
         }
 
+        // Maximum size of the files //
         if ($_FILES["pictureFile"]["size"] >
             3 *
             1048576) {
             $errors[] =
                 'Le fichier ne doit pas dépasser 3 Mo';
         }
+
+        // upload of the file by exploding the $_FILES["pictureFile"] for having the good entry in the directory //
 
         if (count($errors) ==
             0) {

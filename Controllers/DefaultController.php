@@ -411,6 +411,7 @@ class DefaultController
             $searches =
                 $this->gamemanager->search($searchResult);
 
+
             if (empty($searches)) {
                 $searches =
                     null;
@@ -418,10 +419,10 @@ class DefaultController
                     ['searches' => $searches]);
 
             } else {
-                $searches =
-                    json_encode($searches);
+                $searchCount = count($searches);
                 $this->render->display('default/gameslist.twig',
-                    ['searches' => $searches]);
+                    ['searches' => $searches,
+                        'searchCount' => $searchCount]);
             }
         }
     }
