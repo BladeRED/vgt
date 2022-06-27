@@ -89,15 +89,19 @@ class SecurityController
             $errors[] =
                 'Une erreur dans l\'upload';
         }
+        // extension of the file //
         $types =
             ["image/jpeg",
                 "image/png"];
+
+        // if it's not a type managed by the app //
         if (!in_array($_FILES["pictureFile"]["type"],
             $types)) {
             $errors[] =
                 'Jpg ou PNG en format d\'image s\'il te plaît!';
         }
 
+        // if the size exceed the max size supported by the app //
         if ($_FILES["pictureFile"]["size"] >
             3 *
             1048576) {
@@ -110,10 +114,12 @@ class SecurityController
             $extension =
                 explode("/",
                     $_FILES["pictureFile"]["type"])[1];
+            // creating a name.extension picture file, for example "67bf8g.png", as the name is a unique ID //
             $uniqFilename =
                 uniqid() .
                 '.' .
                 $extension;
+            // move the newly created picture file into the good directory //
             move_uploaded_file($_FILES["pictureFile"]["tmp_name"],
                 'assets/pictures/' .
                 $uniqFilename);
