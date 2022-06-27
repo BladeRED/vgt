@@ -11871,6 +11871,18 @@ div.dataTables_wrapper div.dataTables_filter label {
   color: white !important;
 }
 
+#usersTable_info.dataTables_info {
+  color: white !important;
+}
+
+#timesTable_info.dataTables_info {
+  color: white !important;
+}
+
+#reviewsTable_info.dataTables_info {
+  color: white !important;
+}
+
 .page-item.active .page-link {
   background-color: #c06faa !important;
   border-color: #c06faa;

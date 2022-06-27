@@ -14,7 +14,7 @@
 
         <section class="mb-5 pb-5">
             <div class="container mb-5 my-5 py-5">
-                <table class="table table-dark table-striped">
+                <table class="table table-dark table-striped" id="reviewsTable">
                     <thead>
                     <tr>
                         <th scope="col">ID</th>
@@ -54,8 +54,17 @@
 
     {% include 'parts/JS_scripts.twig' %}
 
-    <script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+            integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script type="text/javascript"
+            src="https://cdn.datatables.net/v/bs5/dt-1.12.1/r-2.3.0/sc-2.0.6/sl-1.4.0/datatables.min.js"></script>
 
+    <script>
+        $(document).ready(function () {
+            $('#reviewsTable').DataTable({
+
+            });
+        });
     </script>
 
     </body>

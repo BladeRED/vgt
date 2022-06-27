@@ -1,232 +1,243 @@
 {% block body %}
-<!doctype html>
-<html lang="fr">
-{% include 'parts/headadmin.twig' %}
+    <!doctype html>
+    <html lang="fr">
+    {% include 'parts/headadmin.twig' %}
 
-<body>
-{% include 'parts/headeradmin.twig' %}
+    <body>
+    {% include 'parts/headeradmin.twig' %}
 
-<main>
-    <!--INSERT CODE HERE -->
+    <main>
+        <!--INSERT CODE HERE -->
 
-    <section>
-        <div class="container my-5">
-            <div class="d-flex justify-content-end">
-                <!-- Add modal -->
-                <button type="button" class="btn btn-lg btn-outline-success mb-4" data-bs-toggle="modal"
-                        data-bs-target=".bd-example-modal-lg">Ajouter un utilisateur
-                </button>
+        <section>
+            <div class="container my-5">
+                <div class="d-flex justify-content-end">
+                    <!-- Add modal -->
+                    <button type="button" class="btn btn-lg btn-outline-success mb-4" data-bs-toggle="modal"
+                            data-bs-target=".bd-example-modal-lg">Ajouter un utilisateur
+                    </button>
 
-                <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
-                     aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                    {% for error in errors %}
-                        <div class="alert-danger w-100 shadow-lg rounded text-center mb-3" role="alert">{{error}}</div>
-                    {% endfor %}
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <form class="mx-auto" method="post" action="/admin/addUsers">
-                                <div class="form-group mx-5 px-5 d-flex flex-column justify-content-center">
+                    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog"
+                         aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                        {% for error in errors %}
+                            <div class="alert-danger w-100 shadow-lg rounded text-center mb-3"
+                                 role="alert">{{ error }}</div>
+                        {% endfor %}
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <form class="mx-auto" method="post" action="/admin/addUsers">
+                                    <div class="form-group mx-5 px-5 d-flex flex-column justify-content-center">
 
-                                    <label for="mailRegister" class="my-3 text-dark text-center"> Adresse
-                                        Mail: </label>
-                                    <input
-                                            type="email"
-                                            class="form-control log mx-auto"
-                                            id="mailRegister"
-                                            name="mailRegister"
-                                            placeholder="EldenRing@GOTY22.com"
-                                    />
-                                </div>
+                                        <label for="mailRegister" class="my-3 text-dark text-center"> Adresse
+                                            Mail: </label>
+                                        <input
+                                                type="email"
+                                                class="form-control log mx-auto"
+                                                id="mailRegister"
+                                                name="mailRegister"
+                                                placeholder="EldenRing@GOTY22.com"
+                                        />
+                                    </div>
 
-                                <div class="form-group mx-5 px-5 d-flex flex-column justify-content-center">
-                                    <label for="pseudoRegister" class="my-3 text-dark text-center">Pseudo: </label>
-                                    <input
-                                            type="text"
-                                            class="form-control log mx-auto"
-                                            id="pseudoRegister"
-                                            name="pseudoRegister"
-                                            placeholder="Malika"
-                                    />
-                                </div>
-                                <div class="form-group mx-5 px-5 d-flex flex-column justify-content-center">
-                                    <label for="passwordRegister" class="my-3 text-dark text-center">Mot de
-                                        passe: </label>
-                                    <input
-                                            type="password"
-                                            class="form-control log mx-auto "
-                                            id="passwordRegister"
-                                            name="passwordRegister"
-                                            placeholder="Essaie de ne pas l'oublier ! !"
-                                    />
-                                </div>
+                                    <div class="form-group mx-5 px-5 d-flex flex-column justify-content-center">
+                                        <label for="pseudoRegister" class="my-3 text-dark text-center">Pseudo: </label>
+                                        <input
+                                                type="text"
+                                                class="form-control log mx-auto"
+                                                id="pseudoRegister"
+                                                name="pseudoRegister"
+                                                placeholder="Malika"
+                                        />
+                                    </div>
+                                    <div class="form-group mx-5 px-5 d-flex flex-column justify-content-center">
+                                        <label for="passwordRegister" class="my-3 text-dark text-center">Mot de
+                                            passe: </label>
+                                        <input
+                                                type="password"
+                                                class="form-control log mx-auto "
+                                                id="passwordRegister"
+                                                name="passwordRegister"
+                                                placeholder="Essaie de ne pas l'oublier ! !"
+                                        />
+                                    </div>
 
-                                <div class="form-group mx-5 px-5 d-flex flex-column justify-content-center">
-                                    <label for="passwordVerifRegister" class="my-3 text-dark text-center"> Vérifie
-                                        ton mot de
-                                        passe: </label>
-                                    <input
-                                            type="password"
-                                            class="form-control log mx-auto mb-4"
-                                            id="passwordVerifRegister"
-                                            name="passwordVerifRegister"
-                                            placeholder="Vérifie ton mot de passe quand même, on sait jamais."
-                                    />
-                                </div>
+                                    <div class="form-group mx-5 px-5 d-flex flex-column justify-content-center">
+                                        <label for="passwordVerifRegister" class="my-3 text-dark text-center"> Vérifie
+                                            ton mot de
+                                            passe: </label>
+                                        <input
+                                                type="password"
+                                                class="form-control log mx-auto mb-4"
+                                                id="passwordVerifRegister"
+                                                name="passwordVerifRegister"
+                                                placeholder="Vérifie ton mot de passe quand même, on sait jamais."
+                                        />
+                                    </div>
 
-                                <div class="form-group mb-4 mx-5 px-5 datahide">
-                                    <label for="botPrevention" class="my-3 text-white"> Vérifie ton bot de
-                                        passe: </label>
-                                    <input
-                                            type="text"
-                                            class="form-control log mx-auto "
-                                            id="botPrevention"
-                                            name="botPrevention"
-                                            placeholder="Pour toi le bot, remplis, svp."
-                                    />
-                                </div>
+                                    <div class="form-group mb-4 mx-5 px-5 datahide">
+                                        <label for="botPrevention" class="my-3 text-white"> Vérifie ton bot de
+                                            passe: </label>
+                                        <input
+                                                type="text"
+                                                class="form-control log mx-auto "
+                                                id="botPrevention"
+                                                name="botPrevention"
+                                                placeholder="Pour toi le bot, remplis, svp."
+                                        />
+                                    </div>
 
-                                <button
-                                        type="submit"
-                                        class="btn btn-lg btn-success mx-auto mb-4 px-5 d-flex justify-content-center text-white"
-                                >
-                                    Ajouter un utilisateur
-                                </button>
+                                    <button
+                                            type="submit"
+                                            class="btn btn-lg btn-success mx-auto mb-4 px-5 d-flex justify-content-center text-white"
+                                    >
+                                        Ajouter un utilisateur
+                                    </button>
 
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="modal fade editModal" tabindex="-1" role="dialog"
-                     aria-labelledby="myLargeModalLabel"
-                     aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            {% for error in errors %}
-                                <div class="alert-danger w-100 shadow-lg rounded text-center mb-3" role="alert">{{error}}</div>
-                            {% endfor %}
-                            <form class="mx-auto" method="post" enctype="multipart/form-data"
-                                  action="" id="editForm">
+                    <div class="modal fade editModal" tabindex="-1" role="dialog"
+                         aria-labelledby="myLargeModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                {% for error in errors %}
+                                    <div class="alert-danger w-100 shadow-lg rounded text-center mb-3"
+                                         role="alert">{{ error }}</div>
+                                {% endfor %}
+                                <form class="mx-auto" method="post" enctype="multipart/form-data"
+                                      action="" id="editForm">
 
-                                <div class="form-group mx-5 px-5 d-flex flex-column justify-content-center">
-                                    <label for="mailEdit" class="mb-3 text-dark text-center"> Ton Adresse
-                                        Mail: </label>
-                                    <input
-                                            type="email"
-                                            class="form-control log mx-auto w-50"
-                                            id="mailEdit"
-                                            name="mailEdit"
-                                            aria-describedby="emailHelp"
-                                            placeholder="{{ user.mail }}"
-                                    />
-                                </div>
+                                    <div class="form-group mx-5 px-5 d-flex flex-column justify-content-center">
+                                        <label for="mailEdit" class="mb-3 text-dark text-center"> Ton Adresse
+                                            Mail: </label>
+                                        <input
+                                                type="email"
+                                                class="form-control log mx-auto w-50"
+                                                id="mailEdit"
+                                                name="mailEdit"
+                                                aria-describedby="emailHelp"
+                                                placeholder="{{ user.mail }}"
+                                        />
+                                    </div>
 
-                                <div class="form-group mx-5 px-5 d-flex flex-column justify-content-center">
-                                    <label for="pseudoEdit" class="my-3 text-dark text-center"> Ton
-                                        Pseudo: </label>
-                                    <input
-                                            type="text"
-                                            class="form-control log mx-auto w-50"
-                                            id="pseudoEdit"
-                                            name="pseudoEdit"
-                                            aria-describedby="usernameHelp"
-                                            placeholder="{{ user.pseudo }}"
-                                    />
-                                </div>
-                                <div class="form-group mx-5 px-5 d-flex flex-column justify-content-center">
-                                    <label for="passwordEdit" class="my-3 text-dark text-center">Mot de
-                                        passe: </label>
-                                    <input
-                                            type="password"
-                                            class="form-control log mx-auto w-50"
-                                            id="passwordEdit"
-                                            name="passwordEdit"
-                                            placeholder="**********"
-                                    />
-                                </div>
+                                    <div class="form-group mx-5 px-5 d-flex flex-column justify-content-center">
+                                        <label for="pseudoEdit" class="my-3 text-dark text-center"> Ton
+                                            Pseudo: </label>
+                                        <input
+                                                type="text"
+                                                class="form-control log mx-auto w-50"
+                                                id="pseudoEdit"
+                                                name="pseudoEdit"
+                                                aria-describedby="usernameHelp"
+                                                placeholder="{{ user.pseudo }}"
+                                        />
+                                    </div>
+                                    <div class="form-group mx-5 px-5 d-flex flex-column justify-content-center">
+                                        <label for="passwordEdit" class="my-3 text-dark text-center">Mot de
+                                            passe: </label>
+                                        <input
+                                                type="password"
+                                                class="form-control log mx-auto w-50"
+                                                id="passwordEdit"
+                                                name="passwordEdit"
+                                                placeholder="**********"
+                                        />
+                                    </div>
 
-                                <div class="form-group mb-4 mx-5 px-5 d-flex flex-column justify-content-center">
-                                    <label for="verifPasswordEdit" class="my-3 text-dark text-center">
-                                        Vérifie ton mot de
-                                        passe: </label>
-                                    <input
-                                            type="password"
-                                            class="form-control log mx-auto w-50"
-                                            id="verifPasswordEdit"
-                                            name="verifPasswordEdit"
-                                            placeholder="**********"
-                                    />
-                                </div>
+                                    <div class="form-group mb-4 mx-5 px-5 d-flex flex-column justify-content-center">
+                                        <label for="verifPasswordEdit" class="my-3 text-dark text-center">
+                                            Vérifie ton mot de
+                                            passe: </label>
+                                        <input
+                                                type="password"
+                                                class="form-control log mx-auto w-50"
+                                                id="verifPasswordEdit"
+                                                name="verifPasswordEdit"
+                                                placeholder="**********"
+                                        />
+                                    </div>
 
-                                <div class="form-group mb-4 mx-5 d-flex flex-column justify-content-center">
-                                    <label for="pictureFile" class="my-3 text-dark text-center"> Change ton
-                                        avatar si tu veux
-                                        (JPG/PNG seulement, <= 3 mo) ! </label>
-                                    <input class="form-control log mx-auto w-50" name="pictureFile"
-                                           type="file"
-                                           id="pictureFile">
-                                </div>
+                                    <div class="form-group mb-4 mx-5 d-flex flex-column justify-content-center">
+                                        <label for="pictureFile" class="my-3 text-dark text-center"> Change ton
+                                            avatar si tu veux
+                                            (JPG/PNG seulement, <= 3 mo) ! </label>
+                                        <input class="form-control log mx-auto w-50" name="pictureFile"
+                                               type="file"
+                                               id="pictureFile">
+                                    </div>
 
-                                <button
-                                        type="submit"
-                                        class="btn btn-lg bgsection1 mx-auto my-5 px-5 d-flex justify-content-center text-white"
-                                >
-                                    Le changement, c'est maintenant !
-                                </button>
+                                    <button
+                                            type="submit"
+                                            class="btn btn-lg bgsection1 mx-auto my-5 px-5 d-flex justify-content-center text-white"
+                                    >
+                                        Le changement, c'est maintenant !
+                                    </button>
 
-                            </form>
+                                </form>
+                            </div>
                         </div>
                     </div>
+
                 </div>
-
-            </div>
-            <table class="table table-dark table-striped">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col" class="text-center">Pseudo</th>
-                    <th scope="col" class="text-center">Mail</th>
-                    <th scope="col" class="text-center">Role</th>
-                    <th scope="col" class="text-center">Actions</th>
-
-                </tr>
-                </thead>
-                <tbody>
-                {% for user in users %}
+                <table class="table table-dark table-striped" id="usersTable">
+                    <thead>
                     <tr>
-                        <th scope="row">{{ user.id }}</th>
-                        <td>{{ user.pseudo }}</td>
-                        <td>{{ user.mail }}</td>
-                        <td>{{ user.role }}</td>
-                        <td>
-                            <button type="button" class="btn btn-lg btn-secondary mdlBtn"
-                                    data-bs-toggle="modal" data-bs-target=".editModal" data-userid="{{ user.id }}">
-                                Modifier
-                            </button>
-                            <a href="/admin/deleteUsers/{{ user.id }}" type="button" class="btn btn-lg btn-danger">Supprimer</a>
-                        </td>
+                        <th scope="col">ID</th>
+                        <th scope="col" class="text-center">Pseudo</th>
+                        <th scope="col" class="text-center">Mail</th>
+                        <th scope="col" class="text-center">Role</th>
+                        <th scope="col" class="text-center">Actions</th>
+
                     </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </section>
-</main>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <th scope="row">{{ user.id }}</th>
+                            <td>{{ user.pseudo }}</td>
+                            <td>{{ user.mail }}</td>
+                            <td>{{ user.role }}</td>
+                            <td>
+                                <button type="button" class="btn btn-lg btn-secondary mdlBtn"
+                                        data-bs-toggle="modal" data-bs-target=".editModal" data-userid="{{ user.id }}">
+                                    Modifier
+                                </button>
+                                <a href="/admin/deleteUsers/{{ user.id }}" type="button" class="btn btn-lg btn-danger">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
 
 
-{% include 'parts/footer.twig' %}
+    {% include 'parts/footer.twig' %}
 
-<!-- JS scripts -->
+    <!-- JS scripts -->
 
-{% include 'parts/JS_scripts.twig' %}
-<script crossorigin="anonymous"
-        src="../../assets/js/ajax.js">
-</script>
-<script>
+    {% include 'parts/JS_scripts.twig' %}
+    <script crossorigin="anonymous"
+            src="../../assets/js/ajax.js">
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"
+            integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
+    <script type="text/javascript"
+            src="https://cdn.datatables.net/v/bs5/dt-1.12.1/r-2.3.0/sc-2.0.6/sl-1.4.0/datatables.min.js"></script>
 
-</script>
+    <script>
+        $(document).ready(function () {
+            $('#usersTable').DataTable({
 
-</body>
-</html>
+            });
+        });
+    </script>
+    </body>
+    </html>
+
 {% endblock %}
